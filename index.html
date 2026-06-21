@@ -1,46 +1,34 @@
 <title>Release v14.6.0 — Reporte E2E · Rebu</title>
 <style>
-  /* ─── Reset & base ──────────────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ─── Design tokens (DESIGN.md — MongoDB palette) ──────────── */
   :root {
-    --green:          #00ed64;
-    --green-dark:     #00684a;
-    --green-mid:      #00a35c;
-    --green-soft:     #c3f0d2;
-    --teal-deep:      #001e2b;
-    --teal:           #003d4f;
-    --teal-mid:       #00684a;
-    --purple:         #7b3ff2;
-    --orange:         #fa6e39;
-    --warning-bg:     #fff8e0;
-    --warning-text:   #946f3f;
-    --canvas:         #ffffff;
-    --surface:        #f9fbfa;
-    --surface-soft:   #f4f7f6;
-    --surface-feat:   #e3fcef;
-    --hairline:       #e1e5e8;
-    --hairline-soft:  #eceff1;
-    --hairline-str:   #c1ccd6;
-    --ink:            #001e2b;
-    --charcoal:       #1c2d38;
-    --slate:          #3d4f5b;
-    --steel:          #5c6c7a;
-    --stone:          #7c8c9a;
-    --muted:          #a8b3bc;
-    --on-dark:        #ffffff;
-    --on-dark-muted:  rgba(255,255,255,.55);
-    --on-primary:     #001e2b;
-    --red-soft-bg:    #fde8e8;
-    --red-soft-text:  #9b1c1c;
-    --blue-soft-bg:   #dbeafe;
-    --blue-soft-text: #1e3a8a;
+    --green:         #00ed64;
+    --green-dark:    #00684a;
+    --green-mid:     #00a35c;
+    --green-soft:    #c3f0d2;
+    --teal-deep:     #001e2b;
+    --teal:          #003d4f;
+    --canvas:        #ffffff;
+    --surface:       #f9fbfa;
+    --surface-soft:  #f4f7f6;
+    --hairline:      #e1e5e8;
+    --hairline-soft: #eceff1;
+    --ink:           #001e2b;
+    --charcoal:      #1c2d38;
+    --slate:         #3d4f5b;
+    --steel:         #5c6c7a;
+    --stone:         #7c8c9a;
+    --muted:         #a8b3bc;
+    --on-dark:       #ffffff;
+    --on-dark-muted: rgba(255,255,255,.55);
+    --red-bg:        #fde8e8;
+    --red-text:      #9b1c1c;
+    --detail-bg:     #f0f9f4;
   }
 
-  /* ─── Typography ────────────────────────────────────────────── */
   body {
-    font-family: 'Euclid Circular A', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 15px;
     line-height: 1.55;
     color: var(--ink);
@@ -48,7 +36,7 @@
     padding: 0 0 64px;
   }
 
-  /* ─── Promo / header ────────────────────────────────────────── */
+  /* ─── Hero ──────────────────────────────────────────────── */
   .hero {
     background: var(--teal-deep);
     color: var(--on-dark);
@@ -76,23 +64,19 @@
     font-weight: 500;
     line-height: 1.25;
     letter-spacing: -.5px;
-    color: var(--on-dark);
     margin-bottom: 12px;
   }
   .hero-meta {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--on-dark-muted);
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 20px;
+    gap: 4px 18px;
   }
   .hero-meta span::before { content: '·'; margin-right: 6px; opacity: .4; }
   .hero-meta span:first-child::before { content: ''; margin-right: 0; }
 
-  /* ─── Container ─────────────────────────────────────────────── */
-  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-
-  /* ─── Summary cards ─────────────────────────────────────────── */
+  /* ─── Summary cards ─────────────────────────────────────── */
   .summary {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -110,28 +94,18 @@
     border-radius: 12px;
     border: 1px solid var(--hairline);
     padding: 20px 24px;
-    box-shadow: rgba(0,30,43,.08) 0px 4px 12px 0px;
+    box-shadow: rgba(0,30,43,.08) 0px 4px 12px;
   }
-  .stat-card .val {
-    font-size: 36px;
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -.5px;
-  }
-  .stat-card .lbl {
-    font-size: 13px;
-    color: var(--steel);
-    margin-top: 4px;
-    font-weight: 500;
-  }
+  .stat-card .val  { font-size: 36px; font-weight: 500; line-height: 1.1; letter-spacing: -.5px; }
+  .stat-card .lbl  { font-size: 13px; color: var(--steel); margin-top: 4px; font-weight: 500; }
+  .stat-card.pass  { border-top: 3px solid var(--green); }
+  .stat-card.fail  { border-top: 3px solid #ef4444; }
   .stat-card.pass .val  { color: var(--green-dark); }
   .stat-card.fail .val  { color: #9b1c1c; }
   .stat-card.total .val { color: var(--ink); }
-  .stat-card.dur .val   { color: var(--teal-mid); }
-  .stat-card.pass { border-top: 3px solid var(--green); }
-  .stat-card.fail { border-top: 3px solid #ef4444; }
+  .stat-card.dur .val   { color: var(--teal); }
 
-  /* ─── Section ───────────────────────────────────────────────── */
+  /* ─── Sections ──────────────────────────────────────────── */
   .sections { padding: 40px 40px 0; max-width: 1180px; margin: 0 auto; }
 
   .section {
@@ -140,13 +114,21 @@
     border: 1px solid var(--hairline);
     overflow: hidden;
     margin-bottom: 28px;
-    box-shadow: rgba(0,30,43,.04) 0px 1px 2px 0px;
+    box-shadow: rgba(0,30,43,.04) 0px 1px 2px;
   }
 
   .section-head {
     background: var(--teal-deep);
     padding: 20px 24px 18px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
   }
+  .section-head:hover { background: #002538; }
+
   .section-head .eyebrow {
     font-size: 11px;
     font-weight: 600;
@@ -155,19 +137,34 @@
     color: var(--green);
     margin-bottom: 4px;
   }
-  .section-head h2 {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--on-dark);
-    margin-bottom: 4px;
-  }
-  .section-head .spec {
-    font-size: 12px;
-    color: var(--on-dark-muted);
-    font-family: 'Source Code Pro', 'SF Mono', Menlo, Consolas, monospace;
-  }
+  .section-head h2  { font-size: 18px; font-weight: 500; color: var(--on-dark); margin-bottom: 4px; }
+  .section-head .spec { font-size: 12px; color: var(--on-dark-muted); }
 
-  /* ─── Table ─────────────────────────────────────────────────── */
+  .section-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .toggle-btn {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.15);
+    color: var(--on-dark);
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background .15s;
+    flex-shrink: 0;
+  }
+  .toggle-btn:hover { background: rgba(255,255,255,.2); }
+
+  /* ─── Table ─────────────────────────────────────────────── */
   table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
   thead th {
     background: var(--surface-soft);
@@ -181,19 +178,59 @@
     border-bottom: 1px solid var(--hairline);
     white-space: nowrap;
   }
-  tbody td { padding: 12px 16px; border-bottom: 1px solid var(--hairline-soft); vertical-align: middle; }
+  tbody td { padding: 11px 16px; border-bottom: 1px solid var(--hairline-soft); vertical-align: middle; }
   tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover td { background: var(--surface); }
 
-  .tc-id { font-family: 'Source Code Pro', 'SF Mono', Menlo, Consolas, monospace; font-size: 12px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+  /* Test rows — clickable */
+  .test-row {
+    cursor: pointer;
+    transition: background .1s;
+  }
+  .test-row:hover td { background: #f0f7ff; }
+  .test-row.expanded td { background: #eaf4ee; }
+
+  .tc-id {
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
   .title { line-height: 1.4; color: var(--charcoal); }
-  .dur   { white-space: nowrap; color: var(--stone); font-size: 12px; font-family: monospace; }
 
-  /* ─── Badges ────────────────────────────────────────────────── */
+  /* Expand chevron */
+  .chevron {
+    color: var(--muted);
+    font-size: 11px;
+    transition: transform .2s;
+    display: inline-block;
+  }
+  .test-row.expanded .chevron { transform: rotate(90deg); color: var(--green-dark); }
+
+  /* ─── Detail row ─────────────────────────────────────────── */
+  .detail-row { display: none; }
+  .detail-row.open { display: table-row; }
+  .detail-row td {
+    background: var(--detail-bg);
+    border-left: 3px solid var(--green-mid);
+    padding: 14px 20px 14px 24px;
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+  .detail-inner { font-size: 13px; color: var(--slate); line-height: 1.6; max-width: 860px; }
+  .detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    margin-bottom: 5px;
+  }
+
+  /* ─── Badges ─────────────────────────────────────────────── */
   .badge {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     border-radius: 9999px;
     padding: 3px 10px;
     font-size: 11.5px;
@@ -201,39 +238,12 @@
     white-space: nowrap;
   }
   .badge::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; }
-  .badge.pass   { background: var(--green-soft);  color: var(--green-dark);  }
-  .badge.pass::before   { background: var(--green-mid); }
-  .badge.fail   { background: var(--red-soft-bg);  color: var(--red-soft-text); }
-  .badge.fail::before   { background: #ef4444; }
+  .badge.pass { background: var(--green-soft); color: var(--green-dark); }
+  .badge.pass::before { background: var(--green-mid); }
+  .badge.fail { background: var(--red-bg); color: var(--red-text); }
+  .badge.fail::before { background: #ef4444; }
 
-  /* tag pills */
-  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .tag { display: inline-block; border-radius: 9999px; padding: 2px 8px; font-size: 11px; font-weight: 600; }
-  .tag.smoke    { background: var(--blue-soft-bg);  color: var(--blue-soft-text); }
-  .tag.val      { background: var(--warning-bg);     color: var(--warning-text); }
-  .tag.edge     { background: #fce7f3;               color: #9d174d; }
-  .tag.serial   { background: #ede9fe;               color: #5b21b6; }
-
-  /* project columns */
-  .proj { display: flex; flex-direction: column; gap: 4px; }
-  .proj-row { display: flex; align-items: center; gap: 6px; }
-  .proj-lbl { font-size: 10px; color: var(--muted); font-weight: 600; letter-spacing: .5px; text-transform: uppercase; min-width: 52px; }
-
-  /* ─── Legend ────────────────────────────────────────────────── */
-  .legend {
-    padding: 0 40px;
-    max-width: 1180px;
-    margin: 0 auto 8px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 6px 20px;
-    font-size: 12px;
-    color: var(--steel);
-  }
-  .legend-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
-
-  /* ─── Footer ────────────────────────────────────────────────── */
+  /* ─── Footer ─────────────────────────────────────────────── */
   .footer {
     background: var(--teal-deep);
     color: var(--on-dark-muted);
@@ -248,26 +258,11 @@
   }
   .footer strong { color: var(--green); font-weight: 600; }
 
-  /* ─── GH Pages note ─────────────────────────────────────────── */
-  .ghpages-note {
-    background: var(--surface-feat);
-    border: 1px solid var(--green-soft);
-    border-left: 3px solid var(--green);
-    border-radius: 8px;
-    padding: 14px 18px;
-    font-size: 13px;
-    color: var(--green-dark);
-    margin: 24px 40px 0;
-    max-width: 1180px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .ghpages-note strong { font-weight: 600; }
-
+  /* ─── Responsive ─────────────────────────────────────────── */
   @media (max-width: 900px) {
     .summary { grid-template-columns: repeat(2,1fr); padding: 0 16px; }
     .hero { padding: 32px 16px 24px; }
-    .sections, .legend, .ghpages-note { padding-left: 16px; padding-right: 16px; }
+    .sections { padding-left: 16px; padding-right: 16px; }
     .footer { padding: 16px; }
   }
   @media (max-width: 600px) {
@@ -276,7 +271,36 @@
   }
 </style>
 
-<!-- ─── HERO ──────────────────────────────────────────────────────── -->
+<script>
+  // Toggle whole section (body show/hide). Can be called from the button or the header.
+  function toggleSection(btn) {
+    const section = btn.closest('.section');
+    const body = section.querySelector('.section-body');
+    const isHidden = body.style.display === 'none';
+    body.style.display = isHidden ? '' : 'none';
+    // Update the toggle button icon
+    const icon = section.querySelector('.toggle-btn');
+    if (icon) icon.textContent = isHidden ? '▼' : '▶';
+  }
+
+  // Header area click — delegates to the toggle button so there's a single code path.
+  // The button's onclick uses stopPropagation, so this only fires when clicking outside the button.
+  function headerClick(head) {
+    const btn = head.querySelector('.toggle-btn');
+    if (btn) toggleSection(btn);
+  }
+
+  // Expand / collapse a test detail row.
+  function toggleDetail(row) {
+    const detail = row.nextElementSibling;
+    if (!detail || !detail.classList.contains('detail-row')) return;
+    const isOpen = detail.classList.contains('open');
+    detail.classList.toggle('open', !isOpen);
+    row.classList.toggle('expanded', !isOpen);
+  }
+</script>
+
+<!-- ─── HERO ────────────────────────────────────────────────── -->
 <div class="hero">
   <div style="max-width:1180px;margin:0 auto;">
     <p class="hero-eyebrow">Rebu Automation Suite</p>
@@ -284,250 +308,461 @@
     <div class="hero-meta">
       <span>2026-06-21</span>
       <span>Rama: REBU-4751</span>
-      <span>Entorno: dev (monkey)</span>
-      <span>Proyectos: chromium · smoke</span>
-      <span>28 tests · 1 worker · headed</span>
+      <span>Entorno: dev · monkey</span>
+      <span>32 ejecuciones · 25 casos únicos</span>
+      <span>4.8 min</span>
     </div>
   </div>
 </div>
 
-<!-- ─── SUMMARY ───────────────────────────────────────────────────── -->
+<!-- ─── SUMMARY ──────────────────────────────────────────────── -->
 <div class="summary">
-  <div class="stat-card pass">
-    <div class="val">28</div>
-    <div class="lbl">Pasaron</div>
-  </div>
-  <div class="stat-card fail">
-    <div class="val">0</div>
-    <div class="lbl">Fallaron</div>
-  </div>
-  <div class="stat-card total">
-    <div class="val">28</div>
-    <div class="lbl">Total</div>
-  </div>
-  <div class="stat-card dur">
-    <div class="val">3.3m</div>
-    <div class="lbl">Duración</div>
-  </div>
+  <div class="stat-card pass"><div class="val">25</div><div class="lbl">Casos únicos — pasaron</div></div>
+  <div class="stat-card fail"><div class="val">0</div><div class="lbl">Fallaron</div></div>
+  <div class="stat-card total"><div class="val">25</div><div class="lbl">Total de casos</div></div>
+  <div class="stat-card dur"><div class="val">4.8m</div><div class="lbl">Duración total</div></div>
 </div>
 
-<!-- ─── SECTIONS ─────────────────────────────────────────────────── -->
+<!-- ─── SECTIONS ─────────────────────────────────────────────── -->
 <div class="sections">
 
-  <!-- REBU-4750 -->
+  <!-- ── REBU-4750 ────────────────────────────────────────────── -->
   <div class="section">
-    <div class="section-head">
-      <p class="eyebrow">REBU-4750</p>
-      <h2>Apariencia — subtab Asignaciones</h2>
-      <p class="spec">tests/Release-v14.6.0/asignaciones-apariencia.spec.ts &nbsp;·&nbsp; 15 casos &nbsp;·&nbsp; @ui @apariencia @regression @release-v14.6.0</p>
+    <div class="section-head" onclick="headerClick(this)">
+      <div>
+        <p class="eyebrow">REBU-4750</p>
+        <h2>Apariencia — subtab Asignaciones</h2>
+        <p class="spec">asignaciones-apariencia.spec.ts &nbsp;·&nbsp; 18 casos · 6 en smoke</p>
+      </div>
+      <div class="section-meta">
+        <button class="toggle-btn" onclick="event.stopPropagation(); toggleSection(this)" title="Contraer / expandir">▼</button>
+      </div>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Título</th>
-          <th>Tags adicionales</th>
-          <th style="min-width:110px">chromium</th>
-          <th style="min-width:110px">smoke</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="tc-id">TC-CFG-020</td>
-          <td class="title">Los tres bloques aparecen en el orden correcto en Asignaciones</td>
-          <td><div class="tags"><span class="tag smoke">@smoke</span> <span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">4.8 s</span></div></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">6.1 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-021</td>
-          <td class="title">Estado placeholder cuando "Logo para login" no tiene logo asignado</td>
-          <td><div class="tags"><span class="tag smoke">@smoke</span> <span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">4.3 s</span></div></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">5.9 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-022</td>
-          <td class="title">Previsualización y overlay "Editar" visibles con logo asignado</td>
-          <td><div class="tags"><span class="tag smoke">@smoke</span> <span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">10.2 s</span></div></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">9.8 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-023</td>
-          <td class="title">Clic en placeholder abre modal con título "Logo para login"</td>
-          <td><div class="tags"><span class="tag smoke">@smoke</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">5.2 s</span></div></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">6.4 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-024</td>
-          <td class="title">Clic en overlay "Editar" abre modal con título "Logo para login"</td>
-          <td><div class="tags"><span class="tag smoke">@smoke</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">7.1 s</span></div></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">8.3 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-025</td>
-          <td class="title">Modal se abre en modo "elegir logo": combobox visible, sin previsualización</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">11.4 s</span></div></div></td>
-          <td style="color:var(--muted);font-size:12px">—</td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-026</td>
-          <td class="title">Seleccionar logo en combobox activa la vista de recorte (previsualización visible)</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">13.7 s</span></div></div></td>
-          <td style="color:var(--muted);font-size:12px">—</td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-031</td>
-          <td class="title">Footer en modo recorte: botones Reemplazar, Eliminar (rojo), Cancelar y Aplicar visibles</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">10.8 s</span></div></div></td>
-          <td style="color:var(--muted);font-size:12px">—</td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-032</td>
-          <td class="title">Happy path: seleccionar logo y aplicar → thumbnail y overlay "Editar" visibles</td>
-          <td><div class="tags"><span class="tag smoke">@smoke</span> <span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">9.6 s</span></div></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">11.1 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-033</td>
-          <td class="title">Reemplazar logo asignado con otro de la biblioteca → thumbnail se actualiza</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">17.2 s</span></div></div></td>
-          <td style="color:var(--muted);font-size:12px">—</td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-034</td>
-          <td class="title">Clic en "Eliminar" del modal muestra texto de confirmación</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">11.5 s</span></div></div></td>
-          <td style="color:var(--muted);font-size:12px">—</td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-035</td>
-          <td class="title">Confirmar eliminación → modal cierra y bloque vuelve al estado placeholder</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">10.9 s</span></div></div></td>
-          <td style="color:var(--muted);font-size:12px">—</td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-036</td>
-          <td class="title">Cancelar la eliminación en la vista de confirmación → logo sigue asignado</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">13.1 s</span></div></div></td>
-          <td style="color:var(--muted);font-size:12px">—</td>
-        </tr>
-        <tr>
-          <td class="tc-id">TC-CFG-037</td>
-          <td class="title">Cancelar modal sin aplicar → el bloque permanece en estado placeholder</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">14.6 s</span></div></div></td>
-          <td style="color:var(--muted);font-size:12px">—</td>
-        </tr>
-        <tr style="background:var(--warning-bg)">
-          <td class="tc-id" style="color:var(--stone)">TC-CFG-039</td>
-          <td class="title" style="color:var(--stone)">Usuario sin rol admin no puede acceder a Apariencia</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td colspan="2" style="font-size:12px;color:var(--warning-text);font-weight:500">⏳ Pendiente — requiere credenciales de usuario sin rol admin</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:110px">ID</th>
+            <th>Caso de prueba</th>
+            <th style="width:90px">Status</th>
+            <th style="width:32px"></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-020</td>
+            <td class="title">Los tres bloques aparecen en el orden correcto en Asignaciones</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                El subtab Asignaciones debe mostrar tres destinos de logo siempre en el mismo orden: "Logo para login" primero, "Logo del sistema" segundo y "Logo en boleta de pago" tercero. Se verifica midiendo la posición vertical (coordenada Y) de cada bloque y comprobando que la secuencia es correcta.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-021</td>
+            <td class="title">Estado placeholder cuando "Logo para login" no tiene logo asignado</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Cuando ningún logo está asignado al destino "Logo para login", el bloque debe mostrar el estado vacío correcto: el botón "Asignar" es visible, no hay imagen de previsualización, y al pasar el cursor no aparece el overlay "Editar". Estos tres controles confirman que el bloque está en estado inicial esperado.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-022</td>
+            <td class="title">Previsualización y overlay "Editar" visibles con logo asignado</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Una vez asignado un logo, el bloque "Logo para login" debe mostrar visualmente la imagen del logo como previsualización. Al pasar el cursor sobre el bloque aparece el botón "Editar", que permite al administrador modificar o quitar la asignación.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-023</td>
+            <td class="title">Clic en placeholder abre modal con título "Logo para login"</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Al hacer clic en el estado vacío del bloque (botón "Asignar"), se abre un modal de selección. Se verifica que el modal es visible y que su título identifica correctamente el destino como "Logo para login", asegurando que el usuario sabe qué está configurando.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-024</td>
+            <td class="title">Clic en overlay "Editar" abre modal con título "Logo para login"</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Con un logo ya asignado, al pasar el cursor sobre el bloque y hacer clic en el botón "Editar", se abre el modal de edición. Se confirma que el modal se abre correctamente y que su título indica el destino "Logo para login".
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-025</td>
+            <td class="title">Modal se abre en modo selección: combobox visible, sin previsualización</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Al abrir el modal desde el estado vacío, la interfaz presenta primero el selector de logo (combobox "Selecciona un logo") sin mostrar ninguna imagen previa. El usuario debe elegir un logo antes de que aparezca la previsualización.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-026</td>
+            <td class="title">Seleccionar logo en el modal activa el editor de recorte</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Cuando el usuario elige un logo en el combobox, el modal transiciona automáticamente al editor de recorte y muestra la previsualización del logo seleccionado. Esta transición confirma que el sistema cargó correctamente el logo y habilitó el modo de edición.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-027</td>
+            <td class="title">Editor de recorte: previsualización, slider de zoom y link "Restablecer" visibles</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                El editor de recorte debe presentar todos sus controles: el área de previsualización del logo con el outline verde que delimita la zona de recorte, el slider deslizante para ajustar el nivel de zoom, y el enlace "Restablecer" para volver al encuadre original.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-028</td>
+            <td class="title">Slider de zoom: el límite inferior es 50%</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                El slider de zoom tiene un límite inferior configurado en el 50% — no es posible reducir el logo más allá de ese nivel. Se verifica que el atributo mínimo del control equivale al 50% y que al arrastrar el slider hasta el extremo izquierdo el valor queda fijado exactamente en ese límite.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-029</td>
+            <td class="title">Slider de zoom: el límite superior es 250%</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                El slider de zoom tiene un límite superior configurado en el 250% — no es posible ampliar el logo más allá de ese nivel. Se verifica que el atributo máximo del control equivale al 250% y que al arrastrar el slider hasta el extremo derecho el valor queda fijado exactamente en ese límite.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-030</td>
+            <td class="title">Link "Restablecer" devuelve el zoom al estado original</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Tras modificar el nivel de zoom en el editor de recorte, hacer clic en "Restablecer" devuelve el slider exactamente al valor con el que se abrió el editor. Se verifica el valor antes y después de hacer clic para confirmar que la restauración es precisa.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-031</td>
+            <td class="title">Footer del editor: botones Reemplazar, Eliminar (rojo), Cancelar y Aplicar visibles</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                El footer del modal en modo editor expone cuatro controles de acción: "Reemplazar" para cambiar el logo por otro de la biblioteca, "Eliminar" en rojo para quitar la asignación, "Cancelar" para cerrar sin guardar y "Aplicar" para confirmar los ajustes de recorte.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-032</td>
+            <td class="title">Happy path: asignar logo → thumbnail y overlay "Editar" visibles en Asignaciones</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Flujo completo de asignación desde cero: el usuario selecciona un logo, aplica los cambios y el bloque "Logo para login" muestra el thumbnail del logo asignado. El src de la imagen en Asignaciones coincide (sin SAS token) con el logo elegido en el modal, y el overlay "Editar" está disponible al hacer hover.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-033</td>
+            <td class="title">Reemplazar logo asignado con otro de la biblioteca → thumbnail se actualiza</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Con un logo ya asignado (Logo A), el administrador usa la acción "Reemplazar" para seleccionar un logo diferente (Logo B). El thumbnail en Asignaciones se actualiza al nuevo logo y el src de la imagen cambia respecto al logo anterior.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-034</td>
+            <td class="title">Clic en "Eliminar" del modal muestra texto de confirmación</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Al hacer clic en el botón "Eliminar" (rojo) del footer del editor, el sistema no elimina directamente sino que muestra una vista de confirmación con dos mensajes: "El logo dejará de mostrarse en Logo para login" y "El archivo seguirá disponible en tu biblioteca de logos". Esto previene eliminaciones accidentales.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-035</td>
+            <td class="title">Confirmar eliminación → modal cierra y bloque vuelve al estado placeholder</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Al confirmar la eliminación en la vista de confirmación, el modal se cierra y el bloque "Logo para login" regresa al estado vacío: el botón "Asignar" reaparece y la imagen de previsualización desaparece. El logo sigue disponible en la biblioteca pero ya no está asignado a este destino.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-036</td>
+            <td class="title">Cancelar la confirmación de eliminación → logo permanece asignado</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Si el administrador inicia el flujo de eliminación pero hace clic en "Cancelar" en la vista de confirmación, el logo permanece asignado sin ningún cambio. Se verifica que el thumbnail sigue visible en Asignaciones y que el overlay "Editar" sigue disponible al hacer hover sobre el bloque.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">TC-CFG-037</td>
+            <td class="title">Cancelar modal sin aplicar → el bloque permanece en estado placeholder</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Si el usuario abre el modal de selección, elige un logo en el editor de recorte pero luego hace clic en "Cancelar" sin aplicar, la asignación no se guarda. El bloque "Logo para login" permanece en su estado vacío original, sin ningún thumbnail ni cambio en la configuración.
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <!-- REBU-4751 -->
+  <!-- ── REBU-4751 ────────────────────────────────────────────── -->
   <div class="section">
-    <div class="section-head">
-      <p class="eyebrow">REBU-4751</p>
-      <h2>Apariencia — Renderización del logo en pantalla de login</h2>
-      <p class="spec">tests/Release-v14.6.0/login-logo.spec.ts &nbsp;·&nbsp; 7 casos &nbsp;·&nbsp; test.describe.serial · solo chromium &nbsp;·&nbsp; @ui @apariencia @regression @release-v14.6.0</p>
+    <div class="section-head" onclick="headerClick(this)">
+      <div>
+        <p class="eyebrow">REBU-4751</p>
+        <h2>Apariencia — Renderización del logo en pantalla de login</h2>
+        <p class="spec">login-logo.spec.ts &nbsp;·&nbsp; 7 casos · suite serial</p>
+      </div>
+      <div class="section-meta">
+        <button class="toggle-btn" onclick="event.stopPropagation(); toggleSection(this)" title="Contraer / expandir">▼</button>
+      </div>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Título</th>
-          <th>Caso relacionado</th>
-          <th>Tags adicionales</th>
-          <th style="min-width:110px">chromium</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="tc-id">T1</td>
-          <td class="title">Subir Google logo y Rebu logo a la galería</td>
-          <td style="color:var(--stone);font-size:12px">—</td>
-          <td>—</td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">7.9 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">T2</td>
-          <td class="title">Asignar Google logo al destino "Logo para login" y validar thumbnail</td>
-          <td style="color:var(--stone);font-size:12px">—</td>
-          <td>—</td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">5.3 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">T3</td>
-          <td class="title">Logo de empresa visible en pantalla de login al ingresar subdomain</td>
-          <td style="color:var(--stone);font-size:12px">—</td>
-          <td>—</td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">2.6 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">T7</td>
-          <td class="title">Logo centrado, debajo del texto de bienvenida y encima del formulario</td>
-          <td style="font-size:12px;color:var(--steel)">TC-LGN-009</td>
-          <td><div class="tags"><span class="tag val">@validacion</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">2.1 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">T4</td>
-          <td class="title">Logo NO visible en portal genérico sin contexto de tenant</td>
-          <td style="font-size:12px;color:var(--steel)">TC-LGN-012</td>
-          <td><div class="tags"><span class="tag edge">@edge-case</span></div></td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">1.9 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">T6</td>
-          <td class="title">Al cambiar logo asignado, login refleja el nuevo logo</td>
-          <td style="font-size:12px;color:var(--steel)">TC-LGN-018</td>
-          <td>—</td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">12.4 s</span></div></div></td>
-        </tr>
-        <tr>
-          <td class="tc-id">T5</td>
-          <td class="title">Sin logo asignado, pantalla de login no muestra logo</td>
-          <td style="font-size:12px;color:var(--steel)">TC-LGN-013 / TC-LGN-017</td>
-          <td>—</td>
-          <td><div class="proj"><div class="proj-row"><span class="badge pass">PASS</span> <span class="dur">10.6 s</span></div></div></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:110px">ID</th>
+            <th>Caso de prueba</th>
+            <th style="width:90px">Status</th>
+            <th style="width:32px"></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">T1</td>
+            <td class="title">Subir Google logo y Rebu logo a la biblioteca de logos</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Setup de la suite: carga dos archivos de logo (Google y Rebu) en la biblioteca de logos del tenant. Ambos quedan disponibles en la galería para ser asignados a destinos en los tests posteriores. El test confirma que ambos logos son visibles en la tabla de la biblioteca tras la subida.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">T2</td>
+            <td class="title">Asignar Google logo al destino "Logo para login" y validar thumbnail</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Asigna el logo de Google al destino "Logo para login" usando el modal de selección. Verifica que el thumbnail visible en la sección Asignaciones apunta al mismo archivo que el seleccionado en el modal, comparando las rutas de las imágenes sin el token de autenticación de Azure Blob Storage.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">T3</td>
+            <td class="title">Logo de empresa visible en pantalla de login al ingresar subdominio</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Desde un navegador sin sesión activa, navega al portal de login e ingresa el subdominio del tenant. Verifica que el logo de empresa asignado aparece visible en el paso 2 del wizard (tras ingresar el subdominio) y que su ruta coincide con el logo configurado en Apariencia.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">T7</td>
+            <td class="title">Logo centrado, debajo del encabezado y encima del formulario de login</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Verifica que el logo de empresa cumple los requisitos de posicionamiento en la pantalla de login: debe estar centrado horizontalmente (con tolerancia de ±50 px), ubicado por debajo del texto de bienvenida y por encima del campo de correo electrónico del formulario. Se usan coordenadas de bounding box para la validación.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">T4</td>
+            <td class="title">Logo NO visible en portal genérico sin contexto de tenant</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                En el portal de login genérico (acceso sin subdominio), el logo de empresa no debe mostrarse porque no hay contexto de tenant identificado. El logo permanece oculto en el paso 1 del wizard, donde el usuario aún no ha indicado a qué empresa pertenece.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">T6</td>
+            <td class="title">Al cambiar el logo asignado, la pantalla de login refleja el nuevo logo</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Reemplaza el logo de Google con el logo de Rebu en la configuración de Apariencia. Luego verifica, desde un navegador sin sesión, que la pantalla de login muestra el nuevo logo (Rebu) y que el anterior (Google) ya no aparece. El cambio de asignación se refleja inmediatamente en la pantalla pública.
+              </div>
+            </td>
+          </tr>
+
+          <tr class="test-row" onclick="toggleDetail(this)">
+            <td class="tc-id">T5</td>
+            <td class="title">Sin logo asignado, la pantalla de login no muestra logo de empresa</td>
+            <td><span class="badge pass">PASS</span></td>
+            <td><span class="chevron">▶</span></td>
+          </tr>
+          <tr class="detail-row">
+            <td colspan="4">
+              <div class="detail-inner">
+                <p class="detail-label">Qué se validó</p>
+                Elimina la asignación del logo en Apariencia y verifica en dos lugares: que el bloque "Logo para login" en Asignaciones vuelve al estado vacío (botón "Asignar" visible), y que la pantalla de login (acceso sin sesión con el subdominio del tenant) deja de mostrar el logo de empresa.
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
   </div>
 
-</div><!-- /sections -->
-
-<!-- ─── LEGEND ────────────────────────────────────────────────────── -->
-<div class="legend" style="margin-top:8px">
-  <span><span class="legend-dot" style="background:var(--green-mid)"></span>Proyecto <strong>chromium</strong>: todos los tests</span>
-  <span><span class="legend-dot" style="background:#3b82f6"></span>Proyecto <strong>smoke</strong>: solo tests @smoke</span>
-  <span><span class="legend-dot" style="background:var(--warning-text)"></span>Tags globales: @ui @apariencia @regression @release-v14.6.0</span>
-  <span><span class="legend-dot" style="background:var(--muted)"></span>TC-CFG-039 pendiente (credenciales no-admin)</span>
 </div>
 
-<!-- ─── GH PAGES NOTE ─────────────────────────────────────────────── -->
-<div class="ghpages-note" style="margin-top:28px">
-  <strong>¿Querés publicar este reporte?</strong> &nbsp;Podés subirlo a <strong>GitHub Pages</strong>: guardalo en <code>docs/reports/release-v14.6.0.html</code>, habilitá Pages desde <em>Settings → Pages → Source: main / docs</em>, y compartí la URL pública. El reporte de Playwright HTML (<code>npx playwright show-report</code>) también puede desplegarse como artefacto en el mismo workflow de CI.
-</div>
-
-<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<!-- ─── FOOTER ───────────────────────────────────────────────── -->
 <div class="footer">
-  <span>Generado por <strong>Claude Code</strong> · rebu-automated-test-suite · rama REBU-4751 · 2026-06-21</span>
-  <span>Última corrida: <strong>28 / 28 passed</strong> · 3.3 min · chromium + smoke</span>
+  <span>Rebu Automation Suite · <strong>Release v14.6.0</strong> · 2026-06-21</span>
+  <span>Entorno: dev · monkey &nbsp;|&nbsp; Rama: REBU-4751</span>
 </div>
