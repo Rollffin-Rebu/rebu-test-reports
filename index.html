@@ -1,30 +1,34 @@
 <title>Rebu — Reporte E2E · Release v14.6.0</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --lime:        #c3df4d;
-    --lime-dark:   #a8c238;
-    --lime-soft:   #eef6c4;
-    --forest:      #284b44;
-    --forest-mid:  #1e3a34;
-    --forest-light:#b2f8c9;
-    --ground:      #ffffff;
-    --surface:     #f5f5f5;
-    --text:        #0b0b09;
-    --muted:       #95978e;
-    --caption:     #525252;
-    --border:      #e5e5e5;
-    --border-soft: #e8eae6;
-    --pass-bg:     #c3df4d;
-    --pass-text:   #0b0b09;
-    --fail-bg:     #fef2f2;
-    --fail-text:   #b91c1c;
-    --badge-green: #dcfce7;
-    --badge-amber: #ffedd5;
-    --r:           8px;
-    --r-full:      9999px;
-    --r-bandeja:   24px 24px 0 0;
+    --lime:          #c3df4d;
+    --lime-dark:     #a8c238;
+    --lime-soft:     #eef6c4;
+    --forest:        #284b44;
+    --forest-mid:    #1e3a34;
+    --forest-light:  #b2f8c9;
+    --ground:        #ffffff;
+    --surface:       #f5f5f5;
+    --text:          #0b0b09;
+    --muted:         #95978e;
+    --caption:       #525252;
+    --border:        #e5e5e5;
+    --border-soft:   #e8eae6;
+    --pass-bg:       #c3df4d;
+    --pass-text:     #0b0b09;
+    --fail-bg:       #fef2f2;
+    --fail-text:     #b91c1c;
+    --badge-green:   #dcfce7;
+    --badge-amber:   #ffedd5;
+    --r:             8px;
+    --r-full:        9999px;
+    --r-bandeja:     24px 24px 0 0;
+    --sidebar-w:     240px;
+    --sidebar-coll:  56px;
   }
 
   body {
@@ -36,12 +40,204 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── HERO ────────────────────────────────────────────── */
+  /* ── SIDEBAR ──────────────────────────────────────────── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 100vh;
+    width: var(--sidebar-w);
+    background: var(--forest-mid);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    transition: width .25s cubic-bezier(.4,0,.2,1);
+    overflow: hidden;
+    box-shadow: 2px 0 16px rgba(0,0,0,.22);
+    border-right: 1px solid rgba(255,255,255,.06);
+  }
+  .sidebar.collapsed { width: var(--sidebar-coll); }
+
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 16px 12px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    gap: 10px;
+    min-height: 60px;
+    flex-shrink: 0;
+  }
+  .sidebar-logo {
+    width: 30px; height: 30px;
+    background: var(--lime);
+    color: var(--forest);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 15px;
+    flex-shrink: 0;
+    letter-spacing: -1px;
+    cursor: pointer;
+    transition: opacity .15s;
+  }
+  .sidebar-logo:hover { opacity: .85; }
+  .sidebar-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    white-space: nowrap;
+    transition: opacity .2s;
+    flex: 1;
+  }
+  .sidebar.collapsed .sidebar-title { opacity: 0; pointer-events: none; }
+  .sidebar.collapsed .sidebar-toggle { display: none; }
+
+  .sidebar-toggle {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,.35);
+    cursor: pointer;
+    font-size: 13px;
+    padding: 5px 6px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    transition: color .15s, background .15s;
+    line-height: 1;
+  }
+  .sidebar-toggle:hover { color: var(--lime); background: rgba(255,255,255,.07); }
+
+  .sidebar-body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 8px 20px;
+  }
+  .sidebar-body::-webkit-scrollbar { width: 3px; }
+  .sidebar-body::-webkit-scrollbar-track { background: transparent; }
+  .sidebar-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 2px; }
+
+  .nav-group-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.25);
+    padding: 12px 8px 6px;
+    white-space: nowrap;
+    transition: opacity .2s;
+  }
+  .sidebar.collapsed .nav-group-label { opacity: 0; }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .15s;
+    margin-bottom: 2px;
+    min-height: 46px;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+  .nav-item:hover { background: rgba(255,255,255,.07); }
+  .nav-item.current { background: rgba(195,223,77,.1); border: 1px solid rgba(195,223,77,.18); }
+  .nav-item.current:hover { background: rgba(195,223,77,.16); }
+
+  .nav-icon {
+    font-size: 17px;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+    line-height: 1;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+  }
+
+  .nav-item-body {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    transition: opacity .2s;
+  }
+  .sidebar.collapsed .nav-item-body { opacity: 0; }
+
+  .nav-version {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ground);
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .nav-item.current .nav-version { color: var(--lime); }
+
+  .nav-date {
+    font-size: 10px;
+    color: rgba(255,255,255,.35);
+    white-space: nowrap;
+    margin-top: 1px;
+  }
+
+  .nav-minibadge {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 6px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    transition: opacity .2s;
+  }
+  .sidebar.collapsed .nav-minibadge { opacity: 0; }
+  .nav-minibadge.latest { background: var(--lime); color: var(--forest); }
+  .nav-minibadge.pass-all { background: rgba(195,223,77,.18); color: var(--lime); border: 1px solid rgba(195,223,77,.3); }
+  .nav-minibadge.has-fails { background: rgba(239,68,68,.15); color: #fca5a5; border: 1px solid rgba(239,68,68,.25); }
+
+  .nav-divider { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 8px 0; }
+
+  .nav-item[data-tip] { position: relative; }
+  .sidebar.collapsed .nav-item[data-tip]:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    left: calc(var(--sidebar-coll) + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #111;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 200;
+    box-shadow: 0 4px 12px rgba(0,0,0,.3);
+  }
+
+  /* ── MAIN WRAPPER ─────────────────────────────────────── */
+  .main-wrapper {
+    margin-left: var(--sidebar-w);
+    transition: margin-left .25s cubic-bezier(.4,0,.2,1);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-wrapper.sidebar-collapsed { margin-left: var(--sidebar-coll); }
+
+  /* ── HERO ─────────────────────────────────────────────── */
   .hero {
     background: var(--forest);
     color: var(--ground);
     padding: 56px 40px 80px;
     text-align: center;
+    scroll-margin-top: 20px;
   }
   .hero-eyebrow {
     display: inline-block;
@@ -75,17 +271,17 @@
   .hero-meta strong { color: var(--ground); }
   .hero-meta .sep { color: rgba(178,248,201,.3); }
 
-  /* ── BANDEJA (contenido flotando sobre el hero) ──────── */
+  /* ── BANDEJA ──────────────────────────────────────────── */
   .bandeja {
     background: var(--ground);
     border-radius: var(--r-bandeja);
-    min-height: 100vh;
+    flex: 1;
     margin-top: -40px;
     position: relative;
     z-index: 10;
   }
 
-  /* ── SUMMARY CARDS ───────────────────────────────────── */
+  /* ── SUMMARY CARDS ────────────────────────────────────── */
   .summary {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -94,27 +290,11 @@
     max-width: 800px;
     margin: 0 auto;
   }
-  .card {
-    border-radius: var(--r);
-    padding: 20px 16px;
-    text-align: center;
-  }
-  .card.pass {
-    background: var(--pass-bg);
-    color: var(--pass-text);
-  }
-  .card.fail {
-    background: var(--surface);
-    color: var(--text);
-  }
-  .card.total {
-    background: var(--surface);
-    color: var(--text);
-  }
-  .card.time {
-    background: var(--surface);
-    color: var(--text);
-  }
+  .card { border-radius: var(--r); padding: 20px 16px; text-align: center; }
+  .card.pass  { background: var(--pass-bg); color: var(--pass-text); }
+  .card.fail  { background: var(--surface); color: var(--text); }
+  .card.total { background: var(--surface); color: var(--text); }
+  .card.time  { background: var(--surface); color: var(--text); }
   .card-value {
     font-size: 38px;
     font-weight: 700;
@@ -122,10 +302,10 @@
     line-height: 1;
     margin-bottom: 4px;
   }
-  .card.pass .card-value { color: var(--forest); }
-  .card.fail .card-value { color: var(--fail-text); }
+  .card.pass  .card-value { color: var(--forest); }
+  .card.fail  .card-value { color: var(--fail-text); }
   .card.total .card-value { color: var(--forest); }
-  .card.time .card-value { font-size: 26px; color: var(--caption); }
+  .card.time  .card-value { font-size: 26px; color: var(--caption); }
   .card-label {
     font-size: 10px;
     font-weight: 700;
@@ -135,14 +315,10 @@
   }
   .card.pass .card-label { opacity: .65; }
 
-  /* ── CONTENT ─────────────────────────────────────────── */
-  .content {
-    max-width: 900px;
-    margin: 32px auto 80px;
-    padding: 0 24px;
-  }
+  /* ── CONTENT ──────────────────────────────────────────── */
+  .content { max-width: 900px; margin: 32px auto 48px; padding: 0 24px; }
 
-  /* ── HU SECTION ──────────────────────────────────────── */
+  /* ── HU SECTION ───────────────────────────────────────── */
   .hu-section {
     border: 1px solid var(--border);
     border-radius: var(--r);
@@ -202,12 +378,9 @@
   }
   .hu-header.collapsed .hu-toggle { transform: rotate(-90deg); }
 
-  /* ── TABLE ───────────────────────────────────────────── */
+  /* ── TABLE ────────────────────────────────────────────── */
   .test-table { width: 100%; border-collapse: collapse; }
-  .test-table thead tr {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-  }
+  .test-table thead tr { background: var(--surface); border-bottom: 1px solid var(--border); }
   .test-table th {
     padding: 8px 14px;
     font-size: 10px;
@@ -218,16 +391,10 @@
     text-align: left;
   }
   .test-table th:last-child { text-align: center; width: 80px; }
-
-  .test-row {
-    border-bottom: 1px solid var(--border-soft);
-    cursor: pointer;
-    transition: background .1s;
-  }
+  .test-row { border-bottom: 1px solid var(--border-soft); cursor: pointer; transition: background .1s; }
   .test-row:last-of-type { border-bottom: none; }
   .test-row:hover { background: var(--surface); }
   .test-row td { padding: 10px 14px; font-size: 12px; vertical-align: middle; }
-
   .test-id {
     font-family: 'SF Mono', 'Cascadia Code', Menlo, monospace;
     font-size: 11px;
@@ -237,7 +404,6 @@
   }
   .test-title { color: var(--caption); line-height: 1.4; }
   .test-name { color: var(--text); font-weight: 500; font-size: 12px; }
-
   .test-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 3px; }
   .tag {
     font-size: 9px;
@@ -250,7 +416,6 @@
   }
   .tag-val  { color: #047857; border-color: #047857; background: var(--badge-green); }
   .tag-edge { color: #92400e; border-color: #d97706; background: var(--badge-amber); }
-
   .status-cell { text-align: center; }
   .badge-pass, .badge-fail {
     display: inline-block;
@@ -262,7 +427,6 @@
   }
   .badge-pass { background: var(--lime-soft); color: var(--forest); }
   .badge-fail { background: var(--fail-bg); color: var(--fail-text); }
-
   .detail-row { display: none; }
   .detail-row.open { display: table-row; }
   .detail-row td {
@@ -274,7 +438,102 @@
     line-height: 1.65;
   }
 
-  /* ── FOOTER ──────────────────────────────────────────── */
+  /* ── RELEASES ANTERIORES ──────────────────────────────── */
+  .anteriores-section {
+    background: var(--surface);
+    padding: 32px 24px 48px;
+    border-top: 1px solid var(--border);
+  }
+  .anteriores-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto 20px;
+  }
+  .anteriores-icon {
+    width: 32px; height: 32px;
+    background: var(--forest);
+    color: var(--lime);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .anteriores-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    color: var(--caption);
+  }
+  .anteriores-count {
+    font-size: 10px;
+    background: var(--border);
+    color: var(--muted);
+    border-radius: var(--r-full);
+    padding: 2px 9px;
+    font-weight: 600;
+  }
+  .anteriores-empty {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--muted);
+    font-size: 13px;
+    border: 1.5px dashed var(--border);
+    border-radius: 12px;
+    background: var(--ground);
+  }
+  .anteriores-empty .empty-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+  .anteriores-empty p { max-width: 320px; margin: 0 auto; line-height: 1.6; }
+
+  .release-item {
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    overflow: hidden;
+    margin-bottom: 10px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--ground);
+  }
+  .release-item-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 18px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s;
+  }
+  .release-item-header:hover { background: var(--surface); }
+  .release-item-version {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--forest);
+    background: var(--lime-soft);
+    border-radius: var(--r-full);
+    padding: 3px 12px;
+    white-space: nowrap;
+  }
+  .release-item-date { font-size: 11px; color: var(--muted); flex: 1; }
+  .release-item-stats { display: flex; gap: 8px; align-items: center; }
+  .stat-pill { font-size: 10px; font-weight: 700; border-radius: var(--r-full); padding: 2px 9px; }
+  .stat-pill.pass { background: var(--lime-soft); color: var(--forest); }
+  .stat-pill.fail { background: var(--fail-bg); color: var(--fail-text); }
+  .release-item-toggle { font-size: 13px; color: var(--muted); transition: transform .2s; }
+  .release-item-header:not(.open) .release-item-toggle { transform: rotate(-90deg); }
+  .release-item-body { display: none; border-top: 1px solid var(--border); }
+  .release-item-body.open { display: block; }
+  .release-item-body .hero { padding: 32px 40px 56px; border-radius: 0; }
+  .release-item-body .hero-title { font-size: 30px; }
+  .release-item-body .bandeja { margin-top: -32px; border-radius: 16px 16px 0 0; }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
   footer {
     background: var(--forest);
     color: var(--forest-light);
@@ -285,292 +544,284 @@
   }
   footer strong { color: var(--ground); }
 
+  /* ── MOBILE ───────────────────────────────────────────── */
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 99; backdrop-filter: blur(2px); }
+  .overlay.active { display: block; }
+  .mobile-fab {
+    display: none;
+    position: fixed;
+    bottom: 20px; right: 20px;
+    width: 50px; height: 50px;
+    background: var(--forest);
+    color: var(--lime);
+    border: 1px solid rgba(195,223,77,.3);
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,.3);
+    z-index: 98;
+  }
+  @media (max-width: 768px) {
+    :root { --sidebar-w: 220px; }
+    .sidebar { transform: translateX(-100%); transition: transform .25s cubic-bezier(.4,0,.2,1); width: var(--sidebar-w) !important; }
+    .sidebar.mobile-open { transform: translateX(0); }
+    .main-wrapper { margin-left: 0 !important; }
+    .mobile-fab { display: flex; }
+    .sidebar-toggle { display: none !important; }
+  }
   @media (max-width: 600px) {
+    .hero { padding: 40px 20px 70px; }
     .hero-title { font-size: 30px; }
-    .summary { padding: 24px 16px 0; }
-    .content { padding: 0 16px; }
+    .summary { padding: 20px 16px 0; }
+    .content { padding: 0 14px; }
   }
 </style>
 
-<div class="hero">
-  <div class="hero-eyebrow">Reporte de Automatización E2E</div>
-  <h1 class="hero-title">Release <span>v14.6.0</span></h1>
-  <div class="hero-meta">
-    <span>📅 <strong>23 jun 2026</strong></span>
-    <span class="sep">·</span>
-    <span>🌿 <strong>REBU-4751</strong></span>
-    <span class="sep">·</span>
-    <span>🌐 <strong>UAT</strong></span>
-    <span class="sep">·</span>
-    <span>🔗 <strong>app-rebu-portal-03-uat.azurewebsites.net</strong></span>
+<!-- ── SIDEBAR ────────────────────────────────────────────── -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo" onclick="toggleSidebar()" title="Expandir / colapsar">R</div>
+    <span class="sidebar-title">Releases</span>
+    <button class="sidebar-toggle" onclick="toggleSidebar()" title="Colapsar panel">◀</button>
   </div>
-</div>
+  <div class="sidebar-body">
+    <div class="nav-group-label">Actual</div>
 
-<div class="bandeja">
+    <button class="nav-item current" onclick="scrollToRelease('release-v14-6-0')" data-tip="v14.6.0">
+      <span class="nav-icon">🚀</span>
+      <div class="nav-item-body">
+        <div class="nav-version">v14.6.0</div>
+        <div class="nav-date">23 jun 2026</div>
+      </div>
+      <span class="nav-minibadge latest">LATEST</span>
+    </button>
 
-  <div class="summary">
-    <div class="card pass">
-      <div class="card-value">26</div>
-      <div class="card-label">Pasaron</div>
+    <hr class="nav-divider">
+    <div class="nav-group-label">Anteriores</div>
+
+    <!-- SIDEBAR-ANTERIORES-START -->
+    <div style="padding: 10px 8px; text-align: center;">
+      <span style="font-size: 20px; display: block; margin-bottom: 6px; opacity:.35;">📂</span>
+      <span style="font-size: 10px; color: rgba(255,255,255,.25); line-height: 1.5; white-space: normal; display: block;">Aquí aparecerán los releases anteriores</span>
     </div>
-    <div class="card fail">
-      <div class="card-value">0</div>
-      <div class="card-label">Fallaron</div>
+    <!-- SIDEBAR-ANTERIORES-END -->
+  </div>
+</nav>
+
+<div class="overlay" id="overlay" onclick="closeMobileSidebar()"></div>
+<button class="mobile-fab" onclick="openMobileSidebar()" title="Ver historial">📋</button>
+
+<!-- ── MAIN WRAPPER ───────────────────────────────────────── -->
+<div class="main-wrapper" id="main-wrapper">
+
+<!-- RELEASE-START: v14.6.0 | 2026-06-23 | Pass: 26 | Fail: 0 | Branch: REBU-4751 -->
+
+  <header class="hero" id="release-v14-6-0">
+    <div class="hero-eyebrow">Reporte de Automatización E2E</div>
+    <h1 class="hero-title">Release <span>v14.6.0</span></h1>
+    <div class="hero-meta">
+      <span>📅 <strong>23 jun 2026</strong></span>
+      <span class="sep">·</span>
+      <span>🌿 <strong>REBU-4751</strong></span>
+      <span class="sep">·</span>
+      <span>🌐 <strong>UAT</strong></span>
+      <span class="sep">·</span>
+      <span>🔗 <strong>app-rebu-portal-03-uat.azurewebsites.net</strong></span>
     </div>
-    <div class="card total">
-      <div class="card-value">26</div>
-      <div class="card-label">Total</div>
+  </header>
+
+  <div class="bandeja">
+    <div class="summary">
+      <div class="card pass"><div class="card-value">26</div><div class="card-label">Pasaron</div></div>
+      <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
+      <div class="card total"><div class="card-value">26</div><div class="card-label">Total</div></div>
+      <div class="card time"><div class="card-value">3.3 m</div><div class="card-label">Duración</div></div>
     </div>
-    <div class="card time">
-      <div class="card-value">3.3 m</div>
-      <div class="card-label">Duración</div>
+
+    <div class="content">
+
+      <!-- REBU-4750 -->
+      <div class="hu-section">
+        <div class="hu-header" onclick="headerClick(this)">
+          <div class="hu-header-left">
+            <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4750" target="_blank" onclick="event.stopPropagation()">REBU-4750</a>
+            <span class="hu-title">Apariencia — subtab Asignaciones</span>
+          </div>
+          <div class="hu-header-right">
+            <span class="hu-badge">18 / 18 ✓</span>
+            <span class="hu-toggle">▼</span>
+          </div>
+        </div>
+        <table class="test-table">
+          <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-020</td><td class="test-title"><div class="test-name">Los tres bloques aparecen en el orden correcto en Asignaciones</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Los tres destinos de logo ("Logo para login", "Logo del sistema", "Logo en boleta de pago") aparecen en el orden correcto de arriba hacia abajo. El orden correcto es un requisito de UX para que los administradores localicen cada destino de forma predecible.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-021</td><td class="test-title"><div class="test-name">Estado placeholder cuando "Logo para login" no tiene logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Sin logo asignado, el bloque muestra el botón "Asignar", sin imagen de previsualización y sin el overlay "Editar" al hacer hover. Estado vacío correcto y consistente.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-022</td><td class="test-title"><div class="test-name">Previsualización y overlay "Editar" visibles con logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al asignar un logo, el bloque muestra la imagen de previsualización y el overlay con el botón "Editar" al hacer hover, confirmando que el administrador puede modificar la asignación en cualquier momento.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-023</td><td class="test-title"><div class="test-name">Clic en placeholder abre modal con título "Logo para login"</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al hacer clic en el botón "Asignar" del bloque en estado placeholder, se abre el modal de selección con el título correcto "Logo para login".</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-024</td><td class="test-title"><div class="test-name">Clic en overlay "Editar" abre modal con título "Logo para login"</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al hacer hover sobre el bloque con logo asignado y clic en "Editar", se abre el modal de edición con el título "Logo para login".</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-025</td><td class="test-title"><div class="test-name">Modal se abre en modo "elegir logo": combobox visible, sin previsualización</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al abrir el modal desde un bloque en estado placeholder, la vista inicial muestra el combobox de selección sin ninguna previsualización.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-026</td><td class="test-title"><div class="test-name">Seleccionar logo en combobox activa la vista de recorte</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al seleccionar un logo del combobox, el modal transiciona automáticamente a la vista de recorte mostrando la previsualización.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-027</td><td class="test-title"><div class="test-name">Modo recorte: canvas, slider de zoom y link "Restablecer" visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">En la vista de recorte están presentes todos los controles: área de previsualización con outline de recorte, slider de zoom con indicador de porcentaje y enlace "Restablecer".</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-028</td><td class="test-title"><div class="test-name">Slider de zoom: el límite inferior es 50%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">El slider de zoom tiene configurado correctamente el mínimo en 50%, impidiendo que el logo se reduzca por debajo de ese tamaño.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-029</td><td class="test-title"><div class="test-name">Slider de zoom: el límite superior es 250%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">El slider de zoom tiene configurado correctamente el máximo en 250%.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-030</td><td class="test-title"><div class="test-name">Link "Restablecer" restaura el zoom al estado original</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al hacer clic en "Restablecer", el slider de zoom y la posición del logo regresan al estado inicial.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-031</td><td class="test-title"><div class="test-name">Footer en modo recorte: botones Reemplazar, Eliminar, Cancelar y Aplicar visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">En la vista de recorte están visibles los cuatro botones del footer: "Reemplazar", "Eliminar" (en rojo), "Cancelar" y "Aplicar". Cada botón tiene el estilo correcto.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-032</td><td class="test-title"><div class="test-name">Happy path: seleccionar logo y aplicar → thumbnail y overlay visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Flujo principal de extremo a extremo: seleccionar logo, ajustar recorte y aplicar. El bloque muestra la imagen asignada y el overlay "Editar" al hacer hover.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-033</td><td class="test-title"><div class="test-name">Reemplazar logo asignado con otro de la biblioteca → thumbnail se actualiza</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al reemplazar el logo con uno diferente, el thumbnail en Asignaciones se actualiza automáticamente.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-034</td><td class="test-title"><div class="test-name">Clic en "Eliminar" del modal muestra texto de confirmación</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al hacer clic en "Eliminar", el sistema muestra una vista de confirmación con el texto descriptivo de las consecuencias.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-035</td><td class="test-title"><div class="test-name">Confirmar eliminación → modal cierra y bloque vuelve al placeholder</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al confirmar la eliminación, el modal se cierra y el bloque "Logo para login" regresa al estado placeholder.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-036</td><td class="test-title"><div class="test-name">Cancelar eliminación en confirmación → logo sigue asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al cancelar en la vista de confirmación, el modal regresa al estado anterior sin cambios y el logo sigue asignado.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-037</td><td class="test-title"><div class="test-name">Cancelar modal sin aplicar → bloque permanece en placeholder</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al seleccionar un logo en el modal y cancelar sin hacer clic en "Aplicar", el bloque permanece en el estado placeholder original.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- REBU-4751 -->
+      <div class="hu-section">
+        <div class="hu-header" onclick="headerClick(this)">
+          <div class="hu-header-left">
+            <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4751" target="_blank" onclick="event.stopPropagation()">REBU-4751</a>
+            <span class="hu-title">Apariencia — Renderización del logo en pantalla de login</span>
+          </div>
+          <div class="hu-header-right">
+            <span class="hu-badge">8 / 8 ✓</span>
+            <span class="hu-toggle">▼</span>
+          </div>
+        </div>
+        <table class="test-table">
+          <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T1</td><td class="test-title"><div class="test-name">Subir Google logo y Rebu logo a la galería</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Se suben dos logos (Google y Rebu) a la galería del tenant. Paso previo necesario para los tests de asignación y reemplazo del resto de la suite serial.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T2 <span style="font-size:9px;opacity:.5">(TC-LGN-011)</span></td><td class="test-title"><div class="test-name">Asignar Google logo al destino "Logo para login" y validar thumbnail</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Se asigna el Google logo al destino "Logo para login" y se verifica que el thumbnail en el bloque de Asignaciones corresponde al logo seleccionado.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T3</td><td class="test-title"><div class="test-name">Logo de empresa visible en pantalla de login al ingresar subdomain</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al acceder a la pantalla de login ingresando el subdominio de la empresa, el logo asignado se renderiza correctamente y es visible para el usuario antes de iniciar sesión.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T7 <span style="font-size:9px;opacity:.5">(TC-LGN-009)</span></td><td class="test-title"><div class="test-name">Logo centrado, debajo del texto de bienvenida y encima del formulario</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">El logo está centrado horizontalmente, ubicado debajo del texto de bienvenida y por encima del formulario de inicio de sesión.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T4 <span style="font-size:9px;opacity:.5">(TC-LGN-012)</span></td><td class="test-title"><div class="test-name">Logo NO visible en portal genérico sin contexto de tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">En el portal genérico (sin subdominio), la pantalla de login no muestra ningún logo de empresa. El logo solo se renderiza cuando hay un contexto de tenant identificado.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T6 <span style="font-size:9px;opacity:.5">(TC-LGN-018)</span></td><td class="test-title"><div class="test-name">Al cambiar logo asignado, login refleja el nuevo logo</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al reemplazar el logo asignado por uno diferente, la pantalla de login refleja el nuevo logo de forma inmediata.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T8 <span style="font-size:9px;opacity:.5">(TC-LGN-016)</span></td><td class="test-title"><div class="test-name">Logo de tenant 1 no se filtra al login de un segundo tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">El logo configurado para el tenant 1 no aparece en la pantalla de login del tenant 2. Aislamiento completo de personalización de marca entre empresas.</td></tr>
+
+            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T5 <span style="font-size:9px;opacity:.5">(TC-LGN-013 + 017)</span></td><td class="test-title"><div class="test-name">Sin logo asignado, pantalla de login no muestra logo ni espacio en blanco</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+            <tr class="detail-row"><td colspan="3">Al desasignar el logo, la pantalla de login vuelve al estado original sin mostrar el logo ni reservar espacio en blanco.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </div>
 
-  <div class="content">
+<!-- RELEASE-END: v14.6.0 -->
 
-    <!-- REBU-4750 -->
-    <div class="hu-section">
-      <div class="hu-header" onclick="headerClick(this)">
-        <div class="hu-header-left">
-          <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4750" target="_blank" onclick="event.stopPropagation()">REBU-4750</a>
-          <span class="hu-title">Apariencia — subtab Asignaciones</span>
-        </div>
-        <div class="hu-header-right">
-          <span class="hu-badge">18 / 18 ✓</span>
-          <span class="hu-toggle">▼</span>
-        </div>
-      </div>
-      <table class="test-table">
-        <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-        <tbody>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-020</td>
-            <td class="test-title"><div class="test-name">Los tres bloques aparecen en el orden correcto en Asignaciones</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Los tres bloques de asignación de logos ("Logo para login", "Logo del sistema", "Logo en boleta de pago") aparecen en el orden correcto de arriba hacia abajo. El orden es un requisito de UI para que los administradores ubiquen cada destino de forma predecible.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-021</td>
-            <td class="test-title"><div class="test-name">Estado placeholder cuando "Logo para login" no tiene logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Cuando no hay logo asignado, el bloque muestra el botón "Asignar", sin imagen de previsualización y sin el overlay "Editar" al hacer hover. Estado vacío correcto y consistente.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-022</td>
-            <td class="test-title"><div class="test-name">Previsualización y overlay "Editar" visibles con logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al asignar un logo, el bloque muestra la imagen de previsualización y el overlay con el botón "Editar" al hacer hover, permitiendo al administrador modificar la asignación.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-023</td>
-            <td class="test-title"><div class="test-name">Clic en placeholder abre modal con título "Logo para login"</div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al hacer clic en el botón "Asignar" del bloque en estado placeholder, se abre el modal de selección con el título correcto "Logo para login", confirmando que el contexto del destino se transmite al modal.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-024</td>
-            <td class="test-title"><div class="test-name">Clic en overlay "Editar" abre modal con título "Logo para login"</div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al hacer hover sobre el bloque con logo asignado y clic en "Editar", se abre el modal de edición con el título "Logo para login", manteniendo el contexto correcto del destino.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-025</td>
-            <td class="test-title"><div class="test-name">Modal se abre en modo "elegir logo": combobox visible, sin previsualización</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al abrir el modal desde un bloque en estado placeholder, la vista inicial muestra el selector (combobox) sin ninguna previsualización. El sistema espera que el usuario seleccione primero un logo.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-026</td>
-            <td class="test-title"><div class="test-name">Seleccionar logo en combobox activa la vista de recorte</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al seleccionar un logo del combobox, el sistema transiciona automáticamente a la vista de recorte mostrando la previsualización. El flujo selección → recorte funciona correctamente.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-027</td>
-            <td class="test-title"><div class="test-name">Modo recorte: canvas, slider de zoom y link "Restablecer" visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">En la vista de recorte están presentes todos los controles: área de previsualización con outline de recorte, slider de zoom y enlace "Restablecer" para revertir ajustes al estado inicial.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-028</td>
-            <td class="test-title"><div class="test-name">Slider de zoom: el límite inferior es 50%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">El slider de zoom tiene configurado correctamente el mínimo del 50%, impidiendo que el logo se reduzca por debajo de ese tamaño y garantizando visibilidad mínima en la pantalla de login.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-029</td>
-            <td class="test-title"><div class="test-name">Slider de zoom: el límite superior es 250%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">El slider de zoom tiene configurado correctamente el máximo del 250%, controlando que el logo no se amplíe más allá de ese nivel y manteniendo proporciones razonables en pantalla.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-030</td>
-            <td class="test-title"><div class="test-name">Link "Restablecer" restaura el zoom al estado original</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al hacer clic en "Restablecer", el slider de zoom regresa al valor inicial del logo, revirtiendo cualquier ajuste sin necesidad de reseleccionar el logo.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-031</td>
-            <td class="test-title"><div class="test-name">Footer en modo recorte: botones Reemplazar, Eliminar, Cancelar y Aplicar visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">En la vista de recorte están visibles los cuatro botones del footer: "Reemplazar" para cambiar el logo, "Eliminar" (acción destructiva en rojo), "Cancelar" para descartar, y "Aplicar" para confirmar la asignación.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-032</td>
-            <td class="test-title"><div class="test-name">Happy path: seleccionar logo y aplicar → thumbnail y overlay visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Flujo principal de extremo a extremo: seleccionar logo, ajustar y aplicar. El bloque muestra la imagen asignada y el overlay "Editar" al hacer hover, confirmando que la asignación quedó guardada.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-033</td>
-            <td class="test-title"><div class="test-name">Reemplazar logo asignado con otro de la biblioteca → thumbnail se actualiza</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al reemplazar el logo con uno diferente usando "Reemplazar", el thumbnail en Asignaciones se actualiza automáticamente mostrando el nuevo logo.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-034</td>
-            <td class="test-title"><div class="test-name">Clic en "Eliminar" del modal muestra texto de confirmación</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al hacer clic en "Eliminar", el sistema muestra una vista de confirmación con el texto descriptivo de las consecuencias, protegiendo al administrador de eliminaciones accidentales.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-035</td>
-            <td class="test-title"><div class="test-name">Confirmar eliminación → modal cierra y bloque vuelve al placeholder</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al confirmar la eliminación, el modal se cierra y el bloque "Logo para login" regresa al estado placeholder (sin imagen, con botón "Asignar"), confirmando que la desasignación se procesó.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-036</td>
-            <td class="test-title"><div class="test-name">Cancelar eliminación en confirmación → logo sigue asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al cancelar en la vista de confirmación, el modal regresa al estado anterior sin cambios y el logo sigue correctamente asignado. El flujo de cancelación es seguro.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">TC-CFG-037</td>
-            <td class="test-title"><div class="test-name">Cancelar modal sin aplicar → bloque permanece en placeholder</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al seleccionar un logo y cancelar sin hacer clic en "Aplicar", el bloque permanece en el estado placeholder original. La cancelación descarta todos los cambios intermedios.</td></tr>
-
-        </tbody>
-      </table>
+  <section class="anteriores-section" id="anteriores">
+    <div class="anteriores-header">
+      <div class="anteriores-icon">📦</div>
+      <span class="anteriores-title">Releases anteriores</span>
+      <!-- ANTERIORES-COUNT -->
+      <span class="anteriores-count" id="anteriores-count">0 releases</span>
+      <!-- /ANTERIORES-COUNT -->
     </div>
-
-    <!-- REBU-4751 -->
-    <div class="hu-section">
-      <div class="hu-header" onclick="headerClick(this)">
-        <div class="hu-header-left">
-          <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4751" target="_blank" onclick="event.stopPropagation()">REBU-4751</a>
-          <span class="hu-title">Apariencia — Renderización del logo en pantalla de login</span>
-        </div>
-        <div class="hu-header-right">
-          <span class="hu-badge">8 / 8 ✓</span>
-          <span class="hu-toggle">▼</span>
-        </div>
-      </div>
-      <table class="test-table">
-        <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-        <tbody>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">T1</td>
-            <td class="test-title"><div class="test-name">Subir Google logo y Rebu logo a la galería</div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Se suben ambos logos a la galería de la empresa, verificando que quedan registrados y visibles en la biblioteca. Prerequisito para asignar logos a los destinos del sistema.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">T2</td>
-            <td class="test-title"><div class="test-name">Asignar Google logo al destino "Logo para login" y validar thumbnail</div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Se asigna el Google logo al destino "Logo para login" y se verifica que el thumbnail aparece correctamente en el bloque, confirmando que la asignación quedó guardada.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">T3</td>
-            <td class="test-title"><div class="test-name">Logo de empresa visible en pantalla de login al ingresar subdomain</div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al acceder a la pantalla de login ingresando el subdominio de la empresa, el logo asignado se renderiza correctamente y es visible para el usuario antes de iniciar sesión.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">T7 <span style="font-size:9px;opacity:.5">(TC-LGN-009)</span></td>
-            <td class="test-title"><div class="test-name">Logo centrado, debajo del texto de bienvenida y encima del formulario</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">El logo está centrado horizontalmente, ubicado debajo del texto de bienvenida y por encima del formulario de inicio de sesión, cumpliendo con el diseño establecido para la personalización de marca.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">T4 <span style="font-size:9px;opacity:.5">(TC-LGN-012)</span></td>
-            <td class="test-title"><div class="test-name">Logo NO visible en portal genérico sin contexto de tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">En el portal genérico (sin subdominio), la pantalla de login no muestra ningún logo. El logo solo se renderiza cuando hay un contexto de tenant identificado, preservando la neutralidad del portal público.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">T6 <span style="font-size:9px;opacity:.5">(TC-LGN-018)</span></td>
-            <td class="test-title"><div class="test-name">Al cambiar logo asignado, login refleja el nuevo logo</div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al reemplazar el logo asignado, la pantalla de login refleja inmediatamente el nuevo logo. Los cambios de personalización de marca se propagan correctamente al login.</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">T5 <span style="font-size:9px;opacity:.5">(TC-LGN-013 + 017)</span></td>
-            <td class="test-title"><div class="test-name">Sin logo asignado, pantalla de login no muestra logo</div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">Al desasignar el logo, la pantalla de login deja de mostrarlo. El estado es consistente entre la vista de Asignaciones (placeholder) y la pantalla de login (sin logo visible).</td></tr>
-
-          <tr class="test-row" onclick="toggleDetail(this)">
-            <td class="test-id">T8</td>
-            <td class="test-title"><div class="test-name">Logo de tenant 1 no se filtra al login de un segundo tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td>
-            <td class="status-cell"><span class="badge-pass">PASS</span></td>
-          </tr>
-          <tr class="detail-row"><td colspan="3">El logo configurado para un tenant no aparece en la pantalla de login de otra empresa distinta. Se verifica el aislamiento de personalización de marca entre tenants: el blob asignado al tenant 1 no es el mismo que se renderiza en el portal del tenant 2.</td></tr>
-
-        </tbody>
-      </table>
+    <!-- ANTERIORES-ITEMS-START -->
+    <div class="anteriores-empty" id="anteriores-empty">
+      <span class="empty-icon">📂</span>
+      <p>Aquí aparecerán los releases anteriores cuando generes el reporte de la siguiente versión. Cada release queda registrado con sus métricas y casos para consulta histórica.</p>
     </div>
-
-  </div><!-- /content -->
+    <!-- ANTERIORES-ITEMS-END -->
+  </section>
 
   <footer>
     <strong>Rebu Automation Suite</strong> · Generado el 23 jun 2026 · Rama <strong>REBU-4751</strong> · Entorno <strong>UAT</strong>
   </footer>
 
-</div><!-- /bandeja -->
+</div><!-- /main-wrapper -->
 
 <script>
+  function toggleSidebar() {
+    const s = document.getElementById('sidebar');
+    const w = document.getElementById('main-wrapper');
+    s.classList.toggle('collapsed');
+    w.classList.toggle('sidebar-collapsed');
+  }
+  function openMobileSidebar() {
+    document.getElementById('sidebar').classList.add('mobile-open');
+    document.getElementById('overlay').classList.add('active');
+  }
+  function closeMobileSidebar() {
+    document.getElementById('sidebar').classList.remove('mobile-open');
+    document.getElementById('overlay').classList.remove('active');
+  }
+  function scrollToRelease(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const body = el.querySelector('.release-item-body');
+    if (body && !body.classList.contains('open')) {
+      const header = el.querySelector('.release-item-header');
+      if (header) toggleRelease(header);
+    }
+    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    closeMobileSidebar();
+  }
   function headerClick(header) {
     const section = header.closest('.hu-section');
     const tbody   = section.querySelector('tbody');
-    const collapsed = header.classList.contains('collapsed');
-    header.classList.toggle('collapsed', !collapsed);
-    tbody.style.display = collapsed ? '' : 'none';
+    const wasCollapsed = header.classList.contains('collapsed');
+    header.classList.toggle('collapsed', !wasCollapsed);
+    tbody.style.display = wasCollapsed ? '' : 'none';
   }
   function toggleDetail(row) {
     const next = row.nextElementSibling;
-    if (next && next.classList.contains('detail-row')) {
-      next.classList.toggle('open');
-    }
+    if (next && next.classList.contains('detail-row')) next.classList.toggle('open');
+  }
+  function toggleRelease(header) {
+    header.classList.toggle('open');
+    header.nextElementSibling.classList.toggle('open');
   }
 </script>
