@@ -137,9 +137,8 @@
     font-size: 10px; font-weight: 600; letter-spacing: .4px; text-transform: uppercase;
     border-radius: var(--r-full); padding: 2px 7px; border: 1px solid;
   }
-  .tag-smoke { color: #7b3ff2; border-color: #7b3ff2; background: #f5f0ff; }
-  .tag-val   { color: var(--teal-mid); border-color: #00b545; background: var(--green-soft); }
-  .tag-edge  { color: #c07000; border-color: #c07000; background: #fff8e0; }
+  .tag-val  { color: var(--teal-mid); border-color: #00b545; background: var(--green-soft); }
+  .tag-edge { color: #c07000; border-color: #c07000; background: #fff8e0; }
   .status-cell { text-align: center; }
   .badge-pass, .badge-fail {
     display: inline-block; font-size: 11px; font-weight: 700;
@@ -168,7 +167,7 @@
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
   <h1 class="hero-title">Release v14.6.0</h1>
   <div class="hero-meta">
-    <span>📅 <strong>22 jun 2026</strong></span>
+    <span>📅 <strong>23 jun 2026</strong></span>
     <span>🌿 <strong>REBU-4751</strong></span>
     <span>🌐 <strong>UAT</strong></span>
     <span>🔗 <strong>app-rebu-portal-03-uat.azurewebsites.net</strong></span>
@@ -176,10 +175,10 @@
 </div>
 
 <div class="summary">
-  <div class="card pass"><div class="card-value">25</div><div class="card-label">Pasaron</div></div>
+  <div class="card pass"><div class="card-value">26</div><div class="card-label">Pasaron</div></div>
   <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-  <div class="card total"><div class="card-value">25</div><div class="card-label">Total</div></div>
-  <div class="card time"><div class="card-value">4.2 m</div><div class="card-label">Duración</div></div>
+  <div class="card total"><div class="card-value">26</div><div class="card-label">Total</div></div>
+  <div class="card time"><div class="card-value">3.3 m</div><div class="card-label">Duración</div></div>
 </div>
 
 <div class="content">
@@ -202,35 +201,35 @@
 
         <tr class="test-row" onclick="toggleDetail(this)">
           <td class="test-id">TC-CFG-020</td>
-          <td class="test-title">Los tres bloques aparecen en el orden correcto en Asignaciones<div class="test-tags"><span class="tag tag-smoke">smoke</span><span class="tag tag-val">validación</span></div></td>
+          <td class="test-title">Los tres bloques aparecen en el orden correcto en Asignaciones<div class="test-tags"><span class="tag tag-val">validación</span></div></td>
           <td class="status-cell"><span class="badge-pass">PASS</span></td>
         </tr>
         <tr class="detail-row"><td colspan="3">Se verifica que los tres bloques de asignación de logos aparecen en el orden correcto de arriba hacia abajo: "Logo para login", "Logo del sistema" y "Logo en boleta de pago". El orden es un requisito de UI para que los administradores ubiquen cada destino de forma predecible.</td></tr>
 
         <tr class="test-row" onclick="toggleDetail(this)">
           <td class="test-id">TC-CFG-021</td>
-          <td class="test-title">Estado placeholder cuando "Logo para login" no tiene logo asignado<div class="test-tags"><span class="tag tag-smoke">smoke</span><span class="tag tag-val">validación</span></div></td>
+          <td class="test-title">Estado placeholder cuando "Logo para login" no tiene logo asignado<div class="test-tags"><span class="tag tag-val">validación</span></div></td>
           <td class="status-cell"><span class="badge-pass">PASS</span></td>
         </tr>
         <tr class="detail-row"><td colspan="3">Se verifica que cuando el destino "Logo para login" no tiene ningún logo asignado, el bloque muestra el estado vacío correcto: el botón "Asignar" es visible, no aparece ninguna imagen de previsualización y al hacer hover sobre el bloque no se muestra el overlay "Editar".</td></tr>
 
         <tr class="test-row" onclick="toggleDetail(this)">
           <td class="test-id">TC-CFG-022</td>
-          <td class="test-title">Previsualización y overlay "Editar" visibles con logo asignado<div class="test-tags"><span class="tag tag-smoke">smoke</span><span class="tag tag-val">validación</span></div></td>
+          <td class="test-title">Previsualización y overlay "Editar" visibles con logo asignado<div class="test-tags"><span class="tag tag-val">validación</span></div></td>
           <td class="status-cell"><span class="badge-pass">PASS</span></td>
         </tr>
         <tr class="detail-row"><td colspan="3">Se verifica que al asignar un logo al destino "Logo para login", el bloque muestra la imagen de previsualización. Además, al posicionar el cursor sobre el bloque aparece el overlay con el botón "Editar" para que el administrador pueda modificar la asignación.</td></tr>
 
         <tr class="test-row" onclick="toggleDetail(this)">
           <td class="test-id">TC-CFG-023</td>
-          <td class="test-title">Clic en placeholder abre modal con título "Logo para login"<div class="test-tags"><span class="tag tag-smoke">smoke</span></div></td>
+          <td class="test-title">Clic en placeholder abre modal con título "Logo para login"</td>
           <td class="status-cell"><span class="badge-pass">PASS</span></td>
         </tr>
         <tr class="detail-row"><td colspan="3">Se verifica que al hacer clic en el botón "Asignar" del bloque en estado placeholder, se abre el modal de selección de logo con el título correcto "Logo para login", confirmando que el contexto del destino se transmite correctamente al modal.</td></tr>
 
         <tr class="test-row" onclick="toggleDetail(this)">
           <td class="test-id">TC-CFG-024</td>
-          <td class="test-title">Clic en overlay "Editar" abre modal con título "Logo para login"<div class="test-tags"><span class="tag tag-smoke">smoke</span></div></td>
+          <td class="test-title">Clic en overlay "Editar" abre modal con título "Logo para login"</td>
           <td class="status-cell"><span class="badge-pass">PASS</span></td>
         </tr>
         <tr class="detail-row"><td colspan="3">Se verifica que al hacer hover sobre el bloque con logo asignado y hacer clic en el botón "Editar" del overlay, se abre el modal de edición con el título "Logo para login", manteniendo el contexto correcto del destino durante la edición.</td></tr>
@@ -286,7 +285,7 @@
 
         <tr class="test-row" onclick="toggleDetail(this)">
           <td class="test-id">TC-CFG-032</td>
-          <td class="test-title">Happy path: seleccionar logo y aplicar → thumbnail y overlay "Editar" visibles<div class="test-tags"><span class="tag tag-smoke">smoke</span><span class="tag tag-val">validación</span></div></td>
+          <td class="test-title">Happy path: seleccionar logo y aplicar → thumbnail y overlay "Editar" visibles<div class="test-tags"><span class="tag tag-val">validación</span></div></td>
           <td class="status-cell"><span class="badge-pass">PASS</span></td>
         </tr>
         <tr class="detail-row"><td colspan="3">Se verifica el flujo principal de asignación de logo de extremo a extremo: seleccionar un logo del combobox, ajustar si es necesario y hacer clic en "Aplicar". Tras confirmar, el bloque muestra la imagen asignada y el overlay "Editar" al hacer hover, confirmando que la asignación quedó guardada.</td></tr>
@@ -338,7 +337,7 @@
         <span class="hu-title">Apariencia — Renderización del logo en pantalla de login</span>
       </div>
       <div class="hu-header-right">
-        <span class="hu-badge">7 / 7 ✓</span>
+        <span class="hu-badge">8 / 8 ✓</span>
         <span class="hu-toggle">▼</span>
       </div>
     </div>
@@ -395,6 +394,13 @@
         </tr>
         <tr class="detail-row"><td colspan="3">Se verifica que cuando se desasigna el logo del destino "Logo para login", la pantalla de inicio de sesión del tenant deja de mostrar la imagen de empresa. El estado es consistente entre la vista de Asignaciones (bloque en placeholder) y la pantalla de login (sin logo visible).</td></tr>
 
+        <tr class="test-row" onclick="toggleDetail(this)">
+          <td class="test-id">T8</td>
+          <td class="test-title">Logo de tenant 1 no se filtra al login de un segundo tenant (aislamiento cross-tenant)<div class="test-tags"><span class="tag tag-edge">edge case</span></div></td>
+          <td class="status-cell"><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr class="detail-row"><td colspan="3">Se verifica que el logo configurado para un tenant no aparece en la pantalla de login de otro tenant distinto. El test accede al portal con el subdominio de un segundo tenant y confirma que el logo mostrado es diferente al blob asignado al tenant 1, o bien que no se muestra ningún logo si el segundo tenant no tiene uno configurado. Esto garantiza el aislamiento de personalización de marca entre empresas.</td></tr>
+
       </tbody>
     </table>
   </div>
@@ -402,7 +408,7 @@
 </div>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> · Reporte generado el 22 jun 2026 · Rama <strong>REBU-4751</strong> · Entorno <strong>UAT</strong>
+  <strong>Rebu Automation Suite</strong> · Reporte generado el 23 jun 2026 · Rama <strong>REBU-4751</strong> · Entorno <strong>UAT</strong>
 </footer>
 
 <script>
