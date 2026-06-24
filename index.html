@@ -239,7 +239,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v14.6.0 | 2026-06-23 | Pass: 45 | Fail: 0 | Branch: REBU-4751 -->
+<!-- RELEASE-START: v14.6.0 | 2026-06-23 | Pass: 46 | Fail: 0 | Branch: REBU-4751 -->
 
   <header class="hero" id="release-v14-6-0">
     <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -257,15 +257,15 @@
 
   <div class="bandeja">
     <div class="summary">
-      <div class="card pass"><div class="card-value">45</div><div class="card-label">Pasaron</div></div>
+      <div class="card pass"><div class="card-value">46</div><div class="card-label">Pasaron</div></div>
       <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-      <div class="card total"><div class="card-value">45</div><div class="card-label">Total</div></div>
+      <div class="card total"><div class="card-value">46</div><div class="card-label">Total</div></div>
       <div class="card time"><div class="card-value">~7 m</div><div class="card-label">Duración</div></div>
     </div>
 
     <!-- TABS -->
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">45</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">46</span></button>
       <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">1</span></button>
     </div>
     <hr class="tab-divider">
@@ -549,7 +549,7 @@
               <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4739" target="_blank" onclick="event.stopPropagation()">REBU-4739</a>
               <span class="hu-title">Cálculo de retención ISSS en planilla extraordinaria</span>
             </div>
-            <div class="hu-header-right"><span class="hu-badge">19 / 19 ✓</span><span class="hu-toggle">▼</span></div>
+            <div class="hu-header-right"><span class="hu-badge">20 / 20 ✓</span><span class="hu-toggle">▼</span></div>
           </div>
           <table class="test-table">
             <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
@@ -723,6 +723,15 @@
                 <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear el colaborador de $1,200 y asociarlo a una planilla quincenal.</li></ol></td></tr>
                 <tr><th>Pasos</th><td><ol><li>Correr Q1 regular (1–15 ene): avanzar a Descuentos (paso 2) y Aportes patronales (paso 3); verificar ISSS empleado y patronal; finalizar.</li><li>Crear planilla extraordinaria misma quincena (Quincenal $15); agregar comisión de $100 que aplica ISSS; avanzar a pasos 2 y 3; verificar; finalizar.</li><li>Correr Q2 regular (16–31 ene); avanzar a pasos 2 y 3; verificar.</li></ol></td></tr>
                 <tr><th>Resultado esperado</th><td class="result-text">Q1: ISSS empleado $15 / patronal $37.50. Extraordinaria (quincena ya topeada): empleado $0 / patronal $0. Q2 (quincena nueva): empleado $15 / patronal $37.50. Confirma el tope por quincena y el aporte patronal ISSS.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-518</td><td><div class="test-name">Arrastre de deuda ISSS (empleado y patronal) de extraordinaria topeada a la siguiente quincena</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo, salario $720 (quincenal = $360), asociado a una planilla quincenal. Sin planillas finalizadas previas del mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Crear colaborador Empleado, salario $720, ISSS activo, ingreso 02-feb-2024, asociado a una planilla.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Q1 regular (1–15 ene 2026): agregar comisión $140 que aplica ISSS → bruto $500 (tope); avanzar a Aportes patronales; leer ISSS empleado y patronal; finalizar.</li><li>Extraordinaria misma quincena (Quincenal $15 + tabla de renta Quincenal): agregar comisión $100 que aplica ISSS; avanzar a Aportes; leer; finalizar (genera deuda diferida).</li><li>Q2 regular (16–31 ene 2026): solo salario → bruto $360; avanzar a Aportes; leer ISSS empleado y patronal.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Q1: empleado $15.00 / patronal $37.50. Extraordinaria (quincena ya topeada): empleado $0.00 / patronal $0.00. Q2: empleado $13.80 ($10.80 + deuda $3.00) / patronal $34.50 ($27.00 + deuda $7.50). La deuda de la extraordinaria se hace visible en la quincena siguiente al quedar bajo los topes ($15 / $37.50).</td></tr>
                 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
               </table></td></tr>
 
