@@ -132,6 +132,7 @@
   .tag { font-size: 9px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; border-radius: var(--r-full); padding: 1px 7px; border: 1px solid; }
   .tag-val  { color: #047857; border-color: #047857; background: var(--badge-green); }
   .tag-edge { color: #92400e; border-color: #d97706; background: var(--badge-amber); }
+  .tag-reg  { color: #1e3a34; border-color: #284b44; background: var(--lime-soft); }
   .status-cell { text-align: center; }
   .badge-pass, .badge-fail { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .6px; border-radius: var(--r-full); padding: 3px 10px; }
   .badge-pass { background: var(--lime-soft); color: var(--forest); }
@@ -238,7 +239,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v14.6.0 | 2026-06-23 | Pass: 26 | Fail: 0 | Branch: REBU-4751 -->
+<!-- RELEASE-START: v14.6.0 | 2026-06-23 | Pass: 44 | Fail: 0 | Branch: REBU-4751 -->
 
   <header class="hero" id="release-v14-6-0">
     <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -256,15 +257,15 @@
 
   <div class="bandeja">
     <div class="summary">
-      <div class="card pass"><div class="card-value">26</div><div class="card-label">Pasaron</div></div>
+      <div class="card pass"><div class="card-value">44</div><div class="card-label">Pasaron</div></div>
       <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-      <div class="card total"><div class="card-value">26</div><div class="card-label">Total</div></div>
-      <div class="card time"><div class="card-value">3.3 m</div><div class="card-label">Duración</div></div>
+      <div class="card total"><div class="card-value">44</div><div class="card-label">Total</div></div>
+      <div class="card time"><div class="card-value">~7 m</div><div class="card-label">Duración</div></div>
     </div>
 
     <!-- TABS -->
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">26</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">44</span></button>
       <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">1</span></button>
     </div>
     <hr class="tab-divider">
@@ -537,6 +538,75 @@
                 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
               </table></td></tr>
 
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── REBU-4739 ──────────────────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4739" target="_blank" onclick="event.stopPropagation()">REBU-4739</a>
+              <span class="hu-title">Cálculo de retención ISSS en planilla extraordinaria</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">18 / 18 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-489</td><td><div class="test-name">Campo "Cálculo de retención ISSS" visible al seleccionar Tipo Contratación = Empleado</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">En el modal "Agregar Planilla Extraordinaria", al elegir Tipo de Contratación = Empleado, aparece el campo "Cálculo de retención ISSS". Visibilidad condicional correcta.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-490</td><td><div class="test-name">Campo NO visible cuando Tipo Contratación = Servicios Profesionales</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Para Servicios Profesionales el campo "Cálculo de retención ISSS" no se muestra: aplica únicamente a colaboradores tipo Empleado.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-491</td><td><div class="test-name">Campo obligatorio: bloquea crear la extraordinaria si no se selecciona</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">El sistema impide crear la planilla extraordinaria de un Empleado sin elegir el cálculo de retención ISSS y devuelve el error de campo requerido.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-493</td><td><div class="test-name">Opciones exactas: Quincenal ($15.00) y Mensual ($30.00)</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">El selector ofrece exactamente dos opciones: "Quincenal (Tope de $15.00)" y "Mensual (Tope de $30.00)", sin opciones adicionales.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-494</td><td><div class="test-name">Valor seleccionado visible como solo lectura en Configuración (ⓘ)</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">La opción de cálculo elegida al crear la planilla se expone como dato de solo lectura en el modal de Configuración de la planilla.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-495</td><td><div class="test-name">Quincenal sin retención previa: bruto $500 → ISSS $15.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Con opción Quincenal y sin retención previa en el mes, retiene $15.00 (3% de $500), justo en el tope quincenal.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-496</td><td><div class="test-name">Quincenal con $15 ya retenidos en planilla regular finalizada → $0.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Si el colaborador ya alcanzó el tope de $15 en una planilla regular finalizada de la quincena, la extraordinaria no le retiene ISSS adicional ($0.00).</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-497</td><td><div class="test-name">Quincenal con $9 retenidos → retiene remanente $6.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Con $9 ya retenidos en el mes, la extraordinaria retiene solo el remanente hasta completar el tope de $15 → $6.00.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-498</td><td><div class="test-name">Quincenal con bruto $200 → ISSS $6.00 (3%, no fuerza el tope)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Cuando el ingreso bruto no justifica el tope, se retiene solo el 3% del bruto ($6.00 de $200), sin forzar el tope de $15.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-499</td><td><div class="test-name">Quincenal con $14.99 retenidos → retiene exactamente $0.01</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Caso límite de centavos: con $14.99 acumulados en la quincena, la extraordinaria retiene exactamente $0.01 hasta completar el tope de $15.00.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-500</td><td><div class="test-name">Mensual sin retención previa: bruto $1,000 → ISSS $30.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Con opción Mensual y sin retención previa, retiene $30.00 (3% de $1,000), justo en el tope mensual.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-501</td><td><div class="test-name">Mensual con $30 ya retenidos en el mes → $0.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Con $30 acumulados en el mes (dos quincenas regulares de $15), la extraordinaria Mensual no retiene ISSS adicional ($0.00).</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-502</td><td><div class="test-name">Mensual con $15 retenidos (1ra quincena) → remanente $15.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Con $15 retenidos en la primera quincena, la extraordinaria Mensual retiene el remanente $15.00 hasta el tope mensual de $30.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-503</td><td><div class="test-name">Mensual con $21 acumulados → retiene remanente $9.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Con $21 acumulados en el mes, la extraordinaria Mensual retiene el remanente $9.00 hasta completar el tope de $30.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-504</td><td><div class="test-name">Precisión: bruto $383.50 (3%) → ISSS $11.505 (sin truncar a $11.50)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">El cálculo conserva la precisión decimal: 3% de $383.50 = $11.505, sin truncar a $11.50. (El backend conserva 3 decimales.)</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-505</td><td><div class="test-name">El acumulado considera planillas EXTRAORDINARIAS finalizadas → retiene remanente</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Una planilla extraordinaria finalizada también suma al acumulado del mes: con ~$10 ya retenidos en una extraordinaria previa, la segunda retiene el remanente (~$20).</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-506</td><td><div class="test-name">Planilla regular en borrador no reduce el remanente → $30.00</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Una planilla regular en estado borrador (no finalizada) no descuenta del tope: la extraordinaria Mensual retiene $30.00. Solo las planillas finalizadas afectan el acumulado.</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-507</td><td><div class="test-name">Concepto de ingreso sin ISSS → no se le descuenta ISSS (Quincenal y Mensual)</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Un concepto de ingreso configurado sin ISSS (solo previsional + ISR) no genera retención ISSS sobre ese monto, en ambas opciones (Quincenal y Mensual).</td></tr>
             </tbody>
           </table>
         </div>
