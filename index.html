@@ -6,7 +6,6 @@
 
   :root {
     --lime:          #c3df4d;
-    --lime-dark:     #a8c238;
     --lime-soft:     #eef6c4;
     --forest:        #284b44;
     --forest-mid:    #1e3a34;
@@ -18,8 +17,6 @@
     --caption:       #525252;
     --border:        #e5e5e5;
     --border-soft:   #e8eae6;
-    --pass-bg:       #c3df4d;
-    --pass-text:     #0b0b09;
     --fail-bg:       #fef2f2;
     --fail-text:     #b91c1c;
     --badge-green:   #dcfce7;
@@ -31,497 +28,155 @@
     --sidebar-coll:  56px;
   }
 
-  body {
-    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-    background: var(--forest);
-    color: var(--text);
-    font-size: 14px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; background: var(--forest); color: var(--text); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
   /* ── SIDEBAR ──────────────────────────────────────────── */
-  .sidebar {
-    position: fixed;
-    top: 0; left: 0;
-    height: 100vh;
-    width: var(--sidebar-w);
-    background: var(--forest-mid);
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    transition: width .25s cubic-bezier(.4,0,.2,1);
-    overflow: hidden;
-    box-shadow: 2px 0 16px rgba(0,0,0,.22);
-    border-right: 1px solid rgba(255,255,255,.06);
-  }
+  .sidebar { position: fixed; top: 0; left: 0; height: 100vh; width: var(--sidebar-w); background: var(--forest-mid); z-index: 100; display: flex; flex-direction: column; transition: width .25s cubic-bezier(.4,0,.2,1); overflow: hidden; box-shadow: 2px 0 16px rgba(0,0,0,.22); border-right: 1px solid rgba(255,255,255,.06); }
   .sidebar.collapsed { width: var(--sidebar-coll); }
-
-  .sidebar-header {
-    display: flex;
-    align-items: center;
-    padding: 16px 12px;
-    border-bottom: 1px solid rgba(255,255,255,.07);
-    gap: 10px;
-    min-height: 60px;
-    flex-shrink: 0;
-  }
-  .sidebar-logo {
-    width: 30px; height: 30px;
-    background: var(--lime);
-    color: var(--forest);
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 15px;
-    flex-shrink: 0;
-    letter-spacing: -1px;
-    cursor: pointer;
-    transition: opacity .15s;
-  }
+  .sidebar-header { display: flex; align-items: center; padding: 16px 12px; border-bottom: 1px solid rgba(255,255,255,.07); gap: 10px; min-height: 60px; flex-shrink: 0; }
+  .sidebar-logo { width: 30px; height: 30px; background: var(--lime); color: var(--forest); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; flex-shrink: 0; cursor: pointer; transition: opacity .15s; }
   .sidebar-logo:hover { opacity: .85; }
-  .sidebar-title {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.4);
-    white-space: nowrap;
-    transition: opacity .2s;
-    flex: 1;
-  }
+  .sidebar-title { font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,.4); white-space: nowrap; transition: opacity .2s; flex: 1; }
   .sidebar.collapsed .sidebar-title { opacity: 0; pointer-events: none; }
   .sidebar.collapsed .sidebar-toggle { display: none; }
-
-  .sidebar-toggle {
-    background: none;
-    border: none;
-    color: rgba(255,255,255,.35);
-    cursor: pointer;
-    font-size: 13px;
-    padding: 5px 6px;
-    border-radius: 5px;
-    flex-shrink: 0;
-    transition: color .15s, background .15s;
-    line-height: 1;
-  }
+  .sidebar-toggle { background: none; border: none; color: rgba(255,255,255,.35); cursor: pointer; font-size: 13px; padding: 5px 6px; border-radius: 5px; flex-shrink: 0; transition: color .15s, background .15s; line-height: 1; }
   .sidebar-toggle:hover { color: var(--lime); background: rgba(255,255,255,.07); }
-
-  .sidebar-body {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 10px 8px 20px;
-  }
+  .sidebar-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 10px 8px 20px; }
   .sidebar-body::-webkit-scrollbar { width: 3px; }
-  .sidebar-body::-webkit-scrollbar-track { background: transparent; }
   .sidebar-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 2px; }
-
-  .nav-group-label {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.25);
-    padding: 12px 8px 6px;
-    white-space: nowrap;
-    transition: opacity .2s;
-  }
+  .nav-group-label { font-size: 9px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(255,255,255,.25); padding: 12px 8px 6px; white-space: nowrap; transition: opacity .2s; }
   .sidebar.collapsed .nav-group-label { opacity: 0; }
-
-  .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 8px;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background .15s;
-    margin-bottom: 2px;
-    min-height: 46px;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-  }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 8px; border-radius: 8px; cursor: pointer; text-decoration: none; transition: background .15s; margin-bottom: 2px; min-height: 46px; border: none; background: none; width: 100%; text-align: left; }
   .nav-item:hover { background: rgba(255,255,255,.07); }
   .nav-item.current { background: rgba(195,223,77,.1); border: 1px solid rgba(195,223,77,.18); }
-  .nav-item.current:hover { background: rgba(195,223,77,.16); }
-
-  .nav-icon {
-    font-size: 17px;
-    flex-shrink: 0;
-    width: 28px;
-    text-align: center;
-    line-height: 1;
-    filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
-  }
-
-  .nav-item-body {
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    transition: opacity .2s;
-  }
+  .nav-icon { font-size: 17px; flex-shrink: 0; width: 28px; text-align: center; line-height: 1; }
+  .nav-item-body { flex: 1; min-width: 0; overflow: hidden; transition: opacity .2s; }
   .sidebar.collapsed .nav-item-body { opacity: 0; }
-
-  .nav-version {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--ground);
-    white-space: nowrap;
-    line-height: 1.3;
-  }
+  .nav-version { font-size: 12px; font-weight: 700; color: var(--ground); white-space: nowrap; line-height: 1.3; }
   .nav-item.current .nav-version { color: var(--lime); }
-
-  .nav-date {
-    font-size: 10px;
-    color: rgba(255,255,255,.35);
-    white-space: nowrap;
-    margin-top: 1px;
-  }
-
-  .nav-minibadge {
-    font-size: 8px;
-    font-weight: 800;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-    border-radius: 4px;
-    padding: 2px 6px;
-    flex-shrink: 0;
-    white-space: nowrap;
-    transition: opacity .2s;
-  }
+  .nav-date { font-size: 10px; color: rgba(255,255,255,.35); white-space: nowrap; margin-top: 1px; }
+  .nav-minibadge { font-size: 8px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; border-radius: 4px; padding: 2px 6px; flex-shrink: 0; white-space: nowrap; transition: opacity .2s; }
   .sidebar.collapsed .nav-minibadge { opacity: 0; }
   .nav-minibadge.latest { background: var(--lime); color: var(--forest); }
-  .nav-minibadge.pass-all { background: rgba(195,223,77,.18); color: var(--lime); border: 1px solid rgba(195,223,77,.3); }
-  .nav-minibadge.has-fails { background: rgba(239,68,68,.15); color: #fca5a5; border: 1px solid rgba(239,68,68,.25); }
-
   .nav-divider { border: none; border-top: 1px solid rgba(255,255,255,.06); margin: 8px 0; }
-
   .nav-item[data-tip] { position: relative; }
-  .sidebar.collapsed .nav-item[data-tip]:hover::after {
-    content: attr(data-tip);
-    position: absolute;
-    left: calc(var(--sidebar-coll) + 4px);
-    top: 50%;
-    transform: translateY(-50%);
-    background: #111;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 6px;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 200;
-    box-shadow: 0 4px 12px rgba(0,0,0,.3);
-  }
+  .sidebar.collapsed .nav-item[data-tip]:hover::after { content: attr(data-tip); position: absolute; left: calc(var(--sidebar-coll) + 4px); top: 50%; transform: translateY(-50%); background: #111; color: #fff; font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 6px; white-space: nowrap; pointer-events: none; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.3); }
 
   /* ── MAIN WRAPPER ─────────────────────────────────────── */
-  .main-wrapper {
-    margin-left: var(--sidebar-w);
-    transition: margin-left .25s cubic-bezier(.4,0,.2,1);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+  .main-wrapper { margin-left: var(--sidebar-w); transition: margin-left .25s cubic-bezier(.4,0,.2,1); min-height: 100vh; display: flex; flex-direction: column; }
   .main-wrapper.sidebar-collapsed { margin-left: var(--sidebar-coll); }
 
   /* ── HERO ─────────────────────────────────────────────── */
-  .hero {
-    background: var(--forest);
-    color: var(--ground);
-    padding: 56px 40px 80px;
-    text-align: center;
-    scroll-margin-top: 20px;
-  }
-  .hero-eyebrow {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--lime);
-    margin-bottom: 16px;
-    border: 1px solid rgba(195,223,77,.35);
-    border-radius: var(--r-full);
-    padding: 4px 14px;
-  }
-  .hero-title {
-    font-size: 44px;
-    font-weight: 700;
-    letter-spacing: -1.5px;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    color: var(--ground);
-  }
+  .hero { background: var(--forest); color: var(--ground); padding: 56px 40px 80px; text-align: center; scroll-margin-top: 20px; }
+  .hero-eyebrow { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--lime); margin-bottom: 16px; border: 1px solid rgba(195,223,77,.35); border-radius: var(--r-full); padding: 4px 14px; }
+  .hero-title { font-size: 44px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
   .hero-title span { color: var(--lime); }
-  .hero-meta {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-    font-size: 12px;
-    color: var(--forest-light);
-  }
+  .hero-meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 20px; font-size: 12px; color: var(--forest-light); }
   .hero-meta strong { color: var(--ground); }
   .hero-meta .sep { color: rgba(178,248,201,.3); }
 
   /* ── BANDEJA ──────────────────────────────────────────── */
-  .bandeja {
-    background: var(--ground);
-    border-radius: var(--r-bandeja);
-    flex: 1;
-    margin-top: -40px;
-    position: relative;
-    z-index: 10;
-  }
+  .bandeja { background: var(--ground); border-radius: var(--r-bandeja); flex: 1; margin-top: -40px; position: relative; z-index: 10; }
 
   /* ── SUMMARY CARDS ────────────────────────────────────── */
-  .summary {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    padding: 32px 32px 0;
-    max-width: 800px;
-    margin: 0 auto;
-  }
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; padding: 32px 32px 0; max-width: 800px; margin: 0 auto; }
   .card { border-radius: var(--r); padding: 20px 16px; text-align: center; }
-  .card.pass  { background: var(--pass-bg); color: var(--pass-text); }
-  .card.fail  { background: var(--surface); color: var(--text); }
-  .card.total { background: var(--surface); color: var(--text); }
-  .card.time  { background: var(--surface); color: var(--text); }
-  .card-value {
-    font-size: 38px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .card.pass  .card-value { color: var(--forest); }
-  .card.fail  .card-value { color: var(--fail-text); }
-  .card.total .card-value { color: var(--forest); }
-  .card.time  .card-value { font-size: 26px; color: var(--caption); }
-  .card-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    opacity: .75;
-  }
-  .card.pass .card-label { opacity: .65; }
+  .card.pass { background: var(--lime); color: var(--text); }
+  .card.fail, .card.total, .card.time { background: var(--surface); }
+  .card-value { font-size: 38px; font-weight: 700; letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+  .card.pass .card-value { color: var(--forest); }
+  .card.fail .card-value { color: var(--fail-text); }
+  .card.total .card-value, .card.time .card-value { color: var(--forest); }
+  .card.time .card-value { font-size: 26px; color: var(--caption); }
+  .card-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: .75; }
+
+  /* ── TABS ─────────────────────────────────────────────── */
+  .tab-nav { display: flex; gap: 2px; padding: 28px 24px 0; max-width: 900px; margin: 0 auto; }
+  .tab-btn { padding: 9px 20px; font-size: 12px; font-weight: 700; border: none; background: none; color: var(--muted); cursor: pointer; border-radius: var(--r) var(--r) 0 0; transition: color .15s, background .15s; letter-spacing: .3px; border-bottom: 2px solid transparent; margin-bottom: -1px; display: flex; align-items: center; gap: 7px; }
+  .tab-btn:hover { color: var(--forest); background: var(--surface); }
+  .tab-btn.active { color: var(--forest); border-bottom: 2px solid var(--forest); background: var(--surface); }
+  .tab-btn .tab-count { font-size: 10px; font-weight: 800; background: var(--border); color: var(--muted); border-radius: var(--r-full); padding: 1px 7px; }
+  .tab-btn.active .tab-count { background: var(--forest); color: var(--ground); }
+  .tab-divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
 
   /* ── CONTENT ──────────────────────────────────────────── */
-  .content { max-width: 900px; margin: 32px auto 48px; padding: 0 24px; }
+  .content { max-width: 900px; margin: 24px auto 48px; padding: 0 24px; }
 
   /* ── HU SECTION ───────────────────────────────────────── */
-  .hu-section {
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-  .hu-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 18px;
-    background: var(--forest);
-    cursor: pointer;
-    user-select: none;
-    gap: 12px;
-    transition: background .15s;
-  }
+  .hu-section { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 16px; }
+  .hu-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: var(--forest); cursor: pointer; user-select: none; gap: 12px; transition: background .15s; }
   .hu-header:hover { background: var(--forest-mid); }
   .hu-header-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
-  .hu-id {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--lime);
-    white-space: nowrap;
-    border: 1px solid rgba(195,223,77,.3);
-    border-radius: var(--r-full);
-    padding: 2px 10px;
-    text-decoration: none;
-  }
+  .hu-id { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--lime); white-space: nowrap; border: 1px solid rgba(195,223,77,.3); border-radius: var(--r-full); padding: 2px 10px; text-decoration: none; }
   .hu-id:hover { background: rgba(195,223,77,.15); }
-  .hu-title {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ground);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  .hu-title { font-size: 13px; font-weight: 500; color: var(--ground); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .hu-header-right { display: flex; align-items: center; gap: 10px; }
-  .hu-badge {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--forest);
-    background: var(--lime);
-    border-radius: var(--r-full);
-    padding: 2px 10px;
-    white-space: nowrap;
-  }
-  .hu-toggle {
-    color: var(--forest-light);
-    font-size: 14px;
-    transition: transform .2s;
-    line-height: 1;
-    opacity: .7;
-  }
+  .hu-badge { font-size: 11px; font-weight: 700; color: var(--forest); background: var(--lime); border-radius: var(--r-full); padding: 2px 10px; white-space: nowrap; }
+  .hu-toggle { color: var(--forest-light); font-size: 14px; transition: transform .2s; line-height: 1; opacity: .7; }
   .hu-header.collapsed .hu-toggle { transform: rotate(-90deg); }
 
   /* ── TABLE ────────────────────────────────────────────── */
   .test-table { width: 100%; border-collapse: collapse; }
   .test-table thead tr { background: var(--surface); border-bottom: 1px solid var(--border); }
-  .test-table th {
-    padding: 8px 14px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: left;
-  }
+  .test-table th { padding: 8px 14px; font-size: 10px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--muted); text-align: left; }
   .test-table th:last-child { text-align: center; width: 80px; }
   .test-row { border-bottom: 1px solid var(--border-soft); cursor: pointer; transition: background .1s; }
   .test-row:last-of-type { border-bottom: none; }
-  .test-row:hover { background: var(--surface); }
+  .test-row:hover { background: #f9fbf8; }
   .test-row td { padding: 10px 14px; font-size: 12px; vertical-align: middle; }
-  .test-id {
-    font-family: 'SF Mono', 'Cascadia Code', Menlo, monospace;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--forest);
-    white-space: nowrap;
-  }
-  .test-title { color: var(--caption); line-height: 1.4; }
+  .test-id { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; font-weight: 600; color: var(--forest); white-space: nowrap; }
   .test-name { color: var(--text); font-weight: 500; font-size: 12px; }
   .test-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 3px; }
-  .tag {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-    border-radius: var(--r-full);
-    padding: 1px 7px;
-    border: 1px solid;
-  }
+  .tag { font-size: 9px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; border-radius: var(--r-full); padding: 1px 7px; border: 1px solid; }
   .tag-val  { color: #047857; border-color: #047857; background: var(--badge-green); }
   .tag-edge { color: #92400e; border-color: #d97706; background: var(--badge-amber); }
   .status-cell { text-align: center; }
-  .badge-pass, .badge-fail {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .6px;
-    border-radius: var(--r-full);
-    padding: 3px 10px;
-  }
+  .badge-pass, .badge-fail { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .6px; border-radius: var(--r-full); padding: 3px 10px; }
   .badge-pass { background: var(--lime-soft); color: var(--forest); }
   .badge-fail { background: var(--fail-bg); color: var(--fail-text); }
+
+  /* ── DETAIL ROW / ZEPHYR TABLE ────────────────────────── */
   .detail-row { display: none; }
   .detail-row.open { display: table-row; }
-  .detail-row td {
-    background: #f8fbf4;
-    border-bottom: 1px solid var(--border);
-    padding: 12px 18px 12px 42px;
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
+  .detail-row > td { padding: 0; background: #f6faf5; border-bottom: 1px solid var(--border); border-top: 1px solid #d4e8d0; }
+
+  .case-steps { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .case-steps tr { border-bottom: 1px solid #e0ead9; }
+  .case-steps tr:last-child { border-bottom: none; }
+  .case-steps th { width: 148px; min-width: 148px; padding: 9px 14px; background: #ecf4e8; font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--forest); text-align: left; vertical-align: top; border-right: 2px solid #c8dfbc; white-space: nowrap; }
+  .case-steps td { padding: 9px 14px; color: var(--text); vertical-align: top; line-height: 1.6; }
+  .case-steps ol, .case-steps ul { padding-left: 18px; margin: 0; }
+  .case-steps li { margin-bottom: 3px; }
+  .case-steps li:last-child { margin-bottom: 0; }
+  .case-steps .result-text { color: var(--caption); }
+  .case-steps .no-map { color: var(--muted); font-style: italic; font-size: 11px; }
+  .case-steps .map-note { font-size: 10px; color: var(--muted); margin-top: 4px; }
+
+  /* ── MANUAL TAB EMPTY STATE ───────────────────────────── */
+  .manual-empty { max-width: 900px; margin: 32px auto 48px; padding: 0 24px; }
+  .manual-empty-inner { text-align: center; padding: 56px 32px; border: 1.5px dashed var(--border); border-radius: 12px; color: var(--muted); }
+  .manual-empty-inner .icon { font-size: 40px; margin-bottom: 14px; display: block; }
+  .manual-empty-inner h3 { font-size: 14px; font-weight: 700; color: var(--caption); margin-bottom: 8px; }
+  .manual-empty-inner p { font-size: 12px; line-height: 1.7; max-width: 380px; margin: 0 auto; }
+  .manual-empty-inner code { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; font-size: 11px; color: var(--forest); }
 
   /* ── RELEASES ANTERIORES ──────────────────────────────── */
-  .anteriores-section {
-    background: var(--surface);
-    padding: 32px 24px 48px;
-    border-top: 1px solid var(--border);
-  }
-  .anteriores-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    max-width: 900px;
-    margin: 0 auto 20px;
-  }
-  .anteriores-icon {
-    width: 32px; height: 32px;
-    background: var(--forest);
-    color: var(--lime);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    flex-shrink: 0;
-  }
-  .anteriores-title {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-    color: var(--caption);
-  }
-  .anteriores-count {
-    font-size: 10px;
-    background: var(--border);
-    color: var(--muted);
-    border-radius: var(--r-full);
-    padding: 2px 9px;
-    font-weight: 600;
-  }
-  .anteriores-empty {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 48px 24px;
-    color: var(--muted);
-    font-size: 13px;
-    border: 1.5px dashed var(--border);
-    border-radius: 12px;
-    background: var(--ground);
-  }
+  .anteriores-section { background: var(--surface); padding: 32px 24px 48px; border-top: 1px solid var(--border); }
+  .anteriores-header { display: flex; align-items: center; gap: 12px; max-width: 900px; margin: 0 auto 20px; }
+  .anteriores-icon { width: 32px; height: 32px; background: var(--forest); color: var(--lime); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  .anteriores-title { font-size: 13px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--caption); }
+  .anteriores-count { font-size: 10px; background: var(--border); color: var(--muted); border-radius: var(--r-full); padding: 2px 9px; font-weight: 600; }
+  .anteriores-empty { max-width: 900px; margin: 0 auto; text-align: center; padding: 48px 24px; color: var(--muted); font-size: 13px; border: 1.5px dashed var(--border); border-radius: 12px; background: var(--ground); }
   .anteriores-empty .empty-icon { font-size: 36px; margin-bottom: 12px; display: block; }
   .anteriores-empty p { max-width: 320px; margin: 0 auto; line-height: 1.6; }
-
-  .release-item {
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    overflow: hidden;
-    margin-bottom: 10px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    background: var(--ground);
-  }
-  .release-item-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 13px 18px;
-    cursor: pointer;
-    user-select: none;
-    transition: background .15s;
-  }
+  .release-item { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 10px; max-width: 900px; margin-left: auto; margin-right: auto; background: var(--ground); }
+  .release-item-header { display: flex; align-items: center; gap: 14px; padding: 13px 18px; cursor: pointer; user-select: none; transition: background .15s; }
   .release-item-header:hover { background: var(--surface); }
-  .release-item-version {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--forest);
-    background: var(--lime-soft);
-    border-radius: var(--r-full);
-    padding: 3px 12px;
-    white-space: nowrap;
-  }
+  .release-item-version { font-size: 12px; font-weight: 700; color: var(--forest); background: var(--lime-soft); border-radius: var(--r-full); padding: 3px 12px; white-space: nowrap; }
   .release-item-date { font-size: 11px; color: var(--muted); flex: 1; }
-  .release-item-stats { display: flex; gap: 8px; align-items: center; }
+  .release-item-stats { display: flex; gap: 8px; }
   .stat-pill { font-size: 10px; font-weight: 700; border-radius: var(--r-full); padding: 2px 9px; }
   .stat-pill.pass { background: var(--lime-soft); color: var(--forest); }
   .stat-pill.fail { background: var(--fail-bg); color: var(--fail-text); }
@@ -534,35 +189,13 @@
   .release-item-body .bandeja { margin-top: -32px; border-radius: 16px 16px 0 0; }
 
   /* ── FOOTER ───────────────────────────────────────────── */
-  footer {
-    background: var(--forest);
-    color: var(--forest-light);
-    text-align: center;
-    padding: 24px 32px;
-    font-size: 11px;
-    letter-spacing: .3px;
-  }
+  footer { background: var(--forest); color: var(--forest-light); text-align: center; padding: 24px 32px; font-size: 11px; }
   footer strong { color: var(--ground); }
 
   /* ── MOBILE ───────────────────────────────────────────── */
-  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 99; backdrop-filter: blur(2px); }
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 99; }
   .overlay.active { display: block; }
-  .mobile-fab {
-    display: none;
-    position: fixed;
-    bottom: 20px; right: 20px;
-    width: 50px; height: 50px;
-    background: var(--forest);
-    color: var(--lime);
-    border: 1px solid rgba(195,223,77,.3);
-    border-radius: 50%;
-    font-size: 20px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 18px rgba(0,0,0,.3);
-    z-index: 98;
-  }
+  .mobile-fab { display: none; position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--forest); color: var(--lime); border: 1px solid rgba(195,223,77,.3); border-radius: 50%; font-size: 20px; cursor: pointer; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(0,0,0,.3); z-index: 98; }
   @media (max-width: 768px) {
     :root { --sidebar-w: 220px; }
     .sidebar { transform: translateX(-100%); transition: transform .25s cubic-bezier(.4,0,.2,1); width: var(--sidebar-w) !important; }
@@ -575,45 +208,34 @@
     .hero { padding: 40px 20px 70px; }
     .hero-title { font-size: 30px; }
     .summary { padding: 20px 16px 0; }
-    .content { padding: 0 14px; }
+    .case-steps th { width: 100px; min-width: 80px; font-size: 9px; }
   }
 </style>
 
-<!-- ── SIDEBAR ────────────────────────────────────────────── -->
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <div class="sidebar-logo" onclick="toggleSidebar()" title="Expandir / colapsar">R</div>
     <span class="sidebar-title">Releases</span>
-    <button class="sidebar-toggle" onclick="toggleSidebar()" title="Colapsar panel">◀</button>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">◀</button>
   </div>
   <div class="sidebar-body">
     <div class="nav-group-label">Actual</div>
-
     <button class="nav-item current" onclick="scrollToRelease('release-v14-6-0')" data-tip="v14.6.0">
       <span class="nav-icon">🚀</span>
-      <div class="nav-item-body">
-        <div class="nav-version">v14.6.0</div>
-        <div class="nav-date">23 jun 2026</div>
-      </div>
+      <div class="nav-item-body"><div class="nav-version">v14.6.0</div><div class="nav-date">23 jun 2026</div></div>
       <span class="nav-minibadge latest">LATEST</span>
     </button>
-
     <hr class="nav-divider">
     <div class="nav-group-label">Anteriores</div>
-
     <!-- SIDEBAR-ANTERIORES-START -->
-    <div style="padding: 10px 8px; text-align: center;">
-      <span style="font-size: 20px; display: block; margin-bottom: 6px; opacity:.35;">📂</span>
-      <span style="font-size: 10px; color: rgba(255,255,255,.25); line-height: 1.5; white-space: normal; display: block;">Aquí aparecerán los releases anteriores</span>
-    </div>
+    <div style="padding:10px 8px;text-align:center;opacity:.35"><span style="font-size:20px;display:block;margin-bottom:6px">📂</span><span style="font-size:10px;color:rgba(255,255,255,.5);line-height:1.5;white-space:normal;display:block">Aquí aparecerán los releases anteriores</span></div>
     <!-- SIDEBAR-ANTERIORES-END -->
   </div>
 </nav>
 
 <div class="overlay" id="overlay" onclick="closeMobileSidebar()"></div>
-<button class="mobile-fab" onclick="openMobileSidebar()" title="Ver historial">📋</button>
+<button class="mobile-fab" onclick="openMobileSidebar()">📋</button>
 
-<!-- ── MAIN WRAPPER ───────────────────────────────────────── -->
 <div class="main-wrapper" id="main-wrapper">
 
 <!-- RELEASE-START: v14.6.0 | 2026-06-23 | Pass: 26 | Fail: 0 | Branch: REBU-4751 -->
@@ -640,124 +262,323 @@
       <div class="card time"><div class="card-value">3.3 m</div><div class="card-label">Duración</div></div>
     </div>
 
-    <div class="content">
-
-      <!-- REBU-4750 -->
-      <div class="hu-section">
-        <div class="hu-header" onclick="headerClick(this)">
-          <div class="hu-header-left">
-            <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4750" target="_blank" onclick="event.stopPropagation()">REBU-4750</a>
-            <span class="hu-title">Apariencia — subtab Asignaciones</span>
-          </div>
-          <div class="hu-header-right">
-            <span class="hu-badge">18 / 18 ✓</span>
-            <span class="hu-toggle">▼</span>
-          </div>
-        </div>
-        <table class="test-table">
-          <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-020</td><td class="test-title"><div class="test-name">Los tres bloques aparecen en el orden correcto en Asignaciones</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Los tres destinos de logo ("Logo para login", "Logo del sistema", "Logo en boleta de pago") aparecen en el orden correcto de arriba hacia abajo. El orden correcto es un requisito de UX para que los administradores localicen cada destino de forma predecible.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-021</td><td class="test-title"><div class="test-name">Estado placeholder cuando "Logo para login" no tiene logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Sin logo asignado, el bloque muestra el botón "Asignar", sin imagen de previsualización y sin el overlay "Editar" al hacer hover. Estado vacío correcto y consistente.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-022</td><td class="test-title"><div class="test-name">Previsualización y overlay "Editar" visibles con logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al asignar un logo, el bloque muestra la imagen de previsualización y el overlay con el botón "Editar" al hacer hover, confirmando que el administrador puede modificar la asignación en cualquier momento.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-023</td><td class="test-title"><div class="test-name">Clic en placeholder abre modal con título "Logo para login"</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al hacer clic en el botón "Asignar" del bloque en estado placeholder, se abre el modal de selección con el título correcto "Logo para login".</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-024</td><td class="test-title"><div class="test-name">Clic en overlay "Editar" abre modal con título "Logo para login"</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al hacer hover sobre el bloque con logo asignado y clic en "Editar", se abre el modal de edición con el título "Logo para login".</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-025</td><td class="test-title"><div class="test-name">Modal se abre en modo "elegir logo": combobox visible, sin previsualización</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al abrir el modal desde un bloque en estado placeholder, la vista inicial muestra el combobox de selección sin ninguna previsualización.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-026</td><td class="test-title"><div class="test-name">Seleccionar logo en combobox activa la vista de recorte</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al seleccionar un logo del combobox, el modal transiciona automáticamente a la vista de recorte mostrando la previsualización.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-027</td><td class="test-title"><div class="test-name">Modo recorte: canvas, slider de zoom y link "Restablecer" visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">En la vista de recorte están presentes todos los controles: área de previsualización con outline de recorte, slider de zoom con indicador de porcentaje y enlace "Restablecer".</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-028</td><td class="test-title"><div class="test-name">Slider de zoom: el límite inferior es 50%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">El slider de zoom tiene configurado correctamente el mínimo en 50%, impidiendo que el logo se reduzca por debajo de ese tamaño.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-029</td><td class="test-title"><div class="test-name">Slider de zoom: el límite superior es 250%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">El slider de zoom tiene configurado correctamente el máximo en 250%.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-030</td><td class="test-title"><div class="test-name">Link "Restablecer" restaura el zoom al estado original</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al hacer clic en "Restablecer", el slider de zoom y la posición del logo regresan al estado inicial.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-031</td><td class="test-title"><div class="test-name">Footer en modo recorte: botones Reemplazar, Eliminar, Cancelar y Aplicar visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">En la vista de recorte están visibles los cuatro botones del footer: "Reemplazar", "Eliminar" (en rojo), "Cancelar" y "Aplicar". Cada botón tiene el estilo correcto.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-032</td><td class="test-title"><div class="test-name">Happy path: seleccionar logo y aplicar → thumbnail y overlay visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Flujo principal de extremo a extremo: seleccionar logo, ajustar recorte y aplicar. El bloque muestra la imagen asignada y el overlay "Editar" al hacer hover.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-033</td><td class="test-title"><div class="test-name">Reemplazar logo asignado con otro de la biblioteca → thumbnail se actualiza</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al reemplazar el logo con uno diferente, el thumbnail en Asignaciones se actualiza automáticamente.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-034</td><td class="test-title"><div class="test-name">Clic en "Eliminar" del modal muestra texto de confirmación</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al hacer clic en "Eliminar", el sistema muestra una vista de confirmación con el texto descriptivo de las consecuencias.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-035</td><td class="test-title"><div class="test-name">Confirmar eliminación → modal cierra y bloque vuelve al placeholder</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al confirmar la eliminación, el modal se cierra y el bloque "Logo para login" regresa al estado placeholder.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-036</td><td class="test-title"><div class="test-name">Cancelar eliminación en confirmación → logo sigue asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al cancelar en la vista de confirmación, el modal regresa al estado anterior sin cambios y el logo sigue asignado.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-037</td><td class="test-title"><div class="test-name">Cancelar modal sin aplicar → bloque permanece en placeholder</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al seleccionar un logo en el modal y cancelar sin hacer clic en "Aplicar", el bloque permanece en el estado placeholder original.</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- REBU-4751 -->
-      <div class="hu-section">
-        <div class="hu-header" onclick="headerClick(this)">
-          <div class="hu-header-left">
-            <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4751" target="_blank" onclick="event.stopPropagation()">REBU-4751</a>
-            <span class="hu-title">Apariencia — Renderización del logo en pantalla de login</span>
-          </div>
-          <div class="hu-header-right">
-            <span class="hu-badge">8 / 8 ✓</span>
-            <span class="hu-toggle">▼</span>
-          </div>
-        </div>
-        <table class="test-table">
-          <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T1</td><td class="test-title"><div class="test-name">Subir Google logo y Rebu logo a la galería</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Se suben dos logos (Google y Rebu) a la galería del tenant. Paso previo necesario para los tests de asignación y reemplazo del resto de la suite serial.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T2 <span style="font-size:9px;opacity:.5">(TC-LGN-011)</span></td><td class="test-title"><div class="test-name">Asignar Google logo al destino "Logo para login" y validar thumbnail</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Se asigna el Google logo al destino "Logo para login" y se verifica que el thumbnail en el bloque de Asignaciones corresponde al logo seleccionado.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T3</td><td class="test-title"><div class="test-name">Logo de empresa visible en pantalla de login al ingresar subdomain</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al acceder a la pantalla de login ingresando el subdominio de la empresa, el logo asignado se renderiza correctamente y es visible para el usuario antes de iniciar sesión.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T7 <span style="font-size:9px;opacity:.5">(TC-LGN-009)</span></td><td class="test-title"><div class="test-name">Logo centrado, debajo del texto de bienvenida y encima del formulario</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">El logo está centrado horizontalmente, ubicado debajo del texto de bienvenida y por encima del formulario de inicio de sesión.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T4 <span style="font-size:9px;opacity:.5">(TC-LGN-012)</span></td><td class="test-title"><div class="test-name">Logo NO visible en portal genérico sin contexto de tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">En el portal genérico (sin subdominio), la pantalla de login no muestra ningún logo de empresa. El logo solo se renderiza cuando hay un contexto de tenant identificado.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T6 <span style="font-size:9px;opacity:.5">(TC-LGN-018)</span></td><td class="test-title"><div class="test-name">Al cambiar logo asignado, login refleja el nuevo logo</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al reemplazar el logo asignado por uno diferente, la pantalla de login refleja el nuevo logo de forma inmediata.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T8 <span style="font-size:9px;opacity:.5">(TC-LGN-016)</span></td><td class="test-title"><div class="test-name">Logo de tenant 1 no se filtra al login de un segundo tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">El logo configurado para el tenant 1 no aparece en la pantalla de login del tenant 2. Aislamiento completo de personalización de marca entre empresas.</td></tr>
-
-            <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T5 <span style="font-size:9px;opacity:.5">(TC-LGN-013 + 017)</span></td><td class="test-title"><div class="test-name">Sin logo asignado, pantalla de login no muestra logo ni espacio en blanco</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-            <tr class="detail-row"><td colspan="3">Al desasignar el logo, la pantalla de login vuelve al estado original sin mostrar el logo ni reservar espacio en blanco.</td></tr>
-          </tbody>
-        </table>
-      </div>
-
+    <!-- TABS -->
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">26</span></button>
+      <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">1</span></button>
     </div>
-  </div>
+    <hr class="tab-divider">
+
+    <!-- TAB: AUTOMATIZADOS -->
+    <div id="tab-auto" class="tab-panel active">
+      <div class="content">
+
+        <!-- ── REBU-4750 ──────────────────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4750" target="_blank" onclick="event.stopPropagation()">REBU-4750</a>
+              <span class="hu-title">Apariencia — subtab Asignaciones</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">18 / 18 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-020</td><td><div class="test-name">Los tres bloques aparecen en el orden correcto en Asignaciones</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador activo con acceso al módulo Apariencia</li><li>La empresa tiene los tres destinos de logo configurados en el sistema</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión en el Business Portal con credenciales de administrador.</li><li>Navegar al módulo de Configuración de Empresa › Apariencia.</li><li>Hacer clic en el subtab "Asignaciones".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el orden de los bloques en el subtab Asignaciones.</li><li>Verificar que el primer bloque sea "Logo para login".</li><li>Verificar que el segundo bloque sea "Logo del sistema".</li><li>Verificar que el tercer bloque sea "Logo en boleta de pago".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Los tres bloques aparecen en el orden exacto: 1° "Logo para login", 2° "Logo del sistema", 3° "Logo en boleta de pago". No existen bloques adicionales ni el orden difiere del especificado.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-021</td><td><div class="test-name">Estado placeholder cuando "Logo para login" no tiene logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene ningún logo asignado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" ya tiene un logo asignado: hacer clic en el bloque › "Editar" › "Eliminar" › confirmar eliminación para dejar el destino sin logo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li><li>Verificar que el bloque muestra un área vacía con borde punteado (dashed border).</li><li>Verificar que no se muestra ninguna imagen de previsualización.</li><li>Verificar que no aparece el overlay "Editar".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El bloque "Logo para login" muestra un placeholder con borde punteado y sin imagen de previsualización ni overlay de edición.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-022</td><td><div class="test-name">Previsualización y overlay "Editar" visibles con logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" tiene un logo asignado y guardado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" no tiene logo asignado: hacer clic en el placeholder › seleccionar cualquier logo › hacer clic en "Aplicar".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el bloque "Logo para login" en estado con logo asignado.</li><li>Verificar que se muestra la imagen de previsualización del logo asignado.</li><li>Pasar el cursor (hover) sobre el bloque "Logo para login".</li><li>Verificar que aparece el overlay con la etiqueta "Editar".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Con logo asignado, el bloque muestra la imagen de previsualización. Al hacer hover, aparece el overlay "Editar" sobre la imagen.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-023</td><td><div class="test-name">Clic en placeholder abre modal con título "Logo para login"</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado (muestra placeholder)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si el bloque tiene logo asignado, eliminarlo siguiendo el Setup de TC-CFG-021 paso 3.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic directamente sobre el área del placeholder (borde punteado) del bloque "Logo para login".</li><li>Verificar que se abre un modal/diálogo.</li><li>Verificar que el título del modal es "Logo para login".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al hacer clic en el placeholder, se abre el modal de asignación con el título "Logo para login".</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-024</td><td><div class="test-name">Clic en overlay "Editar" abre modal con título "Logo para login"</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" tiene un logo asignado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si no hay logo asignado al destino, asignarlo: clic en placeholder › seleccionar logo › "Aplicar".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Pasar el cursor sobre el bloque "Logo para login" para que aparezca el overlay "Editar".</li><li>Hacer clic en "Editar".</li><li>Verificar que se abre el modal de asignación.</li><li>Verificar que el título del modal es "Logo para login".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al hacer clic en "Editar", se abre el modal con el título "Logo para login" en modo recorte (ya que hay logo asignado).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-025</td><td><div class="test-name">Modal se abre en modo "elegir logo": combobox visible, sin previsualización</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado</li><li>La biblioteca de logos tiene al menos un logo cargado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Verificar que existen logos en la biblioteca (Apariencia › Logos). Si no hay ninguno, cargar un logo de prueba (PNG, mínimo 200×200px).</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si el bloque tiene logo asignado, eliminarlo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic en el placeholder del bloque "Logo para login".</li><li>Observar el contenido del modal que se abre.</li><li>Verificar que el modal muestra el modo "elegir logo" (lista/galería de logos disponibles en biblioteca).</li><li>Verificar que no se muestra el canvas de recorte en este primer paso.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modal se abre en modo "elegir logo" mostrando la biblioteca de logos disponibles, sin canvas de recorte.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-026</td><td><div class="test-name">Seleccionar logo en combobox activa la vista de recorte</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado</li><li>La biblioteca de logos tiene al menos un logo cargado</li><li>El modal de "Logo para login" está abierto en modo "elegir logo"</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si hay logo asignado, eliminarlo.</li><li>Hacer clic en el placeholder de "Logo para login" para abrir el modal.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic sobre cualquier logo de la biblioteca dentro del modal.</li><li>Observar el cambio de estado del modal.</li><li>Verificar que el modal transiciona al modo recorte (aparece el canvas de recorte).</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al seleccionar un logo de la biblioteca, el modal cambia al modo recorte mostrando el canvas con el logo seleccionado.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-027</td><td><div class="test-name">Modo recorte: canvas, slider de zoom y link "Restablecer" visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte con un logo seleccionado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Hacer clic en el placeholder (o "Editar" si hay logo asignado) para abrir el modal.</li><li>Si el modal abre en modo "elegir logo", seleccionar cualquier logo para pasar al modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el canvas del modal en modo recorte.</li><li>Verificar que el canvas tiene fondo cuadriculado (checkerboard).</li><li>Verificar que el logo aparece posicionado sobre el canvas y puede arrastrarse.</li><li>Verificar que existe un área de recorte con outline de color verde.</li><li>Verificar que existe un slider de zoom con indicador de porcentaje.</li><li>Verificar que existe el link "Restablecer".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modo recorte muestra: canvas con fondo cuadriculado, logo arrastrable, área de recorte con outline verde, slider de zoom con indicador de porcentaje, y link "Restablecer". Todos los elementos están visibles y accesibles.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-028</td><td><div class="test-name">Slider de zoom: el límite inferior es 50%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte con un logo seleccionado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones › abrir modal de "Logo para login".</li><li>Seleccionar un logo para entrar al modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Localizar el slider de zoom en el modal de recorte.</li><li>Arrastrar el slider hasta el extremo izquierdo (valor mínimo).</li><li>Observar el indicador de porcentaje junto al slider.</li><li>Verificar que el indicador muestra "50%".</li><li>Verificar que el slider no puede moverse más hacia la izquierda.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El slider en el extremo izquierdo muestra 50%. No es posible reducir el zoom por debajo de 50%. El logo se muestra reducido pero visible sobre el canvas.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-029</td><td><div class="test-name">Slider de zoom: el límite superior es 250%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte con un logo seleccionado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones › abrir modal de "Logo para login".</li><li>Seleccionar un logo para entrar al modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Localizar el slider de zoom en el modal de recorte.</li><li>Arrastrar el slider hasta el extremo derecho (valor máximo).</li><li>Observar el indicador de porcentaje junto al slider.</li><li>Verificar que el indicador muestra "250%".</li><li>Verificar que el slider no puede moverse más hacia la derecha.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El slider en el extremo derecho muestra 250%. No es posible aumentar el zoom por encima de 250%. El logo se muestra ampliado sobre el canvas.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-030</td><td><div class="test-name">Link "Restablecer" restaura el zoom al estado original</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte con un logo seleccionado</li><li>El logo ha sido movido y/o el zoom ha sido ajustado (estado distinto al original)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones › abrir modal de "Logo para login".</li><li>Seleccionar un logo para entrar al modo recorte.</li><li>Modificar la posición del logo arrastrándolo a una esquina del canvas.</li><li>Ajustar el slider de zoom a un valor distinto del inicial (ej. 150%).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Verificar que el logo está en una posición y zoom distintos al estado inicial.</li><li>Hacer clic en el link "Restablecer".</li><li>Observar el canvas inmediatamente después de hacer clic.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El logo regresa a su posición y zoom originales (estado por defecto) dentro del canvas. El slider de zoom vuelve a su valor inicial.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-031</td><td><div class="test-name">Footer en modo recorte: botones Reemplazar, Eliminar, Cancelar y Aplicar visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte (con logo seleccionado o logo ya asignado)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si el bloque tiene logo asignado: hover › "Editar".</li><li>Si no tiene logo: hacer clic en placeholder › seleccionar un logo para pasar al modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el footer izquierdo del modal.</li><li>Verificar que aparece el botón/link "Reemplazar".</li><li>Verificar que aparece el botón/link "Eliminar" con color rojo.</li><li>Observar el footer derecho del modal.</li><li>Verificar que aparece el botón "Cancelar".</li><li>Verificar que aparece el botón "Aplicar".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El footer izquierdo muestra "Reemplazar" y "Eliminar" (en rojo). El footer derecho muestra "Cancelar" y "Aplicar".</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-032</td><td><div class="test-name">Happy path: seleccionar logo y aplicar → thumbnail y overlay visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado</li><li>La biblioteca de logos tiene al menos un logo disponible</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Verificar que la biblioteca tiene al menos un logo (Apariencia › Logos).</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" tiene logo asignado, eliminarlo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic en el placeholder del bloque "Logo para login".</li><li>En el modal (modo elegir logo), hacer clic sobre cualquier logo de la biblioteca.</li><li>El modal transiciona al modo recorte. Ajustar el recorte si se desea (opcional).</li><li>Hacer clic en "Aplicar" en el footer derecho del modal.</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modal se cierra. El bloque "Logo para login" muestra la imagen de previsualización del logo seleccionado (ya no el placeholder). Al hacer hover sobre el bloque aparece el overlay "Editar".</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-033</td><td><div class="test-name">Reemplazar logo asignado con otro de la biblioteca → thumbnail se actualiza</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" tiene un logo asignado (Logo A)</li><li>La biblioteca de logos tiene al menos dos logos distintos disponibles</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Verificar que la biblioteca tiene al menos 2 logos.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" no tiene logo asignado, asignarlo usando TC-CFG-032.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer hover sobre el bloque "Logo para login" y hacer clic en "Editar".</li><li>El modal se abre en modo recorte mostrando el Logo A.</li><li>Hacer clic en el botón "Reemplazar" en el footer izquierdo del modal.</li><li>El modal regresa al modo "elegir logo". Seleccionar un logo distinto (Logo B).</li><li>El modal vuelve al modo recorte con el Logo B. Hacer clic en "Aplicar".</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El bloque "Logo para login" muestra la previsualización del Logo B (el nuevo logo), no el Logo A anterior.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-034</td><td><div class="test-name">Clic en "Eliminar" del modal muestra texto de confirmación</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" tiene un logo asignado</li><li>El modal de "Logo para login" está abierto en modo recorte</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" no tiene logo asignado, asignarlo.</li><li>Hacer hover sobre el bloque › clic en "Editar" para abrir el modal en modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Verificar que el modal está en modo recorte con el footer izquierdo visible.</li><li>Hacer clic en "Eliminar" (texto en rojo) en el footer izquierdo.</li><li>Observar si aparece una confirmación (dialog, toast o mensaje inline).</li><li>Leer el texto del mensaje de confirmación.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al hacer clic en "Eliminar", aparece una confirmación con el texto: "El logo dejará de mostrarse en logo para login. El archivo seguirá disponible en tu biblioteca de logos."</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-035</td><td><div class="test-name">Confirmar eliminación → modal cierra y bloque vuelve al placeholder</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El mensaje de confirmación de eliminación está visible (continuación de TC-CFG-034)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Seguir los pasos del Setup y Pasos 1–3 de TC-CFG-034 hasta que aparezca el mensaje de confirmación.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Con el mensaje de confirmación visible, hacer clic en el botón de confirmación.</li><li>Verificar que el modal se cierra.</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modal se cierra. El bloque "Logo para login" regresa al estado placeholder (borde punteado, sin imagen de previsualización). El logo eliminado sigue disponible en la biblioteca de logos.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-036</td><td><div class="test-name">Cancelar eliminación en confirmación → logo sigue asignado</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El mensaje de confirmación de eliminación está visible (continuación de TC-CFG-034)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Seguir los pasos del Setup y Pasos 1–3 de TC-CFG-034 hasta que aparezca el mensaje de confirmación de eliminación.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Con el mensaje de confirmación visible, hacer clic en el botón de cancelar.</li><li>Observar el estado del modal.</li><li>Cerrar el modal con "Cancelar" en el footer derecho.</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al cancelar la confirmación, el logo permanece asignado. El bloque sigue mostrando la previsualización del logo. No se realizó ningún cambio.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-037</td><td><div class="test-name">Cancelar modal sin aplicar → bloque permanece en placeholder</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado (estado placeholder)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" tiene logo asignado, eliminarlo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic en el placeholder del bloque "Logo para login" para abrir el modal.</li><li>En el modal (modo elegir logo), seleccionar un logo de la biblioteca.</li><li>El modal transiciona al modo recorte.</li><li>Sin hacer clic en "Aplicar", hacer clic en "Cancelar" en el footer derecho del modal.</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modal se cierra sin guardar la selección. El bloque "Logo para login" sigue mostrando el placeholder. No se persistió ningún cambio.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── REBU-4751 ──────────────────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4751" target="_blank" onclick="event.stopPropagation()">REBU-4751</a>
+              <span class="hu-title">Apariencia — Renderización del logo en pantalla de login</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">8 / 8 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T1</td><td><div class="test-name">Subir Google logo y Rebu logo a la galería</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>Archivos de imagen de prueba disponibles (Google logo PNG y Rebu logo PNG)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Logos.</li><li>Eliminar cualquier logo previo de prueba para partir de un estado limpio.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Subir el archivo "Google logo" a la galería usando el botón de carga.</li><li>Verificar que el logo aparece en la galería.</li><li>Subir el archivo "Rebu logo" a la galería.</li><li>Verificar que ambos logos aparecen en la galería.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Ambos logos quedan disponibles en la galería del tenant para ser usados en los tests subsiguientes de la suite serial.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span> <span class="map-note">Paso de setup — sin ID formal de caso TC-LGN</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T2 <span style="font-size:9px;opacity:.5">(TC-LGN-011)</span></td><td><div class="test-name">Asignar Google logo al destino "Logo para login" y validar thumbnail</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado</li><li>Existe un portal genérico de Rebu accesible</li><li>El dominio/subdominio de la empresa es conocido</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Ejecutar T1 (logos subidos a galería).</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Verificar que el bloque "Logo para login" muestra placeholder.</li><li>Obtener el subdominio de la empresa de prueba.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic en el placeholder del bloque "Logo para login".</li><li>Seleccionar el Google logo de la biblioteca.</li><li>Hacer clic en "Aplicar".</li><li>Verificar que el thumbnail en el bloque corresponde al Google logo.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El bloque "Logo para login" muestra la previsualización del Google logo. Al hacer hover, aparece el overlay "Editar". La asignación quedó correctamente guardada.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T3 <span style="font-size:9px;opacity:.5">(TC-LGN-011)</span></td><td><div class="test-name">Logo de empresa visible en pantalla de login al ingresar subdomain</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado (ejecutar T2 previo)</li><li>Existe un portal genérico de Rebu accesible</li><li>El dominio/subdominio de la empresa es conocido</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Obtener la URL del portal genérico de Rebu.</li><li>Obtener el dominio o subdominio de la empresa de prueba.</li><li>Abrir una ventana de incógnito.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Navegar al portal genérico de Rebu (sin contexto de tenant).</li><li>Ingresar el dominio o subdominio de la empresa en el campo correspondiente.</li><li>Continuar / hacer clic en el botón que lleva al login del tenant.</li><li>Observar la pantalla de login que se carga.</li><li>Verificar que el logo institucional aparece en la pantalla de login.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al llegar desde el portal genérico habiendo ingresado el dominio, la pantalla de login del tenant muestra el logo institucional correctamente.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T7 <span style="font-size:9px;opacity:.5">(TC-LGN-009)</span></td><td><div class="test-name">Logo centrado, debajo del texto de bienvenida y encima del formulario</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado</li><li>La pantalla de login del tenant está cargada en el navegador</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Ejecutar el Setup de TC-LGN-011 (asignar logo y obtener URL del tenant).</li><li>Navegar a la URL del tenant en una ventana sin sesión activa.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar la pantalla de login del tenant con logo asignado.</li><li>Verificar que el logo aparece centrado horizontalmente en la pantalla.</li><li>Verificar que el logo está posicionado debajo del texto "¡Te damos la bienvenida al portal de empresas!".</li><li>Verificar que el logo está posicionado encima del campo de correo electrónico.</li><li>Verificar que entre el logo y el formulario existe una línea separadora.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El logo aparece centrado horizontalmente, debajo del texto de bienvenida y encima de la línea separadora que precede al formulario.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T4 <span style="font-size:9px;opacity:.5">(TC-LGN-012)</span></td><td><div class="test-name">Logo NO visible en portal genérico sin contexto de tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Existe un portal genérico de Rebu accesible (sin subdomain ni dominio de empresa)</li><li>El destino "Logo para login" de alguna empresa tiene un logo asignado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Obtener la URL del portal genérico de Rebu (sin subdominio de empresa).</li><li>Abrir una ventana de incógnito (sin sesión activa y sin cookies de tenant previo).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Navegar directamente al portal genérico de Rebu (URL sin contexto de tenant).</li><li>Observar la pantalla que se carga.</li><li>Verificar que no se muestra ningún logo institucional de empresa.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">La pantalla genérica no muestra ningún logo de empresa. Solo aparece el logo institucional de Rebu (si aplica), no el logo configurado para ningún tenant en particular.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T6 <span style="font-size:9px;opacity:.5">(TC-LGN-018)</span></td><td><div class="test-name">Al cambiar logo asignado, login refleja el nuevo logo</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado (Logo A) y es visible en la pantalla de login</li><li>La biblioteca de logos tiene al menos dos logos distintos disponibles</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Verificar que la biblioteca tiene al menos 2 logos.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones y verificar que "Logo para login" tiene el Logo A asignado.</li><li>Anotar o hacer screenshot del Logo A para comparar.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Como administrador, abrir el modal de "Logo para login" (hover › "Editar").</li><li>Hacer clic en "Reemplazar" en el footer izquierdo.</li><li>Seleccionar un logo distinto (Logo B) de la biblioteca.</li><li>Hacer clic en "Aplicar" para guardar el cambio.</li><li>Cerrar sesión del administrador.</li><li>Abrir una ventana de incógnito y navegar a la URL del tenant.</li><li>Observar el logo en la pantalla de login.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">La pantalla de login muestra el Logo B (el nuevo logo reemplazado). El Logo A ya no aparece. El cambio se refleja de inmediato.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T8 <span style="font-size:9px;opacity:.5">(TC-LGN-016)</span></td><td><div class="test-name">Logo de tenant 1 no se filtra al login de un segundo tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Empresa A tiene el destino "Logo para login" con un logo asignado (Logo A)</li><li>Empresa B existe en el sistema y tiene una URL de login propia</li><li>Empresa B NO tiene logo asignado al destino "Logo para login"</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de Empresa A.</li><li>Verificar que "Logo para login" tiene el Logo A asignado.</li><li>Anotar la URL del tenant de Empresa A y la URL del tenant de Empresa B.</li><li>Cerrar sesión y abrir una ventana de incógnito.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Navegar a la URL del tenant de Empresa B en la ventana de incógnito.</li><li>Observar la pantalla de login de Empresa B.</li><li>Verificar que el Logo A de Empresa A no aparece en la pantalla de login de Empresa B.</li><li>Verificar que la pantalla de Empresa B se muestra sin logo (si no tiene asignado).</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El logo asignado a Empresa A no aparece en la pantalla de login de Empresa B. El aislamiento multi-tenant es correcto — cada empresa muestra únicamente su propio logo.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T5 <span style="font-size:9px;opacity:.5">(TC-LGN-013 + 017)</span></td><td><div class="test-name">Sin logo asignado, pantalla de login no muestra logo ni espacio en blanco</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" de la empresa NO tiene logo asignado</li><li>La URL directa del tenant está disponible</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" tiene un logo asignado, eliminarlo: abrir modal › "Eliminar" › confirmar.</li><li>Confirmar que el bloque muestra el placeholder con borde punteado (sin logo asignado).</li><li>Cerrar sesión y abrir una ventana de incógnito.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Navegar a la URL directa del tenant en la ventana de incógnito.</li><li>Observar la pantalla de login completa.</li><li>Verificar que no aparece ningún logo.</li><li>Verificar que no existe un espacio en blanco vacío reservado donde iría el logo.</li><li>Verificar que el formulario (texto de bienvenida + correo + contraseña + botón) ocupa el espacio de forma continua sin gaps inesperados.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Sin logo asignado, la pantalla de login se muestra exactamente igual que antes de esta funcionalidad. No hay espacio en blanco reservado ni placeholder visible para el logo. Cubre TC-LGN-013 (sin logo desde el inicio) y TC-LGN-017 (estado post-eliminación).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div><!-- /tab-auto -->
+
+    <!-- TAB: MANUALES -->
+    <div id="tab-manual" class="tab-panel">
+      <div class="content">
+
+        <!-- ── REBU-4751 (manuales) ───────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4751" target="_blank" onclick="event.stopPropagation()">REBU-4751</a>
+              <span class="hu-title">Apariencia — Renderización del logo en pantalla de login</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">1 / 1 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LGN-010</td><td><div class="test-name">Logo renderizado con el recorte y zoom configurados en Asignaciones</div><div class="test-tags"><span class="tag tag-val">validación visual</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado con un recorte y zoom específicos (no el estado por defecto)</li><li>La URL directa del tenant está disponible</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Abrir el modal de "Logo para login" (clic en placeholder o "Editar").</li><li>Seleccionar un logo de la biblioteca.</li><li>En el modo recorte: ajustar el zoom a un valor reconocible (ej. 150%) y desplazar el logo hacia una posición visible y distinta al centro.</li><li>Hacer clic en "Aplicar" para guardar esa configuración de recorte.</li><li>Tomar nota visual o screenshot del recorte configurado para compararlo después.</li><li>Cerrar sesión.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Abrir una ventana de incógnito y navegar a la URL del tenant.</li><li>Observar el logo en la pantalla de login.</li><li>Comparar visualmente el logo mostrado en login con el recorte configurado en Asignaciones.</li><li>Verificar que el logo en login coincide con la región y zoom configurados (no aparece el logo completo sin recortar).</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El logo en la pantalla de login muestra exactamente el área recortada y con el zoom configurado en Asignaciones, sin diferencias perceptibles con la previsualización del modal.</td></tr>
+                <tr><th>No automatizable</th><td class="no-map">Requiere comparación visual del resultado del recorte — difícil de assertar programáticamente sin pixel-comparison. Mejor validación manual.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div><!-- /tab-manual -->
+
+  </div><!-- /bandeja -->
 
 <!-- RELEASE-END: v14.6.0 -->
 
@@ -770,9 +591,9 @@
       <!-- /ANTERIORES-COUNT -->
     </div>
     <!-- ANTERIORES-ITEMS-START -->
-    <div class="anteriores-empty" id="anteriores-empty">
+    <div class="anteriores-empty">
       <span class="empty-icon">📂</span>
-      <p>Aquí aparecerán los releases anteriores cuando generes el reporte de la siguiente versión. Cada release queda registrado con sus métricas y casos para consulta histórica.</p>
+      <p>Aquí aparecerán los releases anteriores cuando generes el reporte de la siguiente versión.</p>
     </div>
     <!-- ANTERIORES-ITEMS-END -->
   </section>
@@ -781,37 +602,24 @@
     <strong>Rebu Automation Suite</strong> · Generado el 23 jun 2026 · Rama <strong>REBU-4751</strong> · Entorno <strong>UAT</strong>
   </footer>
 
-</div><!-- /main-wrapper -->
+</div>
 
 <script>
   function toggleSidebar() {
-    const s = document.getElementById('sidebar');
-    const w = document.getElementById('main-wrapper');
-    s.classList.toggle('collapsed');
-    w.classList.toggle('sidebar-collapsed');
+    document.getElementById('sidebar').classList.toggle('collapsed');
+    document.getElementById('main-wrapper').classList.toggle('sidebar-collapsed');
   }
-  function openMobileSidebar() {
-    document.getElementById('sidebar').classList.add('mobile-open');
-    document.getElementById('overlay').classList.add('active');
-  }
-  function closeMobileSidebar() {
-    document.getElementById('sidebar').classList.remove('mobile-open');
-    document.getElementById('overlay').classList.remove('active');
-  }
+  function openMobileSidebar() { document.getElementById('sidebar').classList.add('mobile-open'); document.getElementById('overlay').classList.add('active'); }
+  function closeMobileSidebar() { document.getElementById('sidebar').classList.remove('mobile-open'); document.getElementById('overlay').classList.remove('active'); }
   function scrollToRelease(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
+    const el = document.getElementById(id); if (!el) return;
     const body = el.querySelector('.release-item-body');
-    if (body && !body.classList.contains('open')) {
-      const header = el.querySelector('.release-item-header');
-      if (header) toggleRelease(header);
-    }
+    if (body && !body.classList.contains('open')) toggleRelease(el.querySelector('.release-item-header'));
     setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
     closeMobileSidebar();
   }
   function headerClick(header) {
-    const section = header.closest('.hu-section');
-    const tbody   = section.querySelector('tbody');
+    const tbody = header.closest('.hu-section').querySelector('tbody');
     const wasCollapsed = header.classList.contains('collapsed');
     header.classList.toggle('collapsed', !wasCollapsed);
     tbody.style.display = wasCollapsed ? '' : 'none';
@@ -820,8 +628,11 @@
     const next = row.nextElementSibling;
     if (next && next.classList.contains('detail-row')) next.classList.toggle('open');
   }
-  function toggleRelease(header) {
-    header.classList.toggle('open');
-    header.nextElementSibling.classList.toggle('open');
+  function toggleRelease(header) { header.classList.toggle('open'); header.nextElementSibling.classList.toggle('open'); }
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    btn.classList.add('active');
   }
 </script>
