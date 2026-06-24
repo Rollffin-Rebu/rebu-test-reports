@@ -239,7 +239,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v14.6.0 | 2026-06-23 | Pass: 44 | Fail: 0 | Branch: REBU-4751 -->
+<!-- RELEASE-START: v14.6.0 | 2026-06-23 | Pass: 45 | Fail: 0 | Branch: REBU-4751 -->
 
   <header class="hero" id="release-v14-6-0">
     <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -257,15 +257,15 @@
 
   <div class="bandeja">
     <div class="summary">
-      <div class="card pass"><div class="card-value">44</div><div class="card-label">Pasaron</div></div>
+      <div class="card pass"><div class="card-value">45</div><div class="card-label">Pasaron</div></div>
       <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-      <div class="card total"><div class="card-value">44</div><div class="card-label">Total</div></div>
+      <div class="card total"><div class="card-value">45</div><div class="card-label">Total</div></div>
       <div class="card time"><div class="card-value">~7 m</div><div class="card-label">Duración</div></div>
     </div>
 
     <!-- TABS -->
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">44</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">45</span></button>
       <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">1</span></button>
     </div>
     <hr class="tab-divider">
@@ -549,7 +549,7 @@
               <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4739" target="_blank" onclick="event.stopPropagation()">REBU-4739</a>
               <span class="hu-title">Cálculo de retención ISSS en planilla extraordinaria</span>
             </div>
-            <div class="hu-header-right"><span class="hu-badge">18 / 18 ✓</span><span class="hu-toggle">▼</span></div>
+            <div class="hu-header-right"><span class="hu-badge">19 / 19 ✓</span><span class="hu-toggle">▼</span></div>
           </div>
           <table class="test-table">
             <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
@@ -607,6 +607,9 @@
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-507</td><td><div class="test-name">Concepto de ingreso sin ISSS → no se le descuenta ISSS (Quincenal y Mensual)</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
               <tr class="detail-row"><td colspan="3">Un concepto de ingreso configurado sin ISSS (solo previsional + ISR) no genera retención ISSS sobre ese monto, en ambas opciones (Quincenal y Mensual).</td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-509</td><td><div class="test-name">Ciclo mensual ISSS empleado + patronal (Q1 → extraordinaria → Q2)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3">Flujo de extremo a extremo con colaborador de $1,200: Q1 regular (1–15 ene) retiene ISSS empleado $15 y patronal $37.50; una extraordinaria en esa misma quincena (con comisión de $100 que aplica ISSS) no retiene nada (empleado $0 / patronal $0) porque la base quincenal ya se usó; y Q2 regular (16–31 ene) vuelve a $15 / $37.50. Confirma el tope por quincena y, por primera vez, el aporte patronal ISSS.</td></tr>
             </tbody>
           </table>
         </div>
