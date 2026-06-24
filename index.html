@@ -554,62 +554,178 @@
           <table class="test-table">
             <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
             <tbody>
+
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-489</td><td><div class="test-name">Campo "Cálculo de retención ISSS" visible al seleccionar Tipo Contratación = Empleado</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">En el modal "Agregar Planilla Extraordinaria", al elegir Tipo de Contratación = Empleado, aparece el campo "Cálculo de retención ISSS". Visibilidad condicional correcta.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Empresa con al menos un colaborador tipo Empleado activo. Usuario con permiso de crear planillas.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión en el portal con un usuario administrador de planillas.</li><li>Si no existe, crear un colaborador Empleado (Salario $600, AFP Confía, ISSS activo) y guardar.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › seleccionar "Planilla Extraordinaria".</li><li>En el modal, seleccionar Tipo de Contratación = "Empleado".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo "Cálculo de retención ISSS" se muestra en el modal.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-490</td><td><div class="test-name">Campo NO visible cuando Tipo Contratación = Servicios Profesionales</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Para Servicios Profesionales el campo "Cálculo de retención ISSS" no se muestra: aplica únicamente a colaboradores tipo Empleado.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Empresa con un colaborador tipo Servicios Profesionales activo.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Si no existe, crear colaborador tipo "Servicios Profesionales" y guardar.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria".</li><li>Seleccionar Tipo de Contratación = "Servicios Profesionales".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo "Cálculo de retención ISSS" NO se muestra.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-491</td><td><div class="test-name">Campo obligatorio: bloquea crear la extraordinaria si no se selecciona</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">El sistema impide crear la planilla extraordinaria de un Empleado sin elegir el cálculo de retención ISSS y devuelve el error de campo requerido.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador tipo Empleado activo.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; seleccionar Tipo de Contratación = "Empleado".</li><li>Completar los demás campos requeridos pero dejar "Cálculo de retención ISSS" sin seleccionar.</li><li>Intentar crear/confirmar la planilla.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El sistema impide crear la planilla y muestra mensaje de campo requerido en "Cálculo de retención ISSS".</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-493</td><td><div class="test-name">Opciones exactas: Quincenal ($15.00) y Mensual ($30.00)</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">El selector ofrece exactamente dos opciones: "Quincenal (Tope de $15.00)" y "Mensual (Tope de $30.00)", sin opciones adicionales.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador tipo Empleado activo.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; seleccionar Tipo de Contratación = "Empleado".</li><li>Desplegar el campo "Cálculo de retención ISSS".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Se listan exactamente dos opciones: "Quincenal (Tope de $15.00)" y "Mensual (Tope de $30.00)"; sin opciones adicionales.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-494</td><td><div class="test-name">Valor seleccionado visible como solo lectura en Configuración (ⓘ)</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">La opción de cálculo elegida al crear la planilla se expone como dato de solo lectura en el modal de Configuración de la planilla.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Una planilla extraordinaria creada con opción "Quincenal (Tope de $15.00)".</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear una planilla extraordinaria para un colaborador Empleado con "Cálculo de retención ISSS" = "Quincenal (Tope de $15.00)".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Abrir la planilla creada › clic en el ícono ⓘ "Configuración de planilla".</li><li>Localizar el dato "Cálculo de retención ISSS".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Se muestra "Quincenal (Tope de $15.00)" como dato de solo lectura, junto a los demás parámetros de creación; no editable.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-495</td><td><div class="test-name">Quincenal sin retención previa: bruto $500 → ISSS $15.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Con opción Quincenal y sin retención previa en el mes, retiene $15.00 (3% de $500), justo en el tope quincenal.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo; sin planillas finalizadas previas en el mes; bruto de la extraordinaria $500.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Colaborador Empleado con ISSS activo y bruto $500 (3% = $15.00); sin planillas finalizadas del mes.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; seleccionar "Quincenal (Tope de $15.00)".</li><li>Avanzar el wizard y revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $15.00 (3% de $500, dentro del tope quincenal).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-496</td><td><div class="test-name">Quincenal con $15 ya retenidos en planilla regular finalizada → $0.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Si el colaborador ya alcanzó el tope de $15 en una planilla regular finalizada de la quincena, la extraordinaria no le retiene ISSS adicional ($0.00).</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con una planilla regular FINALIZADA en la quincena donde ya se le retuvo $15.00 de ISSS.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR una planilla regular (bruto $500 → ISSS $15.00) en la quincena objetivo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria para el mismo colaborador, mismo mes; seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $0.00 (tope quincenal $15 ya alcanzado).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-497</td><td><div class="test-name">Quincenal con $9 retenidos → retiene remanente $6.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Con $9 ya retenidos en el mes, la extraordinaria retiene solo el remanente hasta completar el tope de $15 → $6.00.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con planilla regular finalizada en la quincena donde se le retuvo $9.00 (bruto $300).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR planilla regular (bruto $300 → ISSS $9.00) en la quincena objetivo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria misma quincena con bruto que genere 3% ≥ $6 (ej. $300); seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $6.00 (remanente $15 − $9; el tope limita a $6).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-498</td><td><div class="test-name">Quincenal con bruto $200 → ISSS $6.00 (3%, no fuerza el tope)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Cuando el ingreso bruto no justifica el tope, se retiene solo el 3% del bruto ($6.00 de $200), sin forzar el tope de $15.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo; sin retención previa en el mes; bruto de la extraordinaria $200.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Colaborador Empleado sin planillas finalizadas del mes; planilla extraordinaria con bruto $200.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $6.00 (3% de $200, por debajo del tope $15).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-499</td><td><div class="test-name">Quincenal con $14.99 retenidos → retiene exactamente $0.01</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Caso límite de centavos: con $14.99 acumulados en la quincena, la extraordinaria retiene exactamente $0.01 hasta completar el tope de $15.00.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con $14.99 retenidos por ISSS en planillas finalizadas de la quincena.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Construir el acumulado de ISSS de la quincena en $14.99 (planilla regular finalizada con bruto que produzca $14.99).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria misma quincena con bruto que genere 3% ≥ $0.01; seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $0.01 (remanente exacto hasta el tope $15.00).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-500</td><td><div class="test-name">Mensual sin retención previa: bruto $1,000 → ISSS $30.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Con opción Mensual y sin retención previa, retiene $30.00 (3% de $1,000), justo en el tope mensual.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo; sin planillas finalizadas del mes; bruto de la extraordinaria $1,000.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Colaborador Empleado sin planillas finalizadas del mes; planilla extraordinaria con bruto $1,000.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; seleccionar "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $30.00 (3% de $1,000, dentro del tope mensual).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-501</td><td><div class="test-name">Mensual con $30 ya retenidos en el mes → $0.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Con $30 acumulados en el mes (dos quincenas regulares de $15), la extraordinaria Mensual no retiene ISSS adicional ($0.00).</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con $30.00 de ISSS ya retenidos en planillas finalizadas del mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR planillas regulares del mes hasta acumular $30.00 de ISSS (1ra y 2da quincena con $15 c/u).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria del mismo mes; seleccionar "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $0.00 (tope mensual $30 ya alcanzado).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-502</td><td><div class="test-name">Mensual con $15 retenidos (1ra quincena) → remanente $15.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Con $15 retenidos en la primera quincena, la extraordinaria Mensual retiene el remanente $15.00 hasta el tope mensual de $30.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con $15.00 retenidos en la 1ra quincena (planilla regular finalizada).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR planilla regular 1ra quincena (bruto $500 → ISSS $15.00).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria del mismo mes con bruto que genere 3% ≥ $15 (ej. $500); seleccionar "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $15.00 (remanente $30 − $15).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-503</td><td><div class="test-name">Mensual con $21 acumulados → retiene remanente $9.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Con $21 acumulados en el mes, la extraordinaria Mensual retiene el remanente $9.00 hasta completar el tope de $30.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con $21.00 de ISSS retenidos en planillas finalizadas del mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Construir acumulado de $21.00 vía planillas regulares finalizadas del mes.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria del mismo mes con bruto que genere 3% ≥ $9; seleccionar "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $9.00 (remanente $30 − $21).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-504</td><td><div class="test-name">Precisión: bruto $383.50 (3%) → ISSS $11.505 (sin truncar a $11.50)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">El cálculo conserva la precisión decimal: 3% de $383.50 = $11.505, sin truncar a $11.50. (El backend conserva 3 decimales.)</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo; bruto de la extraordinaria $383.50 (3% = $11.505); sin retención previa.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Preparar planilla extraordinaria con bruto $383.50 para un colaborador Empleado sin planillas finalizadas del mes.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS y su precisión decimal.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $11.505 (3% de $383.50; el backend conserva 3 decimales, no trunca a $11.50).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-505</td><td><div class="test-name">El acumulado considera planillas EXTRAORDINARIAS finalizadas → retiene remanente</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Una planilla extraordinaria finalizada también suma al acumulado del mes: con ~$10 ya retenidos en una extraordinaria previa, la segunda retiene el remanente (~$20).</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con una planilla extraordinaria FINALIZADA del mes donde se retuvo ISSS (ej. $10).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR una planilla extraordinaria del mes con retención ISSS ≈ $10.00.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear una segunda planilla extraordinaria del mismo mes; seleccionar "Mensual (Tope de $30.00)" con bruto suficiente.</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = remanente ≈ $20.00 ($30 − $10 retenido en la extraordinaria previa); confirma que las extraordinarias finalizadas cuentan en el acumulado.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-506</td><td><div class="test-name">Planilla regular en borrador no reduce el remanente → $30.00</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Una planilla regular en estado borrador (no finalizada) no descuenta del tope: la extraordinaria Mensual retiene $30.00. Solo las planillas finalizadas afectan el acumulado.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con una planilla regular en estado borrador (no finalizada) en el mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear una planilla regular del mes y dejarla en borrador SIN finalizar.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria del mismo mes; seleccionar "Mensual (Tope de $30.00)" con bruto $1,000.</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $30.00 (la planilla en borrador NO reduce el remanente; solo cuentan las finalizadas).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-507</td><td><div class="test-name">Concepto de ingreso sin ISSS → no se le descuenta ISSS (Quincenal y Mensual)</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Un concepto de ingreso configurado sin ISSS (solo previsional + ISR) no genera retención ISSS sobre ese monto, en ambas opciones (Quincenal y Mensual).</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Concepto de ingreso configurado sin ISSS (appliesSS:false, grupo solo previsional + ISR).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear un concepto de ingreso exento de ISSS en el grupo de conceptos sin ISSS.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; agregar en Remuneraciones el concepto exento de ISSS.</li><li>Seleccionar "Quincenal (Tope de $15.00)" y luego repetir con "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $0.00 en ambas opciones (el monto del concepto exento no genera retención ISSS).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
 
               <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-509</td><td><div class="test-name">Ciclo mensual ISSS empleado + patronal (Q1 → extraordinaria → Q2)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-              <tr class="detail-row"><td colspan="3">Flujo de extremo a extremo con colaborador de $1,200: Q1 regular (1–15 ene) retiene ISSS empleado $15 y patronal $37.50; una extraordinaria en esa misma quincena (con comisión de $100 que aplica ISSS) no retiene nada (empleado $0 / patronal $0) porque la base quincenal ya se usó; y Q2 regular (16–31 ene) vuelve a $15 / $37.50. Confirma el tope por quincena y, por primera vez, el aporte patronal ISSS.</td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo, salario $1,200 (base ISSS topeada a $1,000 → bruto quincenal $500), fecha de ingreso 02-feb-2024.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear el colaborador de $1,200 y asociarlo a una planilla quincenal.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Correr Q1 regular (1–15 ene): avanzar a Descuentos (paso 2) y Aportes patronales (paso 3); verificar ISSS empleado y patronal; finalizar.</li><li>Crear planilla extraordinaria misma quincena (Quincenal $15); agregar comisión de $100 que aplica ISSS; avanzar a pasos 2 y 3; verificar; finalizar.</li><li>Correr Q2 regular (16–31 ene); avanzar a pasos 2 y 3; verificar.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Q1: ISSS empleado $15 / patronal $37.50. Extraordinaria (quincena ya topeada): empleado $0 / patronal $0. Q2 (quincena nueva): empleado $15 / patronal $37.50. Confirma el tope por quincena y el aporte patronal ISSS.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
             </tbody>
           </table>
         </div>
