@@ -266,7 +266,7 @@
     <!-- TABS -->
     <div class="tab-nav">
       <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">46</span></button>
-      <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">1</span></button>
+      <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">12</span></button>
     </div>
     <hr class="tab-divider">
 
@@ -789,6 +789,124 @@
                 <tr><th>Pasos</th><td><ol><li>Abrir una ventana de incógnito y navegar a la URL del tenant.</li><li>Observar el logo en la pantalla de login.</li><li>Comparar visualmente el logo mostrado en login con el recorte configurado en Asignaciones.</li><li>Verificar que el logo en login coincide con la región y zoom configurados (no aparece el logo completo sin recortar).</li></ol></td></tr>
                 <tr><th>Resultado esperado</th><td class="result-text">El logo en la pantalla de login muestra exactamente el área recortada y con el zoom configurado en Asignaciones, sin diferencias perceptibles con la previsualización del modal.</td></tr>
                 <tr><th>No automatizable</th><td class="no-map">Requiere comparación visual del resultado del recorte — difícil de assertar programáticamente sin pixel-comparison. Mejor validación manual.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── REBU-4739 (manuales) ───────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4739" target="_blank" onclick="event.stopPropagation()">REBU-4739</a>
+              <span class="hu-title">Cálculo de retención ISSS en planilla extraordinaria</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">11 / 11 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-492</td><td><div class="test-name">El campo "Cálculo de retención ISSS" se muestra sin valor por defecto</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador tipo Empleado activo.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; seleccionar Tipo de Contratación = "Empleado".</li><li>Observar el estado inicial del campo "Cálculo de retención ISSS".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo aparece vacío / sin opción preseleccionada (placeholder).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-508</td><td><div class="test-name">Usuario sin permiso de crear planilla extraordinaria no accede al modal</div><div class="test-tags"><span class="tag tag-val">permisos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Usuario con rol sin permiso de creación de planilla extraordinaria.</td></tr>
+                <tr><th>Setup</th><td><ol><li>En Roles y Permisos, crear/usar un rol sin el permiso de crear planilla extraordinaria y asignarlo a un usuario de prueba.</li><li>Iniciar sesión con ese usuario.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Intentar acceder a Planilla › Agregar planilla › "Planilla Extraordinaria".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">La acción está deshabilitada/oculta o el sistema bloquea el acceso al modal; no se llega al campo "Cálculo de retención ISSS".</td></tr>
+                <tr><th>No automatizable</th><td class="no-map">No — depende de configuración de roles y es de baja frecuencia de regresión.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-510</td><td><div class="test-name">Mensual con acumulado ya superior al tope ($32 previos) → retención $0.00, nunca negativa</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con retención ISSS configurada y $32.00 ya retenidos por ISSS en planillas finalizadas del mes (tope excedido por ajuste previo).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo.</li><li>Generar y finalizar planillas regulares del mes que acumulen $32.00 de retención ISSS.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Mensual (Tope de $30.00)".</li><li>Confirmar y procesar; revisar la retención ISSS aplicada.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Retención ISSS = $0.00. El sistema no aplica retención negativa ni "devuelve" el excedente.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-511</td><td><div class="test-name">El acumulado se evalúa por mes calendario: retención de junio no afecta planilla de julio</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con retención ISSS configurada, con $30.00 retenidos en planillas finalizadas de junio.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo.</li><li>Finalizar planillas de junio que acumulen $30.00 de retención ISSS.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria" con período en julio; Tipo: Empleado.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Mensual (Tope de $30.00)".</li><li>Confirmar y procesar la planilla de julio; revisar la retención ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El tope de julio se evalúa solo con el acumulado de julio (=$0); se retiene normalmente hasta $30 según el bruto. La retención de junio no afecta julio.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-512</td><td><div class="test-name">Multi-colaborador en una misma extraordinaria: cálculo independiente del acumulado por colaborador</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Dos colaboradores Empleado con ISSS configurado: A con $15.00 ya retenidos en el mes; B sin retención previa.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Crear Colaborador A 'Ana Reyes' (Empleado, $1,000, ISSS activo) y finalizar planillas que acumulen $15.00 de ISSS.</li><li>Crear Colaborador B 'Beto Lara' (Empleado, $1,000, ISSS activo) sin planillas finalizadas del mes.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado; incluir a ambos.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Mensual (Tope de $30.00)".</li><li>Confirmar y procesar; revisar la retención ISSS de A y de B.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">A retiene el remanente $15.00 (hasta completar $30); B retiene hasta $30 según su bruto. Cálculos independientes por colaborador, sin mezclar acumulados.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-513</td><td><div class="test-name">Remanente con decimales: acumulado $9.34 (Quincenal) → remanente exacto $5.66 sin perder centavos</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS configurado, $9.34 retenidos en planilla finalizada del mes, y bruto en la extraordinaria que justifique completar el tope.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo y bruto ≥ $189 en la extraordinaria (3% ≥ $5.66).</li><li>Finalizar una planilla del mes que deje $9.34 de retención ISSS acumulada.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Quincenal (Tope de $15.00)".</li><li>Confirmar y procesar; revisar la retención ISSS con 2 decimales.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Retención ISSS = $5.66 exactos ($15.00 − $9.34). El acumulado del mes queda en $15.00 exacto, sin arrastres por coma flotante.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-514</td><td><div class="test-name">Mensual con bruto bajo ($200) que no justifica el tope → retiene 3% del bruto ($6.00)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS configurado, sin retención previa en el mes, con bruto $200 en la extraordinaria.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo.</li><li>Asegurar que no existan planillas finalizadas del colaborador en el mes.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado; asignar bruto $200.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Mensual (Tope de $30.00)".</li><li>Confirmar y procesar; revisar la retención ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Retención ISSS = $6.00 (3% de $200), menor al remanente $30; el sistema no fuerza el tope cuando el bruto no lo justifica.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-515</td><td><div class="test-name">Cambiar Tipo de Contratación Empleado → Servicios Profesionales oculta el campo y no aplica retención</div><div class="test-tags"><span class="tag tag-val">validación</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Modal "Agregar Planilla Extraordinaria" abierto.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar Tipo: "Empleado" y verificar que aparece el campo "Cálculo de retención ISSS"; seleccionar una opción.</li><li>Cambiar el Tipo de Contratación a "Servicios Profesionales".</li><li>Observar el campo; confirmar y procesar la planilla.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo desaparece al seleccionar Servicios Profesionales y deja de ser obligatorio; la planilla se crea sin requerirlo y sin aplicar retención ISSS por este campo.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-516</td><td><div class="test-name">Valor "Cálculo de retención ISSS" en modal Configuración es solo lectura y no editable</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Planilla extraordinaria ya creada para tipo Empleado con la opción "Mensual (Tope de $30.00)".</td></tr>
+                <tr><th>Setup</th><td><ol><li>Crear y confirmar una planilla extraordinaria (ver TC-PLA-519) con Tipo: Empleado y "Cálculo de retención ISSS" = "Mensual (Tope de $30.00)".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Abrir el modal "Configuración de planilla" desde el ícono ⓘ.</li><li>Intentar modificar el valor del campo "Cálculo de retención ISSS".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo se muestra como solo lectura con "Mensual (Tope de $30.00)"; no permite edición ni despliega selector. El valor coincide con el usado al crear la planilla.</td></tr>
+                <tr><th>No automatizable</th><td class="no-map">No — verificación principalmente visual/de estado de UI; baja frecuencia de regresión. Complementa TC-PLA-494.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-517</td><td><div class="test-name">Colaborador con ISSS configurado pero bruto $0 en la extraordinaria → retención $0.00</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS configurado, sin retención previa en el mes, con bruto $0.00 en la extraordinaria.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado; dejar el bruto del colaborador en $0.00 (sin conceptos de ingreso).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Quincenal (Tope de $15.00)" (o Mensual — el resultado debe ser el mismo).</li><li>Confirmar y procesar; revisar la retención ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Retención ISSS = $0.00, ya que no hay base sobre la cual aplicar el 3%, independientemente de la opción.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-519</td><td><div class="test-name">Cambiar la opción Quincenal↔Mensual dentro del modal antes de confirmar usa la última selección</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado activo, con retención ISSS configurada, sin retención previa en el mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Crear colaborador 'Carlos Mejía' (Empleado, $1,000, AFP Confía, ISSS activo); guardar.</li><li>Asegurar que no existan planillas finalizadas del colaborador en el mes.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>En "Cálculo de retención ISSS" seleccionar "Quincenal (Tope de $15.00)".</li><li>Cambiar la selección a "Mensual (Tope de $30.00)" antes de confirmar.</li><li>Confirmar y procesar; revisar la retención ISSS aplicada.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El sistema calcula con la opción Mensual (tope $30), no con la Quincenal inicial. El modal de Configuración muestra "Mensual (Tope de $30.00)".</td></tr>
                 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
               </table></td></tr>
 
