@@ -58,8 +58,8 @@
 
     <!-- TABS -->
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">118</span></button>
-      <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">26</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">119</span></button>
+      <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">25</span></button>
     </div>
     <hr class="tab-divider">
 
@@ -68,7 +68,7 @@
       <div class="env-tab-group">
         <div class="env-tab-nav">
           <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">48 ✓</span></button>
-          <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">70 ✓</span></button>
+          <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">71 ✓</span></button>
         </div>
         <div id="env-uat" class="env-tab-panel active">
           <div class="content">
@@ -618,7 +618,7 @@
               <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4772" target="_blank" onclick="event.stopPropagation()">REBU-4772</a>
               <span class="hu-title">Editar cargo</span>
             </div>
-            <div class="hu-header-right"><span class="hu-badge">13 / 13 ✓</span><span class="hu-toggle">▼</span></div>
+            <div class="hu-header-right"><span class="hu-badge">14 / 14 ✓</span><span class="hu-toggle">▼</span></div>
           </div>
           <table class="test-table">
             <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
@@ -649,6 +649,9 @@
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Existe un cargo.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Verificar/crear Cargo B.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Abrir Editar de Cargo B.</li><li>Intentar seleccionar Cargo B como su propio Jefe Directo.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El sistema impide la auto-asignación (la opción no está disponible o el BE rechaza con error de validación). No se persiste.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-100</td><td><div class="test-name">Verificar el manejo de un nombre de cargo con longitud máxima y caracteres especiales/acentos al editar.</div><div class="test-tags"><span class="tag tag-edge">edge case</span><span class="tag tag-val">validación</span><span class="tag tag-val">ui</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Existe un cargo editable.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Verificar/crear Analista QA 4771.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Abrir Editar del cargo.</li><li>Cambiar el Nombre a uno en el límite máximo de caracteres, con acentos y símbolos (ej. Coordinador de Operaciones &amp; Logística (Ñ/áé) 4772).</li><li>Continuar › Confirmar y revisar la tabla.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El nombre se guarda conservando acentos/caracteres especiales (sin truncado inesperado ni mojibake), o el sistema impide superar el límite con un mensaje claro. La tabla, el dropdown y el organigrama muestran el nombre correctamente.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+            
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-091</td><td><div class="test-name">Quitar el Jefe Directo de un cargo (campo opcional) y verificar que pasa a nivel raíz en el organigrama.</div><div class="test-tags"><span class="tag tag-edge">edge case</span><span class="tag tag-val">ui</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Existe un cargo con jefe directo asignado.</li></ul></td></tr>
             </tbody>
           </table>
         </div>
@@ -1277,13 +1280,11 @@
               <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4772" target="_blank" onclick="event.stopPropagation()">REBU-4772</a>
               <span class="hu-title">Editar cargo — pendientes</span>
             </div>
-            <div class="hu-header-right"><span class="hu-badge">5 / 5 ✓</span><span class="hu-toggle">▼</span></div>
+            <div class="hu-header-right"><span class="hu-badge">4 / 4 ✓</span><span class="hu-toggle">▼</span></div>
           </div>
           <table class="test-table">
             <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-            <tbody>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-091</td><td><div class="test-name">Quitar el Jefe Directo de un cargo (campo opcional) y verificar que pasa a nivel raíz en el organigrama.</div><div class="test-tags"><span class="tag tag-edge">edge case</span><span class="tag tag-val">ui</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Existe un cargo con jefe directo asignado.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Verificar/crear Asistente Administrativo 4771 con jefe directo Coordinador Administrativo.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Abrir Editar del cargo.</li><li>Limpiar la selección del campo Jefe Directo (dejarlo sin jefe).</li><li>Continuar › Confirmar.</li><li>Revisar la tabla de Cargos y el organigrama.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cargo queda sin jefe directo (columna Jefe Directo vacía) y aparece en el nivel raíz del organigrama.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+            <tbody><tr><th>Setup</th><td><ol><li>Verificar/crear Asistente Administrativo 4771 con jefe directo Coordinador Administrativo.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Abrir Editar del cargo.</li><li>Limpiar la selección del campo Jefe Directo (dejarlo sin jefe).</li><li>Continuar › Confirmar.</li><li>Revisar la tabla de Cargos y el organigrama.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cargo queda sin jefe directo (columna Jefe Directo vacía) y aparece en el nivel raíz del organigrama.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-097</td><td><div class="test-name">(REBU-4813 — sujeto a confirmación con PO) Reasignar el ocupante de un cargo: al seleccionar un colaborador que ya tiene cargo, se muestra el mensaje de advertencia y, al confirmar, el cargo anterior queda vacante.</div><div class="test-tags"><span class="tag tag-edge">edge case</span><span class="tag tag-val">api·ui</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Existen dos cargos ocupados: Cargo X (ocupado por Colaborador P) y Cargo Y (ocupado por Colaborador Q).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Crear Colaborador P asignado a Cargo X y Colaborador Q asignado a Cargo Y (desde el perfil de cada colaborador).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Abrir Editar de Cargo X.</li><li>En el campo Colaborador, seleccionar a Colaborador Q (que ya está en Cargo Y).</li><li>Observar el mensaje de advertencia.</li><li>Continuar › Confirmar.</li><li>Revisar la tabla de Cargos.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Se muestra el mensaje *&quot;[Colaborador Q] está actualmente asignado a [Código] [Cargo Y]. Al confirmar, quedará asignado a este cargo y [Cargo Y] pasará a estar vacante.&quot;* Tras confirmar, Cargo X queda ocupado por Colaborador Q, Cargo Y queda vacante. *(⚠️ Este caso contradice AC3/AC6 de 4772 — confirmar con PO antes de ejecutar.)*</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-098</td><td><div class="test-name">Verificar la doble auditoría: editar Cargo/Jefe Directo genera un registro en AuditLog (sobre la posición) y en el Historial de Cambios del colaborador afectado (REBU-4801).</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-val">api·ui</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
