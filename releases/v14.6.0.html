@@ -1,0 +1,735 @@
+<title>Rebu — Reporte E2E · Release v14.6.0</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../report.css">
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo" onclick="toggleSidebar()" title="Expandir / colapsar">R</div>
+    <span class="sidebar-title">Releases</span>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">◀</button>
+  </div>
+  <div class="sidebar-body">
+    <div class="nav-group-label">Actual</div>
+    <a class="nav-item current" href="../index.html" data-tip="v15.0.0">
+      <span class="nav-icon">🚀</span>
+      <div class="nav-item-body"><div class="nav-version">v15.0.0</div><div class="nav-date">02 jul 2026</div></div>
+      <span class="nav-minibadge latest">LATEST</span>
+    </a>
+    <hr class="nav-divider">
+    <div class="nav-group-label">Anteriores</div>
+    
+    <a class="nav-item" href="../releases/v14.6.0.html" data-tip="v14.6.0">
+      <span class="nav-icon">📦</span>
+      <div class="nav-item-body"><div class="nav-version">v14.6.0</div><div class="nav-date">23 jun 2026</div></div>
+      <span class="nav-minibadge">46 ✓</span>
+    </a>
+  </div>
+</nav>
+
+<div class="overlay" id="overlay" onclick="closeMobileSidebar()"></div>
+<button class="mobile-fab" onclick="openMobileSidebar()">📋</button>
+
+<div class="main-wrapper" id="main-wrapper">
+
+<header class="hero" id="release-v14-6-0">
+    <div class="hero-eyebrow">Reporte de Automatización E2E</div>
+    <h1 class="hero-title">Release <span>v14.6.0</span></h1>
+    <div class="hero-meta">
+      <span>📅 <strong>25 jun 2026</strong></span>
+      <span class="sep">·</span>
+      <span>🌿 <strong>REBU-4751</strong></span>
+      <span class="sep">·</span>
+      <span>🌐 <strong>Producción</strong></span>
+      <span class="sep">·</span>
+      <span>🔗 <strong>test.rebuhr.com</strong></span>
+    </div>
+  </header>
+
+  <div class="bandeja">
+    <div class="summary">
+      <div class="card pass"><div class="card-value">46</div><div class="card-label">Pasaron</div></div>
+      <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
+      <div class="card total"><div class="card-value">46</div><div class="card-label">Total</div></div>
+      <div class="card time"><div class="card-value">~7 m</div><div class="card-label">Duración</div></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">46</span></button>
+      <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">12</span></button>
+    </div>
+    <hr class="tab-divider">
+
+    <!-- TAB: AUTOMATIZADOS -->
+    <div id="tab-auto" class="tab-panel active">
+      <div class="content">
+
+        <!-- ── REBU-4750 ──────────────────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4750" target="_blank" onclick="event.stopPropagation()">REBU-4750</a>
+              <span class="hu-title">Apariencia — subtab Asignaciones</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">18 / 18 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-020</td><td><div class="test-name">Los tres bloques aparecen en el orden correcto en Asignaciones</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador activo con acceso al módulo Apariencia</li><li>La empresa tiene los tres destinos de logo configurados en el sistema</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión en el Business Portal con credenciales de administrador.</li><li>Navegar al módulo de Configuración de Empresa › Apariencia.</li><li>Hacer clic en el subtab "Asignaciones".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el orden de los bloques en el subtab Asignaciones.</li><li>Verificar que el primer bloque sea "Logo para login".</li><li>Verificar que el segundo bloque sea "Logo del sistema".</li><li>Verificar que el tercer bloque sea "Logo en boleta de pago".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Los tres bloques aparecen en el orden exacto: 1° "Logo para login", 2° "Logo del sistema", 3° "Logo en boleta de pago". No existen bloques adicionales ni el orden difiere del especificado.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Orden de los tres bloques</div><img src="../assets/v14.6.0/TC-CFG-020/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-021</td><td><div class="test-name">Estado placeholder cuando "Logo para login" no tiene logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene ningún logo asignado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" ya tiene un logo asignado: hacer clic en el bloque › "Editar" › "Eliminar" › confirmar eliminación para dejar el destino sin logo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li><li>Verificar que el bloque muestra un área vacía con borde punteado (dashed border).</li><li>Verificar que no se muestra ninguna imagen de previsualización.</li><li>Verificar que no aparece el overlay "Editar".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El bloque "Logo para login" muestra un placeholder con borde punteado y sin imagen de previsualización ni overlay de edición.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Estado placeholder</div><img src="../assets/v14.6.0/TC-CFG-021/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-022</td><td><div class="test-name">Previsualización y overlay "Editar" visibles con logo asignado</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" tiene un logo asignado y guardado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" no tiene logo asignado: hacer clic en el placeholder › seleccionar cualquier logo › hacer clic en "Aplicar".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el bloque "Logo para login" en estado con logo asignado.</li><li>Verificar que se muestra la imagen de previsualización del logo asignado.</li><li>Pasar el cursor (hover) sobre el bloque "Logo para login".</li><li>Verificar que aparece el overlay con la etiqueta "Editar".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Con logo asignado, el bloque muestra la imagen de previsualización. Al hacer hover, aparece el overlay "Editar" sobre la imagen.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Thumbnail y overlay Editar</div><img src="../assets/v14.6.0/TC-CFG-022/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-023</td><td><div class="test-name">Clic en placeholder abre modal con título "Logo para login"</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado (muestra placeholder)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si el bloque tiene logo asignado, eliminarlo siguiendo el Setup de TC-CFG-021 paso 3.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic directamente sobre el área del placeholder (borde punteado) del bloque "Logo para login".</li><li>Verificar que se abre un modal/diálogo.</li><li>Verificar que el título del modal es "Logo para login".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al hacer clic en el placeholder, se abre el modal de asignación con el título "Logo para login".</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-024</td><td><div class="test-name">Clic en overlay "Editar" abre modal con título "Logo para login"</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" tiene un logo asignado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si no hay logo asignado al destino, asignarlo: clic en placeholder › seleccionar logo › "Aplicar".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Pasar el cursor sobre el bloque "Logo para login" para que aparezca el overlay "Editar".</li><li>Hacer clic en "Editar".</li><li>Verificar que se abre el modal de asignación.</li><li>Verificar que el título del modal es "Logo para login".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al hacer clic en "Editar", se abre el modal con el título "Logo para login" en modo recorte (ya que hay logo asignado).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-025</td><td><div class="test-name">Modal se abre en modo "elegir logo": combobox visible, sin previsualización</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado</li><li>La biblioteca de logos tiene al menos un logo cargado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Verificar que existen logos en la biblioteca (Apariencia › Logos). Si no hay ninguno, cargar un logo de prueba (PNG, mínimo 200×200px).</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si el bloque tiene logo asignado, eliminarlo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic en el placeholder del bloque "Logo para login".</li><li>Observar el contenido del modal que se abre.</li><li>Verificar que el modal muestra el modo "elegir logo" (lista/galería de logos disponibles en biblioteca).</li><li>Verificar que no se muestra el canvas de recorte en este primer paso.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modal se abre en modo "elegir logo" mostrando la biblioteca de logos disponibles, sin canvas de recorte.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-026</td><td><div class="test-name">Seleccionar logo en combobox activa la vista de recorte</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado</li><li>La biblioteca de logos tiene al menos un logo cargado</li><li>El modal de "Logo para login" está abierto en modo "elegir logo"</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si hay logo asignado, eliminarlo.</li><li>Hacer clic en el placeholder de "Logo para login" para abrir el modal.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic sobre cualquier logo de la biblioteca dentro del modal.</li><li>Observar el cambio de estado del modal.</li><li>Verificar que el modal transiciona al modo recorte (aparece el canvas de recorte).</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al seleccionar un logo de la biblioteca, el modal cambia al modo recorte mostrando el canvas con el logo seleccionado.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-027</td><td><div class="test-name">Modo recorte: canvas, slider de zoom y link "Restablecer" visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte con un logo seleccionado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Hacer clic en el placeholder (o "Editar" si hay logo asignado) para abrir el modal.</li><li>Si el modal abre en modo "elegir logo", seleccionar cualquier logo para pasar al modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el canvas del modal en modo recorte.</li><li>Verificar que el canvas tiene fondo cuadriculado (checkerboard).</li><li>Verificar que el logo aparece posicionado sobre el canvas y puede arrastrarse.</li><li>Verificar que existe un área de recorte con outline de color verde.</li><li>Verificar que existe un slider de zoom con indicador de porcentaje.</li><li>Verificar que existe el link "Restablecer".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modo recorte muestra: canvas con fondo cuadriculado, logo arrastrable, área de recorte con outline verde, slider de zoom con indicador de porcentaje, y link "Restablecer". Todos los elementos están visibles y accesibles.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Editor de recorte</div><img src="../assets/v14.6.0/TC-CFG-027/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-028</td><td><div class="test-name">Slider de zoom: el límite inferior es 50%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte con un logo seleccionado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones › abrir modal de "Logo para login".</li><li>Seleccionar un logo para entrar al modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Localizar el slider de zoom en el modal de recorte.</li><li>Arrastrar el slider hasta el extremo izquierdo (valor mínimo).</li><li>Observar el indicador de porcentaje junto al slider.</li><li>Verificar que el indicador muestra "50%".</li><li>Verificar que el slider no puede moverse más hacia la izquierda.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El slider en el extremo izquierdo muestra 50%. No es posible reducir el zoom por debajo de 50%. El logo se muestra reducido pero visible sobre el canvas.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-029</td><td><div class="test-name">Slider de zoom: el límite superior es 250%</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte con un logo seleccionado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones › abrir modal de "Logo para login".</li><li>Seleccionar un logo para entrar al modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Localizar el slider de zoom en el modal de recorte.</li><li>Arrastrar el slider hasta el extremo derecho (valor máximo).</li><li>Observar el indicador de porcentaje junto al slider.</li><li>Verificar que el indicador muestra "250%".</li><li>Verificar que el slider no puede moverse más hacia la derecha.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El slider en el extremo derecho muestra 250%. No es posible aumentar el zoom por encima de 250%. El logo se muestra ampliado sobre el canvas.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-030</td><td><div class="test-name">Link "Restablecer" restaura el zoom al estado original</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte con un logo seleccionado</li><li>El logo ha sido movido y/o el zoom ha sido ajustado (estado distinto al original)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones › abrir modal de "Logo para login".</li><li>Seleccionar un logo para entrar al modo recorte.</li><li>Modificar la posición del logo arrastrándolo a una esquina del canvas.</li><li>Ajustar el slider de zoom a un valor distinto del inicial (ej. 150%).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Verificar que el logo está en una posición y zoom distintos al estado inicial.</li><li>Hacer clic en el link "Restablecer".</li><li>Observar el canvas inmediatamente después de hacer clic.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El logo regresa a su posición y zoom originales (estado por defecto) dentro del canvas. El slider de zoom vuelve a su valor inicial.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-031</td><td><div class="test-name">Footer en modo recorte: botones Reemplazar, Eliminar, Cancelar y Aplicar visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Modal de "Logo para login" abierto en modo recorte (con logo seleccionado o logo ya asignado)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si el bloque tiene logo asignado: hover › "Editar".</li><li>Si no tiene logo: hacer clic en placeholder › seleccionar un logo para pasar al modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar el footer izquierdo del modal.</li><li>Verificar que aparece el botón/link "Reemplazar".</li><li>Verificar que aparece el botón/link "Eliminar" con color rojo.</li><li>Observar el footer derecho del modal.</li><li>Verificar que aparece el botón "Cancelar".</li><li>Verificar que aparece el botón "Aplicar".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El footer izquierdo muestra "Reemplazar" y "Eliminar" (en rojo). El footer derecho muestra "Cancelar" y "Aplicar".</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-032</td><td><div class="test-name">Happy path: seleccionar logo y aplicar → thumbnail y overlay visibles</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado</li><li>La biblioteca de logos tiene al menos un logo disponible</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Verificar que la biblioteca tiene al menos un logo (Apariencia › Logos).</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" tiene logo asignado, eliminarlo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic en el placeholder del bloque "Logo para login".</li><li>En el modal (modo elegir logo), hacer clic sobre cualquier logo de la biblioteca.</li><li>El modal transiciona al modo recorte. Ajustar el recorte si se desea (opcional).</li><li>Hacer clic en "Aplicar" en el footer derecho del modal.</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modal se cierra. El bloque "Logo para login" muestra la imagen de previsualización del logo seleccionado (ya no el placeholder). Al hacer hover sobre el bloque aparece el overlay "Editar".</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Thumbnail tras aplicar (happy path)</div><img src="../assets/v14.6.0/TC-CFG-032/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-033</td><td><div class="test-name">Reemplazar logo asignado con otro de la biblioteca → thumbnail se actualiza</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" tiene un logo asignado (Logo A)</li><li>La biblioteca de logos tiene al menos dos logos distintos disponibles</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Verificar que la biblioteca tiene al menos 2 logos.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" no tiene logo asignado, asignarlo usando TC-CFG-032.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer hover sobre el bloque "Logo para login" y hacer clic en "Editar".</li><li>El modal se abre en modo recorte mostrando el Logo A.</li><li>Hacer clic en el botón "Reemplazar" en el footer izquierdo del modal.</li><li>El modal regresa al modo "elegir logo". Seleccionar un logo distinto (Logo B).</li><li>El modal vuelve al modo recorte con el Logo B. Hacer clic en "Aplicar".</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El bloque "Logo para login" muestra la previsualización del Logo B (el nuevo logo), no el Logo A anterior.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-034</td><td><div class="test-name">Clic en "Eliminar" del modal muestra texto de confirmación</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" tiene un logo asignado</li><li>El modal de "Logo para login" está abierto en modo recorte</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" no tiene logo asignado, asignarlo.</li><li>Hacer hover sobre el bloque › clic en "Editar" para abrir el modal en modo recorte.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Verificar que el modal está en modo recorte con el footer izquierdo visible.</li><li>Hacer clic en "Eliminar" (texto en rojo) en el footer izquierdo.</li><li>Observar si aparece una confirmación (dialog, toast o mensaje inline).</li><li>Leer el texto del mensaje de confirmación.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al hacer clic en "Eliminar", aparece una confirmación con el texto: "El logo dejará de mostrarse en logo para login. El archivo seguirá disponible en tu biblioteca de logos."</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-035</td><td><div class="test-name">Confirmar eliminación → modal cierra y bloque vuelve al placeholder</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El mensaje de confirmación de eliminación está visible (continuación de TC-CFG-034)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Seguir los pasos del Setup y Pasos 1–3 de TC-CFG-034 hasta que aparezca el mensaje de confirmación.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Con el mensaje de confirmación visible, hacer clic en el botón de confirmación.</li><li>Verificar que el modal se cierra.</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modal se cierra. El bloque "Logo para login" regresa al estado placeholder (borde punteado, sin imagen de previsualización). El logo eliminado sigue disponible en la biblioteca de logos.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-036</td><td><div class="test-name">Cancelar eliminación en confirmación → logo sigue asignado</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El mensaje de confirmación de eliminación está visible (continuación de TC-CFG-034)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Seguir los pasos del Setup y Pasos 1–3 de TC-CFG-034 hasta que aparezca el mensaje de confirmación de eliminación.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Con el mensaje de confirmación visible, hacer clic en el botón de cancelar.</li><li>Observar el estado del modal.</li><li>Cerrar el modal con "Cancelar" en el footer derecho.</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al cancelar la confirmación, el logo permanece asignado. El bloque sigue mostrando la previsualización del logo. No se realizó ningún cambio.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-CFG-037</td><td><div class="test-name">Cancelar modal sin aplicar → bloque permanece en placeholder</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>El destino "Logo para login" no tiene logo asignado (estado placeholder)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" tiene logo asignado, eliminarlo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic en el placeholder del bloque "Logo para login" para abrir el modal.</li><li>En el modal (modo elegir logo), seleccionar un logo de la biblioteca.</li><li>El modal transiciona al modo recorte.</li><li>Sin hacer clic en "Aplicar", hacer clic en "Cancelar" en el footer derecho del modal.</li><li>Observar el bloque "Logo para login" en el subtab Asignaciones.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El modal se cierra sin guardar la selección. El bloque "Logo para login" sigue mostrando el placeholder. No se persistió ningún cambio.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── REBU-4751 ──────────────────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4751" target="_blank" onclick="event.stopPropagation()">REBU-4751</a>
+              <span class="hu-title">Apariencia — Renderización del logo en pantalla de login</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">8 / 8 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T1</td><td><div class="test-name">Subir Google logo y Rebu logo a la galería</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Usuario administrador con acceso al módulo Apariencia</li><li>Archivos de imagen de prueba disponibles (Google logo PNG y Rebu logo PNG)</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Logos.</li><li>Eliminar cualquier logo previo de prueba para partir de un estado limpio.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Subir el archivo "Google logo" a la galería usando el botón de carga.</li><li>Verificar que el logo aparece en la galería.</li><li>Subir el archivo "Rebu logo" a la galería.</li><li>Verificar que ambos logos aparecen en la galería.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Ambos logos quedan disponibles en la galería del tenant para ser usados en los tests subsiguientes de la suite serial.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span> <span class="map-note">Paso de setup — sin ID formal de caso TC-LGN</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Galería con ambos logos</div><img src="../assets/v14.6.0/T1/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T2 <span style="font-size:9px;opacity:.5">(TC-LGN-011)</span></td><td><div class="test-name">Asignar Google logo al destino "Logo para login" y validar thumbnail</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado</li><li>Existe un portal genérico de Rebu accesible</li><li>El dominio/subdominio de la empresa es conocido</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Ejecutar T1 (logos subidos a galería).</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Verificar que el bloque "Logo para login" muestra placeholder.</li><li>Obtener el subdominio de la empresa de prueba.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Hacer clic en el placeholder del bloque "Logo para login".</li><li>Seleccionar el Google logo de la biblioteca.</li><li>Hacer clic en "Aplicar".</li><li>Verificar que el thumbnail en el bloque corresponde al Google logo.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El bloque "Logo para login" muestra la previsualización del Google logo. Al hacer hover, aparece el overlay "Editar". La asignación quedó correctamente guardada.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Thumbnail logo asignado</div><img src="../assets/v14.6.0/T1/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T3 <span style="font-size:9px;opacity:.5">(TC-LGN-011)</span></td><td><div class="test-name">Logo de empresa visible en pantalla de login al ingresar subdomain</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado (ejecutar T2 previo)</li><li>Existe un portal genérico de Rebu accesible</li><li>El dominio/subdominio de la empresa es conocido</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Obtener la URL del portal genérico de Rebu.</li><li>Obtener el dominio o subdominio de la empresa de prueba.</li><li>Abrir una ventana de incógnito.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Navegar al portal genérico de Rebu (sin contexto de tenant).</li><li>Ingresar el dominio o subdominio de la empresa en el campo correspondiente.</li><li>Continuar / hacer clic en el botón que lleva al login del tenant.</li><li>Observar la pantalla de login que se carga.</li><li>Verificar que el logo institucional aparece en la pantalla de login.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Al llegar desde el portal genérico habiendo ingresado el dominio, la pantalla de login del tenant muestra el logo institucional correctamente.</td></tr>
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Pantalla subdominio</div><img src="../assets/v14.6.0/T1/03.jpg" style="max-width:100%;border-radius:6px;border:1px solid #e5e5e5;box-shadow:0 2px 8px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — Logo verificado en login</div><img src="../assets/v14.6.0/T1/04.jpg" style="max-width:100%;border-radius:6px;border:1px solid #e5e5e5;box-shadow:0 2px 8px rgba(0,0,0,.08)" /></div></div></td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T7 <span style="font-size:9px;opacity:.5">(TC-LGN-009)</span></td><td><div class="test-name">Logo centrado, debajo del texto de bienvenida y encima del formulario</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado</li><li>La pantalla de login del tenant está cargada en el navegador</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Ejecutar el Setup de TC-LGN-011 (asignar logo y obtener URL del tenant).</li><li>Navegar a la URL del tenant en una ventana sin sesión activa.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Observar la pantalla de login del tenant con logo asignado.</li><li>Verificar que el logo aparece centrado horizontalmente en la pantalla.</li><li>Verificar que el logo está posicionado debajo del texto "¡Te damos la bienvenida al portal de empresas!".</li><li>Verificar que el logo está posicionado encima del campo de correo electrónico.</li><li>Verificar que entre el logo y el formulario existe una línea separadora.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El logo aparece centrado horizontalmente, debajo del texto de bienvenida y encima de la línea separadora que precede al formulario.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Logo posicionado en login</div><img src="../assets/v14.6.0/T1/05.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T4 <span style="font-size:9px;opacity:.5">(TC-LGN-012)</span></td><td><div class="test-name">Logo NO visible en portal genérico sin contexto de tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Existe un portal genérico de Rebu accesible (sin subdomain ni dominio de empresa)</li><li>El destino "Logo para login" de alguna empresa tiene un logo asignado</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Obtener la URL del portal genérico de Rebu (sin subdominio de empresa).</li><li>Abrir una ventana de incógnito (sin sesión activa y sin cookies de tenant previo).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Navegar directamente al portal genérico de Rebu (URL sin contexto de tenant).</li><li>Observar la pantalla que se carga.</li><li>Verificar que no se muestra ningún logo institucional de empresa.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">La pantalla genérica no muestra ningún logo de empresa. Solo aparece el logo institucional de Rebu (si aplica), no el logo configurado para ningún tenant en particular.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Portal genérico sin logo</div><img src="../assets/v14.6.0/T1/06.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T6 <span style="font-size:9px;opacity:.5">(TC-LGN-018)</span></td><td><div class="test-name">Al cambiar logo asignado, login refleja el nuevo logo</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado (Logo A) y es visible en la pantalla de login</li><li>La biblioteca de logos tiene al menos dos logos distintos disponibles</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Verificar que la biblioteca tiene al menos 2 logos.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones y verificar que "Logo para login" tiene el Logo A asignado.</li><li>Anotar o hacer screenshot del Logo A para comparar.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Como administrador, abrir el modal de "Logo para login" (hover › "Editar").</li><li>Hacer clic en "Reemplazar" en el footer izquierdo.</li><li>Seleccionar un logo distinto (Logo B) de la biblioteca.</li><li>Hacer clic en "Aplicar" para guardar el cambio.</li><li>Cerrar sesión del administrador.</li><li>Abrir una ventana de incógnito y navegar a la URL del tenant.</li><li>Observar el logo en la pantalla de login.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">La pantalla de login muestra el Logo B (el nuevo logo reemplazado). El Logo A ya no aparece. El cambio se refleja de inmediato.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Login con logo reemplazado</div><img src="../assets/v14.6.0/T1/07.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T8 <span style="font-size:9px;opacity:.5">(TC-LGN-016)</span></td><td><div class="test-name">Logo de tenant 1 no se filtra al login de un segundo tenant</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>Empresa A tiene el destino "Logo para login" con un logo asignado (Logo A)</li><li>Empresa B existe en el sistema y tiene una URL de login propia</li><li>Empresa B NO tiene logo asignado al destino "Logo para login"</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de Empresa A.</li><li>Verificar que "Logo para login" tiene el Logo A asignado.</li><li>Anotar la URL del tenant de Empresa A y la URL del tenant de Empresa B.</li><li>Cerrar sesión y abrir una ventana de incógnito.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Navegar a la URL del tenant de Empresa B en la ventana de incógnito.</li><li>Observar la pantalla de login de Empresa B.</li><li>Verificar que el Logo A de Empresa A no aparece en la pantalla de login de Empresa B.</li><li>Verificar que la pantalla de Empresa B se muestra sin logo (si no tiene asignado).</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El logo asignado a Empresa A no aparece en la pantalla de login de Empresa B. El aislamiento multi-tenant es correcto — cada empresa muestra únicamente su propio logo.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">T5 <span style="font-size:9px;opacity:.5">(TC-LGN-013 + 017)</span></td><td><div class="test-name">Sin logo asignado, pantalla de login no muestra logo ni espacio en blanco</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" de la empresa NO tiene logo asignado</li><li>La URL directa del tenant está disponible</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Si "Logo para login" tiene un logo asignado, eliminarlo: abrir modal › "Eliminar" › confirmar.</li><li>Confirmar que el bloque muestra el placeholder con borde punteado (sin logo asignado).</li><li>Cerrar sesión y abrir una ventana de incógnito.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Navegar a la URL directa del tenant en la ventana de incógnito.</li><li>Observar la pantalla de login completa.</li><li>Verificar que no aparece ningún logo.</li><li>Verificar que no existe un espacio en blanco vacío reservado donde iría el logo.</li><li>Verificar que el formulario (texto de bienvenida + correo + contraseña + botón) ocupa el espacio de forma continua sin gaps inesperados.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Sin logo asignado, la pantalla de login se muestra exactamente igual que antes de esta funcionalidad. No hay espacio en blanco reservado ni placeholder visible para el logo. Cubre TC-LGN-013 (sin logo desde el inicio) y TC-LGN-017 (estado post-eliminación).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              
+                <tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Login sin logo</div><img src="../assets/v14.6.0/T1/08.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+              </table></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── REBU-4739 ──────────────────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4739" target="_blank" onclick="event.stopPropagation()">REBU-4739</a>
+              <span class="hu-title">Cálculo de retención ISSS en planilla extraordinaria</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">20 / 20 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-489</td><td><div class="test-name">Campo "Cálculo de retención ISSS" visible al seleccionar Tipo Contratación = Empleado</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Empresa con al menos un colaborador tipo Empleado activo. Usuario con permiso de crear planillas.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión en el portal con un usuario administrador de planillas.</li><li>Si no existe, crear un colaborador Empleado (Salario $600, AFP Confía, ISSS activo) y guardar.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › seleccionar "Planilla Extraordinaria".</li><li>En el modal, seleccionar Tipo de Contratación = "Empleado".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo "Cálculo de retención ISSS" se muestra en el modal.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-490</td><td><div class="test-name">Campo NO visible cuando Tipo Contratación = Servicios Profesionales</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Empresa con un colaborador tipo Servicios Profesionales activo.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Si no existe, crear colaborador tipo "Servicios Profesionales" y guardar.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria".</li><li>Seleccionar Tipo de Contratación = "Servicios Profesionales".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo "Cálculo de retención ISSS" NO se muestra.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-491</td><td><div class="test-name">Campo obligatorio: bloquea crear la extraordinaria si no se selecciona</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador tipo Empleado activo.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; seleccionar Tipo de Contratación = "Empleado".</li><li>Completar los demás campos requeridos pero dejar "Cálculo de retención ISSS" sin seleccionar.</li><li>Intentar crear/confirmar la planilla.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El sistema impide crear la planilla y muestra mensaje de campo requerido en "Cálculo de retención ISSS".</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-493</td><td><div class="test-name">Opciones exactas: Quincenal ($15.00) y Mensual ($30.00)</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador tipo Empleado activo.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; seleccionar Tipo de Contratación = "Empleado".</li><li>Desplegar el campo "Cálculo de retención ISSS".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Se listan exactamente dos opciones: "Quincenal (Tope de $15.00)" y "Mensual (Tope de $30.00)"; sin opciones adicionales.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-494</td><td><div class="test-name">Valor seleccionado visible como solo lectura en Configuración (ⓘ)</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Una planilla extraordinaria creada con opción "Quincenal (Tope de $15.00)".</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear una planilla extraordinaria para un colaborador Empleado con "Cálculo de retención ISSS" = "Quincenal (Tope de $15.00)".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Abrir la planilla creada › clic en el ícono ⓘ "Configuración de planilla".</li><li>Localizar el dato "Cálculo de retención ISSS".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Se muestra "Quincenal (Tope de $15.00)" como dato de solo lectura, junto a los demás parámetros de creación; no editable.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-495</td><td><div class="test-name">Quincenal sin retención previa: bruto $500 → ISSS $15.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo; sin planillas finalizadas previas en el mes; bruto de la extraordinaria $500.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Colaborador Empleado con ISSS activo y bruto $500 (3% = $15.00); sin planillas finalizadas del mes.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; seleccionar "Quincenal (Tope de $15.00)".</li><li>Avanzar el wizard y revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $15.00 (3% de $500, dentro del tope quincenal).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-496</td><td><div class="test-name">Quincenal con $15 ya retenidos en planilla regular finalizada → $0.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con una planilla regular FINALIZADA en la quincena donde ya se le retuvo $15.00 de ISSS.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR una planilla regular (bruto $500 → ISSS $15.00) en la quincena objetivo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria para el mismo colaborador, mismo mes; seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $0.00 (tope quincenal $15 ya alcanzado).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-497</td><td><div class="test-name">Quincenal con $9 retenidos → retiene remanente $6.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con planilla regular finalizada en la quincena donde se le retuvo $9.00 (bruto $300).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR planilla regular (bruto $300 → ISSS $9.00) en la quincena objetivo.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria misma quincena con bruto que genere 3% ≥ $6 (ej. $300); seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $6.00 (remanente $15 − $9; el tope limita a $6).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-498</td><td><div class="test-name">Quincenal con bruto $200 → ISSS $6.00 (3%, no fuerza el tope)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo; sin retención previa en el mes; bruto de la extraordinaria $200.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Colaborador Empleado sin planillas finalizadas del mes; planilla extraordinaria con bruto $200.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $6.00 (3% de $200, por debajo del tope $15).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-499</td><td><div class="test-name">Quincenal con $14.99 retenidos → retiene exactamente $0.01</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con $14.99 retenidos por ISSS en planillas finalizadas de la quincena.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Construir el acumulado de ISSS de la quincena en $14.99 (planilla regular finalizada con bruto que produzca $14.99).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria misma quincena con bruto que genere 3% ≥ $0.01; seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $0.01 (remanente exacto hasta el tope $15.00).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-500</td><td><div class="test-name">Mensual sin retención previa: bruto $1,000 → ISSS $30.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo; sin planillas finalizadas del mes; bruto de la extraordinaria $1,000.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Colaborador Empleado sin planillas finalizadas del mes; planilla extraordinaria con bruto $1,000.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; seleccionar "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $30.00 (3% de $1,000, dentro del tope mensual).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-501</td><td><div class="test-name">Mensual con $30 ya retenidos en el mes → $0.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con $30.00 de ISSS ya retenidos en planillas finalizadas del mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR planillas regulares del mes hasta acumular $30.00 de ISSS (1ra y 2da quincena con $15 c/u).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria del mismo mes; seleccionar "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $0.00 (tope mensual $30 ya alcanzado).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-502</td><td><div class="test-name">Mensual con $15 retenidos (1ra quincena) → remanente $15.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con $15.00 retenidos en la 1ra quincena (planilla regular finalizada).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR planilla regular 1ra quincena (bruto $500 → ISSS $15.00).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria del mismo mes con bruto que genere 3% ≥ $15 (ej. $500); seleccionar "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $15.00 (remanente $30 − $15).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-503</td><td><div class="test-name">Mensual con $21 acumulados → retiene remanente $9.00</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con $21.00 de ISSS retenidos en planillas finalizadas del mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Construir acumulado de $21.00 vía planillas regulares finalizadas del mes.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria del mismo mes con bruto que genere 3% ≥ $9; seleccionar "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $9.00 (remanente $30 − $21).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-504</td><td><div class="test-name">Precisión: bruto $383.50 (3%) → ISSS $11.505 (sin truncar a $11.50)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo; bruto de la extraordinaria $383.50 (3% = $11.505); sin retención previa.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Preparar planilla extraordinaria con bruto $383.50 para un colaborador Empleado sin planillas finalizadas del mes.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; seleccionar "Quincenal (Tope de $15.00)".</li><li>Revisar el descuento ISSS y su precisión decimal.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $11.505 (3% de $383.50; el backend conserva 3 decimales, no trunca a $11.50).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-505</td><td><div class="test-name">El acumulado considera planillas EXTRAORDINARIAS finalizadas → retiene remanente</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con una planilla extraordinaria FINALIZADA del mes donde se retuvo ISSS (ej. $10).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear y FINALIZAR una planilla extraordinaria del mes con retención ISSS ≈ $10.00.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear una segunda planilla extraordinaria del mismo mes; seleccionar "Mensual (Tope de $30.00)" con bruto suficiente.</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = remanente ≈ $20.00 ($30 − $10 retenido en la extraordinaria previa); confirma que las extraordinarias finalizadas cuentan en el acumulado.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-506</td><td><div class="test-name">Planilla regular en borrador no reduce el remanente → $30.00</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con una planilla regular en estado borrador (no finalizada) en el mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear una planilla regular del mes y dejarla en borrador SIN finalizar.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria del mismo mes; seleccionar "Mensual (Tope de $30.00)" con bruto $1,000.</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $30.00 (la planilla en borrador NO reduce el remanente; solo cuentan las finalizadas).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-507</td><td><div class="test-name">Concepto de ingreso sin ISSS → no se le descuenta ISSS (Quincenal y Mensual)</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Concepto de ingreso configurado sin ISSS (appliesSS:false, grupo solo previsional + ISR).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear un concepto de ingreso exento de ISSS en el grupo de conceptos sin ISSS.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Crear planilla extraordinaria; agregar en Remuneraciones el concepto exento de ISSS.</li><li>Seleccionar "Quincenal (Tope de $15.00)" y luego repetir con "Mensual (Tope de $30.00)".</li><li>Revisar el descuento ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Descuento ISSS = $0.00 en ambas opciones (el monto del concepto exento no genera retención ISSS).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-509</td><td><div class="test-name">Ciclo mensual ISSS empleado + patronal (Q1 → extraordinaria → Q2)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo, salario $1,200 (base ISSS topeada a $1,000 → bruto quincenal $500), fecha de ingreso 02-feb-2024.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li><li>Crear el colaborador de $1,200 y asociarlo a una planilla quincenal.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Correr Q1 regular (1–15 ene): avanzar a Descuentos (paso 2) y Aportes patronales (paso 3); verificar ISSS empleado y patronal; finalizar.</li><li>Crear planilla extraordinaria misma quincena (Quincenal $15); agregar comisión de $100 que aplica ISSS; avanzar a pasos 2 y 3; verificar; finalizar.</li><li>Correr Q2 regular (16–31 ene); avanzar a pasos 2 y 3; verificar.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Q1: ISSS empleado $15 / patronal $37.50. Extraordinaria (quincena ya topeada): empleado $0 / patronal $0. Q2 (quincena nueva): empleado $15 / patronal $37.50. Confirma el tope por quincena y el aporte patronal ISSS.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-518</td><td><div class="test-name">Arrastre de deuda ISSS (empleado y patronal) de extraordinaria topeada a la siguiente quincena</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS activo, salario $720 (quincenal = $360), asociado a una planilla quincenal. Sin planillas finalizadas previas del mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Crear colaborador Empleado, salario $720, ISSS activo, ingreso 02-feb-2024, asociado a una planilla.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Q1 regular (1–15 ene 2026): agregar comisión $140 que aplica ISSS → bruto $500 (tope); avanzar a Aportes patronales; leer ISSS empleado y patronal; finalizar.</li><li>Extraordinaria misma quincena (Quincenal $15 + tabla de renta Quincenal): agregar comisión $100 que aplica ISSS; avanzar a Aportes; leer; finalizar (genera deuda diferida).</li><li>Q2 regular (16–31 ene 2026): solo salario → bruto $360; avanzar a Aportes; leer ISSS empleado y patronal.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Q1: empleado $15.00 / patronal $37.50. Extraordinaria (quincena ya topeada): empleado $0.00 / patronal $0.00. Q2: empleado $13.80 ($10.80 + deuda $3.00) / patronal $34.50 ($27.00 + deuda $7.50). La deuda de la extraordinaria se hace visible en la quincena siguiente al quedar bajo los topes ($15 / $37.50).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div><!-- /tab-auto -->
+
+    <!-- TAB: MANUALES -->
+    <div id="tab-manual" class="tab-panel">
+      <div class="content">
+
+        <!-- ── REBU-4751 (manuales) ───────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4751" target="_blank" onclick="event.stopPropagation()">REBU-4751</a>
+              <span class="hu-title">Apariencia — Renderización del logo en pantalla de login</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">1 / 1 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LGN-010</td><td><div class="test-name">Logo renderizado con el recorte y zoom configurados en Asignaciones</div><div class="test-tags"><span class="tag tag-val">validación visual</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td><ul><li>El destino "Logo para login" tiene un logo asignado con un recorte y zoom específicos (no el estado por defecto)</li><li>La URL directa del tenant está disponible</li></ul></td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador.</li><li>Navegar a Configuración de Empresa › Apariencia › Asignaciones.</li><li>Abrir el modal de "Logo para login" (clic en placeholder o "Editar").</li><li>Seleccionar un logo de la biblioteca.</li><li>En el modo recorte: ajustar el zoom a un valor reconocible (ej. 150%) y desplazar el logo hacia una posición visible y distinta al centro.</li><li>Hacer clic en "Aplicar" para guardar esa configuración de recorte.</li><li>Tomar nota visual o screenshot del recorte configurado para compararlo después.</li><li>Cerrar sesión.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Abrir una ventana de incógnito y navegar a la URL del tenant.</li><li>Observar el logo en la pantalla de login.</li><li>Comparar visualmente el logo mostrado en login con el recorte configurado en Asignaciones.</li><li>Verificar que el logo en login coincide con la región y zoom configurados (no aparece el logo completo sin recortar).</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El logo en la pantalla de login muestra exactamente el área recortada y con el zoom configurado en Asignaciones, sin diferencias perceptibles con la previsualización del modal.</td></tr>
+                <tr><th>No automatizable</th><td class="no-map">Requiere comparación visual del resultado del recorte — difícil de assertar programáticamente sin pixel-comparison. Mejor validación manual.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── REBU-4739 (manuales) ───────────────────── -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4739" target="_blank" onclick="event.stopPropagation()">REBU-4739</a>
+              <span class="hu-title">Cálculo de retención ISSS en planilla extraordinaria</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">11 / 11 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-492</td><td><div class="test-name">El campo "Cálculo de retención ISSS" se muestra sin valor por defecto</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador tipo Empleado activo.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Iniciar sesión como administrador de planillas.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; seleccionar Tipo de Contratación = "Empleado".</li><li>Observar el estado inicial del campo "Cálculo de retención ISSS".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo aparece vacío / sin opción preseleccionada (placeholder).</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-508</td><td><div class="test-name">Usuario sin permiso de crear planilla extraordinaria no accede al modal</div><div class="test-tags"><span class="tag tag-val">permisos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Usuario con rol sin permiso de creación de planilla extraordinaria.</td></tr>
+                <tr><th>Setup</th><td><ol><li>En Roles y Permisos, crear/usar un rol sin el permiso de crear planilla extraordinaria y asignarlo a un usuario de prueba.</li><li>Iniciar sesión con ese usuario.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Intentar acceder a Planilla › Agregar planilla › "Planilla Extraordinaria".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">La acción está deshabilitada/oculta o el sistema bloquea el acceso al modal; no se llega al campo "Cálculo de retención ISSS".</td></tr>
+                <tr><th>No automatizable</th><td class="no-map">No — depende de configuración de roles y es de baja frecuencia de regresión.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-510</td><td><div class="test-name">Mensual con acumulado ya superior al tope ($32 previos) → retención $0.00, nunca negativa</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con retención ISSS configurada y $32.00 ya retenidos por ISSS en planillas finalizadas del mes (tope excedido por ajuste previo).</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo.</li><li>Generar y finalizar planillas regulares del mes que acumulen $32.00 de retención ISSS.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Mensual (Tope de $30.00)".</li><li>Confirmar y procesar; revisar la retención ISSS aplicada.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Retención ISSS = $0.00. El sistema no aplica retención negativa ni "devuelve" el excedente.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-511</td><td><div class="test-name">El acumulado se evalúa por mes calendario: retención de junio no afecta planilla de julio</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con retención ISSS configurada, con $30.00 retenidos en planillas finalizadas de junio.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo.</li><li>Finalizar planillas de junio que acumulen $30.00 de retención ISSS.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria" con período en julio; Tipo: Empleado.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Mensual (Tope de $30.00)".</li><li>Confirmar y procesar la planilla de julio; revisar la retención ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El tope de julio se evalúa solo con el acumulado de julio (=$0); se retiene normalmente hasta $30 según el bruto. La retención de junio no afecta julio.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-512</td><td><div class="test-name">Multi-colaborador en una misma extraordinaria: cálculo independiente del acumulado por colaborador</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Dos colaboradores Empleado con ISSS configurado: A con $15.00 ya retenidos en el mes; B sin retención previa.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Crear Colaborador A 'Ana Reyes' (Empleado, $1,000, ISSS activo) y finalizar planillas que acumulen $15.00 de ISSS.</li><li>Crear Colaborador B 'Beto Lara' (Empleado, $1,000, ISSS activo) sin planillas finalizadas del mes.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado; incluir a ambos.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Mensual (Tope de $30.00)".</li><li>Confirmar y procesar; revisar la retención ISSS de A y de B.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">A retiene el remanente $15.00 (hasta completar $30); B retiene hasta $30 según su bruto. Cálculos independientes por colaborador, sin mezclar acumulados.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-513</td><td><div class="test-name">Remanente con decimales: acumulado $9.34 (Quincenal) → remanente exacto $5.66 sin perder centavos</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS configurado, $9.34 retenidos en planilla finalizada del mes, y bruto en la extraordinaria que justifique completar el tope.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo y bruto ≥ $189 en la extraordinaria (3% ≥ $5.66).</li><li>Finalizar una planilla del mes que deje $9.34 de retención ISSS acumulada.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Quincenal (Tope de $15.00)".</li><li>Confirmar y procesar; revisar la retención ISSS con 2 decimales.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Retención ISSS = $5.66 exactos ($15.00 − $9.34). El acumulado del mes queda en $15.00 exacto, sin arrastres por coma flotante.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-514</td><td><div class="test-name">Mensual con bruto bajo ($200) que no justifica el tope → retiene 3% del bruto ($6.00)</div><div class="test-tags"><span class="tag tag-reg">regulatorio</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS configurado, sin retención previa en el mes, con bruto $200 en la extraordinaria.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo.</li><li>Asegurar que no existan planillas finalizadas del colaborador en el mes.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado; asignar bruto $200.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Mensual (Tope de $30.00)".</li><li>Confirmar y procesar; revisar la retención ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Retención ISSS = $6.00 (3% de $200), menor al remanente $30; el sistema no fuerza el tope cuando el bruto no lo justifica.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-515</td><td><div class="test-name">Cambiar Tipo de Contratación Empleado → Servicios Profesionales oculta el campo y no aplica retención</div><div class="test-tags"><span class="tag tag-val">validación</span><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Modal "Agregar Planilla Extraordinaria" abierto.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar Tipo: "Empleado" y verificar que aparece el campo "Cálculo de retención ISSS"; seleccionar una opción.</li><li>Cambiar el Tipo de Contratación a "Servicios Profesionales".</li><li>Observar el campo; confirmar y procesar la planilla.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo desaparece al seleccionar Servicios Profesionales y deja de ser obligatorio; la planilla se crea sin requerirlo y sin aplicar retención ISSS por este campo.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-516</td><td><div class="test-name">Valor "Cálculo de retención ISSS" en modal Configuración es solo lectura y no editable</div><div class="test-tags"><span class="tag tag-val">validación</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Planilla extraordinaria ya creada para tipo Empleado con la opción "Mensual (Tope de $30.00)".</td></tr>
+                <tr><th>Setup</th><td><ol><li>Crear y confirmar una planilla extraordinaria (ver TC-PLA-519) con Tipo: Empleado y "Cálculo de retención ISSS" = "Mensual (Tope de $30.00)".</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Abrir el modal "Configuración de planilla" desde el ícono ⓘ.</li><li>Intentar modificar el valor del campo "Cálculo de retención ISSS".</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El campo se muestra como solo lectura con "Mensual (Tope de $30.00)"; no permite edición ni despliega selector. El valor coincide con el usado al crear la planilla.</td></tr>
+                <tr><th>No automatizable</th><td class="no-map">No — verificación principalmente visual/de estado de UI; baja frecuencia de regresión. Complementa TC-PLA-494.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-517</td><td><div class="test-name">Colaborador con ISSS configurado pero bruto $0 en la extraordinaria → retención $0.00</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado con ISSS configurado, sin retención previa en el mes, con bruto $0.00 en la extraordinaria.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Usar/crear un colaborador Empleado (ver TC-PLA-519) con ISSS activo.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado; dejar el bruto del colaborador en $0.00 (sin conceptos de ingreso).</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>Seleccionar "Quincenal (Tope de $15.00)" (o Mensual — el resultado debe ser el mismo).</li><li>Confirmar y procesar; revisar la retención ISSS.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">Retención ISSS = $0.00, ya que no hay base sobre la cual aplicar el 3%, independientemente de la opción.</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+              <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-519</td><td><div class="test-name">Cambiar la opción Quincenal↔Mensual dentro del modal antes de confirmar usa la última selección</div><div class="test-tags"><span class="tag tag-edge">edge case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+              <tr class="detail-row"><td colspan="3"><table class="case-steps">
+                <tr><th>Precondiciones</th><td>Colaborador Empleado activo, con retención ISSS configurada, sin retención previa en el mes.</td></tr>
+                <tr><th>Setup</th><td><ol><li>Crear colaborador 'Carlos Mejía' (Empleado, $1,000, AFP Confía, ISSS activo); guardar.</li><li>Asegurar que no existan planillas finalizadas del colaborador en el mes.</li><li>Ir a Planilla › Agregar planilla › "Planilla Extraordinaria"; Tipo: Empleado.</li></ol></td></tr>
+                <tr><th>Pasos</th><td><ol><li>En "Cálculo de retención ISSS" seleccionar "Quincenal (Tope de $15.00)".</li><li>Cambiar la selección a "Mensual (Tope de $30.00)" antes de confirmar.</li><li>Confirmar y procesar; revisar la retención ISSS aplicada.</li></ol></td></tr>
+                <tr><th>Resultado esperado</th><td class="result-text">El sistema calcula con la opción Mensual (tope $30), no con la Quincenal inicial. El modal de Configuración muestra "Mensual (Tope de $30.00)".</td></tr>
+                <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+              </table></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div><!-- /tab-manual -->
+
+  </div><!-- /bandeja -->
+
+<section class="anteriores-section" id="anteriores">
+  <div class="anteriores-header">
+    <div class="anteriores-icon">📦</div>
+    <span class="anteriores-title">Releases anteriores</span>
+    <span class="anteriores-count">1 release</span>
+  </div>
+  
+  <a class="release-link" href="../index.html">
+    <span class="release-link-version">v15.0.0</span>
+    <span class="release-link-date">02 jul 2026</span>
+    <span class="stat-pill pass">94 ✓</span>
+    <span class="stat-pill fail">0 ✗</span>
+    <span class="release-link-arrow">→</span>
+  </a>
+</section>
+
+<footer>
+    <strong>Rebu Automation Suite</strong> · Generado el 25 jun 2026 · Rama <strong>REBU-4751</strong> · Entorno <strong>Producción</strong>
+  </footer>
+
+</div>
+
+<script src="../report.js"></script>
