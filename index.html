@@ -58,8 +58,8 @@
 
     <!-- TABS -->
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">119</span></button>
-      <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">25</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">120</span></button>
+      <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">24</span></button>
     </div>
     <hr class="tab-divider">
 
@@ -68,7 +68,7 @@
       <div class="env-tab-group">
         <div class="env-tab-nav">
           <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">48 ✓</span></button>
-          <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">71 ✓</span></button>
+          <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">72 ✓</span></button>
         </div>
         <div id="env-uat" class="env-tab-panel active">
           <div class="content">
@@ -612,6 +612,23 @@
           <div class="content">
 
         <!-- INJECT-4771-4772-4777 AUTOMATIZADOS (Prod) -->
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4771" target="_blank" onclick="event.stopPropagation()">REBU-4771</a>
+              <span class="hu-title">Crear nuevo cargo desde el formulario de colaborador</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">1 / 1 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-069</td><td><div class="test-name">Crear un nuevo cargo desde el formulario de contratación de un colaborador y verificar que queda registrado en la tabla de Cargos con un código asignado automáticamente.</div><div class="test-tags"><span class="tag tag-val">crítico</span><span class="tag tag-val">ui</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Usuario autenticado con rol Administrador de RRHH (permiso de crear colaboradores y cargos).</li><li>Existe al menos un departamento/área para asignar el cargo.</li></ul></td></tr>
+            </tbody>
+          </table>
+        </div>
+
         <div class="hu-section">
           <div class="hu-header" onclick="headerClick(this)">
             <div class="hu-header-left">
@@ -1236,13 +1253,11 @@
               <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4771" target="_blank" onclick="event.stopPropagation()">REBU-4771</a>
               <span class="hu-title">Crear nuevo cargo desde el formulario de colaborador</span>
             </div>
-            <div class="hu-header-right"><span class="hu-badge">15 / 15 ✓</span><span class="hu-toggle">▼</span></div>
+            <div class="hu-header-right"><span class="hu-badge">14 / 14 ✓</span><span class="hu-toggle">▼</span></div>
           </div>
           <table class="test-table">
             <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-            <tbody>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-069</td><td><div class="test-name">Crear un nuevo cargo desde el formulario de contratación de un colaborador y verificar que queda registrado en la tabla de Cargos con un código asignado automáticamente.</div><div class="test-tags"><span class="tag tag-val">crítico</span><span class="tag tag-val">ui</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Usuario autenticado con rol Administrador de RRHH (permiso de crear colaboradores y cargos).</li><li>Existe al menos un departamento/área para asignar el cargo.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Iniciar sesión en el portal con un usuario Administrador de RRHH.</li><li>Verificar que exista un área/departamento: ir a la configuración de estructura organizacional; si no hay ninguno, crear uno (ej. &quot;Administración&quot;).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Ir a Colaboradores › Agregar colaborador (formulario de contratación).</li><li>En el campo Cargo, abrir el dropdown y elegir la opción de crear nuevo cargo.</li><li>En el modal/sección de nuevo cargo, ingresar Nombre del cargo: Analista QA 4771, área/departamento: &quot;Administración&quot;; confirmar la creación del cargo.</li><li>Ir a la pantalla de Cargos (Estructura organizacional › Cargos).</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cargo Analista QA 4771 aparece en la tabla de Cargos con un código asignado automáticamente (no vacío, formato consistente con los cargos creados desde la pantalla de Cargos), estado vacante.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+            <tbody><tr><th>Setup</th><td><ol><li>Iniciar sesión en el portal con un usuario Administrador de RRHH.</li><li>Verificar que exista un área/departamento: ir a la configuración de estructura organizacional; si no hay ninguno, crear uno (ej. &quot;Administración&quot;).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Ir a Colaboradores › Agregar colaborador (formulario de contratación).</li><li>En el campo Cargo, abrir el dropdown y elegir la opción de crear nuevo cargo.</li><li>En el modal/sección de nuevo cargo, ingresar Nombre del cargo: Analista QA 4771, área/departamento: &quot;Administración&quot;; confirmar la creación del cargo.</li><li>Ir a la pantalla de Cargos (Estructura organizacional › Cargos).</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cargo Analista QA 4771 aparece en la tabla de Cargos con un código asignado automáticamente (no vacío, formato consistente con los cargos creados desde la pantalla de Cargos), estado vacante.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-070</td><td><div class="test-name">Verificar que un cargo creado desde el formulario de colaborador queda con la misma lógica/datos que uno creado desde la pantalla de Cargos (paridad).</div><div class="test-tags"><span class="tag tag-val">crítico</span><span class="tag tag-val">ui</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Un cargo creado desde el formulario de colaborador (usar el de TC-COL-069).</li><li>Acceso a la pantalla de Cargos para crear uno de control.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Ejecutar TC-COL-069 para tener el cargo Analista QA 4771 creado desde el formulario.</li><li>Ir a Estructura organizacional › Cargos › Nuevo cargo y crear un cargo de control Analista QA Control con la misma área.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Abrir el detalle del cargo Analista QA 4771 (creado desde formulario).</li><li>Abrir el detalle del cargo Analista QA Control (creado desde pantalla de Cargos).</li><li>Comparar los campos disponibles, el formato del código, el estado inicial (vacante) y la presencia en el organigrama.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Ambos cargos tienen la misma estructura de campos, mismo formato de código auto-asignado, mismo estado inicial vacante y ambos aparecen en el organigrama. No hay diferencias funcionales según el origen de creación.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-071</td><td><div class="test-name">Verificar que un cargo recién creado desde el formulario queda disponible de inmediato (vacante) en el dropdown de Cargo de otro formulario de colaborador.</div><div class="test-tags"><span class="tag tag-val">crítico</span><span class="tag tag-val">ui</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
