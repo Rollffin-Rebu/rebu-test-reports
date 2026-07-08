@@ -1,0 +1,131 @@
+<title>Rebu — Reporte E2E · Release v15.0.4</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../report.css">
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo" onclick="toggleSidebar()" title="Expandir / colapsar">R</div>
+    <span class="sidebar-title">Releases</span>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">◀</button>
+  </div>
+  <div class="sidebar-body">
+    <div class="nav-group-label">Actual</div>
+    <a class="nav-item" href="../index.html" data-tip="v15.2.0">
+      <span class="nav-icon">🚀</span>
+      <div class="nav-item-body"><div class="nav-version">v15.2.0</div><div class="nav-date">07 jul 2026</div></div>
+      <span class="nav-minibadge latest">LATEST</span>
+    </a>
+    <hr class="nav-divider">
+    <div class="nav-group-label">Anteriores</div>
+    <a class="nav-item current" href="../releases/v15.0.4.html" data-tip="v15.0.4">
+      <span class="nav-icon">📦</span>
+      <div class="nav-item-body"><div class="nav-version">v15.0.4</div><div class="nav-date">07 jul 2026</div></div>
+      <span class="nav-minibadge">1 ✓</span>
+    </a>
+    <a class="nav-item" href="../releases/v15.0.0.html" data-tip="v15.0.0">
+      <span class="nav-icon">📦</span>
+      <div class="nav-item-body"><div class="nav-version">v15.0.0</div><div class="nav-date">02 jul 2026</div></div>
+      <span class="nav-minibadge">144 ✓</span>
+    </a>
+    <a class="nav-item" href="../releases/v14.6.0.html" data-tip="v14.6.0">
+      <span class="nav-icon">📦</span>
+      <div class="nav-item-body"><div class="nav-version">v14.6.0</div><div class="nav-date">23 jun 2026</div></div>
+      <span class="nav-minibadge">46 ✓</span>
+    </a>
+  </div>
+</nav>
+
+<div class="overlay" id="overlay" onclick="closeMobileSidebar()"></div>
+<button class="mobile-fab" onclick="openMobileSidebar()">📋</button>
+
+<div class="main-wrapper" id="main-wrapper">
+
+<!-- RELEASE-START: v15.0.4 | 2026-07-07 | Pass: 1 | Fail: 0 | Branch: claude/rebu-4739-prod-compat -->
+
+  <header class="hero" id="release-v15-0-4">
+    <div class="hero-eyebrow">Reporte de Automatización E2E</div>
+    <h1 class="hero-title">Release <span>v15.0.4</span></h1>
+    <div class="hero-meta">
+      <span>📅 <strong>07 jul 2026</strong></span>
+      <span class="sep">·</span>
+      <span>🌿 <strong>REBU-4989</strong></span>
+      <span class="sep">·</span>
+      <span>🌐 <strong>Producción</strong></span>
+      <span class="sep">·</span>
+      <span>🔗 <strong>test.rebuhr.com</strong></span>
+    </div>
+  </header>
+
+  <div class="bandeja">
+    <div class="summary">
+      <div class="card pass"><div class="card-value">1</div><div class="card-label">Pasaron</div></div>
+      <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
+      <div class="card total"><div class="card-value">1</div><div class="card-label">Total</div></div>
+      <div class="card time"><div class="card-value">~1 m</div><div class="card-label">Duración</div></div>
+    </div>
+
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">1</span></button>
+      <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">0</span></button>
+    </div>
+    <hr class="tab-divider">
+
+    <div id="tab-auto" class="tab-panel active">
+      <div class="content">
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4989" target="_blank" onclick="event.stopPropagation()">REBU-4989</a>
+              <span class="hu-title">Desvinculación de SP libera el cargo como &quot;Vacante&quot; (fix BE — épica ORGANIGRAMA)</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">1 / 1 ✓</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-110</td><td><div class="test-name">Al desvincular un SP con cargo, el cargo queda &quot;Vacante&quot; y sin ocupante</div><div class="test-tags"><span class="tag tag-val">crítico</span><span class="tag tag-val">api+ui</span><span class="tag tag-val">regresión</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr><tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Fix de REBU-4989 desplegado en producción (PR #2749, cherry-pick a UAT/prod del hotfix #2747).</li><li>Empresa &quot;Test&quot; (company 21) en producción con permisos de administrador.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Crear por API una planilla de Servicios Profesionales y un cargo vacante (`QA-4989-*`).</li><li>Crear un colaborador SP por el wizard (UI) y asignarle el cargo existente en el Paso 2.</li><li>Verificar la precondición: el cargo quedó OCUPADO (`isVacant=false`) tras asignar el SP.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Desvincular al SP por API (`people.terminatePerson`) con fecha de hoy.</li><li>Consultar el estado del cargo por API (`positions.getById`).</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Tras desvincular al SP, el cargo se libera automáticamente y queda &quot;Vacante&quot; (`isVacant=true`, `collaborator=null`), disponible para reasignación — igual que en el resto de tipos de contratación. Evidencia adicional del fix: el cargo puede eliminarse por API (`deletePosition` responde 200), donde antes del fix devolvía 409 por seguir ocupado.</td></tr><tr><th>Evidencia</th><td>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+    <div style="flex:1;min-width:220px">
+      <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Estado del cargo tras desvincular al SP</div>
+      <img src="../assets/v15.0.4/prod/TC-COL-110/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+    </div>
+  </div>
+</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-manual" class="tab-panel">
+      <div class="content">
+        <div class="hu-section">
+          <div class="hu-header" onclick="headerClick(this)">
+            <div class="hu-header-left">
+              <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4989" target="_blank" onclick="event.stopPropagation()">REBU-4989</a>
+              <span class="hu-title">Sin casos manuales en este release</span>
+            </div>
+            <div class="hu-header-right"><span class="hu-badge">0 pendientes</span><span class="hu-toggle">▼</span></div>
+          </div>
+          <table class="test-table">
+            <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+            <tbody>
+<tr class="test-row"><td class="test-id">—</td><td><div class="test-name">Este release solo contiene la verificación automatizada del fix de desvinculación de SP.</div></td><td class="status-cell">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- RELEASE-END: v15.0.4 -->
+
+<footer>
+  <strong>Rebu Automation Suite</strong> · Generado el 07 jul 2026 · Rama <strong>claude/rebu-4739-prod-compat</strong> · Entorno <strong>Producción</strong>
+</footer>
+
+</div>
+
+<script src="../report.js"></script>
