@@ -94,15 +94,15 @@
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">112</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">115</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">2</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">114</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">117</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~22 m</div><div class="card-label">Duración</div></div>
   </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">114</span></button>
-    <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales / Fase 2 <span class="tab-count">36</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">117</span></button>
+    <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales / Fase 2 <span class="tab-count">33</span></button>
   </div>
   <hr class="tab-divider">
 
@@ -247,7 +247,7 @@
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4884" target="_blank" onclick="event.stopPropagation()">REBU-4884</a>
       <span class="hu-title">Modos de carga masiva sobre descuentos eventuales (Paso 2)</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">12 / 12 ✓</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">15 / 15 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
@@ -276,7 +276,14 @@
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>SB-1 + SB-4.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Completar SB-1 y preparar SB-4 válido.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Ejecutar la carga con cada modo interceptando el `POST .../incomes-importer/process?...&amp;uploadMode={n}`.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Agregar → `uploadMode=1`; Reemplazar parcial → `uploadMode=2`; Reemplazar total → `uploadMode=3`.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-575</td><td><div class="test-name">Verificar que un descuento cargado con decimales (33.33 / 66.67) en modo **Agregar** se guarda sin perder precisión.</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>SB-1.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Completar SB-1.</li><li>Preparar SB-4 con: (Ana Carcamo, &quot;Anticipo&quot;, 33.33) y (Fabián Andrade, &quot;Anticipo&quot;, 66.67).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Cargar en modo **Agregar** y aplicar.</li><li>Revisar los montos guardados en el Paso 2.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Los descuentos quedan exactamente en 33.33 y 66.67 (sin redondeo ni pérdida de centavos).</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
-    </tbody>
+    
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-569</td><td><div class="test-name">Verificar que un descuento **cíclico** no se modifica ni elimina con modo **Agregar**, y que sí se puede agregar una línea eventual adicional del mismo concepto.</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>SB-1 + SB-3 (Juan tiene cíclico &quot;Anticipo&quot; $30).</li></ul></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-570</td><td><div class="test-name">Verificar que un descuento **cíclico** no se modifica en monto con modo **Reemplazar parcial**, aunque el archivo traiga el mismo concepto/colaborador.</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>SB-1 + SB-3 (Juan cíclico &quot;Anticipo&quot; $30).</li></ul></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-571</td><td><div class="test-name">Verificar que en **Reemplazar total**, los descuentos cíclicos no se eliminan (solo se eliminan los eventuales).</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>SB-1 + SB-2 (Fabián eventual $50) + SB-3 (Juan cíclico $30).</li></ul></td></tr>
+</tbody>
   </table>
 </div>
     </div>
@@ -365,17 +372,14 @@
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4884" target="_blank" onclick="event.stopPropagation()">REBU-4884</a>
       <span class="hu-title">Modos de carga masiva — casos manuales / Fase 2</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">4 pendientes</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">1 pendiente</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
     <tbody>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-569</td><td><div class="test-name">Verificar que un descuento **cíclico** no se modifica ni elimina con modo **Agregar**, y que sí se puede agregar una línea eventual adicional del mismo concepto.</div></td><td class="status-cell"><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#b8860b;color:#fff">FASE 2</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>SB-1 + SB-3 (Juan tiene cíclico &quot;Anticipo&quot; $30).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Completar SB-1 y SB-3.</li><li>Preparar SB-4 con: (Juan Perez, &quot;Anticipo&quot;, $12).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Cargar en modo **Agregar conceptos** y aplicar.</li><li>Revisar los descuentos de Juan.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cíclico &quot;Anticipo&quot; $30 permanece intacto; se agrega una línea **eventual** adicional &quot;Anticipo&quot; $12. El cíclico no cambió de monto ni se eliminó.</td></tr><tr><th>Status</th><td><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#b8860b;color:#fff">FASE 2</span></td></tr></table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-570</td><td><div class="test-name">Verificar que un descuento **cíclico** no se modifica en monto con modo **Reemplazar parcial**, aunque el archivo traiga el mismo concepto/colaborador.</div></td><td class="status-cell"><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#b8860b;color:#fff">FASE 2</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>SB-1 + SB-3 (Juan cíclico &quot;Anticipo&quot; $30).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Completar SB-1 y SB-3.</li><li>Preparar SB-4 con: (Juan Perez, &quot;Anticipo&quot;, $99).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Cargar en modo **Reemplazar parcial** y aplicar.</li><li>Revisar el cíclico de Juan.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cíclico &quot;Anticipo&quot; sigue en **$30** (no se reemplazó a $99). El sistema no altera cíclicos por coincidencia.</td></tr><tr><th>Status</th><td><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#b8860b;color:#fff">FASE 2</span></td></tr></table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-571</td><td><div class="test-name">Verificar que en **Reemplazar total**, los descuentos cíclicos no se eliminan (solo se eliminan los eventuales).</div></td><td class="status-cell"><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#b8860b;color:#fff">FASE 2</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>SB-1 + SB-2 (Fabián eventual $50) + SB-3 (Juan cíclico $30).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Completar SB-1, SB-2 y SB-3.</li><li>Preparar SB-4 con: (Ana Carcamo, &quot;Anticipo&quot;, $20).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Cargar en modo **Reemplazar total** y aplicar.</li><li>Revisar cíclico de Juan y eventual de Fabián.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cíclico de Juan ($30) **permanece**; el eventual de Fabián ($50) se elimina; queda el nuevo eventual de Ana ($20).</td></tr><tr><th>Status</th><td><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#b8860b;color:#fff">FASE 2</span></td></tr></table></td></tr>
+<tr><th>Setup</th><td><ol><li>Completar SB-1 y SB-3.</li><li>Preparar SB-4 con: (Juan Perez, &quot;Anticipo&quot;, $12).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Cargar en modo **Agregar conceptos** y aplicar.</li><li>Revisar los descuentos de Juan.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cíclico &quot;Anticipo&quot; $30 permanece intacto; se agrega una línea **eventual** adicional &quot;Anticipo&quot; $12. El cíclico no cambió de monto ni se eliminó.</td></tr><tr><th>Status</th><td><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#b8860b;color:#fff">FASE 2</span></td></tr></table></td></tr>
+<tr><th>Setup</th><td><ol><li>Completar SB-1 y SB-3.</li><li>Preparar SB-4 con: (Juan Perez, &quot;Anticipo&quot;, $99).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Cargar en modo **Reemplazar parcial** y aplicar.</li><li>Revisar el cíclico de Juan.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cíclico &quot;Anticipo&quot; sigue en **$30** (no se reemplazó a $99). El sistema no altera cíclicos por coincidencia.</td></tr><tr><th>Status</th><td><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#b8860b;color:#fff">FASE 2</span></td></tr></table></td></tr>
+<tr><th>Setup</th><td><ol><li>Completar SB-1, SB-2 y SB-3.</li><li>Preparar SB-4 con: (Ana Carcamo, &quot;Anticipo&quot;, $20).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Cargar en modo **Reemplazar total** y aplicar.</li><li>Revisar cíclico de Juan y eventual de Fabián.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El cíclico de Juan ($30) **permanece**; el eventual de Fabián ($50) se elimina; queda el nuevo eventual de Ana ($20).</td></tr><tr><th>Status</th><td><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#b8860b;color:#fff">FASE 2</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-576</td><td><div class="test-name">Verificar la consistencia visual de los tres modos entre Paso 1 y Paso 2 (mismo texto, mismo orden, mismo comportamiento del radiogroup).</div></td><td class="status-cell"><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#6b7280;color:#fff">MANUAL</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Planilla con Paso 1 y Paso 2 accesibles.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Completar SB-1.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Abrir la carga masiva en el Paso 1 y anotar el texto/orden de los 3 modos.</li><li>Abrir la carga masiva en el Paso 2 y comparar.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Los labels (&quot;Agregar conceptos&quot;, &quot;Reemplazar conceptos parcialmente&quot;, &quot;Reemplazar conceptos totalmente&quot;), su orden y el comportamiento del radiogroup son idénticos en ambos pasos.</td></tr><tr><th>Status</th><td><span style="display:inline-block;padding:2px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.5px;background:#6b7280;color:#fff">MANUAL</span></td></tr></table></td></tr>
     </tbody>
