@@ -214,6 +214,12 @@
   .env-tab-panel { display: none; }
   .env-tab-panel.active { display: block; }
   .env-tab-group { border-top: 1px dashed var(--border); padding-top: 4px; }
+  /* Wrapper de página completa (UAT/Producción a nivel release) — sin el divisor
+     punteado heredado del uso histórico por-HU, y con el mismo respiro superior
+     que .tab-nav ya que ahora es lo primero que sigue a .summary. */
+  .env-tab-group.page-level { border-top: none; padding-top: 0; }
+  .env-tab-group.page-level > .env-tab-nav { padding-top: 28px; }
+  .env-tab-group.page-level .tab-nav { padding-top: 20px; }
 
   .release-link { display: flex; align-items: center; gap: 14px; padding: 13px 18px; border: 1px solid var(--border); border-radius: var(--r); max-width: 900px; margin: 0 auto 10px; background: var(--ground); text-decoration: none; transition: background .15s, border-color .15s; }
   .release-link:hover { background: var(--surface); border-color: var(--forest); }

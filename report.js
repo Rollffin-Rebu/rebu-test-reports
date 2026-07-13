@@ -15,7 +15,7 @@ function toggleSidebar() {
     if (next && next.classList.contains('detail-row')) next.classList.toggle('open');
   }
     function switchTab(tab, btn) {
-    const group = btn.closest('.bandeja');
+    const group = btn.closest('.env-tab-panel') || btn.closest('.bandeja');
     group.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     group.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     group.querySelector('#tab-' + tab).classList.add('active');
