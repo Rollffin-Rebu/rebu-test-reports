@@ -66,7 +66,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.2.1 | 2026-07-13 | Pass: 1 | Fail: 0 | Branch: REBU-5075 -->
+<!-- RELEASE-START: v15.2.1 | 2026-07-13 | Pass: 2 | Fail: 0 | Branch: REBU-5075 -->
 
 <header class="hero" id="release-v15-2-1">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -76,24 +76,24 @@
     <span class="sep">·</span>
     <span>🌿 <strong>REBU-5075</strong></span>
     <span class="sep">·</span>
-    <span>🌐 <strong>UAT</strong></span>
+    <span>🌐 <strong>UAT + Producción</strong></span>
     <span class="sep">·</span>
-    <span>🔗 <strong>app-rebu-portal-03-uat.azurewebsites.net</strong></span>
+    <span>🔗 <strong>UAT: app-rebu-portal-03-uat.azurewebsites.net · Prod: test.rebuhr.com</strong></span>
   </div>
 </header>
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">1</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">2</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">1</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">2</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~1 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
     <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">1/1 ✓</span></button>
-    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">0/0 ✓</span></button>
+    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">1/1 ✓</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
@@ -146,7 +146,7 @@
   </div>
   <div id="env-prod" class="env-tab-panel">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-prod', this)">🤖 Automatizados <span class="tab-count">0</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-prod', this)">🤖 Automatizados <span class="tab-count">1</span></button>
       <button class="tab-btn" onclick="switchTab('manual-prod', this)">📋 Manuales <span class="tab-count">0</span></button>
     </div>
     <hr class="tab-divider">
@@ -155,14 +155,22 @@
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5075" target="_blank" onclick="event.stopPropagation()">REBU-5075</a>
-      <span class="hu-title">Aún no verificado en Producción</span>
+      <span class="hu-title">Ausencias que cubren el mes completo → días trabajados 0 y salario $0 (edge case base-30)</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">0 / 0</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">1 / 1 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
     <tbody>
-<tr class="test-row"><td class="test-id">—</td><td><div class="test-name">Aún no hay casos de REBU-5075 verificados en este ambiente. Se corrió en UAT (company 2).</div></td><td class="status-cell">—</td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">REBU-5075</td><td><div class="test-name">Incapacidad total del mes → días trabajados = 0 y salario $0 en las 6 quincenas (feb–abr 2025), incluida la quincena del bug Mar Q2 (16-31)</div><div class="test-tags"><span class="tag tag-val">crítico</span><span class="tag tag-val">api</span><span class="tag tag-val">ui</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr><tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador EMP activo, fecha de ingreso 01-ene-2024, salario $1,200, AFP Confía, planilla quincenal.</li><li>Tipos de incapacidad del catálogo: &quot;Enfermedad o riesgo común&quot; y &quot;Riesgo empresarial o accidente laboral&quot;.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Crear colaborador y planilla quincenal (builder `createPayrollScenario`).</li><li>Por cada mes (feb, mar, abr 2025) crear 2 incapacidades que cubren el mes completo.</li><li>Enviar a planilla las incidencias pendientes antes de leer cada quincena.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Correr cada quincena (Feb Q1, Feb Q2, Mar Q1, Mar Q2, Abr Q1, Abr Q2).</li><li>En Remuneraciones, revisar Días Trabajados y Salario del período.</li><li>Finalizar la quincena y continuar con la siguiente.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">En las 6 quincenas los días trabajados quedan en <strong>0</strong> y el salario del período en <strong>$0.00</strong>, sin negativos. Corrida en <strong>Producción</strong> (company 21, tenant Test): Feb Q1 ✅, Feb Q2 ✅, Mar Q1 ✅, Mar Q2 ✅, Abr Q1 ✅, Abr Q2 ✅.</td></tr><tr><th>Evidencia</th><td>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+    <div style="flex:1;min-width:220px">
+      <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Remuneraciones · Mar Q2 (16-31 mar 2025) · Producción</div>
+      <img src="assets/v15.2.1/prod/REBU-5075/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+      <div style="font-size:11px;color:#4b6b60;margin-top:6px">Producción (tenant Test): colaborador con incapacidad total del mes — Salario Mensual $1,200.00 → <strong>Salario del período $0.00</strong>, días trabajados sin valor negativo.</div>
+    </div>
+  </div>
+</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span> <span class="map-note">Historia sin casos TC formales — cobertura automatizada del fix del bug base-30</span></td></tr></table></td></tr>
     </tbody>
   </table>
 </div>
@@ -226,7 +234,7 @@
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> · Generado el 13 jul 2026 · Rama <strong>REBU-5075</strong> · Entorno <strong>UAT</strong>
+  <strong>Rebu Automation Suite</strong> · Generado el 13 jul 2026 · Rama <strong>REBU-5075</strong> · Entorno <strong>UAT + Producción</strong>
 </footer>
 
 </div>
