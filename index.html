@@ -1,25 +1,15 @@
-<title>Rebu — Reporte E2E · Release v15.2.1</title>
+<title>Rebu — Reporte E2E · Release v15.3.0</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="report.css">
 
 <!--
   NOTA PARA CLAUDE (u otro agente) QUE EDITE ESTE REPORTE:
-
-  La fuente de verdad para el formato de este reporte es la skill
-  /generate-report del repo rebu-automated-test-suite
-  (.claude/commands/generate-report.md).
-
-  Convención vigente desde v15.2.0:
-    - TODA página (index.html y cada releases/*.html nuevo) tiene, dentro
-      de .bandeja y después de .summary, UN SOLO <div class="env-tab-group
-      page-level"> que envuelve TODO el contenido: Automatizados Y Manuales,
-      para AMBOS ambientes (🧪 UAT / 🏭 Producción).
-    - Cada env-tab-panel tiene su propio tab-nav con ids sufijados por
-      ambiente: #tab-auto-uat/#tab-manual-uat, #tab-auto-prod/#tab-manual-prod.
-    - Si un ambiente no tiene datos, su panel muestra el estado vacío; nunca
-      se oculta la pestaña.
-    - Nunca imágenes en base64 inline — siempre archivo .jpg vía sips.
+  Fuente de verdad: skill /generate-report (.claude/commands/generate-report.md).
+  Convención vigente desde v15.2.0: TODA página tiene, dentro de .bandeja y
+  después de .summary, UN SOLO <div class="env-tab-group page-level"> que envuelve
+  Automatizados Y Manuales para AMBOS ambientes (🧪 UAT / 🏭 Producción). Si un
+  ambiente no tiene datos, su panel muestra el estado vacío. Nunca base64 inline.
 -->
 
 
@@ -31,13 +21,18 @@
   </div>
   <div class="sidebar-body">
     <div class="nav-group-label">Actual</div>
-    <a class="nav-item current" href="index.html" data-tip="v15.2.1">
+    <a class="nav-item current" href="index.html" data-tip="v15.3.0">
       <span class="nav-icon">🚀</span>
-      <div class="nav-item-body"><div class="nav-version">v15.2.1</div><div class="nav-date">13 jul 2026</div></div>
+      <div class="nav-item-body"><div class="nav-version">v15.3.0</div><div class="nav-date">17 jul 2026</div></div>
       <span class="nav-minibadge latest">LATEST</span>
     </a>
     <hr class="nav-divider">
     <div class="nav-group-label">Anteriores</div>
+    <a class="nav-item" href="releases/v15.2.1.html" data-tip="v15.2.1">
+      <span class="nav-icon">📦</span>
+      <div class="nav-item-body"><div class="nav-version">v15.2.1</div><div class="nav-date">13 jul 2026</div></div>
+      <span class="nav-minibadge">2 ✓</span>
+    </a>
     <a class="nav-item" href="releases/v15.2.0.html" data-tip="v15.2.0">
       <span class="nav-icon">📦</span>
       <div class="nav-item-body"><div class="nav-version">v15.2.0</div><div class="nav-date">09 jul 2026</div></div>
@@ -66,62 +61,114 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.2.1 | 2026-07-13 | Pass: 2 | Fail: 0 | Branch: REBU-5075 -->
+<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 15 | Fail: 0 | Branch: REBU-4976+REBU-5011 -->
 
-<header class="hero" id="release-v15-2-1">
+<header class="hero" id="release-v15-3-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
-  <h1 class="hero-title">Release <span>v15.2.1</span></h1>
+  <h1 class="hero-title">Release <span>v15.3.0</span></h1>
   <div class="hero-meta">
-    <span>📅 <strong>13 jul 2026</strong></span>
+    <span>📅 <strong>17 jul 2026</strong></span>
     <span class="sep">·</span>
-    <span>🌿 <strong>REBU-5075</strong></span>
+    <span>🌿 <strong>REBU-4976 · REBU-5011</strong></span>
     <span class="sep">·</span>
-    <span>🌐 <strong>UAT + Producción</strong></span>
+    <span>🌐 <strong>UAT</strong></span>
     <span class="sep">·</span>
-    <span>🔗 <strong>UAT: app-rebu-portal-03-uat.azurewebsites.net · Prod: test.rebuhr.com</strong></span>
+    <span>🔗 <strong>app-rebu-portal-03-uat.azurewebsites.net</strong></span>
   </div>
 </header>
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">2</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">15</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">2</div><div class="card-label">Total</div></div>
-    <div class="card time"><div class="card-value">~1 m</div><div class="card-label">Duración</div></div>
+    <div class="card total"><div class="card-value">15</div><div class="card-label">Total</div></div>
+    <div class="card time"><div class="card-value">~4 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">1/1 ✓</span></button>
-    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">1/1 ✓</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">15/15 ✓</span></button>
+    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">—</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">1</span></button>
-      <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">0</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">15</span></button>
+      <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">9</span></button>
     </div>
     <hr class="tab-divider">
     <div id="tab-auto-uat" class="tab-panel active"><div class="content">
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5075" target="_blank" onclick="event.stopPropagation()">REBU-5075</a>
-      <span class="hu-title">Ausencias que cubren el mes completo → días trabajados 0 y salario $0 (edge case base-30)</span>
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4976" target="_blank" onclick="event.stopPropagation()">REBU-4976</a>
+      <span class="hu-title">La liquidación toma el salario Activo del historial de salarios a la fecha de la liquidación (base de todos los conceptos)</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">1 / 1 ✓</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">11 / 11 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
     <tbody>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">REBU-5075</td><td><div class="test-name">Incapacidad total del mes → días trabajados = 0 y salario $0 en las 6 quincenas (feb–abr 2025), incluida la quincena del bug Mar Q2 (16-31)</div><div class="test-tags"><span class="tag tag-val">crítico</span><span class="tag tag-val">api</span><span class="tag tag-val">edge-case</span><span class="tag tag-val">regresión</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr><tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador EMP activo, fecha de ingreso 01-ene-2024, salario $1,200, AFP Confía, planilla quincenal.</li><li>Tipos de incapacidad del catálogo: &quot;Enfermedad o riesgo común&quot; y &quot;Riesgo empresarial o accidente laboral&quot;.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Crear colaborador y planilla quincenal (builder `createPayrollScenario`).</li><li>Por cada mes (feb, mar, abr 2025) crear 2 incapacidades que cubren el mes completo: &quot;Enfermedad o riesgo común&quot; del 1 al 10, y &quot;Riesgo empresarial o accidente laboral&quot; del 11 al fin de mes.</li><li>Enviar a planilla las incidencias pendientes del colaborador antes de leer cada quincena.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Correr cada quincena (Feb Q1, Feb Q2, Mar Q1, Mar Q2, Abr Q1, Abr Q2).</li><li>En el paso de Remuneraciones, revisar Días Trabajados y Salario del período del colaborador.</li><li>Finalizar la quincena (4 changeSteps) y continuar con la siguiente.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">En las 6 quincenas los días trabajados quedan en <strong>0</strong> y el salario del período en <strong>$0.00</strong>, sin valores negativos. La quincena Mar Q2 (16-31, 16 días calendario sobre base 30) — que antes del fix producía −1 día y salario negativo — también queda en 0 / $0. Resultado de la corrida (UAT company 2): Feb Q1 ✅, Feb Q2 ✅, Mar Q1 ✅, Mar Q2 ✅, Abr Q1 ✅, Abr Q2 ✅.</td></tr><tr><th>Evidencia</th><td>
-  <div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
-    <div style="flex:1;min-width:220px">
-      <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Remuneraciones · Mar Q2 (16-31 mar 2025)</div>
-      <img src="assets/v15.2.1/uat/REBU-5075/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
-      <div style="font-size:11px;color:#4b6b60;margin-top:6px">Colaborador con incapacidad total del mes: Salario Mensual $1,200.00 → <strong>Salario del período $0.00</strong> y Días Trabajados sin valor negativo. Antes del fix esta quincena (16 días sobre base 30) mostraba −1 día y salario negativo.</div>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-001</td><td><div class="test-name">Un único salario en el historial: la base de la liquidación es ese salario ($1,200)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">smoke</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador Empleado con un único registro de salario ($1,200) Activo desde el ingreso (01/01/2024), con política de vacaciones asignada.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder <code>createLiquidationScenario</code>: crea política de vacaciones, colaborador, contratación ($1,200), asocia planilla y tipo de pago.</li><li>Desvincula con fecha 07/07/2026 (motivo: Despido con responsabilidad patronal).</li><li>Recupera el detalle de la liquidación (<code>GET /people/terminations/{id}</code>).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Generar la liquidación.</li><li>Leer <code>variableSalary</code> y &quot;Salario Mensual&quot; del detalle.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Todos los conceptos usan <strong>$1,200</strong> como base. Obtenido: <strong>$1,200.00</strong> en variableSalary y Salario Mensual. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-002</td><td><div class="test-name">Cambio vigente antes de la fecha: usa el salario más reciente Activo ($1,000 → $1,500)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">crítico</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Historial: $1,000 desde el ingreso y $1,500 vigente desde 01/04/2026 (queda Activo; $1,000 pasa a Historial con vigencia hasta 31/03/2026).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: salario inicial $1,000 y cambio $1,500 (<code>POST /people/{id}/salary-history</code>, vigencia 01/04/2026).</li><li>Desvincular con fecha 07/07/2026.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Generar la liquidación y leer la base.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">La base es <strong>$1,500</strong> (el Activo a la fecha), NO $1,000. Obtenido: <strong>$1,500.00</strong>. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-003</td><td><div class="test-name">Cambio con vigencia posterior a la fecha: se ignora, usa el salario anterior ($1,000)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">crítico</span><span class="tag tag-val">regulatory</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Historial: $1,000 Activo + cambio $1,800 con vigencia 01/08/2026 (queda &quot;Programado&quot;, futuro respecto a la liquidación).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: salario inicial $1,000, cambio $1,800 (vigencia 01/08/2026).</li><li>Desvincular con fecha 07/07/2026.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Generar la liquidación y leer la base.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">La base es <strong>$1,000</strong> (Activo a la fecha); el cambio futuro de $1,800 se ignora. Obtenido: <strong>$1,000.00</strong>. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-004</td><td><div class="test-name">Múltiples cambios: selecciona el Activo a la fecha exacta ($800→$1,100→$1,400→$2,000)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">crítico</span><span class="tag tag-val">regulatory</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Historial: $800 (ingreso), $1,100 (01/06/2025), $1,400 (01/05/2026, Activo) y $2,000 (01/09/2026, Programado).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: salario inicial $800 + tres cambios con sus fechas de vigencia.</li><li>Desvincular con fecha 07/07/2026.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Generar la liquidación y leer la base.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">La base es <strong>$1,400</strong> (Activo al 07/07/2026); se ignoran los históricos ($800, $1,100) y el futuro ($2,000). Obtenido: <strong>$1,400.00</strong>. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-005</td><td><div class="test-name">Cambio con vigencia EXACTAMENTE en la fecha de liquidación (borde inclusivo → $1,600)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">regulatory</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Historial: $1,000 + cambio $1,600 con vigencia 07/07/2026 (el mismo día de la liquidación).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: salario inicial $1,000, cambio $1,600 (vigencia 07/07/2026).</li><li>Desvincular con fecha 07/07/2026.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Generar la liquidación y leer la base; comparar con el registro Activo del historial a esa fecha.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Borde <strong>inclusivo</strong>: una vigencia que inicia el mismo día ya está activa ese día. El historial y la liquidación coinciden en <strong>$1,600</strong>. Obtenido: <strong>$1,600.00</strong>. ✅ <em>(Resuelve la observación #2 de la HU: la inclusividad queda confirmada.)</em></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-006</td><td><div class="test-name">Todos los conceptos derivan de la misma base Activa, sin excepción ($1,500)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">crítico</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Historial $1,000 → $1,500 Activo (vigencia 01/04/2026), con antigüedad para indemnización, vacación y aguinaldo proporcionales.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: salario inicial $1,000, cambio $1,500 (01/04/2026), desvincular 07/07/2026.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Leer la base salarial de cada concepto en el detalle: &quot;Salario Mensual&quot;, &quot;Salario Integrado&quot; y &quot;Salario Período&quot;.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Todos usan la misma base $1,500: Salario Mensual = Salario Integrado = <code>variableSalary</code> = <strong>$1,500</strong>, y &quot;Salario Período&quot; = base × díasPendientes ÷ 30. Ningún concepto usa $1,000 ni otro valor. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-007</td><td><div class="test-name">Salario Activo que cruza el umbral $1,000 ($900 → $1,100)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">regulatory</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Historial: $900 (histórico) → $1,100 (Activo desde 01/05/2026), cruzando el umbral de $1,000.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: salario inicial $900, cambio $1,100 (01/05/2026), desvincular 07/07/2026.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Leer la base y el concepto &quot;Salario Período&quot;.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">La base es <strong>$1,100</strong> (>$1,000, no el histórico $900) y el período se calcula sobre $1,100. Obtenido: <strong>$1,100.00</strong>. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-008</td><td><div class="test-name">Salario Activo con decimales: sin pérdida de centavos ($1,333.33)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">regulatory</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador con salario Activo $1,333.33.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: salario inicial $1,333.33, desvincular 07/07/2026.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Leer la base y verificar los proporcionales (Salario Período = base × díasPendientes ÷ 30).</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">La base es <strong>$1,333.33</strong> y los proporcionales se calculan sobre ese valor sin pérdida de centavos (precisión a 2 decimales). ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-011</td><td><div class="test-name">Despido con responsabilidad patronal: toma el mismo salario Activo ($1,500)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Historial $1,000 → $1,500 Activo. Motivo de desvinculación: Despido con responsabilidad patronal (id 2).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: salario inicial $1,000, cambio $1,500 (01/04/2026), desvincular 07/07/2026 con motivo Despido.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Generar la liquidación y leer la base.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">La base es <strong>$1,500</strong> (el tipo de desvinculación no afecta la selección del salario). ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-011</td><td><div class="test-name">Renuncia voluntaria: toma el mismo salario Activo ($1,500)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Historial $1,000 → $1,500 Activo. Motivo: Renuncia voluntaria (id 3).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: mismo historial, desvincular 07/07/2026 con motivo Renuncia voluntaria.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Generar la liquidación y leer la base.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">La base es <strong>$1,500</strong>, idéntica a la de Despido. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-011</td><td><div class="test-name">Renuncia: toma el mismo salario Activo ($1,500)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Historial $1,000 → $1,500 Activo. Motivo: Renuncia (id 4).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Builder: mismo historial, desvincular 07/07/2026 con motivo Renuncia.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Generar la liquidación y leer la base.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">La base es <strong>$1,500</strong>, idéntica a los otros motivos. Confirma que la selección del salario Activo es independiente del tipo de desvinculación. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+    </tbody>
+  </table>
+</div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5011" target="_blank" onclick="event.stopPropagation()">REBU-5011</a>
+      <span class="hu-title">Visualización del salario/honorario vigente (registro Activo a la fecha) en modo lectura del perfil, y su reemplazo por la tabla de historial en edición</span>
     </div>
+    <div class="hu-header-right"><span class="hu-badge">4 / 4 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
-</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span> <span class="map-note">Historia sin casos TC formales — cobertura automatizada del fix del bug base-30</span></td></tr></table></td></tr>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-116</td><td><div class="test-name">Servicio Profesional: el campo de compensación se llama &quot;Honorario&quot; y muestra el honorario Activo</div><div class="test-tags"><span class="tag tag-val">ui</span><span class="tag tag-val">colaboradores</span><span class="tag tag-val">crítico</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador tipo Servicio Profesional con honorario Activo.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Ir a Personas › Colaboradores; abrir el perfil del primer SP de la lista (doble clic en la fila).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>En modo lectura, ubicar el campo de compensación en Datos de Contratación.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">La etiqueta es <strong>&quot;Honorario&quot;</strong> (no &quot;Salario Mensual&quot;), muestra un monto y NO se muestra la tabla de historial. Obtenido: <strong>Honorario $55.00</strong>. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — SP: Honorario en modo lectura</div><img src="assets/v15.3.0/TC-COL-116/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-117</td><td><div class="test-name">Modo lectura: el campo de compensación es simple (etiqueta + valor), sin tabla ni controles</div><div class="test-tags"><span class="tag tag-val">ui</span><span class="tag tag-val">colaboradores</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador activo (Empleado o SP) con compensación Activa.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Abrir el perfil de un colaborador (doble clic en la fila de la lista).</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>En modo lectura, inspeccionar el campo de compensación en Datos de Contratación.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Se muestra un campo simple (etiqueta + valor de solo lectura) con el mismo estilo del resto de campos; <strong>no</strong> hay tabla de historial en lectura. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Campo simple en lectura</div><img src="assets/v15.3.0/TC-COL-117/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-118</td><td><div class="test-name">Al entrar a edición, el campo simple es reemplazado por la tabla de historial (REBU-4909)</div><div class="test-tags"><span class="tag tag-val">ui</span><span class="tag tag-val">colaboradores</span><span class="tag tag-val">crítico</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador Empleado (salario fijo) con al menos un registro de salario.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Abrir el perfil de un Empleado; verificar &quot;Salario Mensual&quot; en lectura.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Presionar &quot;Editar&quot; en Datos de Contratación.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Aparece la <strong>tabla de historial</strong> con columnas Estado / Monto / Desde / Hasta (pill de estado Activo/Historial/Programado), en lugar del campo simple. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Modo edición: tabla de historial</div><img src="assets/v15.3.0/TC-COL-118/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-119</td><td><div class="test-name">Cancelar la edición regresa a modo lectura mostrando el campo simple sin cambios</div><div class="test-tags"><span class="tag tag-val">ui</span><span class="tag tag-val">colaboradores</span><span class="tag tag-val">regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador Empleado en modo edición (tabla de historial visible).</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Abrir un Empleado, leer su valor Activo, entrar a edición.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Presionar &quot;Cancelar Edición&quot; sin realizar cambios.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">Se regresa a modo lectura con el campo simple; el valor Activo es el mismo que antes de editar (sin alteraciones). ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Regreso a lectura tras cancelar</div><img src="assets/v15.3.0/TC-COL-119/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
     </tbody>
   </table>
 </div>
@@ -130,15 +177,37 @@
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5075" target="_blank" onclick="event.stopPropagation()">REBU-5075</a>
-      <span class="hu-title">Sin casos manuales en este release</span>
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4976" target="_blank" onclick="event.stopPropagation()">REBU-4976</a>
+      <span class="hu-title">Casos manuales / pendientes de automatización (Fase 2)</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">0 pendientes</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">3 pendientes</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
     <tbody>
-<tr class="test-row"><td class="test-id">—</td><td><div class="test-name">Este release solo contiene la verificación automatizada del edge case de ausencias (REBU-5075).</div></td><td class="status-cell">—</td></tr>
+<tr class="test-row"><td class="test-id">TC-LIQ-009</td><td><div class="test-name">Sin registro de salario Activo a la fecha → comportamiento controlado (negativo). Fase 2: el comportamiento esperado no está definido en la HU.</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-LIQ-010</td><td><div class="test-name">Fecha de liquidación anterior al primer registro del historial (negativo). Fase 2: pendiente de definición de producto.</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-LIQ-012</td><td><div class="test-name">Cambio de salario retroactivo → re-consulta y toma el Activo correcto. Fase 2: confirmar si el módulo permite vigencias retroactivas.</div></td><td class="status-cell">⏭️</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5011" target="_blank" onclick="event.stopPropagation()">REBU-5011</a>
+      <span class="hu-title">Casos pendientes: verificado manual + automatizados bloqueados por entorno</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">6 pendientes</span><span class="hu-toggle">▼</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row"><td class="test-id">TC-COL-120</td><td><div class="test-name">Registrar un cambio de salario → el modo lectura muestra el nuevo valor Activo (AC-5). Verificado MANUAL en UAT (registrar $1,888 hoy + Guardar → lectura mostró $1,888). No se deja automatizado estable: muta datos reales y la API de creación está bloqueada (403, REBU-5070), sin colaborador desechable.</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-115</td><td><div class="test-name">Empleado con salario único: el Activo a la fecha es ese salario ($1,200). Automatizado (API); bloqueado por 403 del microservicio en UAT (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-121</td><td><div class="test-name">Historial con varios estados: el Activo a la fecha es el más reciente ($1,350), no el histórico. Automatizado (API); bloqueado por 403 (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-122</td><td><div class="test-name">Registro con vigencia futura: el campo sigue mostrando el Activo actual ($1,100), no el futuro. Automatizado (API); bloqueado por 403 (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-125</td><td><div class="test-name">Salario Activo con decimales ($1,333.33): sin pérdida de centavos. Automatizado (API); bloqueado por 403 (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-126</td><td><div class="test-name">Consistencia: el Activo mostrado en lectura coincide con la base que toma la liquidación (REBU-4976). Automatizado (API); bloqueado por 403 (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
     </tbody>
   </table>
 </div>
@@ -146,7 +215,7 @@
   </div>
   <div id="env-prod" class="env-tab-panel">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-prod', this)">🤖 Automatizados <span class="tab-count">1</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-prod', this)">🤖 Automatizados <span class="tab-count">0</span></button>
       <button class="tab-btn" onclick="switchTab('manual-prod', this)">📋 Manuales <span class="tab-count">0</span></button>
     </div>
     <hr class="tab-divider">
@@ -154,23 +223,14 @@
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5075" target="_blank" onclick="event.stopPropagation()">REBU-5075</a>
-      <span class="hu-title">Ausencias que cubren el mes completo → días trabajados 0 y salario $0 (edge case base-30)</span>
+      <span class="hu-title">Aún no hay casos verificados en Producción para este release</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">1 / 1 ✓</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">—</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
     <tbody>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">REBU-5075</td><td><div class="test-name">Incapacidad total del mes → días trabajados = 0 y salario $0 en las 6 quincenas (feb–abr 2025), incluida la quincena del bug Mar Q2 (16-31)</div><div class="test-tags"><span class="tag tag-val">crítico</span><span class="tag tag-val">api</span><span class="tag tag-val">ui</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr><tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador EMP activo, fecha de ingreso 01-ene-2024, salario $1,200, AFP Confía, planilla quincenal.</li><li>Tipos de incapacidad del catálogo: &quot;Enfermedad o riesgo común&quot; y &quot;Riesgo empresarial o accidente laboral&quot;.</li></ul></td></tr><tr><th>Setup</th><td><ol><li>Crear colaborador y planilla quincenal (builder `createPayrollScenario`).</li><li>Por cada mes (feb, mar, abr 2025) crear 2 incapacidades que cubren el mes completo.</li><li>Enviar a planilla las incidencias pendientes antes de leer cada quincena.</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Correr cada quincena (Feb Q1, Feb Q2, Mar Q1, Mar Q2, Abr Q1, Abr Q2).</li><li>En Remuneraciones, revisar Días Trabajados y Salario del período.</li><li>Finalizar la quincena y continuar con la siguiente.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">En las 6 quincenas los días trabajados quedan en <strong>0</strong> y el salario del período en <strong>$0.00</strong>, sin negativos. Corrida en <strong>Producción</strong> (company 21, tenant Test): Feb Q1 ✅, Feb Q2 ✅, Mar Q1 ✅, Mar Q2 ✅, Abr Q1 ✅, Abr Q2 ✅.</td></tr><tr><th>Evidencia</th><td>
-  <div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
-    <div style="flex:1;min-width:220px">
-      <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Remuneraciones · Mar Q2 (16-31 mar 2025) · Producción</div>
-      <img src="assets/v15.2.1/prod/REBU-5075/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
-      <div style="font-size:11px;color:#4b6b60;margin-top:6px">Producción (tenant Test): colaborador con incapacidad total del mes — Salario Mensual $1,200.00 → <strong>Salario del período $0.00</strong>, días trabajados sin valor negativo.</div>
-    </div>
-  </div>
-</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span> <span class="map-note">Historia sin casos TC formales — cobertura automatizada del fix del bug base-30</span></td></tr></table></td></tr>
+<tr class="test-row"><td class="test-id">—</td><td><div class="test-name">La suite de REBU-4976 se verificó en UAT (company 1). La corrida en Producción queda pendiente.</div></td><td class="status-cell">—</td></tr>
     </tbody>
   </table>
 </div>
@@ -181,7 +241,7 @@
     <div class="hu-header-left">
       <span class="hu-title">Sin casos manuales en Producción</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">0 pendientes</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">—</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
@@ -195,14 +255,21 @@
 </div>
 </div>
 
-<!-- RELEASE-END: v15.2.1 -->
+<!-- RELEASE-END: v15.3.0 -->
 
 <section class="anteriores-section" id="anteriores">
   <div class="anteriores-header">
     <div class="anteriores-icon">📦</div>
     <span class="anteriores-title">Releases anteriores</span>
-    <span class="anteriores-count">4 releases</span>
+    <span class="anteriores-count">5 releases</span>
   </div>
+  <a class="release-link" href="releases/v15.2.1.html">
+    <span class="release-link-version">v15.2.1</span>
+    <span class="release-link-date">13 jul 2026</span>
+    <span class="stat-pill pass">2 ✓</span>
+    <span class="stat-pill fail">0 ✗</span>
+    <span class="release-link-arrow">→</span>
+  </a>
   <a class="release-link" href="releases/v15.2.0.html">
     <span class="release-link-version">v15.2.0</span>
     <span class="release-link-date">09 jul 2026</span>
@@ -234,7 +301,7 @@
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> · Generado el 13 jul 2026 · Rama <strong>REBU-5075</strong> · Entorno <strong>UAT + Producción</strong>
+  <strong>Rebu Automation Suite</strong> · Generado el 20 jul 2026 · Rama <strong>REBU-4976 · REBU-5011</strong> · Entorno <strong>UAT</strong>
 </footer>
 
 </div>
