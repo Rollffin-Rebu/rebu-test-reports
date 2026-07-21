@@ -61,7 +61,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 23 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938 -->
+<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 27 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938 -->
 
 <header class="hero" id="release-v15-3-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -69,7 +69,7 @@
   <div class="hero-meta">
     <span>📅 <strong>17 jul 2026</strong></span>
     <span class="sep">·</span>
-    <span>🌿 <strong>REBU-4976 · REBU-5011 · REBU-4938</strong></span>
+    <span>🌿 <strong>REBU-4976 · REBU-5011 · REBU-4938 · REBU-4980</strong></span>
     <span class="sep">·</span>
     <span>🌐 <strong>UAT</strong></span>
     <span class="sep">·</span>
@@ -79,20 +79,20 @@
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">23</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">27</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">23</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">27</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~4 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">23/23 ✓</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">27/27 ✓</span></button>
     <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">—</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">23</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">27</span></button>
       <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">9</span></button>
     </div>
     <hr class="tab-divider">
@@ -199,6 +199,30 @@
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500 + cambios a $1,800 (20-jul) y $2,100 (25-jul); ausencia 18-27 jul (abarca los 3 tramos).</td></tr><tr><th>Distribución por tramos</th><td class="result-text">Los días se distribuyen entre los 3 tramos según su fecha; el tramo intermedio queda 100% cubierto por ausencia.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">periodSalary $310.00, días 5. Tramos: {$1,500 × 2d = $100} + {$1,800 × 0d = $0} + {$2,100 × 3d = $210}. Los 3 salarios presentes en el desglose. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Remuneraciones con la ausencia</div><img src="assets/v15.3.0/TC-PLA-589/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — Columnas Días Trabajados / Salario</div><img src="assets/v15.3.0/TC-PLA-589/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-583</td><td><div class="test-name">Ausencia SUBSIDIADA (incapacidad): el subsidio se topa a $1,000; el cambio de salario intracíclico no lo altera</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">provisiones</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500 + cambio a $1,800 vigente 20-jul; incapacidad enfermedad/riesgo común SUBSIDIADA 18-21 jul (4 días).</td></tr><tr><th>Fórmula (REBU-4610 AC2/AC3)</th><td class="result-text">Subsidio = (MIN(salarioVigente, $1,000) / 30) × 0.75 × díasSubsidiados. El <strong>tope ISSS de $1,000</strong> absorbe el cambio de tramo: MIN(1,500,1,000)=MIN(1,800,1,000)=$1,000.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">subsidyDays 4, subsidyAmount <strong>$100.00</strong> = (1,000/30)×0.75×4. Idéntico con base plana $1,500 y con cambio a $1,800 (tope). El pago de días trabajados (grossEarnings $640) SÍ usa los tramos $1,500/$1,800; el subsidio topado no. Dos lógicas correctas. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Aportes y Provisiones: Días Subsidio 4 · Monto Subsidio $100.00</div><img src="assets/v15.3.0/TC-PLA-583/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — Aportes y Provisiones totales (scroll): Aportes $119.15 · Provisiones $103.13</div><img src="assets/v15.3.0/TC-PLA-583/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4980" target="_blank" onclick="event.stopPropagation()">REBU-4980</a>
+      <span class="hu-title">Boleta de pago con cambio de salario intraperíodo: Salario Período consolidado + nota + Salario Base al cierre</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">4 ✓ · 1 🐞</span><span class="hu-toggle">▼</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-591</td><td><div class="test-name">Con cambio: la boleta muestra Total Ingresos $860.00, la nota "Incluye cambio de salario en el período" (AC3) y Salario Base $1,800.00 (AC4)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">planilla</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500 + cambio a $1,800 vigente día 5; planilla Q1 julio (01–15) finalizada.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Boleta PDF descargada (POST /payroll/entry/payslips). Total Ingresos <strong>$860.00</strong>, nota de cambio presente, Salario Base <strong>$1,800.00</strong> (Activo al cierre). ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:260px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Boleta de pago (Recibo de Planilla) — cambio $1,500→$1,800</div><img src="assets/v15.3.0/TC-PLA-591/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-591b</td><td><div class="test-name">AC2 — el Salario Período debe ser UNA sola línea consolidada de $860.00 (defecto detectado)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">planilla</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><a href="https://rebu.atlassian.net/browse/REBU-5174" target="_blank" onclick="event.stopPropagation()" style="display:inline-block;background:#fde8e8;color:#b91c1c;font-weight:700;font-size:11px;padding:3px 8px;border-radius:6px;text-decoration:none">🐞 REBU-5174</a></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Criterio (AC2)</th><td class="result-text">"La boleta muestra una <strong>única línea</strong> de Salario Período con el monto total prorrateo ($860.00)."</td></tr><tr><th>Resultado obtenido</th><td class="result-text">La boleta muestra <strong>2 líneas</strong> "Salario Periodo" ($200.00 + $660.00), una por tramo, en vez de 1 consolidada. Reportado como <a href="https://rebu.atlassian.net/browse/REBU-5174" target="_blank">REBU-5174</a> (Defect). El test lo automatiza con <code>test.fail</code> (expected-to-fail): alertará cuando BE lo corrija.</td></tr><tr><th>Status</th><td><a href="https://rebu.atlassian.net/browse/REBU-5174" target="_blank" onclick="event.stopPropagation()" style="display:inline-block;background:#fde8e8;color:#b91c1c;font-weight:700;font-size:11px;padding:3px 8px;border-radius:6px;text-decoration:none">🐞 REBU-5174</a></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-592</td><td><div class="test-name">Sin cambio: la boleta muestra 1 línea de Salario Período y NO muestra la nota (AC5)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">planilla</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado con salario único $1,800 en Q1 julio; planilla finalizada.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">1 línea "Salario Periodo"; la nota "Incluye cambio…" <strong>no</strong> aparece. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-599</td><td><div class="test-name">La boleta se descarga como PDF válido (HTTP 200, application/pdf, %PDF)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">planilla</span><span class="tag tag-val">descargas</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Resultado obtenido</th><td class="result-text">POST /payroll/entry/payslips → 200, content-type application/pdf, ~19 KB, magic %PDF-. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-600</td><td><div class="test-name">Consistencia: el total de la boleta ($860) = suma de los tramos del detalle de planilla (REBU-4938)</div><div class="test-tags"><span class="tag tag-val">api</span><span class="tag tag-val">planilla</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Resultado obtenido</th><td class="result-text">Suma de tramos del detalle ($200+$660=$860) = total de la boleta ($860.00). La boleta consolida el monto que el detalle expone por tramo. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
     </tbody>
   </table>
 </div>
@@ -331,7 +355,7 @@
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> · Generado el 20 jul 2026 · Rama <strong>REBU-4976 · REBU-5011 · REBU-4938</strong> · Entorno <strong>UAT</strong>
+  <strong>Rebu Automation Suite</strong> · Generado el 20 jul 2026 · Rama <strong>REBU-4976 · REBU-5011 · REBU-4938 · REBU-4980</strong> · Entorno <strong>UAT</strong>
 </footer>
 
 </div>
