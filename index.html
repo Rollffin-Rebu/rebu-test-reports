@@ -61,7 +61,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 35 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938 -->
+<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 36 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938 -->
 
 <header class="hero" id="release-v15-3-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -79,20 +79,20 @@
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">35</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">36</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">35</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">36</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~4 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">35/35 ✓</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">36/36 ✓</span></button>
     <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">—</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">35</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">36</span></button>
       <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">9</span></button>
     </div>
     <hr class="tab-divider">
@@ -178,7 +178,7 @@
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4938" target="_blank" onclick="event.stopPropagation()">REBU-4938</a>
       <span class="hu-title">Ausencias con cambio de salario intra período: el descuento distribuye los días entre los tramos de salario vigentes del período (día más antiguo → tramo más antiguo)</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">8 / 8 ✓</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">9 / 9 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
@@ -199,7 +199,9 @@
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500 + cambios a $1,800 (20-jul) y $2,100 (25-jul); ausencia 18-27 jul (abarca los 3 tramos).</td></tr><tr><th>Distribución por tramos</th><td class="result-text">Los días se distribuyen entre los 3 tramos según su fecha; el tramo intermedio queda 100% cubierto por ausencia.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">periodSalary $310.00, días 5. Tramos: {$1,500 × 2d = $100} + {$1,800 × 0d = $0} + {$2,100 × 3d = $210}. Los 3 salarios presentes en el desglose. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Remuneraciones con la ausencia</div><img src="assets/v15.3.0/TC-PLA-589/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — Columnas Días Trabajados / Salario</div><img src="assets/v15.3.0/TC-PLA-589/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-583</td><td><div class="test-name">Ausencia SUBSIDIADA (incapacidad): el subsidio se topa a $1,000; el cambio de salario intracíclico no lo altera</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">provisiones</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500 + cambio a $1,800 vigente 20-jul; incapacidad enfermedad/riesgo común SUBSIDIADA 18-21 jul (4 días).</td></tr><tr><th>Fórmula (REBU-4610 AC2/AC3)</th><td class="result-text">Subsidio = (MIN(salarioVigente, $1,000) / 30) × 0.75 × díasSubsidiados. El <strong>tope ISSS de $1,000</strong> absorbe el cambio de tramo: MIN(1,500,1,000)=MIN(1,800,1,000)=$1,000.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">subsidyDays 4, subsidyAmount <strong>$100.00</strong> = (1,000/30)×0.75×4. Idéntico con base plana $1,500 y con cambio a $1,800 (tope). El pago de días trabajados (grossEarnings $640) SÍ usa los tramos $1,500/$1,800; el subsidio topado no. Dos lógicas correctas. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Aportes y Provisiones: Días Subsidio 4 · Monto Subsidio $100.00</div><img src="assets/v15.3.0/TC-PLA-583/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — Aportes y Provisiones totales (scroll): Aportes $119.15 · Provisiones $103.13</div><img src="assets/v15.3.0/TC-PLA-583/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
-    </tbody>
+    <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-611</td><td><div class="test-name">Ausencia de medio día (29–31 ene = 1.5 d) que traslapa el borde ene/feb: el descuento se ejecuta completo en Q2-enero</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">regulatory</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500 activo desde 2024; planilla quincenal Q2-enero (16–31 ene 2026); falta injustificada de medio día (4h) los 29, 30 y 31 ene = 1.5 días, con rango declarado 29-ene→01-feb, enviada a esa planilla.</td></tr><tr><th>Traslape de fecha</th><td class="result-text">El rango 29-ene→01-feb traslapa el borde entre la quincena Q2-enero y febrero, pero los 3 medios días (1.5) caen todos en enero.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Los 1.5 días se descuentan <strong>completos en Q2-enero</strong> (no se parten a febrero): días trabajados <strong>13.5</strong> (15 − 1.5), descuento <strong>$75.00</strong> (1.5 × $1,500/30), salario del período <strong>$675.00</strong> (1 tramo base $1,500 × 13.5). ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Remuneraciones Q2-enero con la ausencia</div><img src="assets/v15.3.0/TC-PLA-611/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — Días Trabajados 13.5 / Salario del período $675</div><img src="assets/v15.3.0/TC-PLA-611/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+</tbody>
   </table>
 </div>
 <div class="hu-section">
