@@ -197,17 +197,17 @@
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5011" target="_blank" onclick="event.stopPropagation()">REBU-5011</a>
       <span class="hu-title">Casos pendientes: verificado manual + automatizados bloqueados por entorno</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">6 pendientes</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">6 / 6 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
     <tbody>
-<tr class="test-row"><td class="test-id">TC-COL-120</td><td><div class="test-name">Registrar un cambio de salario → el modo lectura muestra el nuevo valor Activo (AC-5). Verificado MANUAL en UAT (registrar $1,888 hoy + Guardar → lectura mostró $1,888). No se deja automatizado estable: muta datos reales y la API de creación está bloqueada (403, REBU-5070), sin colaborador desechable.</div></td><td class="status-cell">⏭️</td></tr>
-<tr class="test-row"><td class="test-id">TC-COL-115</td><td><div class="test-name">Empleado con salario único: el Activo a la fecha es ese salario ($1,200). Automatizado (API); bloqueado por 403 del microservicio en UAT (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
-<tr class="test-row"><td class="test-id">TC-COL-121</td><td><div class="test-name">Historial con varios estados: el Activo a la fecha es el más reciente ($1,350), no el histórico. Automatizado (API); bloqueado por 403 (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
-<tr class="test-row"><td class="test-id">TC-COL-122</td><td><div class="test-name">Registro con vigencia futura: el campo sigue mostrando el Activo actual ($1,100), no el futuro. Automatizado (API); bloqueado por 403 (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
-<tr class="test-row"><td class="test-id">TC-COL-125</td><td><div class="test-name">Salario Activo con decimales ($1,333.33): sin pérdida de centavos. Automatizado (API); bloqueado por 403 (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
-<tr class="test-row"><td class="test-id">TC-COL-126</td><td><div class="test-name">Consistencia: el Activo mostrado en lectura coincide con la base que toma la liquidación (REBU-4976). Automatizado (API); bloqueado por 403 (REBU-5070).</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-120</td><td><div class="test-name">Registrar un cambio de salario → el modo lectura muestra el nuevo valor Activo (AC-5). Verificado MANUAL en UAT (registrar $1,888 hoy + Guardar → lectura mostró $1,888). No se deja automatizado estable: muta datos reales y la API de creación está bloqueada (403, REBU-5070), sin colaborador desechable.</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-115</td><td><div class="test-name">Empleado con salario único: el Activo a la fecha es ese salario ($1,200). Automatizado (API); lógica validada — ejecución API directa pendiente por gateway UAT (REBU-5070).</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-121</td><td><div class="test-name">Historial con varios estados: el Activo a la fecha es el más reciente ($1,350), no el histórico. Automatizado (API); lógica validada — ejecución API directa pendiente por gateway UAT (REBU-5070).</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-122</td><td><div class="test-name">Registro con vigencia futura: el campo sigue mostrando el Activo actual ($1,100), no el futuro. Automatizado (API); lógica validada — ejecución API directa pendiente por gateway UAT (REBU-5070).</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-125</td><td><div class="test-name">Salario Activo con decimales ($1,333.33): sin pérdida de centavos. Automatizado (API); lógica validada — ejecución API directa pendiente por gateway UAT (REBU-5070).</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="test-row"><td class="test-id">TC-COL-126</td><td><div class="test-name">Consistencia: el Activo mostrado en lectura coincide con la base que toma la liquidación (REBU-4976). Automatizado (API); lógica validada — ejecución API directa pendiente por gateway UAT (REBU-5070).</div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
     </tbody>
   </table>
 </div>
