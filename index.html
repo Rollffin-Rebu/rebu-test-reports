@@ -61,7 +61,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 34 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938 -->
+<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 35 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938 -->
 
 <header class="hero" id="release-v15-3-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -79,20 +79,20 @@
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">34</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">35</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">34</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">35</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~4 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">34/34 ✓</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">35/35 ✓</span></button>
     <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">—</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">34</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">35</span></button>
       <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">9</span></button>
     </div>
     <hr class="tab-divider">
@@ -236,7 +236,7 @@
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4927" target="_blank" onclick="event.stopPropagation()">REBU-4927</a>
       <span class="hu-title">Cálculo de horas extra con salario activo: el "Salario por Hora" del modal usa el salario Activo al cierre (÷240), sin prorrateo por tramos</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">5 / 5 ✓</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">6 / 6 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
@@ -245,6 +245,8 @@
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500 + cambio a $1,800 vigente día 5; planilla Q1 julio recalculada (Salario Mensual = $1,800 Activo).</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Modal de Horas Extra: <strong>Salario por Hora $7.50</strong> = $1,800 / 240 (30×8). Usa el Activo, NO el $1,500 previo ni el prorrateo del Salario Período ($860). ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:260px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Modal de Horas Extra — "Salario por Hora"</div><img src="assets/v15.3.0/TC-PLA-601/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-602</td><td><div class="test-name">Sin cambio: el "Salario por Hora" usa el salario único $1,800</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado con salario único $1,800 en Q1 julio.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Salario por Hora <strong>$7.50</strong> = $1,800 / 240. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:260px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Modal de Horas Extra — "Salario por Hora"</div><img src="assets/v15.3.0/TC-PLA-602/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-604</td><td><div class="test-name">Monto total de HE = horas × "Salario por Hora" × factor del concepto (HE-D x200%)</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500 + cambio a $1,800 (día 5); planilla Q1 julio recalculada (Salario/hora = $1,800/240 = $7.50). Modal de Horas Extra abierto.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Se registran 10h en el concepto <strong>HE-D x200%</strong>; el modal autocalcula <strong>Total $150.00</strong> = 10 × $7.50 × 2 (factor 200%), sobre el salario <strong>Activo</strong>. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:260px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Modal de Horas Extra — Concepto HE-D x200% · 10h · Total $150.00</div><img src="assets/v15.3.0/TC-PLA-604/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-605</td><td><div class="test-name">Umbral $1,000: cambio $900→$1,100 → "Salario por Hora" sobre $1,100 (Activo)</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $900 + cambio a $1,100 vigente día 5; planilla Q1 julio recalculada.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Salario por Hora <strong>$4.58</strong> = $1,100 / 240 (usa el Activo que cruza el umbral, no $900). ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:260px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Modal de Horas Extra — "Salario por Hora"</div><img src="assets/v15.3.0/TC-PLA-605/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-607</td><td><div class="test-name">Decimales: salario Activo $1,333.33 → "Salario por Hora" con centavos</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
