@@ -61,7 +61,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 67 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909 -->
+<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 71 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909 -->
 
 <header class="hero" id="release-v15-3-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -79,20 +79,20 @@
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">67</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">71</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">67</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">71</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~9 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">67/67 ✓</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">71/71 ✓</span></button>
     <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">—</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">67</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">71</span></button>
       <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">10</span></button>
     </div>
     <hr class="tab-divider">
@@ -227,6 +227,28 @@
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500→$1,800 (08-ago); ausencia 05–07 ago 6h/día (18h = 2.25 días).</td></tr><tr><th>Resultado obtenido</th><td class="result-text">2.25 días consumidos en el <strong>Tramo 1 ($1,500)</strong>: 4.75 días trabajados = $237.50; Tramo 2: 8 días = $480.00. <strong>Días trabajados 12.75</strong>, sin pérdida de centavos. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:280px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Tooltip: 4.75d×$1,500/30=$237.50 · 8d×$1,800/30=$480</div><img src="assets/v15.3.0/TC-PLA-616/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-617</td><td><div class="test-name">Regresión clave: la ausencia por horas NO se reparte proporcional entre tramos (consumo izq-der)</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Mismo escenario que TC-PLA-612 (cambio 08-ago, ausencia 05–08 ago por horas).</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Los 2 días caen <strong>completos en el Tramo 1</strong> (5 días trabajados), NO 1.5/0.5 ni un reparto proporcional. Confirma el consumo de izquierda a derecha. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:280px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Tooltip: Tramo 1 qty 5 (no proporcional) · Tramo 2 qty 8</div><img src="assets/v15.3.0/TC-PLA-617/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5139" target="_blank" onclick="event.stopPropagation()">REBU-5139</a>
+      <span class="hu-title">Caso B — ausencia atrasada con cambio de salario intra-período: el arrastre sin fecha real cae a la derecha (reconciliación por segmento)</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">4 / 4 ✓</span><span class="hu-toggle">▼</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-620</td><td><div class="test-name">Caso B: ausencia atrasada (11 d, inicia antes del período) + cambio 24-jun → arrastre a la derecha</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,000→$1,200 (24-jun); planilla 16–30 jun (Tramo 1 [16-23] $1,000, Tramo 2 [24-30] $1,200); ausencia atrasada 10–20 jun (11 días) enviada a la planilla.</td></tr><tr><th>Resultado obtenido</th><td class="result-text">La ausencia se descuenta por conteo (Caso B, 11 d) y el arrastre sin fecha real cae a la <strong>derecha</strong>: Tramo 1 100% ausente → <strong>qty 0 ($0)</strong>; Tramo 2 <strong>qty 4 ($160.00)</strong>. Días trabajados 4. El arrastre NO se descarta. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:280px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Tooltip por tramo: 0d×$1,000/30=$0 · 4d×$1,200/30=$160 · Total $160</div><img src="assets/v15.3.0/TC-PLA-620/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-621</td><td><div class="test-name">Invariante de reconciliación: Σ díasAusencia(por tramo) + días trabajados = días asignados</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Mismo escenario que TC-PLA-620. Verificación por API (getPayrollDetails).</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Tramo 1: 8 cal − 0 trab = <strong>8 ausencia</strong>; Tramo 2: 7 cal − 4 trab = <strong>3 ausencia</strong>; Σ ausencia = <strong>11</strong> = DaysToApply; días trabajados 4; total = <strong>15</strong> = días del período. Invariante <code>AssignedDays == DaysWorked + Σ AbsenceDays</code> restaurado. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-622</td><td><div class="test-name">Cobertura total (target &gt; días calendario): el período queda 100% cubierto</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,000→$1,200 (24-jun); planilla 16–30 jun; ausencia atrasada 05–30 jun (26 días).</td></tr><tr><th>Resultado obtenido</th><td class="result-text"><code>daysAssigned = min(26, 15) = 15</code> → período 100% cubierto: <strong>días trabajados 0</strong>, salario del período $0. El overflow no rompe la distribución (último segmento absorbe). ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:280px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Remuneraciones: días trabajados 0 · salario del período $0</div><img src="assets/v15.3.0/TC-PLA-622/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-623</td><td><div class="test-name">Caso B sin cambio de salario (1 segmento) → comportamiento sin cambio</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,000 plano; planilla 16–30 jun; ausencia atrasada 10–20 jun (11 días).</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Con un solo segmento el ajuste no cambia el conteo: 1 tramo $1,000 con <strong>4 días trabajados</strong> = $133.33; días trabajados 4. No regresión. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:280px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Salario Periodo $133.33 · días trabajados 4</div><img src="assets/v15.3.0/TC-PLA-623/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
     </tbody>
   </table>
 </div>
