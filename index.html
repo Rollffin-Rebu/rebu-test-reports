@@ -61,7 +61,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 71 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909 -->
+<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 72 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909 -->
 
 <header class="hero" id="release-v15-3-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -79,20 +79,20 @@
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">71</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">72</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">71</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">72</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~9 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">71/71 ✓</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">72/72 ✓</span></button>
     <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">—</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">71</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">72</span></button>
       <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">10</span></button>
     </div>
     <hr class="tab-divider">
@@ -210,7 +210,7 @@
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5182" target="_blank" onclick="event.stopPropagation()">REBU-5182</a>
       <span class="hu-title">Ausencias por horas: descontar días completos por segmento de salario (consumo izquierda→derecha, asignado al tramo por fecha)</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">6 / 6 ✓</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">7 / 7 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
@@ -227,6 +227,9 @@
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,500→$1,800 (08-ago); ausencia 05–07 ago 6h/día (18h = 2.25 días).</td></tr><tr><th>Resultado obtenido</th><td class="result-text">2.25 días consumidos en el <strong>Tramo 1 ($1,500)</strong>: 4.75 días trabajados = $237.50; Tramo 2: 8 días = $480.00. <strong>Días trabajados 12.75</strong>, sin pérdida de centavos. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:280px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Tooltip: 4.75d×$1,500/30=$237.50 · 8d×$1,800/30=$480</div><img src="assets/v15.3.0/TC-PLA-616/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-617</td><td><div class="test-name">Regresión clave: la ausencia por horas NO se reparte proporcional entre tramos (consumo izq-der)</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Mismo escenario que TC-PLA-612 (cambio 08-ago, ausencia 05–08 ago por horas).</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Los 2 días caen <strong>completos en el Tramo 1</strong> (5 días trabajados), NO 1.5/0.5 ni un reparto proporcional. Confirma el consumo de izquierda a derecha. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:280px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Tooltip: Tramo 1 qty 5 (no proporcional) · Tramo 2 qty 8</div><img src="assets/v15.3.0/TC-PLA-617/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-624</td><td><div class="test-name">3 tramos ($1,000→$1,200→$1,600) + medio día 05-06 ago (1 d) → 1 día descontado del tramo $1,200; pago 14 días (4+4+6)</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,000 con dos cambios dentro del período: $1,200 (05-ago) y $1,600 (10-ago); planilla 01–15 ago; ausencia falta injustificada 05-06 ago 4h/día (8h = 1 día).</td></tr><tr><th>Resultado obtenido</th><td class="result-text">Días trabajados <strong>14</strong> (15 − 1). El día de ausencia se consume izq-der desde el 05-ago → cae en el tramo <strong>$1,200</strong> (queda 4 trabajados de 5). Prorrateo: $1,000×4 = $133.33 · $1,200×4 = $160.00 · $1,600×6 = $320.00 · <strong>Total $613.33</strong>. La suma de días de pago (4+4+6) = 14. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:280px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Tooltip de prorrateo (3 tramos): 4d×$1,000/30=$133.33 · 4d×$1,200/30=$160 · 6d×$1,600/30=$320 · Total $613.33</div><img src="assets/v15.3.0/TC-PLA-624/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
     </tbody>
   </table>
 </div>
