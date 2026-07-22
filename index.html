@@ -61,7 +61,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 130 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909+REBU-5153+REBU-4910+REBU-4911+REBU-4912 -->
+<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 131 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909+REBU-5153+REBU-4910+REBU-4911+REBU-4912 -->
 
 <header class="hero" id="release-v15-3-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -79,20 +79,20 @@
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">130</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">131</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">130</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">131</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~22 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">130/130 ✓</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">131/131 ✓</span></button>
     <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">—</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">130</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">131</span></button>
       <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">16</span></button>
     </div>
     <hr class="tab-divider">
@@ -210,7 +210,7 @@
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5182" target="_blank" onclick="event.stopPropagation()">REBU-5182</a>
       <span class="hu-title">Ausencias por horas: descontar días completos por segmento de salario (consumo izquierda→derecha, asignado al tramo por fecha)</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">9 / 9 ✓</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">10 / 10 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
@@ -236,7 +236,9 @@
 
 
 
-    </tbody>
+    <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-631</td><td><div class="test-name">Ausencia por horas (3.5h/día) 29-jul→04-ago que cruza 2 períodos: Q2-jul finalizada SIN descuento; Q1-ago descuenta con prorrateo</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">ausencias</span><span class="tag tag-val">salario-dias</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Empleado $1,000; cambio de salario $1,000→$1,200 vigente 03-ago (creado antes de finalizar Q2-jul); ausencia falta injustificada 29-jul→04-ago 3.5h/día (7 días × 3.5h = 24.5h = 3.0625 d) creada SIN enviar; planillas Q2-jul (16–31) y Q1-ago (01–15).</td></tr><tr><th>Pasos</th><td><ol><li>Finalizar Q2-julio (4 changeSteps) sin enviar la incidencia.</li><li>Crear la planilla Q1-agosto y enviar la incidencia.</li><li>Abrir Q1-agosto y leer el tooltip del prorrateo por tramo.</li></ol></td></tr><tr><th>Resultado obtenido</th><td class="result-text"><strong>Q2-jul finaliza SIN descuento</strong> (15 días trabajados, $1,000×15 = $500). <strong>Q1-ago descuenta la ausencia cruzada</strong> (3.0625 d, consumida izq-der): Tramo 1 [01-02] $1,000 = <strong>0 días</strong> ($0), Tramo 2 [03-15] $1,200 = <strong>11.9375 días</strong> ($477.50); días trabajados 11.9375; período <strong>$477.50</strong>. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:280px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Q1-ago — tooltip del prorrateo: 0d×$1,000 + 11.9375d×$1,200 = $477.50</div><img src="assets/v15.3.0/TC-PLA-631/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+</tbody>
   </table>
 </div>
 <div class="hu-section">
