@@ -61,7 +61,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 131 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909+REBU-5153+REBU-4910+REBU-4911+REBU-4912 -->
+<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 133 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909+REBU-5153+REBU-4910+REBU-4911+REBU-4912 -->
 
 <header class="hero" id="release-v15-3-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -79,20 +79,20 @@
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">131</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">133</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">131</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">133</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~22 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">131/131 ✓</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">133/133 ✓</span></button>
     <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">—</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">131</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">133</span></button>
       <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">16</span></button>
     </div>
     <hr class="tab-divider">
@@ -658,6 +658,24 @@
 <tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-188</td><td><div class="test-name">Tras eliminar el Activo, Planilla usa el monto del nuevo registro Activo</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">planilla</span><span class="tag tag-val">regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td><ul><li>Colaborador con 3 registros (réplica del ejemplo de TC-COL-173) y planilla pendiente.</li></ul></td></tr><tr><th>Pasos</th><td><ol><li>Eliminar el registro Activo ($1,500); el Historial ($1,350) pasa a ser el nuevo Activo.</li><li>Correr la planilla del período actual.</li></ol></td></tr><tr><th>Resultado esperado</th><td class="result-text">El salario base usado por Planilla es $1,350.00 ($675 la quincena) — el monto del registro que ahora es Activo, no $1,500.00 (el eliminado). ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Activo eliminado, nuevo Activo $1,350</div><img src="assets/v15.3.0/TC-COL-188/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 
+    </tbody>
+  </table>
+</div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-4976" target="_blank" onclick="event.stopPropagation()">Liquidación · SV</a>
+      <span class="hu-title">Salario Integrado en la liquidación: Salario Mensual (activo a la fecha) + Salario Variable (base + promedio variable de comisiones). Si cualquiera de los dos falla, el caso es FAIL.</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">2 / 2 ✓</span><span class="hu-toggle">▼</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-013</td><td><div class="test-name">Salario Mensual $1,000 y Salario Variable $1,050 tras 3 quincenas con comisión $100 (promedio variable)</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">liquidaciones</span><span class="tag tag-val">regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Colaborador con política de vacaciones ANUAL, ingreso 08/01/2024, planilla quincenal, salario base $1,000.</td></tr><tr><th>Setup</th><td><ol><li>Crear concepto de ingreso "Comisiones" (aplica a promedio variable, <code>includeInVariableAverage</code>).</li><li>Correr y FINALIZAR 3 quincenas con comisión $100: Q1 ene, Q2 ene, Q1 feb 2026.</li><li>Desvincular el 20/02/2026, motivo "Despido con responsabilidad patronal".</li></ol></td></tr><tr><th>Pasos</th><td><ol><li>Abrir la liquidación → Detalle → leer "Salario Mensual".</li><li>Editar "Salario Integrado" → radio "Salario Variable" → leer el monto.</li></ol></td></tr><tr><th>Resultado obtenido</th><td class="result-text"><strong>Salario Mensual $1,000.00</strong> y <strong>Salario Variable $1,050.00</strong> (base $1,000 + promedio variable $50 = $300 en comisiones ÷ 6). API y UI coinciden. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle de Liquidación: Salario Mensual $1,000</div><img src="assets/v15.3.0/TC-LIQ-013/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — Modal Salario Integrado (Variable) = $1,050</div><img src="assets/v15.3.0/TC-LIQ-013/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-014</td><td><div class="test-name">Cambio de salario $1,000→$1,200 antes de desvincular → Salario Mensual $1,200 y Salario Variable $1,250</div><div class="test-tags"><span class="tag tag-val">api-ui</span><span class="tag tag-val">liquidaciones</span><span class="tag tag-val">regulatory</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Igual a TC-LIQ-013 (base $1,000 + 3 quincenas con comisión $100), pero se registra un cambio de salario a $1,200 vigente el 16/02/2026 (después de la última quincena, antes de la desvinculación).</td></tr><tr><th>Pasos</th><td><ol><li>Cambiar salario $1,000 → $1,200 (vigencia 16/02/2026).</li><li>Desvincular el 20/02/2026 (Despido c/ responsabilidad patronal).</li><li>Leer Salario Mensual y Salario Variable en la liquidación.</li></ol></td></tr><tr><th>Resultado obtenido</th><td class="result-text">El salario activo a la fecha pasa a <strong>$1,200</strong>: <strong>Salario Mensual $1,200.00</strong> y <strong>Salario Variable $1,250.00</strong> ($1,200 + promedio variable $50). API y UI coinciden. ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle: Salario Mensual $1,200 (tras cambio)</div><img src="assets/v15.3.0/TC-LIQ-014/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — Modal Salario Integrado (Variable) = $1,250</div><img src="assets/v15.3.0/TC-LIQ-014/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
     </tbody>
   </table>
 </div>
