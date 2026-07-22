@@ -61,7 +61,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 72 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909 -->
+<!-- RELEASE-START: v15.3.0 | 2026-07-17 | Pass: 74 | Fail: 0 | Branch: REBU-4976+REBU-5011+REBU-4938+REBU-4980+REBU-4927+REBU-4918+REBU-4909+REBU-5153 -->
 
 <header class="hero" id="release-v15-3-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -69,7 +69,7 @@
   <div class="hero-meta">
     <span>📅 <strong>17 jul 2026</strong></span>
     <span class="sep">·</span>
-    <span>🌿 <strong>REBU-4976 · REBU-5011 · REBU-4938 · REBU-4980 · REBU-4927 · REBU-4918 · REBU-4909</strong></span>
+    <span>🌿 <strong>REBU-4976 · REBU-5011 · REBU-4938 · REBU-4980 · REBU-4927 · REBU-4918 · REBU-4909 · REBU-5153</strong></span>
     <span class="sep">·</span>
     <span>🌐 <strong>UAT</strong></span>
     <span class="sep">·</span>
@@ -79,20 +79,20 @@
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">72</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">74</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">72</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">74</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~9 m</div><div class="card-label">Duración</div></div>
   </div>
 
 <div class="env-tab-group page-level">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">72/72 ✓</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">74/74 ✓</span></button>
     <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">—</span></button>
   </div>
   <div id="env-uat" class="env-tab-panel active">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">72</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto-uat', this)">🤖 Automatizados <span class="tab-count">74</span></button>
       <button class="tab-btn" onclick="switchTab('manual-uat', this)">📋 Manuales <span class="tab-count">10</span></button>
     </div>
     <hr class="tab-divider">
@@ -400,6 +400,26 @@
     </tbody>
   </table>
 </div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5153" target="_blank" onclick="event.stopPropagation()">REBU-5153</a>
+      <span class="hu-title">[BUG FE] Concepto de descuento recién creado se refleja en Descuentos Cíclicos del perfil sin refresh manual (invalidación de caché / refetch)</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">2 ✓ · 1 ⏭️</span><span class="hu-toggle">▼</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-127</td><td><div class="test-name">El concepto de descuento recién creado aparece en "Tipo de descuento" (Descuentos Cíclicos) SIN refresh manual</div><div class="test-tags"><span class="tag tag-val">ui</span><span class="tag tag-val">colaboradores</span><span class="tag tag-val">regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Colaborador activo; usuario con permiso para crear conceptos y editar el perfil.</td></tr><tr><th>Pasos</th><td><ol><li>Crear un concepto de descuento por UI en Configuración › Conceptos › Descuentos (Institución "Banco Promerica", Grupo "Descuentos OID"), con nombre único.</li><li>SIN recargar, navegar client-side al perfil de un colaborador → Cíclicos → Descuentos cíclicos → Agregar Registro.</li><li>Abrir el selector "Tipo de descuento".</li></ol></td></tr><tr><th>Resultado obtenido</th><td class="result-text">El concepto recién creado aparece en el selector "Tipo de descuento" <strong>sin F5</strong> (invalidación de caché / refetch correcto). Verificado sin ningún <code>page.reload()</code> entre crear el concepto y abrir el selector. ✅ <em>(bug corregido)</em></td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Modal "Agregar Registro" (descuento cíclico)</div><img src="assets/v15.3.0/TC-COL-127/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — Selector "Tipo de descuento" con el concepto nuevo</div><img src="assets/v15.3.0/TC-COL-127/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-129</td><td><div class="test-name">Varios conceptos de descuento creados seguidos aparecen todos en el selector sin refresh</div><div class="test-tags"><span class="tag tag-val">ui</span><span class="tag tag-val">colaboradores</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Colaborador activo; estar en el módulo Conceptos.</td></tr><tr><th>Pasos</th><td><ol><li>Crear 3 conceptos de descuento consecutivos con nombres únicos.</li><li>SIN recargar, ir al perfil → Descuentos cíclicos → Agregar Registro → abrir "Tipo de descuento".</li></ol></td></tr><tr><th>Resultado obtenido</th><td class="result-text">Los <strong>3 conceptos</strong> aparecen en el selector sin F5 (la invalidación de caché aplica a mutaciones sucesivas). ✅</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Los 3 conceptos disponibles en el selector</div><img src="assets/v15.3.0/TC-COL-129/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-130</td><td><div class="test-name">Refetch al re-navegar: perfil visitado antes de crear el concepto lo refleja al volver</div><div class="test-tags"><span class="tag tag-val">ui</span><span class="tag tag-val">colaboradores</span><span class="tag tag-val">edge-case</span></div></td><td class="status-cell">⏭️ Fase 2</td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Nota</th><td class="result-text">Requiere un ida-y-vuelta 100% client-side (perfil → sidebar → Conceptos → volver al perfil, sin reload). La navegación del sidebar <em>desde el perfil</em> es inestable en automatización → se deja <code>test.fixme</code> (Fase 2). El comportamiento central ya queda probado por TC-COL-127 y TC-COL-129.</td></tr><tr><th>Status</th><td>⏭️ Fase 2 (fixme)</td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
     </div></div>
     <div id="tab-manual-uat" class="tab-panel"><div class="content">
 <div class="hu-section">
@@ -544,7 +564,7 @@
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> · Generado el 21 jul 2026 · Rama <strong>REBU-4976 · REBU-5011 · REBU-4938 · REBU-4980 · REBU-4927 · REBU-4918 · REBU-4909</strong> · Entorno <strong>UAT</strong>
+  <strong>Rebu Automation Suite</strong> · Generado el 22 jul 2026 · Rama <strong>REBU-4976 · REBU-5011 · REBU-4938 · REBU-4980 · REBU-4927 · REBU-4918 · REBU-4909 · REBU-5153</strong> · Entorno <strong>UAT</strong>
 </footer>
 
 </div>
