@@ -1,4 +1,4 @@
-<title>Rebu — Reporte E2E · Release v15.3.1</title>
+<title>Rebu — Reporte E2E · Release v15.4.0</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="report.css">
@@ -6,10 +6,8 @@
 <!--
   NOTA PARA CLAUDE (u otro agente) QUE EDITE ESTE REPORTE:
   Fuente de verdad: skill /generate-report (.claude/commands/generate-report.md).
-  Convención vigente desde v15.2.0: TODA página tiene, dentro de .bandeja y
-  después de .summary, UN SOLO <div class="env-tab-group page-level"> que envuelve
-  Automatizados Y Manuales para AMBOS ambientes (🧪 UAT / 🏭 Producción). Si un
-  ambiente no tiene datos, su panel muestra el estado vacío. Nunca base64 inline.
+  index.html = SOLO el release actual (hero + bandeja). Releases anteriores viven
+  en releases/vX.Y.Z.html. Capturas como archivos .jpg bajo assets/, nunca base64.
 -->
 
 
@@ -21,13 +19,18 @@
   </div>
   <div class="sidebar-body">
     <div class="nav-group-label">Actual</div>
-    <a class="nav-item current" href="index.html" data-tip="v15.3.1">
+    <a class="nav-item current" href="index.html" data-tip="v15.4.0">
       <span class="nav-icon">🚀</span>
-      <div class="nav-item-body"><div class="nav-version">v15.3.1</div><div class="nav-date">24 jul 2026</div></div>
+      <div class="nav-item-body"><div class="nav-version">v15.4.0</div><div class="nav-date">27 jul 2026</div></div>
       <span class="nav-minibadge latest">LATEST</span>
     </a>
     <hr class="nav-divider">
     <div class="nav-group-label">Anteriores</div>
+    <a class="nav-item" href="releases/v15.3.1.html" data-tip="v15.3.1">
+      <span class="nav-icon">📦</span>
+      <div class="nav-item-body"><div class="nav-version">v15.3.1</div><div class="nav-date">24 jul 2026</div></div>
+      <span class="nav-minibadge">10 ✓</span>
+    </a>
     <a class="nav-item" href="releases/v15.3.0.html" data-tip="v15.3.0">
       <span class="nav-icon">📦</span>
       <div class="nav-item-body"><div class="nav-version">v15.3.0</div><div class="nav-date">17 jul 2026</div></div>
@@ -67,30 +70,30 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.3.1 | 2026-07-24 | Pass: 10 | Fail: 0 | Branch: REBU-5171 -->
+<!-- RELEASE-START: v15.4.0 | 2026-07-27 | Pass: 5 | Fail: 0 | Branch: REBU-5009 -->
 
-<header class="hero" id="release-v15-3-1">
+<header class="hero" id="release-v15-4-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
-  <h1 class="hero-title">Release <span>v15.3.1</span></h1>
+  <h1 class="hero-title">Release <span>v15.4.0</span></h1>
   <div class="hero-meta">
-    <span>📅 <strong>24 jul 2026</strong></span>
+    <span>📅 <strong>27 jul 2026</strong></span>
     <span class="sep">·</span>
-    <span>🌿 <strong>REBU-5171</strong></span>
+    <span>🌿 <strong>REBU-5009</strong></span>
     <span class="sep">·</span>
-    <span>🌐 <strong>Dev + Producción</strong></span>
+    <span>🌐 <strong>UAT</strong></span>
     <span class="sep">·</span>
-    <span>🔗 <strong>dev · monkey (co.30) · test.rebuhr.com (co.21)</strong></span>
+    <span>🔗 <strong>automation (co.2) · app-rebu-portal-03-uat.azurewebsites.net</strong></span>
   </div>
 </header>
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">10</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">5</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">10</div><div class="card-label">Total</div></div>
-    <div class="card time"><div class="card-value">~2 m</div><div class="card-label">Duración</div></div>
+    <div class="card total"><div class="card-value">5</div><div class="card-label">Total</div></div>
+    <div class="card time"><div class="card-value">~3 m</div><div class="card-label">Duración</div></div>
   </div>
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">10</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">5</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">2</span></button>
   </div>
   <hr class="tab-divider">
@@ -98,26 +101,30 @@
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5171" target="_blank" onclick="event.stopPropagation()">REBU-5171</a>
-      <span class="hu-title">Campo "Fecha de pago" en el archivo bancario del Banco de América Central (BAC)</span>
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5009" target="_blank" onclick="event.stopPropagation()">REBU-5009</a>
+      <span class="hu-title">El recálculo de planilla considera cambios en el campo "Planilla Asociada" del colaborador</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">10 / 10 ✓</span><span class="hu-toggle">▼</span></div>
+    <div class="hu-header-right"><span class="hu-badge">5 / 5 ✓</span><span class="hu-toggle">▼</span></div>
   </div>
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
     <tbody>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-632</td><td><div class="test-name">BAC Archivo Bancario XLSX: la fecha de pago se plasma en cols F/G/H (header y filas T)</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Planilla procesada (dev co.30) con colaborador banco = Banco de América Central (id 6), cuenta 9 díg.</td></tr><tr><th>Pasos</th><td>Generar archivo: <code>bankFileFormat:0 (Archivo Bancario), fileExtension:0 (XLSX), paymentDate:"2026-07-31"</code>. Parsear el XLSX.</td></tr><tr><th>Resultado obtenido</th><td>Fila header (B) y detalle (T) con <strong>F=2026, G=07, H=31</strong> (la fecha de pago). Status 200, spreadsheetml. ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1532</strong> · empresa 30 (dev) · BAC · período 01/07/2026-31/07/2026</td></tr><tr><th>Evidencia</th><td><a href="assets/v15.3.1/TC-PLA-632/archivo-bancario-bac.xlsx" download style="color:#284b44;font-weight:700">⬇️ archivo-bancario-bac.xlsx (generado)</a></td></tr><tr><th>Ambientes</th><td>✅ Dev (co.30) · ✅ Producción (co.21, BAC id 4)</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr><tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-633</td><td><div class="test-name">BAC Archivo Bancario PRN: fecha AAAAMMDD (header) y {seq}+AAAAMMDD (filas T)</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Reusar la planilla BAC de TC-PLA-632.</td></tr><tr><th>Pasos</th><td>Generar con <code>fileExtension:1 (PRN)</code>, misma paymentDate. Leer el texto de ancho fijo.</td></tr><tr><th>Resultado obtenido</th><td>Header con <strong>20260731</strong>; fila T con <strong>1</strong>+<strong>20260731</strong> (secuencia+fecha). ✅<pre style="background:#f4f7f2;border:1px solid #d4e8d0;border-radius:6px;padding:8px;font-size:11px;overflow-x:auto">B000100001                         20260731        53850    1
-T000100001531339871               120260731        53850     01/07/2026-31/07/2026          Jose Bermudez</pre></td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1532</strong> · empresa 30 (dev) · BAC · período 01/07/2026-31/07/2026</td></tr><tr><th>Evidencia</th><td><a href="assets/v15.3.1/TC-PLA-633/archivo-bancario-bac.prn" download style="color:#284b44;font-weight:700">⬇️ archivo-bancario-bac.prn (generado)</a></td></tr><tr><th>Ambientes</th><td>✅ Dev (co.30) · ✅ Producción (co.21, BAC id 4)</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr><tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-634</td><td><div class="test-name">BAC UNI XLSX: la fecha de pago se plasma en cols F/G/H</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Reusar la planilla BAC de TC-PLA-632.</td></tr><tr><th>Pasos</th><td>Generar con <code>bankFileFormat:1 (Archivo Bancario UNI), fileExtension:0 (XLSX)</code>.</td></tr><tr><th>Resultado obtenido</th><td>Header y detalle con la fecha de pago (2026/07/31). Filename "Archivo BAC UNI - …". ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1532</strong> · empresa 30 (dev) · BAC · período 01/07/2026-31/07/2026</td></tr><tr><th>Evidencia</th><td><a href="assets/v15.3.1/TC-PLA-634/archivo-bancario-uni.xlsx" download style="color:#284b44;font-weight:700">⬇️ archivo-bancario-uni.xlsx (generado)</a></td></tr><tr><th>Ambientes</th><td>✅ Dev (co.30) · ✅ Producción (co.21, BAC id 4)</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr><tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-635</td><td><div class="test-name">BAC UNI PRN: fecha AAAAMMDD / {seq}+AAAAMMDD</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Reusar la planilla BAC de TC-PLA-632.</td></tr><tr><th>Pasos</th><td>Generar con <code>bankFileFormat:1, fileExtension:1 (PRN)</code>.</td></tr><tr><th>Resultado obtenido</th><td>Header con 20260731; filas T con {seq}+20260731. ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1532</strong> · empresa 30 (dev) · BAC · período 01/07/2026-31/07/2026</td></tr><tr><th>Evidencia</th><td><a href="assets/v15.3.1/TC-PLA-635/archivo-bancario-uni.prn" download style="color:#284b44;font-weight:700">⬇️ archivo-bancario-uni.prn (generado)</a></td></tr><tr><th>Ambientes</th><td>✅ Dev (co.30) · ✅ Producción (co.21, BAC id 4)</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr><tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-636</td><td><div class="test-name">La fecha del archivo = fecha de pago ingresada, NO la fecha de descarga (regresión central)</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Reusar la planilla BAC de TC-PLA-632.</td></tr><tr><th>Pasos</th><td>Generar con paymentDate 2026-07-31 (distinta al día de descarga). Leer F/G/H.</td></tr><tr><th>Resultado obtenido</th><td>El archivo muestra <strong>2026/07/31</strong> (la fecha de pago), no la fecha de descarga (que solo aparece en el nombre del archivo). ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1532</strong> · empresa 30 (dev) · BAC · período 01/07/2026-31/07/2026</td></tr><tr><th>Evidencia</th><td><a href="assets/v15.3.1/TC-PLA-632/archivo-bancario-bac.xlsx" download style="color:#284b44;font-weight:700">⬇️ ver archivo (F/G/H = fecha de pago)</a></td></tr><tr><th>Ambientes</th><td>✅ Dev (co.30) · ✅ Producción (co.21, BAC id 4)</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr><tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-637</td><td><div class="test-name">Fecha de pago posterior al período se refleja tal cual</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Pasos</th><td>Generar con paymentDate 2026-08-15 (posterior al período de julio).</td></tr><tr><th>Resultado obtenido</th><td>El archivo muestra 2026/08/15. ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1532</strong> · empresa 30 (dev) · BAC · período 01/07/2026-31/07/2026</td></tr><tr><th>Ambientes</th><td>✅ Dev (co.30) · ✅ Producción (co.21, BAC id 4)</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr><tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-638</td><td><div class="test-name">Edge: fecha en borde de año (01/01) sin off-by-one por timezone</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Pasos</th><td>Generar con paymentDate 2027-01-01 (XLSX y PRN).</td></tr><tr><th>Resultado obtenido</th><td>XLSX F=2027,G=1,H=1; PRN 20270101. NO se desplaza a 2026/12/31 por zona horaria. ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1532</strong> · empresa 30 (dev) · BAC · período 01/07/2026-31/07/2026</td></tr><tr><th>Ambientes</th><td>✅ Dev (co.30) · ✅ Producción (co.21, BAC id 4)</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr><tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-639</td><td><div class="test-name">Modal: "Fecha de pago" es requerida → resalta rojo + mensaje, no genera (AC2)</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@validacion</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Planilla BAC (dev co.30) + sesión UI (monkey).</td></tr><tr><th>Pasos</th><td>Abrir Descargar Archivo Bancario, banco = Banco de América Central, completar Nº Plan y Nº Envío, dejar Fecha de Pago vacía, presionar Descargar.</td></tr><tr><th>Resultado obtenido</th><td>El campo Fecha de Pago resalta y muestra "La fecha de pago es requerida"; NO se dispara el POST de generación. ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1532</strong> · empresa 30 (dev) · BAC · período 01/07/2026-31/07/2026</td></tr><tr><th>Evidencia</th><td><div style="max-width:520px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Modal BAC con el campo Fecha de Pago</div><img src="assets/v15.3.1/TC-PLA-639/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr><tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-640</td><td><div class="test-name">Modal: al corregir la fecha, el resaltado de error desaparece de inmediato (AC5)</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@validacion</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Pasos</th><td>Con el error visible (TC-639), elegir una fecha válida en el datepicker.</td></tr><tr><th>Resultado obtenido</th><td>El resaltado rojo y el mensaje desaparecen de inmediato. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr><tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-641</td><td><div class="test-name">Modal: el campo "Fecha de Pago" aparece después de "Número de Envío" (AC1)</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@descargas</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Pasos</th><td>Abrir el modal BAC y leer el orden de los campos.</td></tr><tr><th>Resultado obtenido</th><td>Orden: Banco, Número de Plan, Número de Envío, <strong>Fecha de Pago</strong>, Tipo de Archivo, Formato. ✅</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-644</td><td><div class="test-name">AC1 · Colaborador asociado DESPUÉS de iniciar la planilla aparece al recalcular (2 → 3)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Planilla quincenal Q2 julio (16–31) corrida con 2 colaboradores asociados; un 3.º colaborador creado pero SIN asociar.</td></tr><tr><th>Setup</th><td>1. <code>createAssociationScenario</code> con <code>initial: [$1000, $1000]</code> y <code>spare: [$1000]</code> → crea planilla + política + colaboradores y corre el entry.</td></tr><tr><th>Pasos</th><td>1. Verificar que el set inicial de la planilla = 2 (el spare no aparece). 2. Asociar el spare (<code>PATCH person { payrollId }</code>). 3. Recalcular por UI (menú ⋮ → "Recalcular Planilla" → modal). 4. Leer el set de colaboradores del detalle.</td></tr><tr><th>Resultado esperado</th><td>El colaborador recién asociado aparece; el total pasa de 2 a <strong>3</strong>.</td></tr><tr><th>Resultado obtenido</th><td>Set final = <strong>3</strong> (incluye al recién asociado); indicador de total en Remuneraciones = 3. ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1011</strong> · planilla 1533 · UAT co.2 · período 16/07/2026–31/07/2026</td></tr><tr><th>Evidencia</th><td><div style="max-width:640px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — 3 colaboradores</div><img src="assets/v15.4.0/uat/TC-PLA-644/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-645</td><td><div class="test-name">AC1 · Asociar 2 colaboradores tras iniciar → ambos aparecen al recalcular (2 → 4)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Planilla corrida con 2 colaboradores asociados + 2 spares sin asociar.</td></tr><tr><th>Setup</th><td>1. <code>createAssociationScenario</code> con <code>initial: [$1000, $1000]</code> y <code>spare: [$1000, $1000]</code>.</td></tr><tr><th>Pasos</th><td>1. Verificar set inicial = 2. 2. Asociar ambos spares. 3. Recalcular por UI. 4. Leer el set.</td></tr><tr><th>Resultado esperado</th><td>Ambos colaboradores aparecen; el total pasa de 2 a <strong>4</strong>.</td></tr><tr><th>Resultado obtenido</th><td>Set final = <strong>4</strong>; indicador de total en Remuneraciones = 4. ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1012</strong> · planilla 1534 · UAT co.2 · período 16/07/2026–31/07/2026</td></tr><tr><th>Evidencia</th><td><div style="max-width:640px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — 4 colaboradores</div><img src="assets/v15.4.0/uat/TC-PLA-645/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-646</td><td><div class="test-name">AC2 · Colaborador desasociado DESPUÉS de iniciar deja de aparecer al recalcular (3 → 2)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Planilla corrida con 3 colaboradores asociados.</td></tr><tr><th>Setup</th><td>1. <code>createAssociationScenario</code> con <code>initial: [$1000, $1000, $1000]</code> (sin spares).</td></tr><tr><th>Pasos</th><td>1. Verificar set inicial = 3. 2. Desasociar 1 colaborador (<code>PATCH person { payrollId: 0 }</code>). 3. Recalcular por UI (menú ⋮ → modal). 4. Leer el set.</td></tr><tr><th>Resultado esperado</th><td>El colaborador desasociado desaparece; el total pasa de 3 a <strong>2</strong>; los otros 2 permanecen.</td></tr><tr><th>Resultado obtenido</th><td>Set final = <strong>2</strong> (sin el desasociado); indicador de total = 2. ✅ <em>Nota: la desasociación requiere <code>payrollId: 0</code> — el BE ignora <code>null</code> y rechaza <code>''</code> (400).</em></td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1013</strong> · planilla 1535 · UAT co.2 · período 16/07/2026–31/07/2026</td></tr><tr><th>Evidencia</th><td><div style="max-width:640px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — 2 colaboradores</div><img src="assets/v15.4.0/uat/TC-PLA-646/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-647</td><td><div class="test-name">AC1 + AC2 · Asociar 1 y desasociar 1 en el mismo recálculo → el set refleja ambos (2 → 2)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Planilla corrida con 2 colaboradores asociados (A, B) + 1 spare (C) sin asociar.</td></tr><tr><th>Setup</th><td>1. <code>createAssociationScenario</code> con <code>initial: [A, B]</code> y <code>spare: [C]</code>.</td></tr><tr><th>Pasos</th><td>1. Verificar set inicial = {A, B}. 2. Asociar C y desasociar B. 3. Recalcular por UI. 4. Leer el set.</td></tr><tr><th>Resultado esperado</th><td>Set final = {A, C} (2): B ausente (AC2), C presente (AC1), A permanece.</td></tr><tr><th>Resultado obtenido</th><td>Set final = <strong>2</strong> = {A, C}; B fuera, C dentro, A intacto. ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1014</strong> · planilla 1536 · UAT co.2 · período 16/07/2026–31/07/2026</td></tr><tr><th>Evidencia</th><td><div style="max-width:640px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — set {A, C}</div><img src="assets/v15.4.0/uat/TC-PLA-647/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-648</td><td><div class="test-name">Regresión · Recalcular SIN cambios de asociación no altera el set (idempotencia)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Planilla corrida con 2 colaboradores asociados + 1 spare que se deja SIN asociar.</td></tr><tr><th>Setup</th><td>1. <code>createAssociationScenario</code> con <code>initial: [$1000, $1000]</code> y <code>spare: [$1000]</code> (sin operaciones de asociación).</td></tr><tr><th>Pasos</th><td>1. Verificar set inicial = 2. 2. Recalcular por UI sin tocar asociaciones. 3. Leer el set.</td></tr><tr><th>Resultado esperado</th><td>El set queda idéntico (2); el spare sin asociar sigue ausente (el recálculo no agrega colaboradores espurios).</td></tr><tr><th>Resultado obtenido</th><td>Set final = <strong>2</strong> (sin cambios); el spare no se agregó solo. ✅</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>1015</strong> · planilla 1537 · UAT co.2 · período 16/07/2026–31/07/2026</td></tr><tr><th>Evidencia</th><td><div style="max-width:640px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — set intacto (2)</div><img src="assets/v15.4.0/uat/TC-PLA-648/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
     </tbody>
   </table>
 </div>
@@ -126,7 +133,7 @@ T000100001531339871               120260731        53850     01/07/2026-31/07/20
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5171" target="_blank" onclick="event.stopPropagation()">REBU-5171</a>
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5009" target="_blank" onclick="event.stopPropagation()">REBU-5009</a>
       <span class="hu-title">Casos manuales / Fase 2</span>
     </div>
     <div class="hu-header-right"><span class="hu-badge">2 pendientes</span><span class="hu-toggle">▼</span></div>
@@ -134,21 +141,29 @@ T000100001531339871               120260731        53850     01/07/2026-31/07/20
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
     <tbody>
-<tr class="test-row"><td class="test-id">TC-PLA-642</td><td><div class="test-name">Liquidaciones: el archivo bancario BAC incluye la fecha de pago. <em>Fase 2</em> — pendiente confirmar que el modal de liquidaciones BAC tiene el campo + armar data de liquidación en dev.</div></td><td class="status-cell">⏭️</td></tr><tr class="test-row"><td class="test-id">TC-PLA-643</td><td><div class="test-name">Finiquitos/Indemnizaciones: el archivo bancario BAC incluye la fecha de pago. <em>Fase 2</em> — mismo motivo que TC-PLA-642.</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-PLA-649</td><td><div class="test-name">Permisos: un usuario sin permiso de recálculo no puede ejecutar "Recalcular Planilla". <em>Fase 2</em> — requiere infra de roles/ACL y una segunda sesión.</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-PLA-650</td><td><div class="test-name">UI: el indicador de total de colaboradores en Remuneraciones se actualiza tras recalcular. <em>Fase 2</em> — assert duro sobre <code>getTotalCount()</code> (hoy verificado por API + evidencia visual).</div></td><td class="status-cell">⏭️</td></tr>
     </tbody>
   </table>
 </div>
   </div></div>
 </div>
 
-<!-- RELEASE-END: v15.3.1 -->
+<!-- RELEASE-END: v15.4.0 -->
 
 <section class="anteriores-section" id="anteriores">
   <div class="anteriores-header">
     <div class="anteriores-icon">📦</div>
     <span class="anteriores-title">Releases anteriores</span>
-    <span class="anteriores-count">6 releases</span>
+    <span class="anteriores-count">7 releases</span>
   </div>
+  <a class="release-link" href="releases/v15.3.1.html">
+    <span class="release-link-version">v15.3.1</span>
+    <span class="release-link-date">24 jul 2026</span>
+    <span class="stat-pill pass">10 ✓</span>
+    <span class="stat-pill fail">0 ✗</span>
+    <span class="release-link-arrow">→</span>
+  </a>
   <a class="release-link" href="releases/v15.3.0.html">
     <span class="release-link-version">v15.3.0</span>
     <span class="release-link-date">17 jul 2026</span>
@@ -195,7 +210,7 @@ T000100001531339871               120260731        53850     01/07/2026-31/07/20
 
 
 <footer>
-  <strong>Rebu Automation Suite</strong> · Generado el 24 jul 2026 · Rama <strong>REBU-5171</strong> · Entorno <strong>Dev + Producción</strong>
+  <strong>Rebu Automation Suite</strong> · Generado el 27 jul 2026 · Rama <strong>REBU-5009</strong> · Entorno <strong>UAT</strong>
 </footer>
 
 </div>
