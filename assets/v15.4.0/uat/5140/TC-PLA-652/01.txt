@@ -1,0 +1,1 @@
+REBU-5271 — modal de cíclicos con "un solo período"
