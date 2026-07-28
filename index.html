@@ -92,11 +92,11 @@
     <div class="card total"><div class="card-value">12</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~6 m</div><div class="card-label">Duración</div></div>
   </div>
-  <div style="max-width:800px;margin:14px auto 0;padding:0 32px;font-size:11px;color:#525252;line-height:1.6;text-align:center">REBU-5009 se validó en UAT; REBU-5140 en <strong>UAT y Producción</strong>. El resumen cuenta cada caso una vez por su estado verificado más reciente — ver el switcher de ambiente en la HU para el detalle.</div>
+  <div style="max-width:800px;margin:14px auto 0;padding:0 32px;font-size:11px;color:#525252;line-height:1.6;text-align:center">Ambas HU se validaron en <strong>UAT y Producción</strong>. El resumen cuenta cada caso una vez; usá el switcher de ambiente para ver el detalle y los <em>entry id</em> de cada corrida.</div>
   <div class="env-tab-group">
     <div class="env-tab-nav">
       <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">11 / 12 ✓</span></button>
-      <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">6 / 7 ✓</span></button>
+      <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">11 / 12 ✓</span></button>
     </div>
     <div id="env-uat" class="env-tab-panel active">
   <div class="tab-nav">
@@ -220,14 +220,60 @@
     </div>
     <div id="env-prod" class="env-tab-panel">
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">7</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">12</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">4</span></button>
   </div>
   <hr class="tab-divider">
   <div id="tab-auto" class="tab-panel active"><div class="content">
-<div style="background:#f5f5f5;border-radius:8px;padding:12px 16px;margin:0 0 16px;font-size:12px;line-height:1.6;color:#525252">
-  <strong>REBU-5009 no se ejecutó en Producción.</strong> Este ambiente cubre únicamente REBU-5140; el detalle de REBU-5009 está en la pestaña UAT.
+<div style="background:#f0f7ee;border-left:3px solid #284b44;border-radius:6px;padding:12px 16px;margin:0 0 16px;font-size:12px;line-height:1.6;color:#1e3a34">
+  <strong>Entries de la corrida en Producción (co.21)</strong> — para revisión en vivo desde <code>/dashboard/payroll/run/{entryId}</code>:
+  <table style="border-collapse:collapse;font-size:11px;margin-top:8px">
+    <tr style="font-weight:700"><td style="padding:3px 16px 3px 0;white-space:nowrap">HU</td><td style="padding:3px 16px 3px 0;white-space:nowrap">Caso</td><td style="padding:3px 16px 3px 0;white-space:nowrap">Entry</td><td style="padding:3px 0">Detalle</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5009</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-644</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>412</strong></td><td style="padding:3px 0">planilla 338 · set 2 → 3</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5009</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-645</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>413</strong></td><td style="padding:3px 0">planilla 339 · set 2 → 4</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5009</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-646</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>414</strong></td><td style="padding:3px 0">planilla 340 · set 3 → 2</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5009</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-647</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>415</strong></td><td style="padding:3px 0">set 2 → 2 = {A, C}</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5009</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-648</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>416</strong></td><td style="padding:3px 0">set 2 → 2 (idempotencia)</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5140</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-653</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>403</strong></td><td style="padding:3px 0">$50 al asociar la quincenal</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5140</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-654</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>402</strong></td><td style="padding:3px 0">$100 en mensual</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5140</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-655</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>404</strong></td><td style="padding:3px 0">$100 (P2 → P1)</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5140</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-656</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>405 · 406</strong></td><td style="padding:3px 0">$50 + $50</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5140</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-657</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>407 · 408 · 409</strong></td><td style="padding:3px 0">$50 → $50 → $100</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5140</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-658</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>410 · 411</strong></td><td style="padding:3px 0">$50.005 c/u — FAIL</td></tr>
+    <tr><td style="padding:3px 16px 3px 0;white-space:nowrap">REBU-5140</td><td style="padding:3px 16px 3px 0;white-space:nowrap">TC-PLA-663</td><td style="padding:3px 16px 3px 0;white-space:nowrap"><strong>—</strong></td><td style="padding:3px 0">solo UI, sin corrida de planilla</td></tr>
+  </table>
 </div>
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5009" target="_blank" onclick="event.stopPropagation()">REBU-5009</a>
+      <span class="hu-title">El recálculo de planilla considera cambios en el campo "Planilla Asociada" del colaborador</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">5 / 5 ✓</span><span class="hu-toggle">▼</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-644</td><td><div class="test-name">AC1 · Colaborador asociado DESPUÉS de iniciar la planilla aparece al recalcular (2 → 3)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Resultado obtenido</th><td>Set inicial = <strong>2</strong> → tras asociar el spare y recalcular, set final = <strong>3</strong>. El recién asociado aparece.</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>412</strong> · planilla 338 · prod co.21 · período 16/07/2026–31/07/2026</td></tr><tr><th>Evidencia</th><td><div style="max-width:660px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — 3 colaboradores</div><img src="assets/v15.4.0/prod/5009/TC-PLA-644/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-645</td><td><div class="test-name">AC1 · Asociar 2 colaboradores tras iniciar → ambos aparecen al recalcular (2 → 4)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Resultado obtenido</th><td>Set inicial = <strong>2</strong> → set final = <strong>4</strong>. Ambos spares aparecen.</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>413</strong> · planilla 339 · prod co.21</td></tr><tr><th>Evidencia</th><td><div style="max-width:660px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — 4 colaboradores</div><img src="assets/v15.4.0/prod/5009/TC-PLA-645/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-646</td><td><div class="test-name">AC2 · Colaborador desasociado DESPUÉS de iniciar deja de aparecer al recalcular (3 → 2)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Resultado obtenido</th><td>Set inicial = <strong>3</strong> → set final = <strong>2</strong>. El desasociado desaparece y los otros dos permanecen. Igual que en UAT, la desasociación requiere <code>payrollId: 0</code>.</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>414</strong> · planilla 340 · prod co.21</td></tr><tr><th>Evidencia</th><td><div style="max-width:660px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — 2 colaboradores</div><img src="assets/v15.4.0/prod/5009/TC-PLA-646/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-647</td><td><div class="test-name">AC1 + AC2 · Asociar 1 y desasociar 1 en el mismo recálculo → el set refleja ambos (2 → 2)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Resultado obtenido</th><td>Set final = <strong>2</strong> = {A, C}: B salió del set y C entró, A permanece.</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>415</strong> · prod co.21</td></tr><tr><th>Evidencia</th><td><div style="max-width:660px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — set {A, C}</div><img src="assets/v15.4.0/prod/5009/TC-PLA-647/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-648</td><td><div class="test-name">Regresión · Recalcular SIN cambios de asociación no altera el set (idempotencia)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Resultado obtenido</th><td>Set idéntico antes y después (<strong>2</strong>); el spare sin asociar sigue ausente — el recálculo no agrega colaboradores espurios.</td></tr><tr><th>Planilla</th><td>🧾 entry <strong>416</strong> · prod co.21</td></tr><tr><th>Evidencia</th><td><div style="max-width:660px"><div style="font-size:10px;font-weight:700;color:#284b44;text-transform:uppercase;margin-bottom:6px">Remuneraciones recalculada — set intacto (2)</div><img src="assets/v15.4.0/prod/5009/TC-PLA-648/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
