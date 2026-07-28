@@ -85,10 +85,6 @@
   .card.total .card-value, .card.time .card-value { color: var(--forest); }
   .card.time .card-value { font-size: 26px; color: var(--caption); }
   .card-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: .75; }
-  /* Bug ya reportado que el test reproduce a propósito (test.fail): no es
-     regresión ni éxito del producto, por eso no se cuenta como PASS ni FAIL. */
-  .card.known { background: #fdf6e3; }
-  .card.known .card-value { color: #9a6b00; }
 
   /* ── TABS ─────────────────────────────────────────────── */
   .tab-nav { display: flex; gap: 2px; padding: 28px 24px 0; max-width: 900px; margin: 0 auto; }
@@ -134,11 +130,9 @@
   .tag-edge { color: #92400e; border-color: #d97706; background: var(--badge-amber); }
   .tag-reg  { color: #1e3a34; border-color: #284b44; background: var(--lime-soft); }
   .status-cell { text-align: center; }
-  .badge-pass, .badge-fail, .badge-known { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .6px; border-radius: var(--r-full); padding: 3px 10px; }
+  .badge-pass, .badge-fail { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .6px; border-radius: var(--r-full); padding: 3px 10px; }
   .badge-pass { background: var(--lime-soft); color: var(--forest); }
   .badge-fail { background: var(--fail-bg); color: var(--fail-text); }
-  /* Rojo esperado: el test reproduce un bug ya reportado (test.fail). */
-  .badge-known { background: var(--badge-amber); color: #92400e; }
 
   /* ── DETAIL ROW / ZEPHYR TABLE ────────────────────────── */
   .detail-row { display: none; }
