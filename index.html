@@ -93,6 +93,12 @@
     <div class="card time"><div class="card-value">~6 m</div><div class="card-label">Duración</div></div>
   </div>
   <div style="max-width:800px;margin:14px auto 0;padding:0 32px;font-size:11px;color:#525252;line-height:1.6;text-align:center">REBU-5009 se validó en UAT; REBU-5140 en <strong>UAT y Producción</strong>. El resumen cuenta cada caso una vez por su estado verificado más reciente — ver el switcher de ambiente en la HU para el detalle.</div>
+  <div class="env-tab-group">
+    <div class="env-tab-nav">
+      <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">🧪 UAT <span class="env-tab-count">11 / 12 ✓</span></button>
+      <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">🏭 Producción <span class="env-tab-count">6 / 7 ✓</span></button>
+    </div>
+    <div id="env-uat" class="env-tab-panel active">
   <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">12</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">6</span></button>
@@ -130,12 +136,6 @@
   </table>
 </div>
 
-<div class="env-tab-group">
-  <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat5140', this)">🧪 UAT <span class="env-tab-count">5 / 7 ✓</span></button>
-    <button class="env-tab-btn" onclick="switchEnvTab('prod5140', this)">🏭 Producción <span class="env-tab-count">6 / 7 ✓</span></button>
-  </div>
-  <div id="env-uat5140" class="env-tab-panel active"><div class="content">
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
@@ -182,7 +182,52 @@
   </table>
 </div>
   </div></div>
-  <div id="env-prod5140" class="env-tab-panel"><div class="content">
+  <div id="tab-manual" class="tab-panel"><div class="content">
+<div class="hu-section"><div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5009" target="_blank" onclick="event.stopPropagation()">REBU-5009</a>
+      <span class="hu-title">Casos manuales / Fase 2</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">2 pendientes</span><span class="hu-toggle">▼</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row"><td class="test-id">TC-PLA-649</td><td><div class="test-name">Permisos: un usuario sin permiso de recálculo no puede ejecutar "Recalcular Planilla". <em>Fase 2</em> — requiere infra de roles/ACL y una segunda sesión.</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-PLA-650</td><td><div class="test-name">UI: el indicador de total de colaboradores en Remuneraciones se actualiza tras recalcular. <em>Fase 2</em> — assert duro sobre <code>getTotalCount()</code> (hoy verificado por API + evidencia visual).</div></td><td class="status-cell">⏭️</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="hu-section"><div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5140" target="_blank" onclick="event.stopPropagation()">REBU-5140</a>
+      <span class="hu-title">Casos manuales / Fase 2</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">4 pendientes</span><span class="hu-toggle">▼</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row"><td class="test-id">TC-PLA-659</td><td><div class="test-name">AC2 · Ambos radios habilitados en el modal de cíclicos con planilla mensual, quincenal, catorcenal y sin planilla. <em>Fase 2</em> — el modal no expone <code>role="dialog"</code> ni <code>data-testid</code> en los radios; hay que endurecer selectores. Bloqueado además por <a href="https://rebu.atlassian.net/browse/REBU-5271" target="_blank">REBU-5271</a>.</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-PLA-660</td><td><div class="test-name">AC3-a / AC3-b / AC4 · Selector "Período 1 / Período 2 (si aplica)", label sin "de pago mensuales" y leyenda de distribución automática; sin llamada a <code>GET /people/{id}/payroll-periods</code> (endpoint eliminado). <em>Fase 2</em> — cubierto parcialmente por TC-PLA-663; requiere el FE desplegado.</div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-PLA-661</td><td><div class="test-name">AC2 espejo en <strong>ingresos cíclicos</strong>: "Distribuir" con planilla mensual se guarda y aplica completo. <em>Fase 2</em> — misma lógica de BE que descuentos (mismo handler), falta resolver el catálogo de conceptos de ingreso cíclico por empresa. <em>(ID compartido con REBU-5009 — ver contexto de la HU)</em></div></td><td class="status-cell">⏭️</td></tr>
+<tr class="test-row"><td class="test-id">TC-PLA-662</td><td><div class="test-name">AC1 en <strong>carga masiva</strong> de cíclicos: fila con "Distribuir" + colaborador mensual ya no es rechazada por <code>PeopleCyclicsBulkUploadRowValidator</code>. <em>Fase 2</em> — requiere construir el <code>.xlsx</code> con la plantilla de cíclicos, distinta a la de REBU-4880.</div></td><td class="status-cell">⏭️</td></tr>
+    </tbody>
+  </table>
+</div>
+  </div></div>
+    </div>
+    <div id="env-prod" class="env-tab-panel">
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">7</span></button>
+    <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">4</span></button>
+  </div>
+  <hr class="tab-divider">
+  <div id="tab-auto" class="tab-panel active"><div class="content">
+<div style="background:#f5f5f5;border-radius:8px;padding:12px 16px;margin:0 0 16px;font-size:12px;line-height:1.6;color:#525252">
+  <strong>REBU-5009 no se ejecutó en Producción.</strong> Este ambiente cubre únicamente REBU-5140; el detalle de REBU-5009 está en la pestaña UAT.
+</div>
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
@@ -224,28 +269,8 @@
   </table>
 </div>
   </div></div>
-</div>
-  </div></div>
   <div id="tab-manual" class="tab-panel"><div class="content">
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
-    <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5009" target="_blank" onclick="event.stopPropagation()">REBU-5009</a>
-      <span class="hu-title">Casos manuales / Fase 2</span>
-    </div>
-    <div class="hu-header-right"><span class="hu-badge">2 pendientes</span><span class="hu-toggle">▼</span></div>
-  </div>
-  <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-    <tbody>
-<tr class="test-row"><td class="test-id">TC-PLA-649</td><td><div class="test-name">Permisos: un usuario sin permiso de recálculo no puede ejecutar "Recalcular Planilla". <em>Fase 2</em> — requiere infra de roles/ACL y una segunda sesión.</div></td><td class="status-cell">⏭️</td></tr>
-<tr class="test-row"><td class="test-id">TC-PLA-650</td><td><div class="test-name">UI: el indicador de total de colaboradores en Remuneraciones se actualiza tras recalcular. <em>Fase 2</em> — assert duro sobre <code>getTotalCount()</code> (hoy verificado por API + evidencia visual).</div></td><td class="status-cell">⏭️</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
+<div class="hu-section"><div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5140" target="_blank" onclick="event.stopPropagation()">REBU-5140</a>
       <span class="hu-title">Casos manuales / Fase 2</span>
@@ -263,6 +288,8 @@
   </table>
 </div>
   </div></div>
+    </div>
+  </div>
 </div>
 
 <!-- RELEASE-END: v15.4.0 -->
