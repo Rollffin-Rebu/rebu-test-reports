@@ -130,9 +130,12 @@
   .tag-edge { color: #92400e; border-color: #d97706; background: var(--badge-amber); }
   .tag-reg  { color: #1e3a34; border-color: #284b44; background: var(--lime-soft); }
   .status-cell { text-align: center; }
-  .badge-pass, .badge-fail { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .6px; border-radius: var(--r-full); padding: 3px 10px; }
+  .badge-pass, .badge-fail, .badge-skip, .badge-na { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .6px; border-radius: var(--r-full); padding: 3px 10px; }
   .badge-pass { background: var(--lime-soft); color: var(--forest); }
   .badge-fail { background: var(--fail-bg); color: var(--fail-text); }
+  .badge-skip { background: #f0e0c0; color: #7a5a10; }
+  .badge-na { background: #e5e5e5; color: #6b6b6b; }
+  .stat-pill.skip { background: #f0e0c0; color: #7a5a10; }
 
   /* ── DETAIL ROW / ZEPHYR TABLE ────────────────────────── */
   .detail-row { display: none; }
