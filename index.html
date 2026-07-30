@@ -99,32 +99,6 @@
     <div class="card total"><div class="card-value">27</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~9 m</div><div class="card-label">Duración</div></div>
   </div>
-  <div style="max-width:800px;margin:14px auto 0;padding:0 32px;font-size:11px;color:#525252;line-height:1.6;text-align:center">
-    <strong>REBU-5096</strong> — nuevo tipo de Unidad &quot;Por unidad&quot; en el catálogo de Conceptos de Ingreso
-    (Configuración &gt; Conceptos &gt; Ingresos &gt; Agregar). Al elegirla aparece &quot;Tarifa por unidad&quot;, que
-    multiplica la Cantidad ingresada en planilla. 27 casos derivados de los 4 criterios de aceptación del
-    ticket + edge cases de precisión de floating point + impacto en descuentos regulatorios. De los 27:
-    <strong>23 automatizados</strong> y en verde, <strong>2 marcados <code>skip</code></strong> explícito
-    (permisos, campo del wizard de planilla) y <strong>2 inválidos</strong> (no existe función &quot;Editar&quot;
-    para un concepto ya creado).
-  </div>
-  <div style="max-width:860px;margin:18px auto 0;padding:16px 20px;background:#f4f8f2;border:1px solid #d4e8d0;border-radius:12px">
-    <div style="font-size:11px;font-weight:700;color:#284b44;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Contrato de API confirmado en vivo (no documentado en la HU)</div>
-    <pre style="margin:0;font-size:11px;line-height:1.7;color:#333;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace">POST /{companyId}/catalogs/income-concepts
-{ unitTypeId: "PER_UNIT", multiplier: null, rate: 12.34, conceptGroupId: 17, ... }</pre>
-    <div style="margin-top:10px;font-size:11px;color:#525252;line-height:1.6">
-      <strong>rate</strong> es un campo nuevo — no reutiliza <code>multiplier</code> de Horas. El combo &quot;Grupo&quot;
-      del modal solo se habilita si ya existe un Grupo con la misma Unidad y los mismos flags de ISSS/Inst.
-      Prev./ISR marcados (<code>GET .../concept-groups/compatible?unitTypeId=PER_UNIT&amp;appliesTax=...</code>) —
-      no hay API para crear Grupos nuevos, solo conceptos dentro de uno existente. Se crearon 2 grupos
-      &quot;Por unidad&quot; en <code>automation</code> para cubrir los casos no gravables/gravables-ISSS
-      (&quot;Concepto por unidad no gravable&quot; id 18, &quot;Concepto por unidad ISSS&quot; id 19), sumados
-      al que ya existía (&quot;Concepto por unidad ISR&quot; id 17). El monto de un concepto recién agregado a
-      planilla solo aparece como línea propia (<code>income_group_&lt;id&gt;</code>) en el paso &quot;Revisión&quot;
-      del wizard (4 <code>changeStep</code> desde la creación del entry) — en pasos intermedios ya está sumado
-      al total pero no desglosado.
-    </div>
-  </div>
   <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">23</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">4</span></button>
