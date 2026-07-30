@@ -153,10 +153,14 @@ roleAlias !== 'MASTER_ADMIN'  &#8594;  pestaña ausente
     <strong>TC-APR-017b</strong> crea y resuelve una solicitud <em>dentro del test</em> — también da vacío, así que
     no es antigüedad del dato.
     <br><br>
-    <strong>Pendiente de seguimiento:</strong> la columna <strong>Departamento</strong> llega vacía en todas las filas.
-    Esta HU lo había descartado como dato del ambiente; el análisis de
-    <a href="https://rebu.atlassian.net/browse/REBU-5378" target="_blank" style="color:#8a2b2b">REBU-5378</a>
-    lo corrige — con el área ya asignada al colaborador, Bandeja sigue devolviéndola vacía. Se sigue en REBU-5187.
+    <strong>Resuelto, no es defecto:</strong> la columna <strong>Departamento</strong> llega vacía en las filas
+    viejas porque las columnas base del listado salen de un <strong>snapshot tomado al crear la solicitud</strong>
+    (<code>ApprovalRequest.Metadata</code>, como declara
+    <a href="https://rebu.atlassian.net/browse/REBU-5236" target="_blank" style="color:#8a2b2b">REBU-5236</a>),
+    no de una lectura en vivo del perfil. Un colaborador dado de alta <em>con</em> departamento sí lo trae:
+    verificado con la solicitud 40 (Alexander Caicedo → “Ingenieria”). Asignar el área <em>después</em> no
+    rellena las solicitudes ya existentes — la pantalla no es retroactiva ante cambios de perfil, y así es
+    lo esperado. Que el snapshot se refresque sería una mejora a consultar con Producto.
   </div>
 </div>
   <div class="tab-nav">
