@@ -77,7 +77,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.5.0 | 2026-08-02 | Pass: 136 | Fail: 3 | Skip: 1 | Branch: REBU-5096 · REBU-5097 · REBU-5098 · REBU-5103 · REBU-5185 · REBU-5186 · REBU-5187 | Env: UAT co.2 + Selecta -->
+<!-- RELEASE-START: v15.5.0 | 2026-08-02 | Pass: 137 | Fail: 3 | Skip: 1 | Branch: REBU-5096 · REBU-5097 · REBU-5098 · REBU-5103 · REBU-5185 · REBU-5186 · REBU-5187 · REBU-5273 | Env: UAT co.2 + Selecta -->
 
 <header class="hero" id="release-v15-5-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
@@ -85,7 +85,7 @@
   <div class="hero-meta">
     <span>📅 <strong>2 ago 2026</strong></span>
     <span class="sep">·</span>
-    <span>🌿 <strong>REBU-5096 · REBU-5097 · REBU-5098 · REBU-5103 · REBU-5185 · REBU-5186 · REBU-5187</strong></span>
+    <span>🌿 <strong>REBU-5096 · REBU-5097 · REBU-5098 · REBU-5103 · REBU-5185 · REBU-5186 · REBU-5187 · REBU-5273</strong></span>
     <span class="sep">·</span>
     <span>🌐 <strong>UAT</strong></span>
     <span class="sep">·</span>
@@ -94,13 +94,13 @@
 </header>
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">136</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">137</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">3</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">144</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">145</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~32 m</div><div class="card-label">Duración</div></div>
   </div>
 <div style="max-width:860px;margin:18px auto 0;padding:14px 18px;background:#eef4fb;border:1px solid #c9dcf0;border-radius:12px">
-  <div style="font-size:11px;font-weight:700;color:#1f4e79;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Este release cubre siete HU</div>
+  <div style="font-size:11px;font-weight:700;color:#1f4e79;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Este release cubre siete HU + una mejora</div>
   <div style="font-size:11px;color:#33506b;line-height:1.7">
     <strong>REBU-5096</strong> — nuevo tipo de unidad “Por unidad” en el catálogo de conceptos de Ingreso
     (23 automatizados + 4 fuera de alcance). &nbsp;·&nbsp;
@@ -119,7 +119,10 @@
     <strong>REBU-5098</strong> — nuevo tipo de honorario "Honorario Variable" en el perfil del colaborador de
     Servicios Profesionales: no genera campo de tarifa adicional, queda registrado en el Historial de Cambios,
     y en planilla se paga exclusivamente por conceptos (11 automatizados, <strong>11 verdes</strong>).
-    Los recuadros de abajo explican la regla de REBU-5185; las de REBU-5186, REBU-5103 y REBU-5187 están en sus propias secciones.
+    <strong>REBU-5273</strong> &mdash; <em>mejora</em>, no HU: el <strong>criterio de redondeo a centavos</strong> en la
+    distribuci&oacute;n 50/50 de c&iacute;clicos. Naci&oacute; como hallazgo rojo del lote de REBU-5140 (v15.4.0) y su fix se libera
+    en este release, as&iacute; que el caso se re-ejecut&oacute; aqu&iacute; (1 automatizado, <strong>1 verde</strong>).
+    Los recuadros de abajo explican la regla de REBU-5185; las de REBU-5186, REBU-5103, REBU-5187 y REBU-5273 están en sus propias secciones.
   </div>
 </div>
 <div style="max-width:860px;margin:14px auto 0;padding:16px 20px;background:#f4f8f2;border:1px solid #d4e8d0;border-radius:12px">
@@ -202,7 +205,7 @@ roleAlias !== 'MASTER_ADMIN'  &#8594;  pestaña ausente
   </div>
 </div>
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">140</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">141</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">4</span></button>
   </div>
   <hr class="tab-divider">
@@ -941,6 +944,61 @@ Resetear   = ning&uacute;n par&aacute;metro &#8658; conjunto inicial completo   
     </div>
   </div>
 </div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5273" target="_blank" onclick="event.stopPropagation()">REBU-5273</a>
+      <span class="hu-title">Criterio de redondeo a centavos en la distribuci&oacute;n 50/50 de c&iacute;clicos</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">1 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+
+  <div style="max-width:860px;margin:14px auto 0;padding:16px 20px;background:#f4f8f2;border:1px solid #d4e8d0;border-radius:12px">
+    <div style="font-size:11px;font-weight:700;color:#284b44;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">El criterio verificado</div>
+    <pre style="margin:0;font-size:11px;line-height:1.7;color:#333;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace">1A = RoundConcept(monto &#215; 0.5)   &#8594;  $100.01 da $50.01   (se lleva el centavo residual)
+1B = monto &#8722; 1A                  &#8594;  $50.00              (complemento exacto)
+
+Invariante:  1A + 1B == monto mensual configurado,  siempre, sin tercer decimal
+Acumulado:   el "Monto acumulado" del perfil cierra en $100.01, no en $100.02</pre>
+  </div>
+
+  <div style="max-width:860px;margin:14px auto 0;padding:14px 18px;background:#eef4fb;border:1px solid #c9dcf0;border-radius:12px">
+    <div style="font-size:11px;font-weight:700;color:#1f4e79;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Por qu&eacute; esta mejora entra en este release</div>
+    <div style="font-size:11px;color:#33506b;line-height:1.7">
+      El caso <strong>TC-PLA-658</strong> naci&oacute; en el lote de <a href="https://rebu.atlassian.net/browse/REBU-5140" target="_blank">REBU-5140</a> (release v15.4.0)
+      y qued&oacute; <strong>en rojo deliberadamente</strong>: el motor persist&iacute;a <code>50.005</code> en cada quincena y el perfil
+      mostraba <strong>$100.02</strong> de acumulado contra $100.01 configurados. No era una violaci&oacute;n de AC &mdash; ni REBU-5140 ni
+      REBU-5176 especificaban c&oacute;mo repartir un monto impar en centavos &mdash;, as&iacute; que se reclasific&oacute; de Defect a
+      <strong>Mejora</strong> para definir primero la regla de negocio.
+      Producto eligi&oacute; la <strong>opci&oacute;n A</strong> (residual en la primera partici&oacute;n), backend lo implement&oacute; en
+      <code>DeductionCalculationService.CalculateDeductionAmount</code>, y el caso se <strong>re-ejecut&oacute; en verde</strong> en este release.
+      Adem&aacute;s del tercer decimal, el fix elimina <strong>1 centavo de sobrecobro real</strong> en los totales de planilla:
+      <code>PayrollConceptCalculationService</code> sumaba <code>RoundConcept(50.005)+RoundConcept(50.005) = 100.02</code> efectivos
+      mientras el <code>AccumulatedAmount</code> del plan usaba crudos.
+    </div>
+  </div>
+
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-658</td><td><div class="test-name">"Distribuir" de $100.01 en quincenal: 1A cobra $50.01, 1B $50.00 y la suma cierra en $100.01</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-reg">@regulatory</span><span class="tag tag-val">@edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Colaborador de $1,000 asociado a una planilla <strong>quincenal</strong>, en <code>automation</code> (company 2). Ambas quincenas de julio 2026 disponibles para correr.</td></tr><tr><th>Setup</th><td>1. Crear el escenario con <code>createCyclicDistributionScenario</code> (<code>initialFrequency: 'quincenal'</code>). 2. Dar de alta un descuento cíclico con <code>monthlyAmount: 100.01</code>, <code>distributionType: 'Distributed'</code> y arranque el 01/07/2026, cuotas 1&ndash;3.</td></tr><tr><th>Pasos</th><td>1. Correr la <strong>Quincena 1</strong> (01&ndash;15 jul 2026) y <strong>finalizarla</strong> con 4 <code>changeStep</code>; leer el monto aplicado. 2. Correr la <strong>Quincena 2</strong> (16&ndash;31 jul 2026) y finalizarla igual; leer el monto aplicado. 3. Abrir el perfil del colaborador &gt; Cíclicos &gt; Descuentos Cíclicos &gt; el registro, y leer el <strong>Monto Descontado Acumulado</strong>. 4. Cambiar a la tab <strong>Historial</strong> y leer el desglose cuota por cuota.</td></tr><tr><th>Resultado esperado</th><td>Criterio de <a href="https://rebu.atlassian.net/browse/REBU-5273" target="_blank">REBU-5273</a> (opción A):<br>&bull; la partición <strong>1A cobra $50.01</strong> &mdash; se lleva el centavo residual;<br>&bull; la partición <strong>1B cobra $50.00</strong> &mdash; complemento exacto de 1A;<br>&bull; la <strong>suma de ambos períodos es exactamente $100.01</strong>;<br>&bull; ningún período tiene más de 2 decimales (sin el residuo <code>50.005</code>);<br>&bull; el <strong>"Monto acumulado" del perfil cierra en $100.01</strong>, no en $100.02.</td></tr><tr><th>Resultado obtenido</th><td>Entries <code>1583</code> (Q1) y <code>1584</code> (Q2) en UAT co.2, colaborador <em>Débora Barrios</em>, registro <code>QA-5140-1785794182887</code>.<br>&bull; Persistido por API: <code>1A $50.01</code> + <code>1B $50.00</code> = <strong>$100.01</strong>, ambos cuantizados a centavos (sin el <code>50.005</code> previo).<br>&bull; Tab <strong>Detalles</strong>: Total a Descontar <code>$300.03</code> · <strong>Monto Descontado Acumulado <code>$100.01</code></strong> · Monto Remanente <code>$200.02</code> · Cuota 1 de 3 (33.33%).<br>&bull; Tab <strong>Historial</strong>: <code>1A 15 jul $50.01 (acum. $50.01)</code> · <code>1B 31 jul $50.00 (acum. $100.01)</code>, ambas <em>Aplicado</em>.<br>✅ Las 4 aserciones en verde.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Detalle del cíclico: Monto Descontado Acumulado $100.01</div><img src="assets/v15.5.0/TC-PLA-658/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; Historial por cuota: 1A $50.01 y 1B $50.00</div><img src="assets/v15.5.0/TC-PLA-658/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+
+  <div style="max-width:860px;margin:14px auto 18px;padding:14px 18px;background:#fdf6e3;border:1px solid #e8dcc0;border-radius:12px">
+    <div style="font-size:11px;font-weight:700;color:#7a5c00;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Nota de trazabilidad</div>
+    <div style="font-size:11px;color:#5c4a1a;line-height:1.7">
+      El spec de este caso vive bajo <code>tests/Releases/Release-v15.4.0/5140-distribucion-ciclicos-sin-planilla/</code>
+      porque naci&oacute; con la HU REBU-5140, pero el <strong>fix que valida se libera en v15.5.0</strong>; por eso el caso se
+      reporta aqu&iacute;. El defecto era <strong>preexistente</strong>: el <code>baseAmount * 0.5m</code> sin cuantizar ya exist&iacute;a
+      antes de REBU-5176 &mdash; ese refactor solo cambi&oacute; <em>cu&aacute;ndo</em> se aplica el 0.5, arrastrando la misma
+      multiplicaci&oacute;n. Lo nuevo fue el test que lo caz&oacute;.
+      Queda <strong>fuera de alcance</strong> un patr&oacute;n id&eacute;ntico sin cuantizar en el 30% de pensi&oacute;n alimenticia
+      (<code>NonMandatoryDeductionsHelper</code>), que no entr&oacute; en este PR y necesita ticket propio.
+    </div>
+  </div>
+</div>
   </div></div>
 
   <div id="tab-manual" class="tab-panel"><div class="content">
@@ -1041,7 +1099,7 @@ Resetear   = ning&uacute;n par&aacute;metro &#8658; conjunto inicial completo   
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> · Generado el 2 ago 2026 · Rama <strong>REBU-5096 · REBU-5097 · REBU-5103 · REBU-5185 · REBU-5186 · REBU-5187</strong> · Entorno <strong>UAT</strong>
+  <strong>Rebu Automation Suite</strong> · Generado el 3 ago 2026 · Rama <strong>REBU-5096 · REBU-5097 · REBU-5103 · REBU-5185 · REBU-5186 · REBU-5187 · REBU-5273</strong> · Entorno <strong>UAT</strong>
 </footer>
 
 </div>
