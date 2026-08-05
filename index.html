@@ -96,7 +96,7 @@
   <div class="summary">
     <div class="card pass"><div class="card-value">198</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">3</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">220</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">211</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~40 m</div><div class="card-label">Duración</div></div>
   </div>
 <div style="max-width:860px;margin:18px auto 0;padding:14px 18px;background:#eef4fb;border:1px solid #c9dcf0;border-radius:12px">
@@ -237,7 +237,7 @@ roleAlias !== 'MASTER_ADMIN'  &#8594;  pestaña ausente
 </div>
   <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab('auto', this)">🤖 Automatizados <span class="tab-count">207</span></button>
-    <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">13</span></button>
+    <button class="tab-btn" onclick="switchTab('manual', this)">📋 Manuales <span class="tab-count">4</span></button>
   </div>
   <hr class="tab-divider">
   <div id="tab-auto" class="tab-panel active"><div class="content">
@@ -1310,63 +1310,6 @@ Acumulado:   el "Monto acumulado" del perfil cierra en $100.01, no en $100.02</p
       </table>
     </div>
   </div></div>
-</div>
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
-    <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5099" target="_blank" onclick="event.stopPropagation()">REBU-5099</a>
-      <span class="hu-title">Fuera del alcance automatizado — manuales, Fase 2 e inválido</span>
-    </div>
-    <div class="hu-header-right"><span class="hu-badge">4</span><span class="hu-toggle">▼</span></div>
-  </div>
-  <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-    <tbody>
-
-<tr><td class="test-id">TC-PLA-011</td><td><div class="test-name">Edge: comportamiento del campo Unidades ante 3+ decimales</div><div style="font-size:11px;color:#525252;margin-top:4px">Manual — sin confirmar con el equipo si el sistema trunca, redondea o rechaza el tercer decimal (ej. &quot;7.256&quot; → &quot;7.26&quot;, &quot;7.25&quot; o rechazo directo). Una vez confirmado el comportamiento esperado, es un caso estable y determinista de automatizar.</div></td><td class="status-cell"><span class="badge-na">MANUAL</span></td></tr>
-<tr><td class="test-id">TC-PLA-014</td><td><div class="test-name">Edge: seleccionar el mismo concepto en dos filas distintas del modal</div><div style="font-size:11px;color:#525252;margin-top:4px">Fase 2 — no hay AC que defina el comportamiento esperado (¿debería bloquearse, sumarse, o permitirse como filas independientes?).</div></td><td class="status-cell"><span class="badge-na">FASE 2</span></td></tr>
-<tr><td class="test-id">TC-PLA-015</td><td><div class="test-name">Colaborador sin ningún concepto "Por unidad" asignado — el modal no ofrece filas</div><div style="font-size:11px;color:#525252;margin-top:4px"><strong>Inválido</strong> — confirmado en vivo contra <code>automation</code> que el modal arranca vacío para TODOS los colaboradores, sin importar si tienen o no un concepto de ese grupo usado antes (no hay preasignación cíclica, ver hallazgo en TC-PLA-001). Por lo tanto no existe el escenario diferenciado que este caso buscaba probar.</div></td><td class="status-cell"><span class="badge-na">N/A</span></td></tr>
-<tr><td class="test-id">TC-PLA-018</td><td><div class="test-name">Usuario sin permiso de edición de planilla no puede guardar el modal Por unidad</div><div style="font-size:11px;color:#525252;margin-top:4px">Fase 2 — requiere un usuario de solo lectura sobre Planilla, que no existe hoy en <code>automation</code>.</div></td><td class="status-cell"><span class="badge-na">FASE 2</span></td></tr>
-
-    </tbody>
-  </table>
-</div>
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
-    <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5151" target="_blank" onclick="event.stopPropagation()">REBU-5151</a>
-      <span class="hu-title">Fuera del alcance automatizado — permisos (Fase 2)</span>
-    </div>
-    <div class="hu-header-right"><span class="hu-badge">1</span><span class="hu-toggle">▼</span></div>
-  </div>
-  <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-    <tbody>
-
-<tr><td class="test-id">TC-PLA-010 <span style="font-weight:400;color:#8a8a8a">(REBU-5151)</span></td><td><div class="test-name">Usuario sin permiso de edición sobre Configuración &gt; Conceptos no puede crear un grupo de ingresos</div><div style="font-size:11px;color:#525252;margin-top:4px">Fase 2 — requiere un usuario de prueba con rol de solo lectura sobre Configuración &gt; Conceptos, que no existe hoy en <code>automation</code> (mismo gap ya documentado en REBU-5096 y REBU-5100).</div></td><td class="status-cell"><span class="badge-na">FASE 2</span></td></tr>
-
-    </tbody>
-  </table>
-</div>
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
-    <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5217" target="_blank" onclick="event.stopPropagation()">REBU-5217</a>
-      <span class="hu-title">Fuera del alcance de esta primera pasada — Manual y Fase 2</span>
-    </div>
-    <div class="hu-header-right"><span class="hu-badge">4</span><span class="hu-toggle">▼</span></div>
-  </div>
-  <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-    <tbody>
-
-<tr><td class="test-id">TC-CFG-011 <span style="font-weight:400;color:#8a8a8a">(REBU-5217)</span></td><td><div class="test-name">Cada opción de la lista desplegable respeta el máximo de 50 caracteres</div><div style="font-size:11px;color:#525252;margin-top:4px">No implementado en esta primera pasada — mismo patrón de truncado ya confirmado para "Campo abierto" (TC-CFG-008/009), pendiente de verificar específicamente sobre el input "Agregar opción...".</div></td><td class="status-cell"><span class="badge-na">PENDIENTE</span></td></tr>
-<tr><td class="test-id">TC-CFG-015 <span style="font-weight:400;color:#8a8a8a">(REBU-5217)</span></td><td><div class="test-name">Una lista desplegable con muchas opciones muestra scroll interno en las pills</div><div style="font-size:11px;color:#525252;margin-top:4px">Fase 2 — verificación visual/estructural del contenedor de pills, no automatizada en esta primera pasada.</div></td><td class="status-cell"><span class="badge-na">FASE 2</span></td></tr>
-<tr><td class="test-id">TC-CFG-017 <span style="font-weight:400;color:#8a8a8a">(REBU-5217)</span></td><td><div class="test-name">Edge: nombre del campo con una longitud muy larga</div><div style="font-size:11px;color:#525252;margin-top:4px">Manual — los AC no definen un límite de longitud para el Nombre del campo (a diferencia del valor de "Campo abierto" y las opciones de lista), pendiente de confirmar con el equipo.</div></td><td class="status-cell"><span class="badge-na">MANUAL</span></td></tr>
-<tr><td class="test-id">TC-CFG-018 <span style="font-weight:400;color:#8a8a8a">(REBU-5217)</span></td><td><div class="test-name">Usuario sin permiso de edición sobre Configuración no puede usar "Agregar campo"</div><div style="font-size:11px;color:#525252;margin-top:4px">Fase 2 — requiere un usuario de prueba con rol de solo lectura sobre Configuración, que no existe hoy en <code>automation</code> (mismo gap recurrente en toda la suite).</div></td><td class="status-cell"><span class="badge-na">FASE 2</span></td></tr>
-
-    </tbody>
-  </table>
 </div>
 
 
