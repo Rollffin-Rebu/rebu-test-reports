@@ -20,7 +20,7 @@
     <div class="nav-group-label">Actual</div>
     <a class="nav-item current" href="index.html" data-tip="v15.5.0">
       <span class="nav-icon">🚀</span>
-      <div class="nav-item-body"><div class="nav-version">v15.5.0</div><div class="nav-date">5 ago 2026</div></div>
+      <div class="nav-item-body"><div class="nav-version">v15.5.0</div><div class="nav-date">10 ago 2026</div></div>
       <span class="nav-minibadge latest">LATEST</span>
     </a>
     <hr class="nav-divider">
@@ -77,13 +77,13 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v15.5.0 | 2026-08-05 | Pass: 198 | Fail: 3 | Skip: 6 | Branch: REBU-5096 · REBU-5097 · REBU-5098 · REBU-5099 · REBU-5103 · REBU-5151 · REBU-5185 · REBU-5186 · REBU-5187 · REBU-5217 · REBU-5218 · REBU-5273 | Env: UAT co.2 + Selecta + Produccion co.21 -->
+<!-- RELEASE-START: v15.5.0 | 2026-08-10 | Pass: 198 | Fail: 3 | Skip: 6 | Branch: REBU-5096 · REBU-5097 · REBU-5098 · REBU-5099 · REBU-5103 · REBU-5151 · REBU-5185 · REBU-5186 · REBU-5187 · REBU-5217 · REBU-5218 · REBU-5273 | Env: UAT co.2 + Selecta + Produccion co.21 -->
 
 <header class="hero" id="release-v15-5-0">
   <div class="hero-eyebrow">Reporte de Automatización E2E</div>
   <h1 class="hero-title">Release <span>v15.5.0</span></h1>
   <div class="hero-meta">
-    <span>📅 <strong>5 ago 2026</strong></span>
+    <span>📅 <strong>10 ago 2026</strong></span>
     <span class="sep">·</span>
     <span>🌿 <strong>REBU-5096 · REBU-5097 · REBU-5098 · REBU-5099 · REBU-5103 · REBU-5151 · REBU-5185 · REBU-5186 · REBU-5187 · REBU-5217 · REBU-5218 · REBU-5273</strong></span>
     <span class="sep">·</span>
@@ -1112,11 +1112,17 @@ Resetear   = ning&uacute;n par&aacute;metro &#8658; conjunto inicial completo   
     </div>
   </div>
 </div>
+<div class="env-tab-group">
+  <div class="env-tab-nav">
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat5273', this)">&#129514; UAT co.2 &middot; Automation Project <span class="env-tab-count">1 &#10003;</span></button>
+    <button class="env-tab-btn" onclick="switchEnvTab('prod5273', this)">&#127981; Producci&oacute;n co.21 <span class="env-tab-count">1 &#10003;</span></button>
+  </div>
+  <div id="env-uat5273" class="env-tab-panel active"><div class="content">
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5273" target="_blank" onclick="event.stopPropagation()">REBU-5273</a>
-      <span class="hu-title">Criterio de redondeo a centavos en la distribuci&oacute;n 50/50 de c&iacute;clicos</span>
+      <span class="hu-title">Criterio de redondeo a centavos en la distribuci&oacute;n 50/50 de c&iacute;clicos &middot; UAT co.2</span>
     </div>
     <div class="hu-header-right"><span class="hu-badge">1 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
   </div>
@@ -1166,6 +1172,27 @@ Acumulado:   el "Monto acumulado" del perfil cierra en $100.01, no en $100.02</p
       (<code>NonMandatoryDeductionsHelper</code>), que no entr&oacute; en este PR y necesita ticket propio.
     </div>
   </div>
+</div>
+  </div></div>
+  <div id="env-prod5273" class="env-tab-panel"><div class="content">
+<div style="max-width:860px;margin:0 auto 16px;padding:16px 20px;background:#f4f8f2;border:1px solid #d4e8d0;border-radius:12px"><div style="font-size:11px;font-weight:700;color:#284b44;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Lo que aport&oacute; correr el caso en producci&oacute;n</div><div style="font-size:11px;color:#33506b;line-height:1.7">Confirma que el fix del PR <a href="https://github.com/rebu-co/rebu-hr-info-system-api/pull/2935" target="_blank">#2935</a> <strong>ya est&aacute; desplegado en prod</strong> y que el criterio se comporta igual que en UAT: <code>1A $50.01</code> + <code>1B $50.00</code> = <strong>$100.01</strong>, sin tercer decimal y con el acumulado del perfil cerrando en $100.01. El caso corri&oacute; sobre un concepto <strong>distinto</strong> al de UAT (&ldquo;Descuento OID Cuscatl&aacute;n&rdquo; en vez de &ldquo;Descuento Horas&rdquo;, porque el cat&aacute;logo de c&iacute;clicos es por empresa), lo que agrega evidencia de que el redondeo vive en el motor de c&aacute;lculo y no en la configuraci&oacute;n de un concepto puntual. <strong>1 / 1 verde en 1.2 min.</strong></div></div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5273" target="_blank" onclick="event.stopPropagation()">REBU-5273</a>
+      <span class="hu-title">Criterio de redondeo a centavos en la distribuci&oacute;n 50/50 de c&iacute;clicos &middot; Producci&oacute;n co.21</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">1 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-658</td><td><div class="test-name">"Distribuir" de $100.01 en quincenal: 1A cobra $50.01, 1B $50.00 y la suma cierra en $100.01</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-reg">@regulatory</span><span class="tag tag-val">@edge-case</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span><div style="font-size:9px;color:#6b6b6b;margin-top:5px;white-space:nowrap">entries 560 / 561</div></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Tenant <code>test.rebuhr.com</code>, empresa <strong>21</strong> (&ldquo;Test&rdquo;). Colaborador de $1,000 asociado a una planilla <strong>quincenal</strong> propia, con ambas quincenas de julio 2026 libres para correr.</td></tr><tr><th>Setup</th><td>1. Crear el escenario con <code>createCyclicDistributionScenario</code> (<code>initialFrequency: 'quincenal'</code>) &mdash; planilla <strong>464</strong>. 2. Dar de alta el descuento c&iacute;clico con <code>monthlyAmount: 100.01</code>, <code>distributionType: 'Distributed'</code>, arranque el 01/07/2026 y cuotas 1&ndash;3.<br><em>Nota de ambiente:</em> co.21 no tiene el concepto &ldquo;Descuento Horas&rdquo; que usa el escenario en UAT, as&iacute; que el builder resolvi&oacute; <strong>&ldquo;Descuento OID Cuscatl&aacute;n&rdquo;</strong> (id 36). Es indiferente para el criterio: el fix vive en <code>DeductionCalculationService.CalculateDeductionAmount</code>, com&uacute;n a todos los conceptos de descuento.</td></tr><tr><th>Pasos</th><td>1. Correr la <strong>Quincena 1</strong> (01&ndash;15 jul 2026) y <strong>finalizarla</strong> con 4 <code>changeStep</code>; leer el monto aplicado. 2. Correr la <strong>Quincena 2</strong> (16&ndash;31 jul 2026) y finalizarla igual; leer el monto. 3. Abrir el perfil &gt; C&iacute;clicos &gt; Descuentos C&iacute;clicos &gt; el registro, y leer el <strong>Monto Descontado Acumulado</strong>. 4. Cambiar a la tab <strong>Historial</strong> y leer el desglose cuota por cuota.</td></tr><tr><th>Resultado esperado</th><td>Criterio de <a href="https://rebu.atlassian.net/browse/REBU-5273" target="_blank">REBU-5273</a> (opci&oacute;n A):<br>&bull; la partici&oacute;n <strong>1A cobra $50.01</strong> &mdash; se lleva el centavo residual;<br>&bull; la partici&oacute;n <strong>1B cobra $50.00</strong> &mdash; complemento exacto de 1A;<br>&bull; la <strong>suma de ambos per&iacute;odos es exactamente $100.01</strong>;<br>&bull; ning&uacute;n per&iacute;odo tiene m&aacute;s de 2 decimales (sin el residuo <code>50.005</code>);<br>&bull; el <strong>&ldquo;Monto acumulado&rdquo; del perfil cierra en $100.01</strong>, no en $100.02.</td></tr><tr><th>Resultado obtenido</th><td>Entries <code>560</code> (Q1) y <code>561</code> (Q2) en <strong>prod co.21</strong>, colaborador <em>Ignacio Villalobos</em>, planilla 464, registro <code>QA-5140-1786395100370</code>.<br>&bull; Persistido por API: <code>1A $50.01</code> + <code>1B $50.00</code> = <strong>$100.01</strong>, ambos cuantizados a centavos.<br>&bull; Tab <strong>Detalles</strong>: Total a Descontar <code>$300.03</code> &middot; <strong>Monto Descontado Acumulado <code>$100.01</code></strong> &middot; Monto Remanente <code>$200.02</code> &middot; Cuota 1 de 3 (33.33%).<br>&bull; Tab <strong>Historial</strong>: <code>1A 15 jul $50.01 (acum. $50.01)</code> &middot; <code>1B 31 jul $50.00 (acum. $100.01)</code>, ambas <em>Aplicado</em>.<br>&#9989; Las 4 aserciones en verde &mdash; el fix ya est&aacute; desplegado en producci&oacute;n.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Tab Detalles: Monto Descontado Acumulado $100.01 (no $100.02)</div><img src="assets/v15.5.0/prod-5273/TC-PLA-658/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; Tab Historial: 1A $50.01 y 1B $50.00, acumulado $100.01</div><img src="assets/v15.5.0/prod-5273/TC-PLA-658/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)"/></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+  </div></div>
 </div>
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
@@ -1524,7 +1551,7 @@ Acumulado:   el "Monto acumulado" del perfil cierra en $100.01, no en $100.02</p
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> · Generado el 5 ago 2026 · Rama <strong>REBU-5096 · REBU-5097 · REBU-5099 · REBU-5103 · REBU-5151 · REBU-5185 · REBU-5186 · REBU-5187 · REBU-5217 · REBU-5273</strong> · Entorno <strong>UAT + Producción</strong>
+  <strong>Rebu Automation Suite</strong> · Generado el 10 ago 2026 · Rama <strong>REBU-5096 · REBU-5097 · REBU-5099 · REBU-5103 · REBU-5151 · REBU-5185 · REBU-5186 · REBU-5187 · REBU-5217 · REBU-5273</strong> · Entorno <strong>UAT + Producción</strong>
 </footer>
 
 </div>
