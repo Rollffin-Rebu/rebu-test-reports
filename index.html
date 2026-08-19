@@ -87,7 +87,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v16.1.0 | 2026-08-19 | Pass: 10 | Fail: 1 | Branch: REBU-5603 + REBU-5605 + REBU-5619 | Env: UAT co.2 -->
+<!-- RELEASE-START: v16.1.0 | 2026-08-19 | Pass: 11 | Fail: 0 | Branch: REBU-5603 + REBU-5605 + REBU-5619 | Env: UAT co.2 -->
 
 <header class="hero" id="release-v16-1-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
@@ -104,8 +104,8 @@
 </header>
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">10</div><div class="card-label">Pasaron</div></div>
-    <div class="card fail"><div class="card-value">1</div><div class="card-label">Fallaron</div></div>
+    <div class="card pass"><div class="card-value">11</div><div class="card-label">Pasaron</div></div>
+    <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
     <div class="card total"><div class="card-value">11</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~34 m</div><div class="card-label">Duraci&oacute;n</div></div>
   </div>
@@ -127,13 +127,19 @@
     🔑 <strong>Vacaciones (2/2):</strong> quedó cerrado qué factor alimenta la provisión —
     <code>díasDeBono ?? díasDeVacaciones</code>. <strong>REBU-5619 CA1 está bien redactado.</strong>
     <br><br>
-    🔴 <strong>El único rojo es TC-PLA-807</strong> y es un defecto conocido de refresco: al editar un tramo,
-    la provisión se recalcula pero el <strong>bono no</strong>. Ver su sección.
+    🟢 <strong>TC-PLA-807 cierra el circuito hasta el monto pagado:</strong> al editar un tramo, la planilla ya
+    creada no recoge el cambio en el bono —y <strong>eso es lo esperado</strong>—; el bono se refresca
+    <strong>eliminando la corrida y volviendo a correr la planilla</strong>. El caso arrancó en rojo porque el
+    esperado estaba mal, no el producto. Ver su sección.
     <br><br>
     ⚠️ <strong>Dos cosas que este release deja abiertas</strong>, ambas para decisión de Producto: si $0.00 es
     la provisión de vacaciones correcta cuando la política tiene 0 días de bono (afecta el esperado de
     <strong>22 specs legacy</strong>, hoy en rojo), y si el piso de 15 días del aguinaldo en el primer año es
     deliberado frente al proporcional del art. 196.
+    <br><br>
+    📝 Y una de documentación: <strong>REBU-5617 CA3</strong> y <strong>REBU-5605 CA6</strong> dicen que los
+    cambios "se reflejan automáticamente", pero sobre una corrida ya creada el bono no se propaga por diseño
+    — hay que eliminarla y volver a correrla. Conviene alinear la redacción.
   </div>
 </div>
 
@@ -250,34 +256,39 @@
       <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5605" target="_blank" onclick="event.stopPropagation()">REBU-5605</a>
       <span class="hu-title">Herencia de días de bono: de la edición del tramo al monto pagado</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">0 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+    <div class="hu-header-right"><span class="hu-badge">1 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
   </div>
   
-<div style="margin:0 18px 14px;padding:12px 16px;background:#fdeeee;border:1px solid #f0c4c4;border-radius:10px">
-  <div style="font-size:11px;font-weight:700;color:#9b2c2c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">El único rojo del release — y la mitad que sí funciona quedó cubierta aparte</div>
-  <div style="font-size:11px;color:#7a2727;line-height:1.7">
-    El caso mide que editar un tramo con la herencia activa llegue <strong>hasta el monto pagado</strong>.
-    La <strong>provisión sí se recalcula</strong> ($18.00 → $20.00); el <strong>bono no</strong> — se queda en
-    $216.00 en vez de $240.00. Por eso el caso falla: assertea las dos cosas.
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef7f1;border:1px solid #b9dcc6;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d6b3f;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">El caso arrancó en rojo y el rojo era del esperado, no del producto</div>
+  <div style="font-size:11px;color:#245c3c;line-height:1.7">
+    La primera versión asertaba que <strong>"Actualizar planilla"</strong> propagara la edición del tramo al
+    <strong>bono pagado</strong>. La provisión sí se refresca por ese camino ($18.00 → $20.00), el bono no
+    — y el caso fallaba ahí.
     <br><br>
-    🔑 La atribución está cerrada con cuatro caminos que cambian solo <em>cuándo</em> el tramo vale 20: si ya
-    vale 20 al crear el entry el bono sale bien, y una planilla <strong>nueva</strong> creada después de la
-    edición también. O sea <strong>el motor sabe leer tramos; el problema es solo el refresco</strong>.
-    "Actualizar planilla" incluso <strong>regenera</strong> el concepto y aun así lo emite con el valor viejo.
-    <strong>Workaround: rehacer la planilla.</strong>
+    🔑 <strong>Ese comportamiento es el esperado</strong>, confirmado por Jessica el 19/08/2026: el bono se
+    refresca <strong>eliminando la corrida y volviendo a correr la planilla</strong>. El propio diálogo del
+    producto lo dice — <em>"Para correrla otra vez, tendrás que comenzar desde cero"</em>. Reescrito con ese
+    flujo, el caso <strong>pasa</strong>: la corrida nueva nace con <code>quantity: 20</code> y
+    <code>$240.00</code>.
     <br><br>
-    ⚠️ La evidencia de este caso se captura <strong>antes</strong> de los asserts del bono a propósito: si
-    asertara primero, la captura del estado recalculado —donde se ve que la provisión sí subió— no se tomaría
-    nunca. Y por eso también existe <strong>TC-PLA-821</strong> como caso separado, que mira solo la provisión:
-    mientras este defecto esté abierto, la mitad que funciona seguiría sin cobertura.
+    🔑 El endpoint de borrado se sacó sniffeando la UI:
+    <code>DELETE /api/dashboard/{cId}/payroll/entry/{entryId}/delete</code> → 204. ⚠️ El sufijo
+    <code>/delete</code> es obligatorio: sin él la ruta devuelve 404 con el shell del SPA. Quedó como
+    <code>deletePayrollEntry</code> en <code>PayrollAPIService</code>.
+    <br><br>
+    ⚠️ Vale revisar la redacción de <strong>REBU-5617 CA3</strong> y <strong>REBU-5605 CA6</strong> ("se
+    refleja automáticamente"): describen una propagación automática que el producto, por diseño, no hace
+    sobre una corrida ya creada. El caso <strong>TC-PLA-821</strong> sigue existiendo aparte para cubrir la
+    mitad que sí refresca <code>recalculatePayrollEntry</code>.
   </div>
 </div>
 
   <table class="test-table">
     <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
     <tbody>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-807</td><td><div class="test-name">El bono y la provisión reflejan la edición del tramo heredado <em>(QAUTO-709 · E2E-INT-001)</em></div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@provisiones</span><span class="tag tag-val">@vacaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-fail">FAIL</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Política con los días de vacaciones <strong>por tramos</strong> (<code>[{1,4,15},{5,9,18},{10,null,22}]</code>), % de bono fijo en <strong>30%</strong> (el mínimo permitido, REBU-5641 Obs. 1) y el checkbox de <strong>herencia encendido</strong> (<code>useVacationDaysForBonusDays: true</code>, con los días de bono en <code>null</code>, nunca en 0). Colaborador de <strong>8 años</strong> → tramo 5-9 = 18 días. Salario $1,200, planilla mensual, aniversario dentro del período.</td></tr><tr><th>Setup</th><td>1. Crear el escenario y verificar el estado inicial. 2. Resolver el <code>configId</code> <strong>por nombre</strong> con <code>findVacationPolicyByName</code> — no con <code>at(-1)</code>: UAT arrastra ~1150 políticas. 3. <code>PUT</code> de la configuración <strong>completa</strong> con el tramo 5-9 en <strong>20</strong> días (el PUT reemplaza, no mergea). 4. Releer con <code>GET</code> y confirmar que la herencia sobrevivió al guardado.</td></tr><tr><th>Pasos</th><td>1. Medir bono y provisión iniciales. 2. Editar el tramo 18 → 20. 3. <code>recalculatePayrollEntry</code> ("Actualizar planilla"). 4. Volver a medir. 5. Capturar la planilla antes y después.</td></tr><tr><th>Regla evaluada</th><td><strong>REBU-5617 CA3</strong> y <strong>REBU-5605 CA6</strong>: con la herencia activa los días del bono no se guardan, se resuelven <em>en el momento del cálculo</em>, así que editar el tramo tiene que cambiar el bono pagado y la provisión.</td></tr><tr><th>Resultado esperado</th><td>Bono <code>$216.00 → $240.00</code> (18 → 20 días × $40 × 30%) y provisión <code>$18.00 → $20.00</code>.</td></tr><tr><th>Resultado obtenido</th><td>🔴 <strong>La provisión sí se recalcula ($18.00 → $20.00); el bono NO</strong> — se queda en <code>18 días / $216.00</code> en vez de <code>20 / $240.00</code>. El caso falla en el assert del bono. Atribución cerrada con 4 caminos: si la política ya vale 20 al crear el entry el bono sale bien, y una planilla <strong>nueva</strong> creada después de la edición también — o sea <strong>el motor sabe leer tramos y el problema es solo el refresco</strong>. "Actualizar planilla" incluso <strong>regenera</strong> el concepto (cambia el <code>payrollConceptId</code>) y aun así lo emite con el valor viejo. <strong>Workaround: rehacer la planilla.</strong> Contradice REBU-5617 CA3 y REBU-5605 CA6; pendiente de decisión para levantarlo como defecto.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — TC-PLA-807 — paso Aportes y Provisiones: días y monto de subsidio · tramo 5-9 en 18 días · Bono $216.00 · Provisión $18.00</div><img src="assets/v16.1.0/uat/TC-PLA-807/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — TC-PLA-807 — ANTES de editar el tramo: tramo 5-9 en 18 días · Bono $216.00 · Provisión $18.00</div><img src="assets/v16.1.0/uat/TC-PLA-807/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">03 — TC-PLA-807 — paso Aportes y Provisiones: días y monto de subsidio · tramo editado a 20 días · Bono 18d $216.00 (esperado $240.00) · Provisión $20 (esperado $20.00)</div><img src="assets/v16.1.0/uat/TC-PLA-807/03.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">04 — TC-PLA-807 — DESPUÉS de editar el tramo: tramo editado a 20 días · Bono 18d $216.00 (esperado $240.00) · Provisión $20 (esperado $20.00)</div><img src="assets/v16.1.0/uat/TC-PLA-807/04.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-fail">FAIL</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-807</td><td><div class="test-name">El bono y la provisión reflejan la edición del tramo heredado <em>(QAUTO-709 · E2E-INT-001)</em></div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@provisiones</span><span class="tag tag-val">@vacaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Precondiciones</th><td>Política con los días de vacaciones <strong>por tramos</strong> (<code>[{1,4,15},{5,9,18},{10,null,22}]</code>), % de bono fijo en <strong>30%</strong> (el mínimo permitido, REBU-5641 Obs. 1) y el checkbox de <strong>herencia encendido</strong> (<code>useVacationDaysForBonusDays: true</code>, con los días de bono en <code>null</code>, nunca en 0). Colaborador de <strong>8 años</strong> → tramo 5-9 = 18 días. Salario $1,200, planilla mensual, aniversario dentro del período.</td></tr><tr><th>Setup</th><td>1. Crear el escenario y verificar el estado inicial. 2. Resolver el <code>configId</code> <strong>por nombre</strong> con <code>findVacationPolicyByName</code> — no con <code>at(-1)</code>: UAT arrastra ~1150 políticas. 3. <code>PUT</code> de la configuración <strong>completa</strong> con el tramo 5-9 en <strong>20</strong> días (el PUT reemplaza, no mergea). 4. Releer con <code>GET</code> y confirmar que la herencia sobrevivió al guardado.</td></tr><tr><th>Pasos</th><td>1. Medir bono y provisión iniciales. 2. Editar el tramo 18 → 20. 3. <code>recalculatePayrollEntry</code> ("Actualizar planilla") y medir: la provisión debe subir a $20.00 y el bono debe seguir en $216.00. 4. <strong>Eliminar la corrida</strong> (<code>deletePayrollEntry</code>) y verificar que el detalle da 404. 5. <strong>Volver a correr la planilla</strong> sobre la misma planilla y período. 6. Medir bono y provisión de la corrida nueva. 7. Capturar la planilla antes y después.</td></tr><tr><th>Regla evaluada</th><td>Con la herencia activa los días del bono no se guardan: se resuelven <em>en el momento del cálculo</em>. 🔑 <strong>Pero una corrida ya creada no recoge la edición en el bono, y eso es el comportamiento esperado</strong> (confirmado por Jessica el 19/08/2026): <code>recalculatePayrollEntry</code> refresca las provisiones, no el bono. Para que el cambio llegue al monto pagado hay que <strong>eliminar la corrida y volver a correr la planilla</strong> — el propio diálogo del producto lo dice: <em>"Para correrla otra vez, tendrás que comenzar desde cero"</em>.</td></tr><tr><th>Resultado esperado</th><td>Tras "Actualizar planilla": provisión <code>$18.00 → $20.00</code> y bono <strong>todavía en $216.00</strong>. Tras <strong>eliminar la corrida y volver a correrla</strong>: bono <code>$240.00</code> con <code>quantity: 20</code> y provisión <code>$20.00</code>.</td></tr><tr><th>Resultado obtenido</th><td>✅ Los tres tramos del flujo se comportan como manda el producto. Tras "Actualizar planilla" la provisión sube a <code>$20.00</code> y el bono sigue en <code>18d / $216.00</code>. Se elimina la corrida (<code>DELETE .../payroll/entry/{id}/delete</code> → 204, y el detalle pasa a 404) y al volver a correr la planilla la corrida nueva <strong>nace con el tramo nuevo</strong>: <code>quantity: 20</code>, <code>amount: $240.00</code>, provisión <code>$20.00</code>. <br><br>⚠️ La primera versión de este caso asertaba que "Actualizar planilla" propagara el bono y por eso daba rojo: <strong>el esperado estaba mal, no el producto</strong>.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — TC-PLA-807 — paso Aportes y Provisiones: días y monto de subsidio · tramo 5-9 en 18 días · Bono $216.00 · Provisión $18.00</div><img src="assets/v16.1.0/uat/TC-PLA-807/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 — TC-PLA-807 — ANTES de editar el tramo: tramo 5-9 en 18 días · Bono $216.00 · Provisión $18.00</div><img src="assets/v16.1.0/uat/TC-PLA-807/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">03 — TC-PLA-807 — paso Aportes y Provisiones: días y monto de subsidio · corrida REHECHA con el tramo en 20 días · Bono 20d $240.00 (esperado $240.00) · Provisión $20 (esperado $20.00)</div><img src="assets/v16.1.0/uat/TC-PLA-807/03.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">04 — TC-PLA-807 — DESPUÉS de editar el tramo: corrida REHECHA con el tramo en 20 días · Bono 20d $240.00 (esperado $240.00) · Provisión $20 (esperado $20.00)</div><img src="assets/v16.1.0/uat/TC-PLA-807/04.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
 
     </tbody>
   </table>
