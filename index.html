@@ -92,7 +92,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v16.2.0 | 2026-08-21 | Pass: 67 | Fail: 5 | Skip: 7 | Branch: REBU-5467 + REBU-5521 + REBU-5433 | Env: UAT co.2 -->
+<!-- RELEASE-START: v16.2.0 | 2026-08-21 | Pass: 73 | Fail: 5 | Skip: 7 | Branch: REBU-5467 + REBU-5521 + REBU-5433 | Env: UAT co.2 -->
 
 <header class="hero" id="release-v16-2-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
@@ -102,17 +102,17 @@
     <span class="sep">&middot;</span>
     <span>&#127807; <strong>REBU-5467 &middot; REBU-5433</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#127760; <strong>UAT</strong></span>
+    <span>&#127760; <strong>UAT + Producci&oacute;n</strong></span>
     <span class="sep">&middot;</span>
     <span>&#128279; <strong>automation (co.2)</strong></span>
   </div>
 </header>
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">67</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">73</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">5</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">79</div><div class="card-label">Total</div></div>
-    <div class="card time"><div class="card-value">~14 m</div><div class="card-label">Duraci&oacute;n</div></div>
+    <div class="card total"><div class="card-value">85</div><div class="card-label">Total</div></div>
+    <div class="card time"><div class="card-value">~17 m</div><div class="card-label">Duraci&oacute;n</div></div>
   </div>
 
 <div style="max-width:860px;margin:18px auto 0;padding:14px 18px;background:#eef7f1;border:1px solid #b9dcc6;border-radius:12px">
@@ -177,11 +177,17 @@
 </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">79</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">85</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">&#128203; Manuales <span class="tab-count">0</span></button>
   </div>
   <hr class="tab-divider">
-  <div id="tab-auto" class="tab-panel active"><div class="content">
+  <div id="tab-auto" class="tab-panel active">
+  <div class="env-tab-group">
+    <div class="env-tab-nav">
+      <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">79</span></button>
+      <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">6 &#10003;</span></button>
+    </div>
+    <div id="env-uat" class="env-tab-panel active"><div class="content">
 
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
@@ -728,9 +734,88 @@
 
 
   </div></div>
+    <div id="env-prod" class="env-tab-panel"><div class="content">
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5433" target="_blank" onclick="event.stopPropagation()">REBU-5433</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-723" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-723 (E2E-INT-008)">QAUTO-723</a>
+      <span class="hu-title">Aguinaldo por antigüedad en liquidación &mdash; los 4 casos de la matriz, en producción</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">4 / 4 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+
+<div style="margin:0 18px 14px;padding:12px 16px;background:#fff4e6;border:1px solid #f0c99a;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#8a4f12;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Producción calcula distinto que UAT &mdash; y está bien</div>
+  <div style="font-size:11px;color:#6d3f10;line-height:1.7">
+    <strong>PROD co.21 tiene fecha de corte 20-oct con <code>isCustom: false</code></strong> (usa la config base de
+    FinancialCore); UAT co.2 tiene <strong>11-dic</strong> con config propia. Como los specs derivan el esperado de
+    <code>GET /{cId}/xmas-bonus-config</code> en runtime, los 4 casos pasaron en los dos ambientes
+    <strong>con números completamente distintos</strong> &mdash; y eso es precisamente lo que se quería demostrar:
+    el producto aplica la fórmula sobre la config que tiene, no sobre constantes.
+    <br><br>
+    ⚠️ <strong>Un efecto que conviene tener presente:</strong> con corte 20-oct las cuatro filas de la HU
+    <strong>colapsan a un solo cuadrante</strong>. Las dos fechas de liquidación (1-dic y 20-dic) caen las dos
+    <em>después</em> del 20-oct, así que las cuatro ruedan a 20-oct-2027 y las cuatro arrancan el período el
+    21-oct-2026. En UAT estas mismas cuatro filas cubren los cuatro cuadrantes del árbol 2×2; en producción cubren
+    uno. <strong>La cobertura de prod es más débil que la de UAT con el mismo set de datos.</strong> Restaurarla
+    requiere fechas propias para el corte 20-oct &mdash; es lo que documenta
+    <a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-726" target="_blank" rel="noopener">QAUTO-726</a>.
+  </div>
+</div>
+
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-015</td><td><div class="test-name">fila #4 &mdash; ingreso 1-ene-2020, liquidación 1-dic-2026</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span><span class="tag tag-val">@release-v16.2.0</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-723" target="_blank" rel="noopener">QAUTO-723</a> &middot; caso <code>TC-LIQ-015</code> &middot; <em>E2E-INT-008</em></td></tr><tr><th>Precondiciones</th><td>Config de aguinaldo vigente en <strong>PROD co.21</strong>, leída del endpoint al arrancar el test: <strong>corte 20-oct</strong>, <code>isCustom: false</code> (usa la config base, no una propia), tramos <code>[0,3)&rarr;15</code> · <code>[3,10)&rarr;19</code> · <code>[10,&infin;)&rarr;21</code>. Colaborador nuevo con salario mensual <strong>$1000</strong>.</td></tr><tr><th>Setup</th><td>1. <code>GET /21/xmas-bonus-config</code> &rarr; se deriva el esperado con <code>calcularAguinaldo()</code> (los 7 pasos del AC1) sobre la config <strong>de producción</strong>. 2. Alta del colaborador con ingreso <strong>2020-01-01</strong>. 3. Desvinculación con fecha <strong>2026-12-01</strong>.</td></tr><tr><th>Pasos</th><td>1. Leer <code>incomesInformation."Aguinaldo"</code> del detalle: <code>daysValue</code> y <code>decimalValue</code>. 2. Abrir el detalle en la UI y desplegar la fila <strong>Aguinaldo</strong>. 3. Cruzar el total de la pantalla contra el de la API.</td></tr><tr><th>Regla evaluada</th><td><code>DíasAguinaldo = DíasDelTramo × MIN(DíasEnPeríodo / 365, 1)</code>. 🔑 El esperado <strong>no está cableado</strong>: se calcula en runtime contra la config de co.21, que es distinta a la de UAT.</td></tr><tr><th>Resultado esperado</th><td>Corte aplicable <strong>2027-10-20</strong> · tramo <code>[3,10)</code> = <strong>19 días</strong> · inicio efectivo <strong>2026-10-21</strong> · <strong>42 días</strong> en el período &rarr; <strong>2.19 días de aguinaldo</strong> = <strong>$73.00</strong>.</td></tr><tr><th>Resultado obtenido</th><td><code>daysValue = 2.19</code> y monto <strong>$73.00</strong>. La pantalla muestra el mismo monto ✅<br><br>Con corte 20-oct la liquidación de diciembre <strong>ya pasó el corte</strong>, así que el corte aplicable rueda a <strong>2027</strong> y el período de referencia arranca el 21-oct-2026: quedan 42 días.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle de liquidación con Aguinaldo desplegado — 2.19 días / $73.00</div><img src="assets/v16.2.0/prod/TC-LIQ-015/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-016</td><td><div class="test-name">fila #5 &mdash; ingreso 1-ene-2020, liquidación 20-dic-2026</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span><span class="tag tag-val">@release-v16.2.0</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-723" target="_blank" rel="noopener">QAUTO-723</a> &middot; caso <code>TC-LIQ-016</code> &middot; <em>E2E-INT-008</em></td></tr><tr><th>Precondiciones</th><td>Config de aguinaldo vigente en <strong>PROD co.21</strong>, leída del endpoint al arrancar el test: <strong>corte 20-oct</strong>, <code>isCustom: false</code> (usa la config base, no una propia), tramos <code>[0,3)&rarr;15</code> · <code>[3,10)&rarr;19</code> · <code>[10,&infin;)&rarr;21</code>. Colaborador nuevo con salario mensual <strong>$1000</strong>.</td></tr><tr><th>Setup</th><td>1. <code>GET /21/xmas-bonus-config</code> &rarr; se deriva el esperado con <code>calcularAguinaldo()</code> (los 7 pasos del AC1) sobre la config <strong>de producción</strong>. 2. Alta del colaborador con ingreso <strong>2020-01-01</strong>. 3. Desvinculación con fecha <strong>2026-12-20</strong>.</td></tr><tr><th>Pasos</th><td>1. Leer <code>incomesInformation."Aguinaldo"</code> del detalle: <code>daysValue</code> y <code>decimalValue</code>. 2. Abrir el detalle en la UI y desplegar la fila <strong>Aguinaldo</strong>. 3. Cruzar el total de la pantalla contra el de la API.</td></tr><tr><th>Regla evaluada</th><td><code>DíasAguinaldo = DíasDelTramo × MIN(DíasEnPeríodo / 365, 1)</code>. 🔑 El esperado <strong>no está cableado</strong>: se calcula en runtime contra la config de co.21, que es distinta a la de UAT.</td></tr><tr><th>Resultado esperado</th><td>Corte aplicable <strong>2027-10-20</strong> · tramo <code>[3,10)</code> = <strong>19 días</strong> · inicio efectivo <strong>2026-10-21</strong> · <strong>61 días</strong> en el período &rarr; <strong>3.18 días de aguinaldo</strong> = <strong>$106.00</strong>.</td></tr><tr><th>Resultado obtenido</th><td><code>daysValue = 3.18</code> y monto <strong>$106.00</strong>. La pantalla muestra el mismo monto ✅<br><br>Mismo colaborador, 19 días después: 61 días en el período en vez de 42. A diferencia de UAT, acá liquidar más tarde paga <strong>más</strong>, porque ambas fechas caen del mismo lado del corte y el período ya está corriendo.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle de liquidación con Aguinaldo desplegado — 3.18 días / $106.00</div><img src="assets/v16.2.0/prod/TC-LIQ-016/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-017</td><td><div class="test-name">fila #6 &mdash; ingreso 1-abr-2026, liquidación 1-dic-2026</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span><span class="tag tag-val">@release-v16.2.0</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-723" target="_blank" rel="noopener">QAUTO-723</a> &middot; caso <code>TC-LIQ-017</code> &middot; <em>E2E-INT-008</em></td></tr><tr><th>Precondiciones</th><td>Config de aguinaldo vigente en <strong>PROD co.21</strong>, leída del endpoint al arrancar el test: <strong>corte 20-oct</strong>, <code>isCustom: false</code> (usa la config base, no una propia), tramos <code>[0,3)&rarr;15</code> · <code>[3,10)&rarr;19</code> · <code>[10,&infin;)&rarr;21</code>. Colaborador nuevo con salario mensual <strong>$1000</strong>.</td></tr><tr><th>Setup</th><td>1. <code>GET /21/xmas-bonus-config</code> &rarr; se deriva el esperado con <code>calcularAguinaldo()</code> (los 7 pasos del AC1) sobre la config <strong>de producción</strong>. 2. Alta del colaborador con ingreso <strong>2026-04-01</strong>. 3. Desvinculación con fecha <strong>2026-12-01</strong>.</td></tr><tr><th>Pasos</th><td>1. Leer <code>incomesInformation."Aguinaldo"</code> del detalle: <code>daysValue</code> y <code>decimalValue</code>. 2. Abrir el detalle en la UI y desplegar la fila <strong>Aguinaldo</strong>. 3. Cruzar el total de la pantalla contra el de la API.</td></tr><tr><th>Regla evaluada</th><td><code>DíasAguinaldo = DíasDelTramo × MIN(DíasEnPeríodo / 365, 1)</code>. 🔑 El esperado <strong>no está cableado</strong>: se calcula en runtime contra la config de co.21, que es distinta a la de UAT.</td></tr><tr><th>Resultado esperado</th><td>Corte aplicable <strong>2027-10-20</strong> · tramo <code>[0,3)</code> = <strong>15 días</strong> · inicio efectivo <strong>2026-10-21</strong> · <strong>42 días</strong> en el período &rarr; <strong>1.73 días de aguinaldo</strong> = <strong>$57.67</strong>.</td></tr><tr><th>Resultado obtenido</th><td><code>daysValue = 1.73</code> y monto <strong>$57.67</strong>. La pantalla muestra el mismo monto ✅<br><br>La fecha de ingreso (1-abr-2026) es <strong>anterior</strong> al inicio del período (21-oct-2026), así que el <code>MAX</code> del Paso 5 toma el período. En UAT esta misma fila tomaba la fecha de ingreso.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle de liquidación con Aguinaldo desplegado — 1.73 días / $57.67</div><img src="assets/v16.2.0/prod/TC-LIQ-017/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-018</td><td><div class="test-name">fila #7 &mdash; ingreso 1-abr-2026, liquidación 20-dic-2026</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span><span class="tag tag-val">@release-v16.2.0</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-723" target="_blank" rel="noopener">QAUTO-723</a> &middot; caso <code>TC-LIQ-018</code> &middot; <em>E2E-INT-008</em></td></tr><tr><th>Precondiciones</th><td>Config de aguinaldo vigente en <strong>PROD co.21</strong>, leída del endpoint al arrancar el test: <strong>corte 20-oct</strong>, <code>isCustom: false</code> (usa la config base, no una propia), tramos <code>[0,3)&rarr;15</code> · <code>[3,10)&rarr;19</code> · <code>[10,&infin;)&rarr;21</code>. Colaborador nuevo con salario mensual <strong>$1000</strong>.</td></tr><tr><th>Setup</th><td>1. <code>GET /21/xmas-bonus-config</code> &rarr; se deriva el esperado con <code>calcularAguinaldo()</code> (los 7 pasos del AC1) sobre la config <strong>de producción</strong>. 2. Alta del colaborador con ingreso <strong>2026-04-01</strong>. 3. Desvinculación con fecha <strong>2026-12-20</strong>.</td></tr><tr><th>Pasos</th><td>1. Leer <code>incomesInformation."Aguinaldo"</code> del detalle: <code>daysValue</code> y <code>decimalValue</code>. 2. Abrir el detalle en la UI y desplegar la fila <strong>Aguinaldo</strong>. 3. Cruzar el total de la pantalla contra el de la API.</td></tr><tr><th>Regla evaluada</th><td><code>DíasAguinaldo = DíasDelTramo × MIN(DíasEnPeríodo / 365, 1)</code>. 🔑 El esperado <strong>no está cableado</strong>: se calcula en runtime contra la config de co.21, que es distinta a la de UAT.</td></tr><tr><th>Resultado esperado</th><td>Corte aplicable <strong>2027-10-20</strong> · tramo <code>[0,3)</code> = <strong>15 días</strong> · inicio efectivo <strong>2026-10-21</strong> · <strong>61 días</strong> en el período &rarr; <strong>2.51 días de aguinaldo</strong> = <strong>$83.67</strong>.</td></tr><tr><th>Resultado obtenido</th><td><code>daysValue = 2.51</code> y monto <strong>$83.67</strong>. La pantalla muestra el mismo monto ✅<br><br>Tramo bajo y período completo desde el corte: 61 días.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle de liquidación con Aguinaldo desplegado — 2.51 días / $83.67</div><img src="assets/v16.2.0/prod/TC-LIQ-018/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5433" target="_blank" onclick="event.stopPropagation()">REBU-5433</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-725" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-725 (E2E-REG-007)">QAUTO-725</a>
+      <span class="hu-title">Regresión: la base de ISSS/AFP excluye el aguinaldo &mdash; en producción</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">2 / 2 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+
+<div style="margin:0 18px 14px;padding:12px 16px;background:#fff8e6;border:1px solid #f0dca8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#8a6212;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Lo mismo que en UAT, con los montos de producción</div>
+  <div style="font-size:11px;color:#6d5210;line-height:1.7">
+    Las dos invariantes se cumplen igual en co.21: la base de ISSS/AFP es <strong>bono vacacional + vacaciones
+    pendientes</strong>, y el <strong>tope del ISSS de $30</strong> aparece con salario $4.000 mientras el AFP sigue
+    al 7,25 %. El aguinaldo es mucho menor que en UAT ($292 contra $2.464) porque el corte de 20-oct deja solo 2,19
+    días de período &mdash; y aun así los descuentos cierran al sexto decimal sobre la misma base.
+  </div>
+</div>
+
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-022</td><td><div class="test-name">El aguinaldo y la indemnización quedan <strong>fuera</strong> de la base de ISSS/AFP (salario $1.000)</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@descuentos-de-ley</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-725" target="_blank" rel="noopener">QAUTO-725</a> &middot; caso <code>TC-LIQ-022</code> &middot; <em>E2E-REG-007</em></td></tr><tr><th>Precondiciones</th><td>PROD co.21. Colaborador con salario mensual <strong>$1000</strong>, ingreso <strong>2020-01-01</strong>, desvinculado el <strong>2026-12-01</strong> con motivo <strong>Despido con responsabilidad patronal</strong>, para que haya <strong>indemnización &gt; 0</strong> y el caso pueda probar que queda fuera de la base.</td></tr><tr><th>Setup</th><td>Leer el concepto <strong>Aguinaldo</strong> de producción y verificar sus flags antes de calcular: en co.21 es <code>id 14</code> (en UAT es 4), code 1003, con <code>appliesSS: false</code> · <code>appliesPensionFund: false</code> · <code>appliesTax: true</code> · <code>exemptAmount: 1500</code>.</td></tr><tr><th>Pasos</th><td>1. Leer conceptos de ingreso y descuentos del detalle. 2. Recomponer la base y contrastarla. 3. Probar los <strong>contrafácticos</strong>: el AFP no cierra si se le suma el aguinaldo, ni si se le suma la indemnización.</td></tr><tr><th>Regla evaluada</th><td><code>Base ISSS/AFP = bono vacacional + vacaciones pendientes</code>. Ni aguinaldo ni indemnización. Coherente con <strong>REBU-5544</strong>.</td></tr><tr><th>Resultado esperado</th><td>Aguinaldo $73.00 · vacaciones pendientes $458.904110 · indemnización $6,923.29 &rarr; AFP = 7,25 % de las vacaciones e ISSS = 3 % de las vacaciones (o el tope, el que sea menor).</td></tr><tr><th>Resultado obtenido</th><td>ISSS <strong>13.767123</strong> = 3 % de 458,904110 ✅ y AFP <strong>33.270548</strong> = 7,25 % de la misma base ✅. Ni el aguinaldo ($73,00) ni la indemnización ($6.923,29) entran.<br><br>ISR observado: <strong>$0.00</strong> (se registra, no se asevera: depende de la tabla de renta seleccionada, REBU-5550).</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Liquidación con Aguinaldo desplegado — ISSS y AFP sobre vacaciones</div><img src="assets/v16.2.0/prod/TC-LIQ-022/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-023</td><td><div class="test-name">El <strong>tope del ISSS</strong> corta el 3 % y el AFP sigue completo (salario $4.000)</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@descuentos-de-ley</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-725" target="_blank" rel="noopener">QAUTO-725</a> &middot; caso <code>TC-LIQ-023</code> &middot; <em>E2E-REG-007</em></td></tr><tr><th>Precondiciones</th><td>PROD co.21. Colaborador con salario mensual <strong>$4000</strong>, ingreso <strong>2020-01-01</strong>, desvinculado el <strong>2026-12-01</strong> con motivo <strong>Despido con responsabilidad patronal</strong>, para que haya <strong>indemnización &gt; 0</strong> y el caso pueda probar que queda fuera de la base.</td></tr><tr><th>Setup</th><td>Leer el concepto <strong>Aguinaldo</strong> de producción y verificar sus flags antes de calcular: en co.21 es <code>id 14</code> (en UAT es 4), code 1003, con <code>appliesSS: false</code> · <code>appliesPensionFund: false</code> · <code>appliesTax: true</code> · <code>exemptAmount: 1500</code>.</td></tr><tr><th>Pasos</th><td>1. Leer conceptos de ingreso y descuentos del detalle. 2. Recomponer la base y contrastarla. 3. Probar los <strong>contrafácticos</strong>: el AFP no cierra si se le suma el aguinaldo, ni si se le suma la indemnización.</td></tr><tr><th>Regla evaluada</th><td><code>Base ISSS/AFP = bono vacacional + vacaciones pendientes</code>. Ni aguinaldo ni indemnización. Coherente con <strong>REBU-5544</strong>.</td></tr><tr><th>Resultado esperado</th><td>Aguinaldo $292.00 · vacaciones pendientes $1,835.616438 · indemnización $11,165.88 &rarr; AFP = 7,25 % de las vacaciones e ISSS = 3 % de las vacaciones (o el tope, el que sea menor).</td></tr><tr><th>Resultado obtenido</th><td>AFP <strong>133.082192</strong> = 7,25 % de 1.835,616438 ✅. El ISSS devuelto es <strong>$30,00</strong> y no $55,07: está <strong>topeado</strong>, igual que en UAT.<br><br>ISR observado: <strong>$215.458849</strong> (se registra, no se asevera: depende de la tabla de renta seleccionada, REBU-5550).</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Liquidación con Aguinaldo desplegado — ISSS y AFP sobre vacaciones</div><img src="assets/v16.2.0/prod/TC-LIQ-023/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+    </div></div>
+  </div>
+  </div>
   <div id="tab-manual" class="tab-panel"><div class="content">
     <div style="text-align:center;padding:48px 24px;color:#6b8079;font-size:12px">
-      Este release no tiene casos manuales: los 73 son automatizados. Los 17 de Asignaciones corrieron por API; los 56 de Tutoriales, por API y UI.
+      Este release no tiene casos manuales: los 85 son automatizados. Los 17 de Asignaciones corrieron por API; los 56 de Tutoriales, por API y UI; y los 12 de Aguinaldo en Liquidaci&oacute;n (REBU-5433) por API con evidencia UI &mdash; 6 en UAT y los mismos 6 en Producci&oacute;n.
     </div>
   </div></div>
 </div>
@@ -831,7 +916,7 @@
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> &middot; Generado el 21 ago 2026 &middot; Rama <strong>REBU-5467 &middot; REBU-5433</strong> &middot; Entorno <strong>UAT</strong>
+  <strong>Rebu Automation Suite</strong> &middot; Generado el 21 ago 2026 &middot; Rama <strong>REBU-5467 &middot; REBU-5433</strong> &middot; Entorno <strong>UAT + Producci&oacute;n</strong>
 </footer>
 
 </div>
