@@ -92,7 +92,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v16.2.0 | 2026-08-21 | Pass: 77 | Fail: 5 | Skip: 7 | Branch: REBU-5467 + REBU-5521 + REBU-5433 | Env: UAT co.2 -->
+<!-- RELEASE-START: v16.2.0 | 2026-08-21 | Pass: 78 | Fail: 5 | Skip: 7 | Branch: REBU-5467 + REBU-5521 + REBU-5433 | Env: UAT co.2 -->
 
 <header class="hero" id="release-v16-2-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
@@ -109,9 +109,9 @@
 </header>
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">77</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">78</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">5</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">89</div><div class="card-label">Total</div></div>
+    <div class="card total"><div class="card-value">90</div><div class="card-label">Total</div></div>
     <div class="card time"><div class="card-value">~19 m</div><div class="card-label">Duraci&oacute;n</div></div>
   </div>
 
@@ -177,7 +177,7 @@
 </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">89</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">90</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">&#128203; Manuales <span class="tab-count">0</span></button>
   </div>
   <hr class="tab-divider">
@@ -185,7 +185,7 @@
   <div class="env-tab-group">
     <div class="env-tab-nav">
       <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">79</span></button>
-      <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">10 &#10003;</span></button>
+      <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">11 &#10003;</span></button>
     </div>
     <div id="env-uat" class="env-tab-panel active"><div class="content">
 
@@ -858,12 +858,52 @@
     </tbody>
   </table>
 </div>
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5492" target="_blank" onclick="event.stopPropagation()">REBU-5492</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-713" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-713">QAUTO-713</a>
+      <span class="hu-title">Asignaciones (Gestores) &mdash; paridad del alcance resuelto, verificada en producci&oacute;n</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">1 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Variante de solo lectura, y por qu&eacute;</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">
+    Los specs de escenario de esta HU montan el caso con <code>crearEscenarioAsignacion</code>, que crea
+    <strong>~8 colaboradores por test y no los borra</strong>. En UAT es ruido; en el tenant de producci&oacute;n
+    son registros permanentes (los que pasaron por Datos de Contrataci&oacute;n no se pueden borrar, REBU-5714).
+    Esta variante verifica <strong>la misma regla</strong> contra la asignaci&oacute;n que ya existe en co.21,
+    sin crear ni tocar nada.
+    <br><br>
+    &#128273; <strong>Los endpoints <code>me/*</code> resuelven contra el usuario logueado.</strong> Medidos con la
+    sesi&oacute;n del m&aacute;ster devuelven <code>hasManaged: false</code> aunque la asignaci&oacute;n exista
+    &mdash; es un error f&aacute;cil de cometer <em>y de creer</em>. El caso abre sesi&oacute;n propia del gestor.
+    <br><br>
+    &#9888;&#65039; <strong>Casi report&eacute; un defecto que no exist&iacute;a.</strong> A primera vista
+    &ldquo;Gestionados&rdquo; no aparec&iacute;a en el sidebar del gestor pese a <code>hasManaged: true</code>.
+    El sidebar es <strong>acorde&oacute;n y quita los links del DOM al colapsar</strong> (REBU-5292): el &iacute;tem
+    cuelga de <strong>Solicitudes</strong>, y desplegando ese acorde&oacute;n aparece y navega bien. El caso ahora
+    despliega antes de preguntar si se ve.
+  </div>
+</div>
+
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-ASG-001</td><td><div class="test-name">El listado y el subtab <strong>Asignados</strong> resuelven el mismo alcance (<strong>907</strong>)</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@asignaciones</span><span class="tag tag-val">@critical</span><span class="tag tag-val">@release-v16.2.0</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-713" target="_blank" rel="noopener">QAUTO-713</a> &middot; caso <code>TC-ASG-001</code> (variante de producci&oacute;n) &middot; <em>E2E-INT-002</em></td></tr><tr><th>Precondiciones</th><td>PROD co.21 con <strong>una</strong> asignaci&oacute;n configurada: gestora <strong>Josefina Alcantara</strong> (T000007, activa), criterio <code>EmploymentType = Empleado / Servicios Profesionales</code>, 0 inclusiones manuales, 0 exclusiones. El usuario del gestor tiene <code>peopleId</code> vinculado.</td></tr><tr><th>Setup</th><td>Ninguno. <strong>El caso no crea, no modifica y no borra nada</strong> &mdash; verifica contra la asignaci&oacute;n que ya existe en producci&oacute;n.</td></tr><tr><th>Pasos</th><td>1. <code>GET /21/assignments</code> con la sesi&oacute;n del m&aacute;ster y leer <code>resolvedScopeCount</code>. 2. Abrir <strong>sesi&oacute;n propia del gestor</strong> y llamar <code>me/team/access</code> y <code>me/assignments/members</code>. 3. Entrar al portal como el gestor, desplegar el acorde&oacute;n <strong>Solicitudes</strong> y abrir <strong>Gestionados</strong>.</td></tr><tr><th>Regla evaluada</th><td>El alcance resuelto de una asignaci&oacute;n es <strong>el mismo n&uacute;mero en todos sus consumidores</strong> (REBU-5492 AC6). El or&aacute;culo <strong>no est&aacute; cableado</strong>: se lee del propio listado, as&iacute; que el caso sigue valiendo si alguien edita la asignaci&oacute;n.</td></tr><tr><th>Resultado esperado</th><td>El listado y <code>me/assignments/members</code> devuelven el mismo total, y <code>me/team/access</code> reporta <code>hasManaged: true</code>.</td></tr><tr><th>Resultado obtenido</th><td>Listado <strong>907</strong> = <code>me/assignments/members</code> <strong>907</strong> &#9989; &middot; <code>me/team/access</code> = <code>hasTeam true, teamSize 4, hasManaged true</code> &#9989; &middot; el gestor <strong>ve</strong> el &iacute;tem Gestionados y llega a <code>/dashboard/requests/my-team</code> &#9989;</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Pantalla Gestionados del propio gestor, en producci&oacute;n</div><img src="assets/v16.2.0/prod/TC-ASG-001-PROD/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
     </div></div>
   </div>
   </div>
   <div id="tab-manual" class="tab-panel"><div class="content">
     <div style="text-align:center;padding:48px 24px;color:#6b8079;font-size:12px">
-      Este release no tiene casos manuales: los 89 son automatizados. Los 17 de Asignaciones corrieron por API; los 56 de Tutoriales, por API y UI; y los 16 de Aguinaldo en Liquidaci&oacute;n (REBU-5433) por API con evidencia UI &mdash; 6 en UAT y 10 en Producci&oacute;n.
+      Este release no tiene casos manuales: los 90 son automatizados. Los 17 de Asignaciones corrieron por API; los 56 de Tutoriales, por API y UI; y los 16 de Aguinaldo en Liquidaci&oacute;n (REBU-5433) por API con evidencia UI &mdash; 6 en UAT y 10 en Producci&oacute;n.
     </div>
   </div></div>
 </div>
