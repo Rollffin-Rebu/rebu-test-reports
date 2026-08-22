@@ -92,7 +92,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v16.2.0 | 2026-08-21 | Pass: 73 | Fail: 5 | Skip: 7 | Branch: REBU-5467 + REBU-5521 + REBU-5433 | Env: UAT co.2 -->
+<!-- RELEASE-START: v16.2.0 | 2026-08-21 | Pass: 77 | Fail: 5 | Skip: 7 | Branch: REBU-5467 + REBU-5521 + REBU-5433 | Env: UAT co.2 -->
 
 <header class="hero" id="release-v16-2-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
@@ -109,10 +109,10 @@
 </header>
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">73</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">77</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">5</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">85</div><div class="card-label">Total</div></div>
-    <div class="card time"><div class="card-value">~17 m</div><div class="card-label">Duraci&oacute;n</div></div>
+    <div class="card total"><div class="card-value">89</div><div class="card-label">Total</div></div>
+    <div class="card time"><div class="card-value">~19 m</div><div class="card-label">Duraci&oacute;n</div></div>
   </div>
 
 <div style="max-width:860px;margin:18px auto 0;padding:14px 18px;background:#eef7f1;border:1px solid #b9dcc6;border-radius:12px">
@@ -177,7 +177,7 @@
 </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">85</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">89</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">&#128203; Manuales <span class="tab-count">0</span></button>
   </div>
   <hr class="tab-divider">
@@ -185,7 +185,7 @@
   <div class="env-tab-group">
     <div class="env-tab-nav">
       <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">79</span></button>
-      <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">6 &#10003;</span></button>
+      <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">10 &#10003;</span></button>
     </div>
     <div id="env-uat" class="env-tab-panel active"><div class="content">
 
@@ -810,12 +810,60 @@
     </tbody>
   </table>
 </div>
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5433" target="_blank" onclick="event.stopPropagation()">REBU-5433</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-726" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-726 (E2E-INT-010)">QAUTO-726</a>
+      <span class="hu-title">Los 4 cuadrantes del árbol de decisión, con las fechas que corresponden al corte 20-oct</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">4 / 4 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef7f1;border:1px solid #b9dcc6;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d6b3f;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Este bloque recupera la cobertura que se perdía en producción</div>
+  <div style="font-size:11px;color:#1a5c37;line-height:1.7">
+    Las 4 filas de la HU (bloque QAUTO-723, arriba) cubren los cuatro cuadrantes del árbol 2×2
+    <strong>solo con un corte de diciembre</strong>. Con el <strong>corte 20-oct</strong> que tiene producción,
+    las dos fechas de liquidación de la HU caen las dos después del corte y las cuatro filas colapsan a
+    <em>post-corte · inicio = período</em>: <strong>cuatro casos, un cuadrante</strong>.
+    <br><br>
+    Estas cuatro fechas están elegidas para el corte 20-oct y recuperan la cobertura completa:
+    <strong>pre/post corte × período/fecha de ingreso</strong>. Los cuatro cuadrantes quedaron verificados en prod.
+    <br><br>
+    🔑 <strong>La prueba de que el cálculo lee la config es el contraste entre ambientes.</strong> El colaborador de
+    <code>TC-LIQ-025</code> (ingreso 1-ene-2020, liquidación 1-dic-2026) da <strong>2,19 días / $73,00</strong> acá
+    con corte 20-oct, y <strong>18,48 días / $616,00</strong> en UAT con corte 11-dic. Mismo colaborador, mismas
+    fechas, mismo código: si el corte estuviera cableado, los dos ambientes darían lo mismo.
+    <br><br>
+    ⚠️ <strong>El diseño original de QAUTO-726 escribía la configuración</strong> (ponerla en 20-oct y restaurarla).
+    Acá no hizo falta: producción <em>ya</em> está en 20-oct. Se evitó mutar config en un ambiente compartido &mdash;
+    y más en producción &mdash; sobre todo porque QAUTO-722 midió que el round-trip del <code>PUT</code>
+    <strong>no preserva</strong> <code>daysRanges</code>.
+  </div>
+</div>
+
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-024</td><td><div class="test-name">Cuadrante <strong>pre-corte · antigüedad &ge;1a</strong> &mdash; el período arranca en el corte anterior</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span><span class="tag tag-val">@release-v16.2.0</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-726" target="_blank" rel="noopener">QAUTO-726</a> &middot; caso <code>TC-LIQ-024</code> &middot; <em>E2E-INT-010</em></td></tr><tr><th>Precondiciones</th><td>PROD co.21 con <strong>corte 20-oct</strong> e <code>isCustom: false</code> (config base de FinancialCore), tramos <code>[0,3)&rarr;15</code> · <code>[3,10)&rarr;19</code> · <code>[10,&infin;)&rarr;21</code>. Colaborador nuevo, salario mensual <strong>$1.000</strong>.</td></tr><tr><th>Setup</th><td>1. <code>GET /21/xmas-bonus-config</code> &rarr; el esperado se deriva con <code>calcularAguinaldo()</code> sobre la config vigente. 2. Alta con ingreso <strong>2020-01-01</strong>. 3. Desvinculación con fecha <strong>2026-10-01</strong>. ⚠️ <strong>El spec NO escribe la configuración</strong>: prod ya está en 20-oct, así que no hace falta mutarla &mdash; y el sondeo de QAUTO-722 midió que el round-trip del <code>PUT</code> no preserva los tramos.</td></tr><tr><th>Pasos</th><td>1. Leer <code>incomesInformation."Aguinaldo"</code>: <code>daysValue</code> y <code>decimalValue</code>. 2. Abrir el detalle y desplegar la fila <strong>Aguinaldo</strong>. 3. Cruzar el total de la pantalla contra el de la API.</td></tr><tr><th>Regla evaluada</th><td>Los cuatro cuadrantes del árbol 2×2 <strong>con corte 20-oct</strong>: la rama del <code>SI</code> del Paso 1 (¿el corte rodó?) y la del <code>MAX</code> del Paso 5 (¿el período arranca en la fecha de ingreso?). Este caso cae en <strong>pre-corte · inicio = período</strong>.</td></tr><tr><th>Resultado esperado</th><td>Corte aplicable <strong>2026-10-20</strong> · tramo <code>[3,10)</code> = <strong>19 días</strong> · inicio efectivo <strong>2025-10-21</strong> · <strong>346 días</strong> en el período &rarr; <strong>18.01 días de aguinaldo</strong> = <strong>$600.33</strong>.</td></tr><tr><th>Resultado obtenido</th><td><code>daysValue = 18.01</code> y monto <strong>$600.33</strong>. La pantalla muestra el mismo monto ✅<br><br>La liquidación (1-oct) es <strong>anterior</strong> al corte del año (20-oct), así que el corte aplicable es el de <strong>2026</strong> y el período viene corriendo desde el 21-oct-2025: 346 días, casi un año completo.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle de liquidación con Aguinaldo desplegado — 18.01 días / $600.33</div><img src="assets/v16.2.0/prod/TC-LIQ-024/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-025</td><td><div class="test-name">Cuadrante <strong>post-corte · antigüedad &ge;1a</strong> &mdash; el corte rueda y el período se reinicia</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span><span class="tag tag-val">@release-v16.2.0</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-726" target="_blank" rel="noopener">QAUTO-726</a> &middot; caso <code>TC-LIQ-025</code> &middot; <em>E2E-INT-010</em></td></tr><tr><th>Precondiciones</th><td>PROD co.21 con <strong>corte 20-oct</strong> e <code>isCustom: false</code> (config base de FinancialCore), tramos <code>[0,3)&rarr;15</code> · <code>[3,10)&rarr;19</code> · <code>[10,&infin;)&rarr;21</code>. Colaborador nuevo, salario mensual <strong>$1.000</strong>.</td></tr><tr><th>Setup</th><td>1. <code>GET /21/xmas-bonus-config</code> &rarr; el esperado se deriva con <code>calcularAguinaldo()</code> sobre la config vigente. 2. Alta con ingreso <strong>2020-01-01</strong>. 3. Desvinculación con fecha <strong>2026-12-01</strong>. ⚠️ <strong>El spec NO escribe la configuración</strong>: prod ya está en 20-oct, así que no hace falta mutarla &mdash; y el sondeo de QAUTO-722 midió que el round-trip del <code>PUT</code> no preserva los tramos.</td></tr><tr><th>Pasos</th><td>1. Leer <code>incomesInformation."Aguinaldo"</code>: <code>daysValue</code> y <code>decimalValue</code>. 2. Abrir el detalle y desplegar la fila <strong>Aguinaldo</strong>. 3. Cruzar el total de la pantalla contra el de la API.</td></tr><tr><th>Regla evaluada</th><td>Los cuatro cuadrantes del árbol 2×2 <strong>con corte 20-oct</strong>: la rama del <code>SI</code> del Paso 1 (¿el corte rodó?) y la del <code>MAX</code> del Paso 5 (¿el período arranca en la fecha de ingreso?). Este caso cae en <strong>post-corte · inicio = período</strong>.</td></tr><tr><th>Resultado esperado</th><td>Corte aplicable <strong>2027-10-20</strong> · tramo <code>[3,10)</code> = <strong>19 días</strong> · inicio efectivo <strong>2026-10-21</strong> · <strong>42 días</strong> en el período &rarr; <strong>2.19 días de aguinaldo</strong> = <strong>$73.00</strong>.</td></tr><tr><th>Resultado obtenido</th><td><code>daysValue = 2.19</code> y monto <strong>$73.00</strong>. La pantalla muestra el mismo monto ✅<br><br>🔴 <strong>El mismo colaborador, liquidado dos meses después, cobra $73,00 en vez de $600,33.</strong> La liquidación de diciembre pasó el corte de octubre, así que el aplicable rueda a 2027 y el período se reinicia el 21-oct-2026: quedan 42 días. Es el comportamiento especificado, pero es la diferencia entre casi el aguinaldo completo y un octavo.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle de liquidación con Aguinaldo desplegado — 2.19 días / $73.00</div><img src="assets/v16.2.0/prod/TC-LIQ-025/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-026</td><td><div class="test-name">Cuadrante <strong>pre-corte · antigüedad &lt;1a</strong> &mdash; el <code>MAX</code> toma la <strong>fecha de ingreso</strong></div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span><span class="tag tag-val">@release-v16.2.0</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-726" target="_blank" rel="noopener">QAUTO-726</a> &middot; caso <code>TC-LIQ-026</code> &middot; <em>E2E-INT-010</em></td></tr><tr><th>Precondiciones</th><td>PROD co.21 con <strong>corte 20-oct</strong> e <code>isCustom: false</code> (config base de FinancialCore), tramos <code>[0,3)&rarr;15</code> · <code>[3,10)&rarr;19</code> · <code>[10,&infin;)&rarr;21</code>. Colaborador nuevo, salario mensual <strong>$1.000</strong>.</td></tr><tr><th>Setup</th><td>1. <code>GET /21/xmas-bonus-config</code> &rarr; el esperado se deriva con <code>calcularAguinaldo()</code> sobre la config vigente. 2. Alta con ingreso <strong>2026-04-01</strong>. 3. Desvinculación con fecha <strong>2026-10-01</strong>. ⚠️ <strong>El spec NO escribe la configuración</strong>: prod ya está en 20-oct, así que no hace falta mutarla &mdash; y el sondeo de QAUTO-722 midió que el round-trip del <code>PUT</code> no preserva los tramos.</td></tr><tr><th>Pasos</th><td>1. Leer <code>incomesInformation."Aguinaldo"</code>: <code>daysValue</code> y <code>decimalValue</code>. 2. Abrir el detalle y desplegar la fila <strong>Aguinaldo</strong>. 3. Cruzar el total de la pantalla contra el de la API.</td></tr><tr><th>Regla evaluada</th><td>Los cuatro cuadrantes del árbol 2×2 <strong>con corte 20-oct</strong>: la rama del <code>SI</code> del Paso 1 (¿el corte rodó?) y la del <code>MAX</code> del Paso 5 (¿el período arranca en la fecha de ingreso?). Este caso cae en <strong>pre-corte · inicio = FECHA DE INGRESO</strong>.</td></tr><tr><th>Resultado esperado</th><td>Corte aplicable <strong>2026-10-20</strong> · tramo <code>[0,3)</code> = <strong>15 días</strong> · inicio efectivo <strong>2026-04-01</strong> · <strong>184 días</strong> en el período &rarr; <strong>7.56 días de aguinaldo</strong> = <strong>$252.00</strong>.</td></tr><tr><th>Resultado obtenido</th><td><code>daysValue = 7.56</code> y monto <strong>$252.00</strong>. La pantalla muestra el mismo monto ✅<br><br>El ingreso (1-abr-2026) es <strong>posterior</strong> al inicio del período (21-oct-2025), así que el <code>MAX</code> del Paso 5 toma la fecha de ingreso. Es el cuadrante que las fechas de la HU <strong>no alcanzan</strong> con corte 20-oct.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle de liquidación con Aguinaldo desplegado — 7.56 días / $252.00</div><img src="assets/v16.2.0/prod/TC-LIQ-026/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-LIQ-027</td><td><div class="test-name">Cuadrante <strong>post-corte · antigüedad &lt;1a</strong> &mdash; ingreso posterior al período reiniciado</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span><span class="tag tag-val">@release-v16.2.0</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-726" target="_blank" rel="noopener">QAUTO-726</a> &middot; caso <code>TC-LIQ-027</code> &middot; <em>E2E-INT-010</em></td></tr><tr><th>Precondiciones</th><td>PROD co.21 con <strong>corte 20-oct</strong> e <code>isCustom: false</code> (config base de FinancialCore), tramos <code>[0,3)&rarr;15</code> · <code>[3,10)&rarr;19</code> · <code>[10,&infin;)&rarr;21</code>. Colaborador nuevo, salario mensual <strong>$1.000</strong>.</td></tr><tr><th>Setup</th><td>1. <code>GET /21/xmas-bonus-config</code> &rarr; el esperado se deriva con <code>calcularAguinaldo()</code> sobre la config vigente. 2. Alta con ingreso <strong>2026-11-01</strong>. 3. Desvinculación con fecha <strong>2026-12-01</strong>. ⚠️ <strong>El spec NO escribe la configuración</strong>: prod ya está en 20-oct, así que no hace falta mutarla &mdash; y el sondeo de QAUTO-722 midió que el round-trip del <code>PUT</code> no preserva los tramos.</td></tr><tr><th>Pasos</th><td>1. Leer <code>incomesInformation."Aguinaldo"</code>: <code>daysValue</code> y <code>decimalValue</code>. 2. Abrir el detalle y desplegar la fila <strong>Aguinaldo</strong>. 3. Cruzar el total de la pantalla contra el de la API.</td></tr><tr><th>Regla evaluada</th><td>Los cuatro cuadrantes del árbol 2×2 <strong>con corte 20-oct</strong>: la rama del <code>SI</code> del Paso 1 (¿el corte rodó?) y la del <code>MAX</code> del Paso 5 (¿el período arranca en la fecha de ingreso?). Este caso cae en <strong>post-corte · inicio = FECHA DE INGRESO</strong>.</td></tr><tr><th>Resultado esperado</th><td>Corte aplicable <strong>2027-10-20</strong> · tramo <code>[0,3)</code> = <strong>15 días</strong> · inicio efectivo <strong>2026-11-01</strong> · <strong>31 días</strong> en el período &rarr; <strong>1.27 días de aguinaldo</strong> = <strong>$42.33</strong>.</td></tr><tr><th>Resultado obtenido</th><td><code>daysValue = 1.27</code> y monto <strong>$42.33</strong>. La pantalla muestra el mismo monto ✅<br><br>Las dos ramas a la vez: el corte rueda a 2027 y el ingreso (1-nov-2026) es posterior al período reiniciado (21-oct-2026), así que el <code>MAX</code> vuelve a tomar el ingreso. ⚠️ Contratar con fecha futura deja el registro de salario en estado <code>Programado</code>, no <code>Activo</code>, y la liquidación igual usa la base correcta.</td></tr><tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 — Detalle de liquidación con Aguinaldo desplegado — 1.27 días / $42.33</div><img src="assets/v16.2.0/prod/TC-LIQ-027/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
     </div></div>
   </div>
   </div>
   <div id="tab-manual" class="tab-panel"><div class="content">
     <div style="text-align:center;padding:48px 24px;color:#6b8079;font-size:12px">
-      Este release no tiene casos manuales: los 85 son automatizados. Los 17 de Asignaciones corrieron por API; los 56 de Tutoriales, por API y UI; y los 12 de Aguinaldo en Liquidaci&oacute;n (REBU-5433) por API con evidencia UI &mdash; 6 en UAT y los mismos 6 en Producci&oacute;n.
+      Este release no tiene casos manuales: los 89 son automatizados. Los 17 de Asignaciones corrieron por API; los 56 de Tutoriales, por API y UI; y los 16 de Aguinaldo en Liquidaci&oacute;n (REBU-5433) por API con evidencia UI &mdash; 6 en UAT y 10 en Producci&oacute;n.
     </div>
   </div></div>
 </div>
