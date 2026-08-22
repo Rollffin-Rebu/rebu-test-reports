@@ -92,7 +92,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v16.2.0 | 2026-08-22 | Pass: 99 | Fail: 5 | Skip: 8 | Branch: REBU-5467 + REBU-5521 + REBU-5433 + REBU-5425 | Env: UAT co.2 + PROD co.21 -->
+<!-- RELEASE-START: v16.2.0 | 2026-08-22 | Pass: 100 | Fail: 5 | Skip: 8 | Branch: REBU-5467 + REBU-5521 + REBU-5433 + REBU-5425 | Env: UAT co.2 + PROD co.21 -->
 
 <header class="hero" id="release-v16-2-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
@@ -109,10 +109,10 @@
 </header>
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">99</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">100</div><div class="card-label">Pasaron</div></div>
     <div class="card fail"><div class="card-value">5</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">112</div><div class="card-label">Total</div></div>
-    <div class="card time"><div class="card-value">~21 m</div><div class="card-label">Duraci&oacute;n</div></div>
+    <div class="card total"><div class="card-value">113</div><div class="card-label">Total</div></div>
+    <div class="card time"><div class="card-value">~1 h 45 m</div><div class="card-label">Duraci&oacute;n</div></div>
   </div>
 
 <div style="max-width:860px;margin:18px auto 0;padding:14px 18px;background:#eef7f1;border:1px solid #b9dcc6;border-radius:12px">
@@ -177,14 +177,14 @@
 </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">112</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">113</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">&#128203; Manuales <span class="tab-count">0</span></button>
   </div>
   <hr class="tab-divider">
   <div id="tab-auto" class="tab-panel active">
   <div class="env-tab-group">
     <div class="env-tab-nav">
-      <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">90</span></button>
+      <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">91</span></button>
       <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">22</span></button>
     </div>
     <div id="env-uat" class="env-tab-panel active"><div class="content">
@@ -830,6 +830,66 @@
   </table>
 </div>
 
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5534" target="_blank" onclick="event.stopPropagation()">REBU-5534</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-5738" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Análisis de flujos E2E de la épica REBU-5425">REBU-5738</a>
+      <span class="hu-title">Regresión del motor de deducciones V1 &rarr; V2 &mdash; la mayor superficie de riesgo de la épica</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">1 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef7f1;border:1px solid #b9dcc6;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d6b3f;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">El motor no se movió: los 29 rojos resultaron ser defectos de los tests</div>
+  <div style="font-size:11px;color:#245c3c;line-height:1.7">
+    <strong>REBU-5534 conmuta el motor de deducciones de todo el sistema</strong> &mdash; migra 15+ call sites en
+    <code>TerminationMandatoryDeductionsHelper</code>, <code>TaxRecalculationHelper</code> y
+    <code>TemplateResolveHelpers</code> &mdash; y exige resultado <strong>bit-exacto</strong>.
+    <strong>Ninguna HU de la épica lo menciona</strong>: sale solo de la subtask. Si se desviara, quedarían mal
+    los descuentos de <strong>todas las planillas de todas las empresas</strong>, y el síntoma aparecería en una
+    boleta de pago, no acá.
+    <br><br>
+    Se corrieron las <strong>388 pruebas</strong> de <code>Payroll-Descuentos-de-ley</code>,
+    <code>Payroll-Aportes-Patronales</code> y <code>Payroll-Provisiones</code> &mdash; los valores esperados que
+    traen esas suites son <strong>anteriores a la conmutación</strong> (último cambio: 2026-07-29), así que sirven
+    de baseline. Resultado: <strong>359 verdes y 29 rojos</strong>. Los 29 se investigaron uno por uno y
+    <strong>los dos grupos resultaron ser defectos de los tests, no del producto</strong>.
+    <br><br>
+    🔑 <strong>Grupo A &mdash; 7 aportes patronales: ids de concepto cableados.</strong> Los specs de
+    &laquo;Otros Ingresos&raquo; hardcodean <code>incomeConceptId: 44</code> y <code>45</code>, que son
+    Horas Extras Diurnas/Nocturnas <strong>en UAT co.2</strong>. En producción co.21 el <strong>44 es
+    &laquo;tarifa miles&raquo;, un concepto PER_UNIT con <code>rate: 9.999.999.999</code></strong>, y el 45 es
+    un concepto de prueba con rate 10,5. La aritmética cierra exacta:
+    <code>25 &times; 9.999.999.999 + 10 &times; 10,5 + 300 = 250.000.000.380</code>, que es el
+    <code>grossEarnings</code> observado. Dos agravantes: el <strong>tope del ISSS enmascaró</strong> el
+    disparate (devolvió $37,50 en vez de un número monstruoso), y el caso del <strong>pensionado pasó en
+    verde</strong> con esa misma base, porque un pensionado no cotiza ISSS.
+    <br><br>
+    🔑 <strong>Grupo B &mdash; 22 provisiones de vacaciones: el builder, no el motor.</strong> Con el mismo
+    salario, el mismo período y el mismo ambiente, los colaboradores que crean los specs de <em>aportes</em>
+    (que arman el escenario inline) reciben <strong>$3,75</strong> de provisión de vacaciones, y los que crea
+    <code>payroll-scenario.ts</code> reciben <strong>$0</strong>. En la misma respuesta,
+    <code>christmasProvision</code> y <code>severanceProvision</code> son correctas.
+    <strong>El motor calcula bien; el builder compartido no deja la política aplicada.</strong>
+    <br><br>
+    &#9888;&#65039; <strong>Los dos defectos de test siguen abiertos</strong> y son trabajo pendiente de la suite:
+    resolver los conceptos por nombre en vez de por id (el mismo criterio que ya usan los specs de aguinaldo con
+    <code>code 1003</code> y &laquo;Descuento PGR&raquo;) y arreglar la política de vacaciones del builder.
+    Mientras no se arreglen, esos 29 casos <strong>no protegen nada</strong>.
+  </div>
+</div>
+
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-001</td><td><div class="test-name">Los descuentos de ley <strong>no se mueven un centavo</strong> tras unificar el motor V1 &rarr; V2</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@descuentos-de-ley</span><span class="tag tag-val">@aportes-patronales</span><span class="tag tag-val">@provisiones</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5738" target="_blank" rel="noopener">REBU-5738</a> &middot; <em>E2E-REG-001</em> &middot; origen: subtask <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5534" target="_blank" rel="noopener">REBU-5534</a></td></tr><tr><th>Precondiciones</th><td>Las tres suites de cálculo ya existentes, sin data nueva. Sus valores esperados <strong>preceden a la conmutación del motor</strong> (último cambio 2026-07-29), así que funcionan como baseline.</td></tr><tr><th>Setup</th><td>Ninguno &mdash; cada suite trae sus propios builders. Se corre con <code>workers: 1</code> y <code>retries: 0</code>, como corresponde a <code>@regulatory</code>.</td></tr><tr><th>Pasos</th><td>1. Correr las 388 pruebas de <code>Payroll-Descuentos-de-ley</code>, <code>Payroll-Aportes-Patronales</code> y <code>Payroll-Provisiones</code> en UAT. 2. Clasificar cada fallo y buscar su causa raíz. 3. Validar el diagnóstico en <strong>producción co.21</strong> con <strong>un escenario por tipo</strong>, incluyendo <strong>dos controles</strong>: un aporte patronal sin Otros Ingresos y una provisión de aguinaldo.</td></tr><tr><th>Regla evaluada</th><td>Eliminar <code>DeductionsCalculationHelper</code> (V1) y dejar solo <code>DeductionsCalculationV2Helper</code> debe ser <strong>invisible en resultados</strong>. Cualquier diferencia, por chica que sea, es un defecto.</td></tr><tr><th>Resultado esperado</th><td>Los montos de AFP (7,25 %), ISSS (3 % empleado / 7,5 % patronal con tope), ISR por tramos y las provisiones quedan idénticos a los que las suites ya asertaban antes de la migración.</td></tr><tr><th>Resultado obtenido</th><td><strong>359 / 388 verdes.</strong> Los 29 rojos se investigaron y <strong>ninguno es una regresión del motor</strong>:<br><br><strong>Grupo A (7)</strong> &mdash; aportes patronales con Otros Ingresos. El control <em>sin</em> otros ingresos <strong>pasa</strong> (ISSS $22,50 exacto). El fallo lo causan los ids de concepto cableados 44/45, que en producción apuntan a &laquo;tarifa miles&raquo; (<code>rate 9.999.999.999</code>): <code>25 &times; 9.999.999.999 + 10 &times; 10,5 + 300 = 250.000.000.380</code> = el <code>grossEarnings</code> observado.<br><br><strong>Grupo B (22)</strong> &mdash; provisión de vacaciones en $0. El control de <strong>provisión de aguinaldo pasa</strong> ($12,50), y en la misma respuesta las provisiones de aguinaldo e indemnización son correctas. Los colaboradores creados por los specs de aportes sí reciben la provisión de vacaciones correcta; los que crea <code>payroll-scenario.ts</code>, no.<br><br>🔑 <strong>Conclusión: no hay evidencia de que la migración V1&rarr;V2 haya movido nada.</strong> Los 359 verdes son la señal; los 29 rojos tienen causa de test identificada.<br><br>⚠️ Con una salvedad: la causa de producción quedó probada al centavo. En <strong>UAT</strong> los ids 44/45 sí son los correctos y la base dio 335 en vez de 487,50, o sea que ahí hay una deriva distinta &mdash; probablemente en el multiplicador de los conceptos o en la jornada que define el valor hora. <strong>Esa mitad se infiere, no se probó.</strong></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+
   </div></div>
     <div id="env-prod" class="env-tab-panel"><div class="content">
 
@@ -1097,7 +1157,7 @@
   </div>
   <div id="tab-manual" class="tab-panel"><div class="content">
     <div style="text-align:center;padding:48px 24px;color:#6b8079;font-size:12px">
-      Este release no tiene casos manuales: los 112 son automatizados. Los 17 de Asignaciones corrieron por API; los 56 de Tutoriales, por API y UI; y los 16 de Aguinaldo en Liquidaci&oacute;n (REBU-5433) por API con evidencia UI &mdash; 6 en UAT y 10 en Producci&oacute;n.
+      Este release no tiene casos manuales: los 113 son automatizados. Los 17 de Asignaciones corrieron por API; los 56 de Tutoriales, por API y UI; y los 16 de Aguinaldo en Liquidaci&oacute;n (REBU-5433) por API con evidencia UI &mdash; 6 en UAT y 10 en Producci&oacute;n.
     </div>
   </div></div>
 </div>
