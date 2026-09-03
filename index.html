@@ -102,7 +102,7 @@
 
 <div class="main-wrapper" id="main-wrapper">
 
-<!-- RELEASE-START: v16.4.0 | 2026-09-02 | Pass: 16 | Fail: 0 | Skip: 0 | Branch: REBU-5820 | Env: UAT co.2 -->
+<!-- RELEASE-START: v16.4.0 | 2026-09-02 | Pass: 16 | Fail: 0 | Skip: 0 | Branch: REBU-5820 | Env: UAT co.2 + PROD co.21 -->
 
 <header class="hero" id="release-v16-4-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
@@ -112,9 +112,9 @@
     <span class="sep">&middot;</span>
     <span>&#127807; <strong>REBU-5820</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#127760; <strong>UAT</strong></span>
+    <span>&#127760; <strong>UAT + Producci&oacute;n</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#128279; <strong>automation (co.2)</strong></span>
+    <span>&#128279; <strong>automation (co.2) &middot; test (co.21)</strong></span>
   </div>
 </header>
 <div class="bandeja">
@@ -144,7 +144,7 @@
     <br><br>
     &#128308; <strong>Lo que NO cubre este release, dicho en voz alta:</strong> el <strong>AC3 de REBU-5821</strong> (el concepto en <em>todas</em> las empresas) no es verificable con un solo tenant en el <code>.env</code>; el <strong>Caso 3 de REBU-5822</strong> exigir&iacute;a un SP con honorario $0, que el producto no permite crear; y el <strong>AC6 por hora</strong> queda parcial porque no hay helper para cargar horas. Las tres HU de la otra mitad de la &eacute;pica (<strong>REBU-5824, 5825, 5826</strong> &mdash; reportes y Report Builder) las llev&oacute; el otro QA; su an&aacute;lisis vive en <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5882" target="_blank" rel="noopener">REBU-5882</a> y sus <strong>9 flujos ya est&aacute;n en este mismo reporte</strong>, m&aacute;s abajo. Entre las dos mitades, la &eacute;pica queda con <strong>16 flujos verdes</strong>.
     <br><br>
-    &#127981; <strong>Producci&oacute;n: no ejecutado.</strong> Los 7 flujos est&aacute;n en <code>&#9197; No ejecutado</code> en la matriz. Este release refleja <strong>solo UAT</strong>.
+    &#127981; <strong>Producci&oacute;n:</strong> los <strong>7 flujos de REBU-5821/5822/5823 siguen en <code>&#9197; No ejecutado</code></strong>. La otra mitad (REBU-5824/5825/5826) <strong>s&iacute; corri&oacute; contra co.21</strong> el 02/09 &mdash; ver la pesta&ntilde;a <strong>&#127981; Producci&oacute;n</strong> de esas tres HU: <strong>8 de 9 ejecutados, 8 verdes</strong> (QAUTO-952 vive fuera de la carpeta del release y no se corri&oacute;). Dos casos fallaron en la primera vuelta y <strong>ninguno era defecto de producto</strong>: eran supuestos de los specs sobre los datos del tenant, ya corregidos.
   </div>
 </div>
 
@@ -231,6 +231,12 @@
   </table>
 </div>
 
+<div class="env-tab-group">
+  <div class="env-tab-nav">
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">9 &#10003;</span></button>
+    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">8 &#10003;</span></button>
+  </div>
+  <div id="env-uat" class="env-tab-panel active"><div class="content">
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
@@ -307,6 +313,90 @@
 <tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-955" target="_blank" rel="noopener">QAUTO-955</a> &middot; flujo <code>E2E-REG-004</code> &middot; an&aacute;lisis <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5882" target="_blank" rel="noopener">REBU-5882</a></td></tr><tr><th>Precondiciones</th><td>Empresa en Gran Contribuyente. Un SP con base $800.</td></tr><tr><th>Regla evaluada</th><td>El archivo bancario es <strong>la &uacute;ltima superficie</strong>: lo que dice ah&iacute; es la plata que efectivamente se transfiere. Si la retenci&oacute;n no se descuenta ac&aacute;, se le paga de m&aacute;s al SP y el fisco no recibe lo suyo.</td></tr><tr><th>Setup</th><td>Planilla SP corrida y cerrada; descarga de la boleta y del archivo bancario.</td></tr><tr><th>Pasos</th><td>1. Parsear el archivo bancario con <code>BankFileParser</code>.<br>2. Leer el monto de la fila del SP.</td></tr><tr><th>Resultado esperado</th><td><code>netSalary + vatPayment = $712.00 + $104.00 = <strong>$816.00</strong></code>.</td></tr><tr><th>Resultado obtenido</th><td>$816.00 &#9989;.<br><br>&#128308; <strong>Este caso corrigi&oacute; el an&aacute;lisis, no al producto.</strong> La primera corrida dio rojo (816 contra 712 esperados) y <strong>mi expectativa era la equivocada</strong>: el an&aacute;lisis dec&iacute;a que el banco transfiere &ldquo;exactamente el <code>netSalary</code>&rdquo;. No: transfiere el l&iacute;quido <strong>m&aacute;s</strong> el Pago de IVA del 13&nbsp;%. Se corrigi&oacute; el spec <strong>y</strong> el <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5882" target="_blank" rel="noopener">REBU-5882</a>, con nota de fecha.</td></tr><tr><th>Evidencia visual</th><td><strong>No hay pantalla que capturar</strong> &mdash; el caso vive en la API y en el archivo descargado. La evidencia es la medici&oacute;n, que queda en el log de la corrida.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
     </tbody>
   </table>
+</div>
+
+  </div></div>
+  <div id="env-prod" class="env-tab-panel"><div class="content">
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5824" target="_blank" onclick="event.stopPropagation()">REBU-5824</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-946" target="_blank" rel="noopener" onclick="event.stopPropagation()">QAUTO-946</a>
+      <span class="hu-title">Reportes: de la planilla al Excel, y la agregaci&oacute;n mensual</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">3 / 3 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; cambi&oacute; en producci&oacute;n</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">Los tres casos <strong>crean su propio SP contribuyente</strong>, as&iacute; que no dependen de la data previa del tenant &mdash; por eso dos de los tres pasaron de entrada. El que fall&oacute; (QAUTO-948) med&iacute;a la l&iacute;nea base del mes <em>antes</em> de crear nada, y ah&iacute; s&iacute; depend&iacute;a del tenant.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">QAUTO-947</td><td><div class="test-name">La Retenci&oacute;n de IVA viaja a las <strong>4 hojas</strong> del Excel</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-947" target="_blank" rel="noopener">QAUTO-947</a> &middot; flujo <code>E2E-INT-001</code></td></tr><tr><th>Entorno</th><td>Empresa <strong>21</strong> en <code>test.rebuhr.com</code>, ya en <strong>Gran Contribuyente</strong> &mdash; no hubo que tocar la configuraci&oacute;n fiscal.</td></tr><tr><th>Resultado obtenido</th><td><code>$8.00</code> en las cuatro hojas &#9989; &mdash; <em>Resumen General</em> col&nbsp;14, <em>Resumen Detallado</em> col&nbsp;32, <em>Descuentos por Instituci&oacute;n</em> col&nbsp;2, m&aacute;s <em>Inicio</em>. Una sola aparici&oacute;n por hoja. <strong>Id&eacute;ntico a UAT.</strong></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">QAUTO-948</td><td><div class="test-name">El Reporte Mensual cuadra contra las planillas SP cerradas</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-948" target="_blank" rel="noopener">QAUTO-948</a> &middot; flujo <code>E2E-INT-002</code></td></tr><tr><th>Entorno</th><td>Empresa <strong>21</strong> en <code>test.rebuhr.com</code>, ya en <strong>Gran Contribuyente</strong> &mdash; no hubo que tocar la configuraci&oacute;n fiscal.</td></tr><tr><th>&#128308; Fall&oacute; en la primera corrida</th><td>El caso muri&oacute; en la <strong>l&iacute;nea base, antes de crear nada</strong>. El mes de trabajo era abril, que en co.21 no tiene planillas de Servicios Profesionales &mdash; y un mes as&iacute; <strong>ni siquiera aparece como entrada</strong> en el listado anual, as&iacute; que la espera se agotaba con <code>status &quot;sin entrada&quot;</code>. Se le&iacute;a como si el reporte estuviera roto. <strong>Era un supuesto de mi spec sobre los datos del tenant, no un defecto.</strong></td></tr><tr><th>C&oacute;mo se corrigi&oacute;</th><td>El mes pas&oacute; a <strong>agosto</strong> y qued&oacute; configurable (<code>REPORT_MONTH</code>), con los per&iacute;odos derivados del mes. Y la l&iacute;nea base ahora tolera las <strong>tres</strong> formas en que un mes puede no tener retenci&oacute;n: que el BE diga &ldquo;no hay planillas disponibles&rdquo;, que el mes no figure en el listado, o que el reporte exista pero <strong>ning&uacute;n SP sea contribuyente</strong>. La tolerancia vale <strong>solo</strong> para la l&iacute;nea base.</td></tr><tr><th>Resultado obtenido</th><td>L&iacute;nea base de agosto <code>$0.00</code> (mes vac&iacute;o, tolerado) &rarr; tras las tres planillas <code>$11.00</code> &#9989;. La planilla <strong>en curso no aport&oacute;</strong> sus $10.00, que es el punto del caso.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">QAUTO-954</td><td><div class="test-name">El Excel cuadra consigo mismo y contra la planilla</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-954" target="_blank" rel="noopener">QAUTO-954</a> &middot; flujo <code>E2E-REG-003</code></td></tr><tr><th>Entorno</th><td>Empresa <strong>21</strong> en <code>test.rebuhr.com</code>, ya en <strong>Gran Contribuyente</strong> &mdash; no hubo que tocar la configuraci&oacute;n fiscal.</td></tr><tr><th>Resultado obtenido</th><td>Cuadra &#9989;. La suma de descuentos iguala <code>TotalDeductions</code> y el neto del Excel iguala el de la planilla. <strong>Sin diferencias con UAT.</strong></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5825" target="_blank" onclick="event.stopPropagation()">REBU-5825</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-946" target="_blank" rel="noopener" onclick="event.stopPropagation()">QAUTO-946</a>
+      <span class="hu-title">Report Builder: cat&aacute;logo din&aacute;mico y no contaminaci&oacute;n</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">2 / 2 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; cambi&oacute; en producci&oacute;n</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">El &uacute;nico caso del &eacute;pico que <strong>lee data ya existente</strong> en vez de crearla es QAUTO-949 &mdash; y por eso fue el que expuso la diferencia entre tenants. La clasificaci&oacute;n del concepto (DESCUENTOS vs APORTES) result&oacute; <strong>id&eacute;ntica en los dos ambientes</strong>.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">QAUTO-949</td><td><div class="test-name">El concepto en el Report Builder, con valor real por SP</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-949" target="_blank" rel="noopener">QAUTO-949</a> &middot; flujo <code>E2E-INT-003</code></td></tr><tr><th>Entorno</th><td>Empresa <strong>21</strong> en <code>test.rebuhr.com</code>, ya en <strong>Gran Contribuyente</strong> &mdash; no hubo que tocar la configuraci&oacute;n fiscal.</td></tr><tr><th>&#128308; Fall&oacute; en la primera corrida</th><td>La vista previa vino <strong>sin una sola columna</strong>. Los tres asserts que importan &mdash;el campo existe, est&aacute; en DESCUENTOS, y el Pago de IVA est&aacute; en APORTES&mdash; <strong>ya hab&iacute;an pasado</strong>, pero el caso fallaba como si el campo estuviera roto. La causa: el <strong>rango de fechas por defecto</strong> del builder no cubre los meses donde los specs crean sus planillas.</td></tr><tr><th>C&oacute;mo se corrigi&oacute;</th><td>Si la vista previa no trae tabla, el caso hace <strong>SKIP con el motivo escrito</strong>, no &ldquo;passed&rdquo;: verificar la clasificaci&oacute;n y no los valores es media verificaci&oacute;n, y un verde ah&iacute; ocultar&iacute;a que la otra mitad no corri&oacute;. Si trae columna pero ninguna celda con monto, se registra como anotaci&oacute;n en vez de inventar un fallo.</td></tr><tr><th>Resultado obtenido</th><td>En la segunda corrida <strong>no hizo falta el skip</strong>: columnas <code>C&oacute;digo | Colaborador | Retenci&oacute;n de IVA</code> y <strong>9 de 9 registros con monto</strong> &mdash; <code>$8.00</code>, <code>$5.00</code>, <code>$2.00</code> &#9989;. La data la hab&iacute;an dejado las planillas de la corrida anterior.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">QAUTO-953</td><td><div class="test-name">Pago de IVA 13&nbsp;% y Retenci&oacute;n de IVA 1&nbsp;% no se contaminan</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-953" target="_blank" rel="noopener">QAUTO-953</a> &middot; flujo <code>E2E-REG-002</code></td></tr><tr><th>Entorno</th><td>Empresa <strong>21</strong> en <code>test.rebuhr.com</code>, ya en <strong>Gran Contribuyente</strong> &mdash; no hubo que tocar la configuraci&oacute;n fiscal.</td></tr><tr><th>Resultado obtenido</th><td>Raz&oacute;n <strong>13.00 : 1</strong> &#9989; &mdash; <code>$104.00</code> contra <code>$8.00</code>, las dos ecuaciones de neto cerrando y cero celdas fusionadas en el Excel. <strong>Id&eacute;ntico a UAT.</strong></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5826" target="_blank" onclick="event.stopPropagation()">REBU-5826</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-946" target="_blank" rel="noopener" onclick="event.stopPropagation()">QAUTO-946</a>
+      <span class="hu-title">Rec&aacute;lculo, incorporaci&oacute;n tard&iacute;a y superficies de salida</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">3 / 3 &#10003; &middot; 1 no ejecutado</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; cambi&oacute; en producci&oacute;n</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">Los tres ejecutados dieron <strong>los mismos n&uacute;meros que en UAT</strong>: retenci&oacute;n $8.00 sobre base $800, neto $712.00 y $816.00 transferidos al banco. QAUTO-952 <strong>no corri&oacute;</strong> en producci&oacute;n &mdash; vive fuera de la carpeta del release.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">QAUTO-950</td><td><div class="test-name">Recalcular reeval&uacute;a la retenci&oacute;n con el estado vigente</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-950" target="_blank" rel="noopener">QAUTO-950</a> &middot; flujo <code>E2E-INT-004</code></td></tr><tr><th>Entorno</th><td>Empresa <strong>21</strong> en <code>test.rebuhr.com</code>, ya en <strong>Gran Contribuyente</strong> &mdash; no hubo que tocar la configuraci&oacute;n fiscal.</td></tr><tr><th>Resultado obtenido</th><td>El ciclo apagar &rarr; encender cierra <strong>al centavo</strong> &#9989;, y el ISR no se movi&oacute; en ninguno de los dos rec&aacute;lculos.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">QAUTO-951</td><td><div class="test-name">Un SP agregado a planilla iniciada entra al c&aacute;lculo</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-951" target="_blank" rel="noopener">QAUTO-951</a> &middot; flujo <code>E2E-INT-005</code></td></tr><tr><th>Entorno</th><td>Empresa <strong>21</strong> en <code>test.rebuhr.com</code>, ya en <strong>Gran Contribuyente</strong> &mdash; no hubo que tocar la configuraci&oacute;n fiscal.</td></tr><tr><th>Resultado obtenido</th><td>El SP incorporado tarde entra al c&aacute;lculo y el total del per&iacute;odo lo refleja &#9989;.</td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">QAUTO-955</td><td><div class="test-name">Boleta y archivo bancario reflejan el neto</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@descargas</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-955" target="_blank" rel="noopener">QAUTO-955</a> &middot; flujo <code>E2E-REG-004</code></td></tr><tr><th>Entorno</th><td>Empresa <strong>21</strong> en <code>test.rebuhr.com</code>, ya en <strong>Gran Contribuyente</strong> &mdash; no hubo que tocar la configuraci&oacute;n fiscal.</td></tr><tr><th>Resultado obtenido</th><td>El archivo bancario transfiere <code>$816.00</code> = neto <code>$712.00</code> + Pago de IVA <code>$104.00</code> &#9989;. <strong>Mismo n&uacute;mero que en UAT.</strong></td></tr><tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr></table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">QAUTO-952</td><td><div class="test-name">Las 12 planillas SP quincenales del or&aacute;culo se mantienen</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@regulatory</span></div></td><td class="status-cell"><span class="badge-na">NO EJECUTADO</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps"><tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-952" target="_blank" rel="noopener">QAUTO-952</a> &middot; flujo <code>E2E-REG-001</code></td></tr><tr><th>Entorno</th><td>Empresa <strong>21</strong> en <code>test.rebuhr.com</code>, ya en <strong>Gran Contribuyente</strong> &mdash; no hubo que tocar la configuraci&oacute;n fiscal.</td></tr><tr><th>Por qu&eacute; no se ejecut&oacute;</th><td>Los 6 specs de este caso viven en <code>tests/Payroll-Descuentos-SP-Quincenal/</code>, <strong>fuera</strong> de la carpeta del release, y la corrida contra producci&oacute;n apunt&oacute; solo a la carpeta del release. <strong>No se corri&oacute; en co.21 y no se presenta como si s&iacute;.</strong> Sus asserts son invariantes, as&iacute; que deber&iacute;an pasar en cualquier tenant &mdash; pero eso es una expectativa, no una medici&oacute;n.</td></tr><tr><th>Status</th><td><span class="badge-na">NO EJECUTADO</span></td></tr></table></td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+  </div></div>
 </div>
 
   </div></div>
