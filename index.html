@@ -20,7 +20,7 @@
     <div class="nav-group-label">Actual</div>
     <a class="nav-item current" href="index.html" data-tip="v16.7.0">
       <div class="nav-item-icon">&#128640;</div>
-      <div class="nav-item-body"><div class="nav-version">v16.7.0</div><div class="nav-date">12 sep 2026 &middot; UAT + Prod</div></div>
+      <div class="nav-item-body"><div class="nav-version">v16.7.0</div><div class="nav-date">14 sep 2026 &middot; UAT + Prod</div></div>
       <span class="nav-badge">LATEST</span>
     </a>
     <hr class="nav-divider">
@@ -116,15 +116,15 @@
 <button class="mobile-fab" onclick="openMobileSidebar()">&#128203;</button>
 
 <div class="main-wrapper" id="main-wrapper">
-<!-- RELEASE-START: v16.7.0 | 2026-09-12 | Pass: 40 | Fail: 0 | Skip: 0 | Branch: test/5853-qauto-1063-carpeta-destino | Env: UAT co.2 + Producci&oacute;n co.21 (40 tests por ambiente) -->
+<!-- RELEASE-START: v16.7.0 | 2026-09-14 | Pass: 113 | Fail: 0 | Skip: 6 | Branch: test/5853 | Env: UAT co.2 (58) + Producci&oacute;n co.21 (55) -->
 
 <header class="hero" id="release-v16-7-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
   <h1 class="hero-title">Release <span>v16.7.0</span></h1>
   <div class="hero-meta">
-    <span>&#128197; <strong>12 sep 2026</strong></span>
+    <span>&#128197; <strong>14 sep 2026</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#127807; <strong>test/5853-qauto-1063-carpeta-destino</strong></span>
+    <span>&#127807; <strong>test/5853</strong></span>
     <span class="sep">&middot;</span>
     <span>&#127760; <strong>UAT + Producci&oacute;n</strong></span>
     <span class="sep">&middot;</span>
@@ -134,10 +134,10 @@
 
 <div class="bandeja">
   <div class="cards">
-    <div class="card pass"><div class="card-value">80</div><div class="card-label">Pasaron <span style="font-size:10px;opacity:.75">(40 en UAT + 40 en producci&oacute;n)</span></div></div>
+    <div class="card pass"><div class="card-value">113</div><div class="card-label">Pasaron <span style="font-size:10px;opacity:.75">(58 en UAT + 55 en producci&oacute;n)</span></div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">40</div><div class="card-label">Casos por ambiente <span style="font-size:10px;opacity:.75">(11 escenarios con spec propio &middot; QAUTO-1066 se verifica corriendo la suite de v16.6.0)</span></div></div>
-    <div class="card time"><div class="card-value">~3.5 m</div><div class="card-label">Duraci&oacute;n <span style="font-size:10px;opacity:.75">(en dos lotes, por ambiente)</span></div></div>
+    <div class="card total"><div class="card-value">62</div><div class="card-label">Casos automatizados <span style="font-size:10px;opacity:.75">(40 de REBU-6067 + 22 de REBU-6066 &middot; 18 escenarios con spec propio)</span></div></div>
+    <div class="card time"><div class="card-value">~13 m</div><div class="card-label">Duraci&oacute;n <span style="font-size:10px;opacity:.75">(por ambiente, sumando los dos an&aacute;lisis)</span></div></div>
   </div>
 
   <div class="content" style="padding-top:4px">
@@ -145,10 +145,16 @@
       <strong>&Eacute;pica <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5853" target="_blank" rel="noopener">REBU-5853</a> &mdash; Carpetas del expediente.</strong>
       Este reporte cubre el <strong>lado configuraci&oacute;n y plantillas</strong>: las 7 HU de
       <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6067" target="_blank" rel="noopener">REBU-6067</a>
-      (5860, 5861, 5867, 5868, 5869, 5885, 5971). Las otras 7 HU de la &eacute;pica &mdash;expediente, generaci&oacute;n y
-      alimentaci&oacute;n autom&aacute;tica&mdash; las cubre
-      <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6066" target="_blank" rel="noopener">REBU-6066</a>
-      y <strong>no est&aacute;n en este reporte</strong>.
+      (5860, 5861, 5867, 5868, 5869, 5885, 5971) &mdash; <strong>40 casos</strong>, <code>TC-DOC-212..260</code>.
+      <br><br>
+      Desde el 14 sep este reporte incluye tambi&eacute;n el <strong>lado expediente y generaci&oacute;n</strong>, del an&aacute;lisis
+      <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6066" target="_blank" rel="noopener">REBU-6066</a>:
+      las HU <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5862" target="_blank" rel="noopener">REBU-5862</a>
+      y <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5870" target="_blank" rel="noopener">REBU-5870</a>
+      &mdash; <strong>22 casos</strong>, <code>TC-DOC-150..174</code> m&aacute;s <code>261</code> y <code>262</code>, en
+      <a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a>..<a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1043" target="_blank" rel="noopener">1043</a>.
+      Las <strong>5 HU restantes</strong> de REBU-6066 (5873, 5874, 5883, 5886, 5887 &rarr; QAUTO-1044..1056)
+      <strong>todav&iacute;a no tienen suite</strong>.
       <br><br>
       <strong>Los 40 casos se corrieron completos en los dos ambientes</strong>: primero en UAT co.2 y despu&eacute;s en
       producci&oacute;n co.21, con las tres identidades de cada tenant. El caso de mayor valor de la corrida en prod es
@@ -166,11 +172,29 @@
       <strong>Tambi&eacute;n fuera de alcance:</strong> <code>TC-DOC-260</code> (el camino feliz de la autogesti&oacute;n), retirado
       porque excede el timeout de forma sistem&aacute;tica y pertenece a
       <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5874" target="_blank" rel="noopener">REBU-5874</a>; y los 3 exploratorios del an&aacute;lisis, que no se automatizan.
+      <br><br>
+      <strong>Tres salvedades sobre los casos de REBU-6066, para leer los n&uacute;meros como son:</strong>
+      <br>
+      &#9679; <strong>Las dos columnas no son la misma fecha.</strong> UAT es del <strong>11 sep</strong>; producci&oacute;n, del
+      <strong>14 sep</strong>. El 14 sep <strong>UAT ya no ten&iacute;a la &eacute;pica</strong> &mdash; medido por GET:
+      <code>document-folders</code> responde <strong>404</strong>, las plantillas no traen <code>destinationFolderId</code>
+      <em>ni en el contrato</em>, y la ra&iacute;z del expediente devuelve <strong>0 entradas</strong> (ni las 4 carpetas
+      predefinidas). Los resultados de UAT siguen siendo v&aacute;lidos para su fecha, pero hoy ese ambiente no sirve para
+      revalidar nada de la &eacute;pica.
+      <br>
+      &#9679; <strong>5 casos figuran NO CORRIDO en producci&oacute;n</strong> (<code>TC-DOC-150..153</code> y <code>261</code>):
+      su or&aacute;culo es <em>qu&eacute; ve el colaborador con su propia sesi&oacute;n</em>, y en co.21 no hay una credencial de
+      colaborador v&aacute;lida. No es un fallo del producto ni un caso omitido: es un dato de ambiente que falta.
+      <br>
+      &#9679; <strong><code>TC-DOC-163</code> y <code>TC-DOC-166/167</code> est&aacute;n bloqueados</strong> por un dato, no por un
+      defecto: no se conoce la ruta para <em>descargar</em> una entrada del expediente, as&iacute; que no hay forma de abrir el
+      archivo guardado y leerlo. Tres v&iacute;as medidas, ninguna sirve. Los lectores de PDF y <code>.docx</code> ya existen y
+      corren en cuanto se sepa la ruta.
     </div>
   </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">40</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">62</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">&#128203; Manuales <span class="tab-count">0</span></button>
   </div>
   <hr class="tab-divider">
@@ -178,8 +202,8 @@
 
 <div class="env-tab-group">
   <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">40 &#10003;</span></button>
-    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">40 &#10003;</span></button>
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">58 &#10003;</span></button>
+    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">55 &#10003;</span></button>
   </div>
 
   <div id="env-uat" class="env-tab-panel active"><div class="content">
@@ -649,6 +673,240 @@
     </tbody>
   </table>
 </div>
+<hr style="margin:26px 18px;border:0;border-top:2px dashed #cfe0da">
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5862" target="_blank" onclick="event.stopPropagation()">REBU-5862</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1037">QAUTO-1037</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1038">QAUTO-1038</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1039">QAUTO-1039</a>
+      <span class="hu-title">Secci&oacute;n Documentos del expediente: qu&eacute; ve cada rol, cu&aacute;nto pesa y d&oacute;nde cae lo que se sube</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">12 / 14 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">El AC1 dice que <strong>el BE filtra por los permisos del viewer</strong> y el FE solo pinta lo que recibe. Para poder afirmarlo, el mismo listado se pide con <strong>dos identidades</strong> &mdash; y con un contexto <strong>sin</strong> <code>storageState</code>, porque si no el portal autentica por cookie e ignora el Bearer en silencio, y el caso pasaria midiendo al usuario equivocado. Los casos de tama&ntilde;o cierran el agregado de carpeta (suma de hijos, sin doble conteo contra la cuota de 256 MB) y los de navegacion, que subir <em>dentro</em> de una carpeta no deposite el archivo en la raiz.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-150</td><td><div class="test-name">la carpeta ad hoc del colaborador la ven el y el master</div><div class="test-tags"><span class="tag tag-val">@documentos</span><span class="tag tag-val">@permisos</span><span class="tag tag-val">@api</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-skip">SKIP</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-150</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Una carpeta ad hoc (creada en el propio expediente, <code>folderOrigin</code> distinto de <code>Predefined</code>).</td></tr><tr><th>Regla evaluada</th><td>Una carpeta que nacio en el expediente pertenece a las dos vistas: la del due&ntilde;o y la del administrador.</td></tr><tr><th>Setup</th><td>1. Listar la raiz del expediente con la sesion del master. 2. Filtrar las entradas con <code>folderOrigin</code> ad hoc.</td></tr><tr><th>Resultado esperado</th><td>La misma carpeta aparece con las dos identidades, sobre el mismo <code>id</code>.</td></tr><tr><th>Resultado obtenido</th><td>SALTADO &mdash; en co.2 no habia ninguna carpeta ad hoc con la que sembrar el caso. El guard es explicito, no un falso verde.</td></tr>
+<tr><th>Status</th><td><span class="badge-skip">SKIP</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-151</td><td><div class="test-name">la carpeta de empresa marcada visible la ven el colaborador y el master</div><div class="test-tags"><span class="tag tag-val">@documentos</span><span class="tag tag-val">@permisos</span><span class="tag tag-val">@api</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-151</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Carpeta de empresa <code>QA-AUTO Visible</code> con <code>isVisibleToCollaborator = true</code>.</td></tr><tr><th>Regla evaluada</th><td>El AC1 dice que <strong>el BE filtra por los permisos de quien pregunta</strong> y el FE solo pinta lo que recibe. Por eso el mismo listado se pide con <strong>dos identidades</strong>.</td></tr><tr><th>Setup</th><td>1. Asegurar la carpeta de empresa con el interruptor encendido (idempotente). 2. Abrir sesion del colaborador por API <strong>sin</strong> <code>storageState</code>, para que el Bearer sea la unica identidad de la llamada.</td></tr><tr><th>Resultado esperado</th><td><code>GET /people/{peopleId}/directory-entries</code> devuelve la carpeta con las dos sesiones.</td></tr><tr><th>Resultado obtenido</th><td>Presente en ambas respuestas &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; La carpeta de empresa "QA-AUTO Visible" aparece en el expediente de Marcos Rivera</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-151/01.jpg" alt="TC-DOC-151" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-152</td><td><div class="test-name">la carpeta de empresa NO visible la ve el master y no el colaborador</div><div class="test-tags"><span class="tag tag-val">@documentos</span><span class="tag tag-val">@permisos</span><span class="tag tag-val">@api</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-152</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Carpeta de empresa <code>QA-AUTO No Visible</code> con <code>isVisibleToCollaborator = false</code>.</td></tr><tr><th>Regla evaluada</th><td>Es el contraste que le da valor al caso anterior: si las dos identidades vieran lo mismo, el filtro del BE no estaria probado.</td></tr><tr><th>Setup</th><td>1. Asegurar la carpeta con el interruptor apagado. 2. Pedir el MISMO listado con el token del colaborador y con la cookie del master.</td></tr><tr><th>Resultado esperado</th><td>La carpeta viaja al master y <strong>no</strong> al colaborador.</td></tr><tr><th>Resultado obtenido</th><td>Solo en la respuesta del master &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; El mismo expediente, pedido con dos identidades: la carpeta no visible sólo viaja al máster</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-152/01.jpg" alt="TC-DOC-152" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-153</td><td><div class="test-name">apagar la visibilidad la saca del expediente sin borrar su contenido</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-skip">SKIP</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-153</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Carpeta de empresa visible, con al menos un documento dentro.</td></tr><tr><th>Regla evaluada</th><td>La transicion encendido &rarr; apagado no debe destruir contenido.</td></tr><tr><th>Setup</th><td>1. Cambiar la visibilidad con el "Editar" del menu de la fila.</td></tr><tr><th>Resultado esperado</th><td>La carpeta desaparece del expediente del colaborador y sus archivos siguen existiendo.</td></tr><tr><th>Resultado obtenido</th><td>FIXME declarado &mdash; el "Editar" pertenece a <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5861" target="_blank" rel="noopener">REBU-5861</a>, HU de otro autor, sin Page Object medido. Los dos estados por separado ya quedan cubiertos por TC-DOC-151 y TC-DOC-152.</td></tr>
+<tr><th>Status</th><td><span class="badge-skip">SKIP</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-261</td><td><div class="test-name">en SU propia pantalla el colaborador ve la visible y no la no-visible</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@permisos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-261</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Sesion de navegador del colaborador en <code>/dashboard/my-profile?tab=documents</code>.</td></tr><tr><th>Regla evaluada</th><td>El API puede filtrar bien y la pantalla pintar de mas. Este caso cierra ese hueco mirando lo que el colaborador <strong>ve</strong>.</td></tr><tr><th>Setup</th><td>1. Abrir Mi perfil &rarr; Documentos con la sesion del colaborador. 2. Leer los nombres de la tabla.</td></tr><tr><th>Resultado esperado</th><td>Aparece <code>QA-AUTO Visible</code> y no aparece <code>QA-AUTO No Visible</code>.</td></tr><tr><th>Resultado obtenido</th><td>Verificado sobre la tabla real &#9989;. <em>(Era TC-DOC-212; renumerado a 261 por colision con el bloque 212..260 de REBU-6067.)</em></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-154</td><td><div class="test-name">la tabla trae Nombre, Tipo de Documento, Fecha de Creacion y Tamano</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener">QAUTO-1038</a> &middot; caso <code>TC-DOC-154</code> &middot; <em>E2E-INT-038</em></td></tr><tr><th>Precondiciones</th><td>Expediente de un colaborador con al menos una carpeta.</td></tr><tr><th>Regla evaluada</th><td>La columna <strong>Tama&ntilde;o</strong> si va, aunque el mockup no la muestre &mdash; confirmado con la QA lead.</td></tr><tr><th>Setup</th><td>1. Abrir la pesta&ntilde;a Documentos del expediente. 2. Leer los encabezados de la tabla.</td></tr><tr><th>Resultado esperado</th><td>Las cuatro columnas estan presentes y visibles.</td></tr><tr><th>Resultado obtenido</th><td>Las 4 columnas &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Las cuatro columnas de la sección Documentos</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-154/01.jpg" alt="TC-DOC-154" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-155</td><td><div class="test-name">una carpeta vacia muestra "-" en Tamano</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener">QAUTO-1038</a> &middot; caso <code>TC-DOC-155</code> &middot; <em>E2E-INT-038</em></td></tr><tr><th>Precondiciones</th><td>Una carpeta sin documentos dentro.</td></tr><tr><th>Regla evaluada</th><td><code>size: null</code> en el contrato es lo que la UI pinta como guion.</td></tr><tr><th>Setup</th><td>1. Localizar una carpeta vacia por API. 2. Leer su celda de Tama&ntilde;o en la tabla.</td></tr><tr><th>Resultado esperado</th><td>La celda muestra <code>-</code>, no <code>0 B</code>.</td></tr><tr><th>Resultado obtenido</th><td>Guion &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; La carpeta vacía "Documentos de ausencia" muestra "-" en Tamaño</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-155/01.jpg" alt="TC-DOC-155" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-156</td><td><div class="test-name">el Tamano de la carpeta es la suma del de sus archivos</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener">QAUTO-1038</a> &middot; caso <code>TC-DOC-156</code> &middot; <em>E2E-INT-038</em></td></tr><tr><th>Precondiciones</th><td>Una carpeta con archivos de tama&ntilde;o conocido dentro.</td></tr><tr><th>Regla evaluada</th><td>El agregado no es un dato decorativo: es lo que le dice a RH cuanto ocupa el expediente.</td></tr><tr><th>Setup</th><td>1. Subir PNG de tama&ntilde;o exacto dentro de la carpeta (idempotente). 2. Leer el <code>size</code> de la carpeta y el de cada hijo.</td></tr><tr><th>Resultado esperado</th><td>El <code>size</code> de la carpeta equivale a la suma de los <code>size</code> de sus hijos.</td></tr><tr><th>Resultado obtenido</th><td>Suma exacta &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-157</td><td><div class="test-name">el agregado de la carpeta no se cuenta dos veces contra la cuota</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener">QAUTO-1038</a> &middot; caso <code>TC-DOC-157</code> &middot; <em>E2E-INT-038</em></td></tr><tr><th>Precondiciones</th><td>Cuota de 256 MB por colaborador y una carpeta con contenido.</td></tr><tr><th>Regla evaluada</th><td>Si el consumo sumara la carpeta <em>y</em> sus hijos, la cuota se agotaria al doble de velocidad.</td></tr><tr><th>Setup</th><td>1. Leer <code>/storages</code>. 2. Contrastar contra la suma de los documentos reales.</td></tr><tr><th>Resultado esperado</th><td>El consumo declarado no duplica el agregado de la carpeta.</td></tr><tr><th>Resultado obtenido</th><td>Sin doble conteo &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-158</td><td><div class="test-name">se entra a la carpeta por su GUID y el breadcrumb permite volver</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-158</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Carpeta visible en la raiz del expediente.</td></tr><tr><th>Regla evaluada</th><td>Se entra clickeando el <strong>nombre</strong>, no la fila: el clic en la fila no navega (medido).</td></tr><tr><th>Setup</th><td>1. Abrir el expediente. 2. Clickear el nombre de la carpeta.</td></tr><tr><th>Resultado esperado</th><td>La URL gana <code>folder={GUID}</code> y el listado cambia al contenido de la carpeta.</td></tr><tr><th>Resultado obtenido</th><td>GUID en la URL y breadcrumb de seccion correcto &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Dentro de "QA-AUTO Visible" — breadcrumb Documentos &gt; QA-AUTO Visible</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-158/01.jpg" alt="TC-DOC-158" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-159</td><td><div class="test-name">un archivo subido dentro de la carpeta queda en ella, no en la raiz</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-159</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Carpeta con al menos un documento (el caso se lo sube solo si esta vacia).</td></tr><tr><th>Regla evaluada</th><td><strong>El campo <code>folderId</code> llega SIEMPRE en <code>null</code></strong>, tambien en los hijos: la pertenencia se expresa <strong>por el filtro de la query</strong>, no por el campo. El DTO lo declara y nadie lo llena.</td></tr><tr><th>Setup</th><td>1. Listar con <code>?folderId=X</code>. 2. Listar la raiz.</td></tr><tr><th>Resultado esperado</th><td>Los documentos aparecen dentro de la carpeta y NO en la raiz.</td></tr><tr><th>Resultado obtenido</th><td>Pertenencia por filtro &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-160</td><td><div class="test-name">sin carpeta abierta, el archivo queda como documento independiente</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-160</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Expediente accesible, sin carpeta abierta.</td></tr><tr><th>Regla evaluada</th><td>Es el AC5 de REBU-5885: subir sin contexto de carpeta deja el documento suelto en la raiz.</td></tr><tr><th>Setup</th><td>1. Subir un PNG sin <code>folderId</code> (idempotente por nombre).</td></tr><tr><th>Resultado esperado</th><td>El documento esta en la raiz, con <code>folderId: null</code>, y no dentro de ninguna carpeta.</td></tr><tr><th>Resultado obtenido</th><td>Documento suelto en la raiz &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-161</td><td><div class="test-name">Subir documento, Descargar y Generar son puntos de entrada visibles</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-161</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Expediente abierto con el master.</td></tr><tr><th>Regla evaluada</th><td>Se asserta <strong>visibilidad</strong>, nunca presencia: el gating es <code>data-acl-all</code> + estilo inline y el nodo nunca se quita del DOM. Contar nodos mediria el instrumento.</td></tr><tr><th>Setup</th><td>1. Abrir la seccion Documentos del expediente.</td></tr><tr><th>Resultado esperado</th><td>Los tres puntos de entrada son visibles.</td></tr><tr><th>Resultado obtenido</th><td>Los 3 visibles &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Los tres puntos de entrada de la sección: Subir Documento, Descargar y Generar</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-161/01.jpg" alt="TC-DOC-161" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-262</td><td><div class="test-name">volver por el breadcrumb (doble clic) devuelve el listado de la raiz</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-262</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Estar dentro de una carpeta del expediente.</td></tr><tr><th>Regla evaluada</th><td>Se vuelve con <strong>DOBLE clic</strong>. Con uno solo la URL pierde el parametro pero la tabla se queda: eso me hizo levantar <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6069" target="_blank" rel="noopener">REBU-6069</a>, que se cerro como <strong>descartado</strong> &mdash; medi la interaccion equivocada, no un fallo del producto.</td></tr><tr><th>Setup</th><td>1. Entrar a la carpeta. 2. Doble clic en el breadcrumb de la seccion.</td></tr><tr><th>Resultado esperado</th><td>La URL pierde <code>folder</code> y la tabla vuelve a listar las carpetas de la raiz.</td></tr><tr><th>Resultado obtenido</th><td>Vuelve a la raiz &#9989;. <em>(Era TC-DOC-213; renumerado a 262.)</em></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5870" target="_blank" onclick="event.stopPropagation()">REBU-5870</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1040" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1040">QAUTO-1040</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1041" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1041">QAUTO-1041</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1042" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1042">QAUTO-1042</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1043" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1043">QAUTO-1043</a>
+      <span class="hu-title">Generar Documento: Descargar, Enviar a carpeta destino y Descargar y enviar</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">6 / 8 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">Los cuatro AC con captura del dev muestran <strong>modales</strong>; ninguno muestra si el archivo <em>llega</em>. Este bloque se queda con lo que ninguna captura puede mostrar: que la entrada aparezca en su carpeta destino, que el envio en Word entregue un <code>.docx</code> real y no el HTML renombrado de antes, que la accion doble sume <strong>una</strong> entrada y no dos, y que sin Confirmar no salga nada. El oraculo es siempre <strong>la carpeta</strong>, nunca el toast.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-162</td><td><div class="test-name">la entrada nueva queda en la carpeta destino y en ninguna otra</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1040" target="_blank" rel="noopener">QAUTO-1040</a> &middot; caso <code>TC-DOC-162</code> &middot; <em>E2E-INT-040</em></td></tr><tr><th>Precondiciones</th><td>Plantilla con Carpeta destino configurada (REBU-5867) y un colaborador con expediente.</td></tr><tr><th>Regla evaluada</th><td>El listado va <strong>detras</strong> del POST: el oraculo es el <code>directoryEntryId</code> que devuelve el envio, y el listado se sondea. Leerlo una sola vez devolvia el estado anterior y por poco lo reporto como que el envio no guardaba.</td></tr><tr><th>Setup</th><td>1. Generar Documento &rarr; Enviar a carpeta destino &rarr; PDF &rarr; Confirmar. 2. Sondear la carpeta destino hasta que aparezca la entrada.</td></tr><tr><th>Resultado esperado</th><td>La entrada existe en la carpeta destino y el resto de carpetas no cambia de conteo.</td></tr><tr><th>Resultado obtenido</th><td>POST 200, entrada en <code>Test_edit</code> &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; El documento generado llega a la carpeta destino "Test_edit" y a ninguna otra</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-162/01.jpg" alt="TC-DOC-162" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-163</td><td><div class="test-name">el PDF emitido trae el contenido resuelto de la plantilla</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-skip">SKIP</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1040" target="_blank" rel="noopener">QAUTO-1040</a> &middot; caso <code>TC-DOC-163</code> &middot; <em>E2E-INT-040</em></td></tr><tr><th>Precondiciones</th><td>Un documento generado y archivado en la carpeta destino.</td></tr><tr><th>Regla evaluada</th><td>Verificar el <strong>contenido</strong> del archivo, no solo que llegue.</td></tr><tr><th>Setup</th><td>1. Descargar la entrada del expediente. 2. Leer el PDF.</td></tr><tr><th>Resultado esperado</th><td>El texto del PDF trae los campos resueltos del colaborador.</td></tr><tr><th>Resultado obtenido</th><td>FIXME &mdash; <strong>falta el dato</strong>: no hay ruta conocida para descargar una entrada del expediente. Tres vias medidas y ninguna sirve: Descargar no emite evento capturable (120 s), <code>GET .../directory-entries/{id}</code> da <strong>405</strong> (el verbo es DELETE), y <code>/download</code>, <code>/files/{id}</code> y <code>/entity-document/{id}</code> dan 404. El lector ya existe y esta probado (<code>DocumentoReader</code> sobre <code>pdf-parse</code>).</td></tr>
+<tr><th>Status</th><td><span class="badge-skip">SKIP</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-168</td><td><div class="test-name">el envio en Word deja la entrada marcada como generada y con extension .docx</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1041" target="_blank" rel="noopener">QAUTO-1041</a> &middot; caso <code>TC-DOC-168</code> &middot; <em>E2E-INT-041</em></td></tr><tr><th>Precondiciones</th><td>Plantilla con Carpeta destino; formato Word.</td></tr><tr><th>Regla evaluada</th><td>Hasta este release el producto entregaba un <strong>HTML con extension .doc</strong>. REBU-5870 lo reemplazo por OOXML real generado en el BE.</td></tr><tr><th>Setup</th><td>1. Generar Documento &rarr; Enviar a carpeta destino &rarr; Word &rarr; Confirmar. 2. Sondear la carpeta destino.</td></tr><tr><th>Resultado esperado</th><td>La entrada tiene <code>fileExtension: ".docx"</code> y <code>source: "Generated"</code>.</td></tr><tr><th>Resultado obtenido</th><td>.docx &middot; Generated &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; El envío en Word deja una entrada .docx marcada como Generated en la carpeta destino</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-168/01.jpg" alt="TC-DOC-168" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-166/167</td><td><div class="test-name">el archivo es OOXML real y su texto trae el campo resuelto</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-skip">SKIP</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1041" target="_blank" rel="noopener">QAUTO-1041</a> &middot; caso <code>TC-DOC-166/167</code> &middot; <em>E2E-INT-041</em></td></tr><tr><th>Precondiciones</th><td>Una entrada .docx archivada en la carpeta destino.</td></tr><tr><th>Regla evaluada</th><td>Un <code>.docx</code> de verdad es un ZIP que contiene <code>word/document.xml</code>; un HTML renombrado no es ni ZIP. La diferencia <strong>no se ve en el nombre del archivo</strong>: hay que abrirlo.</td></tr><tr><th>Setup</th><td>1. Descargar la entrada. 2. Verificar la firma ZIP y extraer el texto.</td></tr><tr><th>Resultado esperado</th><td>El archivo es OOXML real y su texto contiene el nombre del colaborador.</td></tr><tr><th>Resultado obtenido</th><td>FIXME &mdash; mismo bloqueo que TC-DOC-163: sin ruta de descarga. <code>DocumentoReader.esDocxReal</code> / <code>textoDeDocx</code> (sobre <code>jszip</code>) ya estan listos y corren en cuanto se sepa la ruta.</td></tr>
+<tr><th>Status</th><td><span class="badge-skip">SKIP</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-170</td><td><div class="test-name">la accion doble crea exactamente una entrada, no dos</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1042" target="_blank" rel="noopener">QAUTO-1042</a> &middot; caso <code>TC-DOC-170</code> &middot; <em>E2E-INT-042</em></td></tr><tr><th>Precondiciones</th><td>Plantilla con Carpeta destino.</td></tr><tr><th>Regla evaluada</th><td><strong>El BE no deduplica</strong>: enviar dos veces la misma plantilla el mismo dia crea dos entradas con sufijo. Por eso el caso mide el <strong>delta</strong> (que sume exactamente 1), no el total &mdash; un total arrastra lo que dejaron corridas anteriores y no dice nada.</td></tr><tr><th>Setup</th><td>1. Contar las entradas de la carpeta destino. 2. Descargar y enviar en PDF. 3. Sondear, dar margen y volver a contar.</td></tr><tr><th>Resultado esperado</th><td>La carpeta gana <strong>una</strong> entrada, y es la que declaro el POST.</td></tr><tr><th>Resultado obtenido</th><td>Delta = 1 &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; "Descargar y enviar" suma exactamente una entrada a la carpeta destino</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-170/01.jpg" alt="TC-DOC-170" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-172</td><td><div class="test-name">al Cancelar en la confirmacion no se envia nada a la carpeta</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1043" target="_blank" rel="noopener">QAUTO-1043</a> &middot; caso <code>TC-DOC-172</code> &middot; <em>E2E-REG-043</em></td></tr><tr><th>Precondiciones</th><td>Modal de confirmacion del AC5 abierto.</td></tr><tr><th>Regla evaluada</th><td>El oraculo es <strong>la carpeta, no el toast</strong>: un toast que no aparece es indistinguible de uno que aparecio y se fue. Lo que prueba que no se envio nada es que la carpeta no gano entradas.</td></tr><tr><th>Setup</th><td>1. Abrir el modal de confirmacion. 2. Cancelar. 3. Dar margen por si el envio saliera con retraso.</td></tr><tr><th>Resultado esperado</th><td>La carpeta destino queda exactamente igual que antes.</td></tr><tr><th>Resultado obtenido</th><td>Sin cambios en la carpeta &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Modal de confirmación antes de enviar "Carta de recomendación" — se va a cancelar</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-172/01.jpg" alt="TC-DOC-172" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-173</td><td><div class="test-name">el modal de confirmacion nombra al colaborador correcto</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1043" target="_blank" rel="noopener">QAUTO-1043</a> &middot; caso <code>TC-DOC-173</code> &middot; <em>E2E-REG-043</em></td></tr><tr><th>Precondiciones</th><td>Modal de confirmacion abierto para un colaborador concreto.</td></tr><tr><th>Regla evaluada</th><td>El nombre en la confirmacion es la salvaguarda contra enviarle el documento al expediente equivocado.</td></tr><tr><th>Setup</th><td>1. Abrir el modal. 2. Leer su texto.</td></tr><tr><th>Resultado esperado</th><td>Dice "se enviara a una carpeta destino ubicada en el perfil de" y nombra al colaborador elegido.</td></tr><tr><th>Resultado obtenido</th><td>Nombra a Marcos Rivera &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; El modal de confirmación nombra a Marcos Rivera</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-173/01.jpg" alt="TC-DOC-173" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-174</td><td><div class="test-name">Descargar sola no interpone modal de confirmacion</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1043" target="_blank" rel="noopener">QAUTO-1043</a> &middot; caso <code>TC-DOC-174</code> &middot; <em>E2E-REG-043</em></td></tr><tr><th>Precondiciones</th><td>Documento generado, menu de acciones abierto.</td></tr><tr><th>Regla evaluada</th><td>El AC5 dice explicitamente: <em>"Esta confirmacion no aplica a la opcion Descargar sola"</em>. Es comportamiento previo que <strong>no debe empezar a pedirse</strong>.</td></tr><tr><th>Setup</th><td>1. Elegir Descargar + formato.</td></tr><tr><th>Resultado esperado</th><td>No aparece ningun modal de confirmacion.</td></tr><tr><th>Resultado obtenido</th><td>Sin confirmacion &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Tras Descargar + formato no aparece ninguna confirmación: el AC5 no aplica a esa opción</div>
+    <img src="assets/v16.7.0/uat/TC-DOC-174/01.jpg" alt="TC-DOC-174" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+    </tbody>
+  </table>
+</div>
+
 
   </div></div>
 
@@ -1131,6 +1389,226 @@
     </tbody>
   </table>
 </div>
+<hr style="margin:26px 18px;border:0;border-top:2px dashed #cfe0da">
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5862" target="_blank" onclick="event.stopPropagation()">REBU-5862</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1037">QAUTO-1037</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1038">QAUTO-1038</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1039">QAUTO-1039</a>
+      <span class="hu-title">Secci&oacute;n Documentos del expediente: qu&eacute; ve cada rol, cu&aacute;nto pesa y d&oacute;nde cae lo que se sube</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">9 / 9 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">El AC1 dice que <strong>el BE filtra por los permisos del viewer</strong> y el FE solo pinta lo que recibe. Para poder afirmarlo, el mismo listado se pide con <strong>dos identidades</strong> &mdash; y con un contexto <strong>sin</strong> <code>storageState</code>, porque si no el portal autentica por cookie e ignora el Bearer en silencio, y el caso pasaria midiendo al usuario equivocado. Los casos de tama&ntilde;o cierran el agregado de carpeta (suma de hijos, sin doble conteo contra la cuota de 256 MB) y los de navegacion, que subir <em>dentro</em> de una carpeta no deposite el archivo en la raiz.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-150</td><td><div class="test-name">la carpeta ad hoc del colaborador la ven el y el master</div><div class="test-tags"><span class="tag tag-val">@documentos</span><span class="tag tag-val">@permisos</span><span class="tag tag-val">@api</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-na">NO CORRIDO</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-150</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Una carpeta ad hoc (creada en el propio expediente, <code>folderOrigin</code> distinto de <code>Predefined</code>).</td></tr><tr><th>Regla evaluada</th><td>Una carpeta que nacio en el expediente pertenece a las dos vistas: la del due&ntilde;o y la del administrador.</td></tr><tr><th>Setup</th><td>1. Listar la raiz del expediente con la sesion del master. 2. Filtrar las entradas con <code>folderOrigin</code> ad hoc.</td></tr><tr><th>Resultado esperado</th><td>La misma carpeta aparece con las dos identidades, sobre el mismo <code>id</code>.</td></tr><tr><th>Resultado obtenido</th><td>NO CORRIDO &mdash; el escenario necesita la sesion propia del colaborador y en co.21 no hay credencial valida.</td></tr>
+<tr><th>Status</th><td><span class="badge-na">NO CORRIDO</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-151</td><td><div class="test-name">la carpeta de empresa marcada visible la ven el colaborador y el master</div><div class="test-tags"><span class="tag tag-val">@documentos</span><span class="tag tag-val">@permisos</span><span class="tag tag-val">@api</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-na">NO CORRIDO</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-151</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Carpeta de empresa <code>QA-AUTO Visible</code> con <code>isVisibleToCollaborator = true</code>.</td></tr><tr><th>Regla evaluada</th><td>El AC1 dice que <strong>el BE filtra por los permisos de quien pregunta</strong> y el FE solo pinta lo que recibe. Por eso el mismo listado se pide con <strong>dos identidades</strong>.</td></tr><tr><th>Setup</th><td>1. Asegurar la carpeta de empresa con el interruptor encendido (idempotente). 2. Abrir sesion del colaborador por API <strong>sin</strong> <code>storageState</code>, para que el Bearer sea la unica identidad de la llamada.</td></tr><tr><th>Resultado esperado</th><td><code>GET /people/{peopleId}/directory-entries</code> devuelve la carpeta con las dos sesiones.</td></tr><tr><th>Resultado obtenido</th><td>Presente en ambas respuestas &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-na">NO CORRIDO</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-152</td><td><div class="test-name">la carpeta de empresa NO visible la ve el master y no el colaborador</div><div class="test-tags"><span class="tag tag-val">@documentos</span><span class="tag tag-val">@permisos</span><span class="tag tag-val">@api</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-na">NO CORRIDO</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-152</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Carpeta de empresa <code>QA-AUTO No Visible</code> con <code>isVisibleToCollaborator = false</code>.</td></tr><tr><th>Regla evaluada</th><td>Es el contraste que le da valor al caso anterior: si las dos identidades vieran lo mismo, el filtro del BE no estaria probado.</td></tr><tr><th>Setup</th><td>1. Asegurar la carpeta con el interruptor apagado. 2. Pedir el MISMO listado con el token del colaborador y con la cookie del master.</td></tr><tr><th>Resultado esperado</th><td>La carpeta viaja al master y <strong>no</strong> al colaborador.</td></tr><tr><th>Resultado obtenido</th><td>Solo en la respuesta del master &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-na">NO CORRIDO</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-153</td><td><div class="test-name">apagar la visibilidad la saca del expediente sin borrar su contenido</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-na">NO CORRIDO</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-153</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Carpeta de empresa visible, con al menos un documento dentro.</td></tr><tr><th>Regla evaluada</th><td>La transicion encendido &rarr; apagado no debe destruir contenido.</td></tr><tr><th>Setup</th><td>1. Cambiar la visibilidad con el "Editar" del menu de la fila.</td></tr><tr><th>Resultado esperado</th><td>La carpeta desaparece del expediente del colaborador y sus archivos siguen existiendo.</td></tr><tr><th>Resultado obtenido</th><td>NO CORRIDO &mdash; depende del mismo escenario de visibilidad.</td></tr>
+<tr><th>Status</th><td><span class="badge-na">NO CORRIDO</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-261</td><td><div class="test-name">en SU propia pantalla el colaborador ve la visible y no la no-visible</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@permisos</span></div></td><td class="status-cell"><span class="badge-na">NO CORRIDO</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1037" target="_blank" rel="noopener">QAUTO-1037</a> &middot; caso <code>TC-DOC-261</code> &middot; <em>E2E-INT-037</em></td></tr><tr><th>Precondiciones</th><td>Sesion de navegador del colaborador en <code>/dashboard/my-profile?tab=documents</code>.</td></tr><tr><th>Regla evaluada</th><td>El API puede filtrar bien y la pantalla pintar de mas. Este caso cierra ese hueco mirando lo que el colaborador <strong>ve</strong>.</td></tr><tr><th>Setup</th><td>1. Abrir Mi perfil &rarr; Documentos con la sesion del colaborador. 2. Leer los nombres de la tabla.</td></tr><tr><th>Resultado esperado</th><td>Aparece <code>QA-AUTO Visible</code> y no aparece <code>QA-AUTO No Visible</code>.</td></tr><tr><th>Resultado obtenido</th><td>NO CORRIDO &mdash; sin credencial de colaborador en co.21.</td></tr>
+<tr><th>Status</th><td><span class="badge-na">NO CORRIDO</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-154</td><td><div class="test-name">la tabla trae Nombre, Tipo de Documento, Fecha de Creacion y Tamano</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener">QAUTO-1038</a> &middot; caso <code>TC-DOC-154</code> &middot; <em>E2E-INT-038</em></td></tr><tr><th>Precondiciones</th><td>Expediente de un colaborador con al menos una carpeta.</td></tr><tr><th>Regla evaluada</th><td>La columna <strong>Tama&ntilde;o</strong> si va, aunque el mockup no la muestre &mdash; confirmado con la QA lead.</td></tr><tr><th>Setup</th><td>1. Abrir la pesta&ntilde;a Documentos del expediente. 2. Leer los encabezados de la tabla.</td></tr><tr><th>Resultado esperado</th><td>Las cuatro columnas estan presentes y visibles.</td></tr><tr><th>Resultado obtenido</th><td>Las 4 columnas &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Las cuatro columnas de la sección Documentos</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-154/01.jpg" alt="TC-DOC-154" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-155</td><td><div class="test-name">una carpeta vacia muestra "-" en Tamano</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener">QAUTO-1038</a> &middot; caso <code>TC-DOC-155</code> &middot; <em>E2E-INT-038</em></td></tr><tr><th>Precondiciones</th><td>Una carpeta sin documentos dentro.</td></tr><tr><th>Regla evaluada</th><td><code>size: null</code> en el contrato es lo que la UI pinta como guion.</td></tr><tr><th>Setup</th><td>1. Localizar una carpeta vacia por API. 2. Leer su celda de Tama&ntilde;o en la tabla.</td></tr><tr><th>Resultado esperado</th><td>La celda muestra <code>-</code>, no <code>0 B</code>.</td></tr><tr><th>Resultado obtenido</th><td>Guion &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; La carpeta vacía "Cartas y Constancias" muestra "-" en Tamaño</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-155/01.jpg" alt="TC-DOC-155" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-156</td><td><div class="test-name">el Tamano de la carpeta es la suma del de sus archivos</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener">QAUTO-1038</a> &middot; caso <code>TC-DOC-156</code> &middot; <em>E2E-INT-038</em></td></tr><tr><th>Precondiciones</th><td>Una carpeta con archivos de tama&ntilde;o conocido dentro.</td></tr><tr><th>Regla evaluada</th><td>El agregado no es un dato decorativo: es lo que le dice a RH cuanto ocupa el expediente.</td></tr><tr><th>Setup</th><td>1. Subir PNG de tama&ntilde;o exacto dentro de la carpeta (idempotente). 2. Leer el <code>size</code> de la carpeta y el de cada hijo.</td></tr><tr><th>Resultado esperado</th><td>El <code>size</code> de la carpeta equivale a la suma de los <code>size</code> de sus hijos.</td></tr><tr><th>Resultado obtenido</th><td>Suma exacta &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-157</td><td><div class="test-name">el agregado de la carpeta no se cuenta dos veces contra la cuota</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1038" target="_blank" rel="noopener">QAUTO-1038</a> &middot; caso <code>TC-DOC-157</code> &middot; <em>E2E-INT-038</em></td></tr><tr><th>Precondiciones</th><td>Cuota de 256 MB por colaborador y una carpeta con contenido.</td></tr><tr><th>Regla evaluada</th><td>Si el consumo sumara la carpeta <em>y</em> sus hijos, la cuota se agotaria al doble de velocidad.</td></tr><tr><th>Setup</th><td>1. Leer <code>/storages</code>. 2. Contrastar contra la suma de los documentos reales.</td></tr><tr><th>Resultado esperado</th><td>El consumo declarado no duplica el agregado de la carpeta.</td></tr><tr><th>Resultado obtenido</th><td>Sin doble conteo &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-158</td><td><div class="test-name">se entra a la carpeta por su GUID y el breadcrumb permite volver</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-158</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Carpeta visible en la raiz del expediente.</td></tr><tr><th>Regla evaluada</th><td>Se entra clickeando el <strong>nombre</strong>, no la fila: el clic en la fila no navega (medido).</td></tr><tr><th>Setup</th><td>1. Abrir el expediente. 2. Clickear el nombre de la carpeta.</td></tr><tr><th>Resultado esperado</th><td>La URL gana <code>folder={GUID}</code> y el listado cambia al contenido de la carpeta.</td></tr><tr><th>Resultado obtenido</th><td>GUID en la URL y breadcrumb de seccion correcto &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Dentro de "QA-AUTO Visible" — breadcrumb Documentos &gt; QA-AUTO Visible</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-158/01.jpg" alt="TC-DOC-158" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-159</td><td><div class="test-name">un archivo subido dentro de la carpeta queda en ella, no en la raiz</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-159</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Carpeta con al menos un documento (el caso se lo sube solo si esta vacia).</td></tr><tr><th>Regla evaluada</th><td><strong>El campo <code>folderId</code> llega SIEMPRE en <code>null</code></strong>, tambien en los hijos: la pertenencia se expresa <strong>por el filtro de la query</strong>, no por el campo. El DTO lo declara y nadie lo llena.</td></tr><tr><th>Setup</th><td>1. Listar con <code>?folderId=X</code>. 2. Listar la raiz.</td></tr><tr><th>Resultado esperado</th><td>Los documentos aparecen dentro de la carpeta y NO en la raiz.</td></tr><tr><th>Resultado obtenido</th><td>Pertenencia por filtro &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-160</td><td><div class="test-name">sin carpeta abierta, el archivo queda como documento independiente</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-160</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Expediente accesible, sin carpeta abierta.</td></tr><tr><th>Regla evaluada</th><td>Es el AC5 de REBU-5885: subir sin contexto de carpeta deja el documento suelto en la raiz.</td></tr><tr><th>Setup</th><td>1. Subir un PNG sin <code>folderId</code> (idempotente por nombre).</td></tr><tr><th>Resultado esperado</th><td>El documento esta en la raiz, con <code>folderId: null</code>, y no dentro de ninguna carpeta.</td></tr><tr><th>Resultado obtenido</th><td>Documento suelto en la raiz &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-161</td><td><div class="test-name">Subir documento, Descargar y Generar son puntos de entrada visibles</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-161</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Expediente abierto con el master.</td></tr><tr><th>Regla evaluada</th><td>Se asserta <strong>visibilidad</strong>, nunca presencia: el gating es <code>data-acl-all</code> + estilo inline y el nodo nunca se quita del DOM. Contar nodos mediria el instrumento.</td></tr><tr><th>Setup</th><td>1. Abrir la seccion Documentos del expediente.</td></tr><tr><th>Resultado esperado</th><td>Los tres puntos de entrada son visibles.</td></tr><tr><th>Resultado obtenido</th><td>Los 3 visibles &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Los tres puntos de entrada de la sección: Subir Documento, Descargar y Generar</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-161/01.jpg" alt="TC-DOC-161" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-262</td><td><div class="test-name">volver por el breadcrumb (doble clic) devuelve el listado de la raiz</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1039" target="_blank" rel="noopener">QAUTO-1039</a> &middot; caso <code>TC-DOC-262</code> &middot; <em>E2E-INT-039</em></td></tr><tr><th>Precondiciones</th><td>Estar dentro de una carpeta del expediente.</td></tr><tr><th>Regla evaluada</th><td>Se vuelve con <strong>DOBLE clic</strong>. Con uno solo la URL pierde el parametro pero la tabla se queda: eso me hizo levantar <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6069" target="_blank" rel="noopener">REBU-6069</a>, que se cerro como <strong>descartado</strong> &mdash; medi la interaccion equivocada, no un fallo del producto.</td></tr><tr><th>Setup</th><td>1. Entrar a la carpeta. 2. Doble clic en el breadcrumb de la seccion.</td></tr><tr><th>Resultado esperado</th><td>La URL pierde <code>folder</code> y la tabla vuelve a listar las carpetas de la raiz.</td></tr><tr><th>Resultado obtenido</th><td>Vuelve a la raiz &#9989;. <em>(Era TC-DOC-213; renumerado a 262.)</em></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5870" target="_blank" onclick="event.stopPropagation()">REBU-5870</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1040" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1040">QAUTO-1040</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1041" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1041">QAUTO-1041</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1042" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1042">QAUTO-1042</a><a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1043" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1043">QAUTO-1043</a>
+      <span class="hu-title">Generar Documento: Descargar, Enviar a carpeta destino y Descargar y enviar</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">6 / 8 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">Los cuatro AC con captura del dev muestran <strong>modales</strong>; ninguno muestra si el archivo <em>llega</em>. Este bloque se queda con lo que ninguna captura puede mostrar: que la entrada aparezca en su carpeta destino, que el envio en Word entregue un <code>.docx</code> real y no el HTML renombrado de antes, que la accion doble sume <strong>una</strong> entrada y no dos, y que sin Confirmar no salga nada. El oraculo es siempre <strong>la carpeta</strong>, nunca el toast.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-162</td><td><div class="test-name">la entrada nueva queda en la carpeta destino y en ninguna otra</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1040" target="_blank" rel="noopener">QAUTO-1040</a> &middot; caso <code>TC-DOC-162</code> &middot; <em>E2E-INT-040</em></td></tr><tr><th>Precondiciones</th><td>Plantilla con Carpeta destino configurada (REBU-5867) y un colaborador con expediente.</td></tr><tr><th>Regla evaluada</th><td>El listado va <strong>detras</strong> del POST: el oraculo es el <code>directoryEntryId</code> que devuelve el envio, y el listado se sondea. Leerlo una sola vez devolvia el estado anterior y por poco lo reporto como que el envio no guardaba.</td></tr><tr><th>Setup</th><td>1. Generar Documento &rarr; Enviar a carpeta destino &rarr; PDF &rarr; Confirmar. 2. Sondear la carpeta destino hasta que aparezca la entrada.</td></tr><tr><th>Resultado esperado</th><td>La entrada existe en la carpeta destino y el resto de carpetas no cambia de conteo.</td></tr><tr><th>Resultado obtenido</th><td>POST 200, entrada en <code>Cartas y Constancias</code> &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; El documento generado llega a la carpeta destino "Cartas y Constancias" y a ninguna otra</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-162/01.jpg" alt="TC-DOC-162" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-163</td><td><div class="test-name">el PDF emitido trae el contenido resuelto de la plantilla</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-skip">SKIP</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1040" target="_blank" rel="noopener">QAUTO-1040</a> &middot; caso <code>TC-DOC-163</code> &middot; <em>E2E-INT-040</em></td></tr><tr><th>Precondiciones</th><td>Un documento generado y archivado en la carpeta destino.</td></tr><tr><th>Regla evaluada</th><td>Verificar el <strong>contenido</strong> del archivo, no solo que llegue.</td></tr><tr><th>Setup</th><td>1. Descargar la entrada del expediente. 2. Leer el PDF.</td></tr><tr><th>Resultado esperado</th><td>El texto del PDF trae los campos resueltos del colaborador.</td></tr><tr><th>Resultado obtenido</th><td>FIXME &mdash; <strong>falta el dato</strong>: no hay ruta conocida para descargar una entrada del expediente. Tres vias medidas y ninguna sirve: Descargar no emite evento capturable (120 s), <code>GET .../directory-entries/{id}</code> da <strong>405</strong> (el verbo es DELETE), y <code>/download</code>, <code>/files/{id}</code> y <code>/entity-document/{id}</code> dan 404. El lector ya existe y esta probado (<code>DocumentoReader</code> sobre <code>pdf-parse</code>).</td></tr>
+<tr><th>Status</th><td><span class="badge-skip">SKIP</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-168</td><td><div class="test-name">el envio en Word deja la entrada marcada como generada y con extension .docx</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1041" target="_blank" rel="noopener">QAUTO-1041</a> &middot; caso <code>TC-DOC-168</code> &middot; <em>E2E-INT-041</em></td></tr><tr><th>Precondiciones</th><td>Plantilla con Carpeta destino; formato Word.</td></tr><tr><th>Regla evaluada</th><td>Hasta este release el producto entregaba un <strong>HTML con extension .doc</strong>. REBU-5870 lo reemplazo por OOXML real generado en el BE.</td></tr><tr><th>Setup</th><td>1. Generar Documento &rarr; Enviar a carpeta destino &rarr; Word &rarr; Confirmar. 2. Sondear la carpeta destino.</td></tr><tr><th>Resultado esperado</th><td>La entrada tiene <code>fileExtension: ".docx"</code> y <code>source: "Generated"</code>.</td></tr><tr><th>Resultado obtenido</th><td>.docx &middot; Generated &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; El envío en Word deja una entrada .docx marcada como Generated en la carpeta destino</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-168/01.jpg" alt="TC-DOC-168" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-166/167</td><td><div class="test-name">el archivo es OOXML real y su texto trae el campo resuelto</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-skip">SKIP</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1041" target="_blank" rel="noopener">QAUTO-1041</a> &middot; caso <code>TC-DOC-166/167</code> &middot; <em>E2E-INT-041</em></td></tr><tr><th>Precondiciones</th><td>Una entrada .docx archivada en la carpeta destino.</td></tr><tr><th>Regla evaluada</th><td>Un <code>.docx</code> de verdad es un ZIP que contiene <code>word/document.xml</code>; un HTML renombrado no es ni ZIP. La diferencia <strong>no se ve en el nombre del archivo</strong>: hay que abrirlo.</td></tr><tr><th>Setup</th><td>1. Descargar la entrada. 2. Verificar la firma ZIP y extraer el texto.</td></tr><tr><th>Resultado esperado</th><td>El archivo es OOXML real y su texto contiene el nombre del colaborador.</td></tr><tr><th>Resultado obtenido</th><td>FIXME &mdash; mismo bloqueo que TC-DOC-163: sin ruta de descarga. <code>DocumentoReader.esDocxReal</code> / <code>textoDeDocx</code> (sobre <code>jszip</code>) ya estan listos y corren en cuanto se sepa la ruta.</td></tr>
+<tr><th>Status</th><td><span class="badge-skip">SKIP</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-170</td><td><div class="test-name">la accion doble crea exactamente una entrada, no dos</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1042" target="_blank" rel="noopener">QAUTO-1042</a> &middot; caso <code>TC-DOC-170</code> &middot; <em>E2E-INT-042</em></td></tr><tr><th>Precondiciones</th><td>Plantilla con Carpeta destino.</td></tr><tr><th>Regla evaluada</th><td><strong>El BE no deduplica</strong>: enviar dos veces la misma plantilla el mismo dia crea dos entradas con sufijo. Por eso el caso mide el <strong>delta</strong> (que sume exactamente 1), no el total &mdash; un total arrastra lo que dejaron corridas anteriores y no dice nada.</td></tr><tr><th>Setup</th><td>1. Contar las entradas de la carpeta destino. 2. Descargar y enviar en PDF. 3. Sondear, dar margen y volver a contar.</td></tr><tr><th>Resultado esperado</th><td>La carpeta gana <strong>una</strong> entrada, y es la que declaro el POST.</td></tr><tr><th>Resultado obtenido</th><td>Delta = 1 &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; "Descargar y enviar" suma exactamente una entrada a la carpeta destino</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-170/01.jpg" alt="TC-DOC-170" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-172</td><td><div class="test-name">al Cancelar en la confirmacion no se envia nada a la carpeta</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1043" target="_blank" rel="noopener">QAUTO-1043</a> &middot; caso <code>TC-DOC-172</code> &middot; <em>E2E-REG-043</em></td></tr><tr><th>Precondiciones</th><td>Modal de confirmacion del AC5 abierto.</td></tr><tr><th>Regla evaluada</th><td>El oraculo es <strong>la carpeta, no el toast</strong>: un toast que no aparece es indistinguible de uno que aparecio y se fue. Lo que prueba que no se envio nada es que la carpeta no gano entradas.</td></tr><tr><th>Setup</th><td>1. Abrir el modal de confirmacion. 2. Cancelar. 3. Dar margen por si el envio saliera con retraso.</td></tr><tr><th>Resultado esperado</th><td>La carpeta destino queda exactamente igual que antes.</td></tr><tr><th>Resultado obtenido</th><td>Sin cambios en la carpeta &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Modal de confirmación antes de enviar "Constancia de Ingresos (Empleado)" — se va a cancelar</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-172/01.jpg" alt="TC-DOC-172" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-173</td><td><div class="test-name">el modal de confirmacion nombra al colaborador correcto</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1043" target="_blank" rel="noopener">QAUTO-1043</a> &middot; caso <code>TC-DOC-173</code> &middot; <em>E2E-REG-043</em></td></tr><tr><th>Precondiciones</th><td>Modal de confirmacion abierto para un colaborador concreto.</td></tr><tr><th>Regla evaluada</th><td>El nombre en la confirmacion es la salvaguarda contra enviarle el documento al expediente equivocado.</td></tr><tr><th>Setup</th><td>1. Abrir el modal. 2. Leer su texto.</td></tr><tr><th>Resultado esperado</th><td>Dice "se enviara a una carpeta destino ubicada en el perfil de" y nombra al colaborador elegido.</td></tr><tr><th>Resultado obtenido</th><td>Nombra a Adan Henriquez &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; El modal de confirmación nombra a Adan Henriquez</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-173/01.jpg" alt="TC-DOC-173" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-DOC-174</td><td><div class="test-name">Descargar sola no interpone modal de confirmacion</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1043" target="_blank" rel="noopener">QAUTO-1043</a> &middot; caso <code>TC-DOC-174</code> &middot; <em>E2E-REG-043</em></td></tr><tr><th>Precondiciones</th><td>Documento generado, menu de acciones abierto.</td></tr><tr><th>Regla evaluada</th><td>El AC5 dice explicitamente: <em>"Esta confirmacion no aplica a la opcion Descargar sola"</em>. Es comportamiento previo que <strong>no debe empezar a pedirse</strong>.</td></tr><tr><th>Setup</th><td>1. Elegir Descargar + formato.</td></tr><tr><th>Resultado esperado</th><td>No aparece ningun modal de confirmacion.</td></tr><tr><th>Resultado obtenido</th><td>Sin confirmacion &#9989;.</td></tr>
+<tr><th>Evidencia</th><td>
+<div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0">
+  <div style="flex:1;min-width:220px">
+    <div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Tras Descargar + formato no aparece ninguna confirmación: el AC5 no aplica a esa opción</div>
+    <img src="assets/v16.7.0/prod/TC-DOC-174/01.jpg" alt="TC-DOC-174" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" />
+  </div>
+</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+    </tbody>
+  </table>
+</div>
+
 
   </div></div>
 </div>
@@ -1271,7 +1749,7 @@
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> &middot; Generado el 11 sep 2026 &middot; Rama <strong>test/5853-qauto-1063-carpeta-destino</strong> &middot; Entorno <strong>UAT</strong>
+  <strong>Rebu Automation Suite</strong> &middot; Generado el 14 sep 2026 &middot; Rama <strong>test/5853</strong> &middot; Entorno <strong>UAT co.2 + Producci&oacute;n co.21</strong>
 </footer>
 </div>
 
