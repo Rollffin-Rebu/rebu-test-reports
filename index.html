@@ -86,7 +86,7 @@
 <button class="mobile-fab" onclick="openMobileSidebar()">&#128203;</button>
 
 <div class="main-wrapper" id="main-wrapper">
-<!-- RELEASE-START: v16.8.0 | 2026-09-16 | Pass: 5 | Fail: 0 | Skip: 0 | Branch: test/5853-expediente-y-generacion | Env: UAT co.2 -->
+<!-- RELEASE-START: v16.8.0 | 2026-09-16 | Pass: 10 | Fail: 0 | Skip: 0 | Branch: test/6026-cargo-jefe-congelado | Env: UAT co.2 (5) + Produccion co.21 (5) -->
 
 <header class="hero" id="release-v16-8-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
@@ -94,20 +94,20 @@
   <div class="hero-meta">
     <span>&#128197; <strong>16 sep 2026</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#127807; <strong>test/5853-expediente-y-generacion</strong></span>
+    <span>&#127807; <strong>test/6026-cargo-jefe-congelado</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#127760; <strong>UAT co.2</strong></span>
+    <span>&#127760; <strong>UAT co.2 + Producci&oacute;n co.21</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#128279; <strong>app-rebu-portal-03-uat.azurewebsites.net</strong></span>
+    <span>&#128279; <strong>app-rebu-portal-03-uat.azurewebsites.net &middot; test.rebuhr.com</strong></span>
   </div>
 </header>
 
 <div class="bandeja">
   <div class="cards">
-    <div class="card pass"><div class="card-value">5</div><div class="card-label">Pasaron <span style="font-size:10px;opacity:.75">(UAT co.2)</span></div></div>
+    <div class="card pass"><div class="card-value">10</div><div class="card-label">Pasaron <span style="font-size:10px;opacity:.75">(5 en UAT co.2 + 5 en producci&oacute;n co.21)</span></div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
     <div class="card total"><div class="card-value">5 <span style="font-size:14px;opacity:.6">/ 33</span></div><div class="card-label">Casos automatizados <span style="font-size:10px;opacity:.75">(1 escenario de 10 &middot; los otros 9, pendientes)</span></div></div>
-    <div class="card time"><div class="card-value">~2 m</div><div class="card-label">Duraci&oacute;n</div></div>
+    <div class="card time"><div class="card-value">~3 m</div><div class="card-label">Duraci&oacute;n <span style="font-size:10px;opacity:.75">(por ambiente)</span></div></div>
   </div>
 
   <div class="content" style="padding-top:4px">
@@ -121,7 +121,7 @@
       la automatizaci&oacute;n se desglosa en 10 escenarios bajo
       <a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1070" target="_blank" rel="noopener">QAUTO-1070</a>.
       <br><br>
-      <strong>&#9888;&#65039; Este reporte muestra 5 casos de 33.</strong> S&oacute;lo el escenario
+      <strong>&#9888;&#65039; Este reporte muestra 5 casos de 33, corridos en los DOS ambientes.</strong> Los mismos 5 pasaron en <strong>UAT co.2</strong> y en <strong>producci&oacute;n co.21</strong> &mdash; us&aacute; el switcher de abajo. S&oacute;lo el escenario
       <strong>E2E-INT-070</strong> (<a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1072" target="_blank" rel="noopener">QAUTO-1072</a>)
       tiene suite. <strong>Los otros 9 escenarios todav&iacute;a no est&aacute;n automatizados</strong>:
       <a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1073" target="_blank" rel="noopener">QAUTO-1073</a> (la baja del jefe no toca el congelado del subordinado),
@@ -142,6 +142,8 @@
       <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6037" target="_blank" rel="noopener">REBU-6037</a>
       todav&iacute;a no estaba desplegado en UAT. Con el despliegue confirmado, la suite pas&oacute; sin cambios en los asserts.
       <br><br>
+      <br><br>
+      <strong>Sobre la corrida en producci&oacute;n.</strong> El despliegue se verific&oacute; <em>antes</em> de correr y por evidencia: 4 de los 50 inactivos le&iacute;dos en co.21 ya ten&iacute;an cargo o jefe congelado, y como el AC9 dice que no hay backfill, eso s&oacute;lo puede venir de una Baja posterior al deploy. El escenario <strong>crea datos reales</strong>: dej&oacute; 3 colaboradores, 3 cargos <code>QA-6026 &hellip;</code> y una planilla en el tenant, y <strong>C queda Inactivo de forma permanente</strong> porque un desvinculado no se puede borrar (REBU-5714).
       <strong>Dos hallazgos de ambiente que condicionan la evidencia:</strong>
       <br>
       &#9679; La pantalla se llama <strong>&ldquo;Inactivos&rdquo;</strong> (ruta <code>/dashboard/people/disassociated</code>) y
@@ -162,11 +164,19 @@
   </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">5</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">10</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">&#128203; Manuales <span class="tab-count">0</span></button>
   </div>
   <hr class="tab-divider">
   <div id="tab-auto" class="tab-panel active"><div class="content">
+
+<div class="env-tab-group">
+  <div class="env-tab-nav">
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">5 &#10003;</span></button>
+    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">5 &#10003;</span></button>
+  </div>
+
+  <div id="env-uat" class="env-tab-panel active"><div class="content">
 
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
@@ -263,6 +273,89 @@
 
     </tbody>
   </table>
+</div>
+
+  </div></div>
+
+  <div id="env-prod" class="env-tab-panel"><div class="content">
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6026" target="_blank" onclick="event.stopPropagation()">REBU-6026</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1072" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en QAUTO-1072 (E2E-INT-070)">QAUTO-1072</a>
+      <span class="hu-title">El &aacute;rbol A&rarr;B&rarr;C: la baja de C congela su cargo y su jefe, y libera la plaza</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">5 / 5 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">
+    Los mismos cinco casos de UAT, corridos contra el <strong>tenant real</strong> (co.21, <code>test.rebuhr.com</code>).
+    <br><br>
+    <strong>El despliegue se verific&oacute; por evidencia antes de correr</strong>, no por confianza: 4 de los 50 inactivos
+    le&iacute;dos en co.21 ya ten&iacute;an cargo o jefe congelado. Como el AC9 dice que <em>no hay backfill</em>, un inactivo
+    con dato congelado s&oacute;lo puede venir de una Baja posterior al deploy.
+    <br><br>
+    <strong>El &aacute;rbol de esta corrida:</strong>
+    <code>QA-6026 Jefe de construcci&oacute;n</code> (A = Florencia Manuel Parra Valenzuela) &rarr;
+    <code>QA-6026 Jefe alba&ntilde;il</code> (B = V&iacute;ctor Teresa Pab&oacute;n Le&oacute;n) &rarr;
+    <code>QA-6026 Alba&ntilde;il</code> (C = Iv&aacute;n Virginia Esquibel S&aacute;enz, <code>T001175</code>). Se da de baja a <strong>C</strong>.
+    <br><br>
+    &#9888;&#65039; <strong>Residuo permanente:</strong> la corrida dej&oacute; 3 colaboradores, 3 cargos y una planilla en
+    co.21. <strong>C queda Inactivo para siempre</strong>: un desvinculado no se puede borrar (REBU-5714).
+  </div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-189</td><td><div class="test-name">con la Baja iniciada pero NO finalizada, la plaza sigue ocupada y no hay congelado</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@colaboradores</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1072" target="_blank" rel="noopener">QAUTO-1072</a> &middot; caso <code>TC-COL-189</code> &middot; <em>E2E-INT-070</em></td></tr>
+<tr><th>Precondiciones</th><td>&Aacute;rbol A&rarr;B&rarr;C reci&eacute;n creado en co.21, los tres Activos.</td></tr>
+<tr><th>Regla evaluada</th><td><strong>La Baja son dos pasos y s&oacute;lo el segundo congela.</strong> Antes de finalizar, nada cambi&oacute;.</td></tr>
+<tr><th>Resultado obtenido</th><td>Plaza ocupada por C y ausente del listado de Inactivos &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-190</td><td><div class="test-name">la fila de C en Inactivos muestra a B como jefe congelado (UI)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@colaboradores</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1072" target="_blank" rel="noopener">QAUTO-1072</a> &middot; caso <code>TC-COL-190</code> &middot; <em>E2E-INT-070</em></td></tr>
+<tr><th>Precondiciones</th><td>Baja de C finalizada (liquidaci&oacute;n <code>200</code>), C Inactivo.</td></tr>
+<tr><th>Regla evaluada</th><td>Un inactivo resuelve cargo y jefe desde el <strong>dato congelado de su &uacute;ltima Baja</strong>.</td></tr>
+<tr><th>Resultado obtenido</th><td><code>&ldquo;V&iacute;ctor Teresa Pab&oacute;n Le&oacute;n&rdquo;</code> &#9989; &mdash; los cuatro componentes, en orden natural.</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Inactivos (76 en co.21): la fila de C, Iv&aacute;n Virginia Esquibel S&aacute;enz</div><img src="assets/v16.8.0/prod/TC-COL-190/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; Columna &ldquo;Supervisor&rdquo; a la vista: C conserva a su jefe B</div><img src="assets/v16.8.0/prod/TC-COL-190/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div><div style="font-size:10px;color:#5a6b63;margin-top:6px;line-height:1.6">Dos capturas porque la tabla no entra en el ancho de pantalla: al desplazarla para mostrar &ldquo;Supervisor&rdquo; se pierden Apellidos y Nombres.</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-191</td><td><div class="test-name">el cargo y el jefe congelados, por API y en la ficha del inactivo (UI)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@colaboradores</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1072" target="_blank" rel="noopener">QAUTO-1072</a> &middot; caso <code>TC-COL-191</code> &middot; <em>E2E-INT-070</em></td></tr>
+<tr><th>Regla evaluada</th><td>El dato congelado lo resuelve el <strong>backend</strong>, no la pantalla: el mismo par llega por <code>former-list</code> y por la ficha.</td></tr>
+<tr><th>Resultado obtenido</th><td><code>jobTitle = &ldquo;QA-6026 Alba&ntilde;il 1789612045042&rdquo;</code> &middot; <code>supervisor = &ldquo;V&iacute;ctor Teresa Pab&oacute;n Le&oacute;n&rdquo;</code> &#9989;.</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Ficha del inactivo: Jefe y Cargo congelados, en Datos de Contrataci&oacute;n</div><img src="assets/v16.8.0/prod/TC-COL-191/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div><div style="font-size:10px;color:#5a6b63;margin-top:6px;line-height:1.6">Es la <strong>&uacute;nica pantalla que muestra los dos campos juntos</strong>: la tabla de Inactivos no ofrece columna &ldquo;Cargo&rdquo;. Trae adem&aacute;s el badge <em>Inactivo</em> y el c&oacute;digo <code>T001175</code>.</div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-192</td><td><div class="test-name">el cargo de C queda Vacante y sin ocupante (UI + API)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@colaboradores</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1072" target="_blank" rel="noopener">QAUTO-1072</a> &middot; caso <code>TC-COL-192</code> &middot; <em>E2E-INT-070</em></td></tr>
+<tr><th>Regla evaluada</th><td><strong>El dato congelado no ejerce nada</strong> (AC4): no ocupa la plaza ni saca el cargo del cat&aacute;logo.</td></tr>
+<tr><th>Resultado obtenido</th><td>Cargo <code>366</code> Vacante y sin ocupante, presente en la tabla &#9989;.</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Cargos: el cargo de C queda Vacante, <em>Mostrando 1 de 1 registro</em></div><img src="assets/v16.8.0/prod/TC-COL-192/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-COL-193</td><td><div class="test-name">el organigrama muestra el cargo de C como Vacante (UI)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@colaboradores</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1072" target="_blank" rel="noopener">QAUTO-1072</a> &middot; caso <code>TC-COL-193</code> &middot; <em>E2E-INT-070</em></td></tr>
+<tr><th>Regla evaluada</th><td>El inactivo <strong>no aparece en el organigrama</strong>: su nodo queda como plaza libre.</td></tr>
+<tr><th>Resultado obtenido</th><td><code>&ldquo;Vacante QA-6026 Alba&ntilde;il 1789612045042 &middot; 366&rdquo;</code> &#9989;.</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Organigrama: el cargo de C aparece como Vacante</div><img src="assets/v16.8.0/prod/TC-COL-193/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+    </tbody>
+  </table>
+</div>
+
+  </div></div>
 </div>
 
   </div></div>
