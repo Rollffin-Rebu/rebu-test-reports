@@ -91,7 +91,7 @@
 <button class="mobile-fab" onclick="openMobileSidebar()">&#128203;</button>
 
 <div class="main-wrapper" id="main-wrapper">
-<!-- RELEASE-START: v16.9.0 | 2026-09-17 | Pass: 9 | Fail: 0 | Skip: 0 | Branch: test/6080-incidencias-conceptos-planilla | Env: UAT co.2 -->
+<!-- RELEASE-START: v16.9.0 | 2026-09-17 | Pass: 18 | Fail: 0 | Skip: 0 | Branch: test/6080-incidencias-conceptos-planilla | Env: UAT co.2 (9) + Produccion co.21 (9) -->
 
 <header class="hero" id="release-v16-9-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
@@ -101,15 +101,15 @@
     <span class="sep">&middot;</span>
     <span>&#127807; <strong>test/6080-incidencias-conceptos-planilla</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#127760; <strong>UAT co.2</strong></span>
+    <span>&#127760; <strong>UAT co.2 + Producci&oacute;n co.21</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#128279; <strong>app-rebu-portal-03-uat.azurewebsites.net</strong></span>
+    <span>&#128279; <strong>app-rebu-portal-03-uat.azurewebsites.net &middot; test.rebuhr.com</strong></span>
   </div>
 </header>
 
 <div class="bandeja">
   <div class="cards">
-    <div class="card pass"><div class="card-value">9</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">18</div><div class="card-label">Pasaron <span style="font-size:10px;opacity:.75">(9 en UAT co.2 + 9 en producci&oacute;n co.21)</span></div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
     <div class="card total"><div class="card-value">6 <span style="font-size:14px;opacity:.6">/ 17</span></div><div class="card-label">Flujos automatizados <span style="font-size:10px;opacity:.75">(9 casos &middot; 5 pendientes + 6 exploratorios)</span></div></div>
     <div class="card time"><div class="card-value">~6 m</div><div class="card-label">Duraci&oacute;n</div></div>
@@ -144,6 +144,18 @@
       los casos llaman a una guarda dura antes de asertar: si el v&iacute;nculo no existe, fallan con
       &ldquo;ambiente no listo&rdquo; en vez de reportar verde.
       <br><br>
+      <strong>&#127981; Los 6 flujos se corrieron tambi&eacute;n en producci&oacute;n co.21</strong> &mdash; us&aacute;
+      el switcher de abajo. Un <strong>censo de solo lectura</strong> previo detect&oacute; que ni
+      &ldquo;Descuento Horas&rdquo; ni &ldquo;Permiso Mundialista&rdquo; existen en ese tenant, as&iacute; que la
+      corrida us&oacute; <strong>&ldquo;Prestamo Cuscatl&aacute;n&rdquo; (37)</strong>; sin ese censo los specs
+      habr&iacute;an fallado en la precondici&oacute;n y el rojo se habr&iacute;a le&iacute;do como defecto.
+      <strong>El backend de REBU-6080 tambi&eacute;n est&aacute; desplegado en producci&oacute;n.</strong>
+      <br>
+      &#9888;&#65039; <strong>La corrida dej&oacute; datos reales en co.21</strong>, con esa consecuencia aceptada de
+      antemano: colaboradores, 6 planillas residuales &mdash; de las cuales <strong>759 y 760 quedan
+      finalizadas</strong> &mdash; e incidencias. En producci&oacute;n el teardown es m&aacute;s limitado que en UAT:
+      una planilla <em>finalizada</em> devuelve <strong>403</strong> tambi&eacute;n al borrar la corrida.
+      <br><br>
       <strong>&#128308; Tres rojos de esta corrida NO eran defectos, y los tres se ve&iacute;an igual que uno.</strong>
       Quedan documentados en el c&oacute;digo porque cualquiera vuelve a pisarlos:
       <br>
@@ -166,11 +178,19 @@
   </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">9</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">18</span></button>
     <button class="tab-btn" onclick="switchTab('manual', this)">&#128203; Manuales <span class="tab-count">0</span></button>
   </div>
   <hr class="tab-divider">
   <div id="tab-auto" class="tab-panel active"><div class="content">
+<div class="env-tab-group">
+  <div class="env-tab-nav">
+    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">9 &#10003;</span></button>
+    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">9 &#10003;</span></button>
+  </div>
+
+  <div id="env-uat" class="env-tab-panel active"><div class="content">
+
 
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
@@ -363,6 +383,174 @@
     </tbody>
   </table>
 </div>
+
+  </div></div>
+
+  <div id="env-prod" class="env-tab-panel"><div class="content">
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6080" target="_blank" onclick="event.stopPropagation()">REBU-6080</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en REBU-6151">REBU-6151</a>
+      <span class="hu-title">El v&iacute;nculo <code>IncidentId</code> en el tenant real</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">2 / 2 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">Los mismos dos casos de UAT, sobre <strong>datos reales de co.21</strong>. El valor de correrlos
+  ac&aacute; no es repetir el or&aacute;culo sino confirmar que <strong>el backend de REBU-6080 tambi&eacute;n
+  est&aacute; desplegado en producci&oacute;n</strong>: la guarda dura exige que <code>incidentId</code> llegue
+  poblado y coincida con las incidencias que el propio spec acaba de enviar. Si el deploy no hubiera
+  llegado a co.21, estos casos fallar&iacute;an con &ldquo;ambiente no listo&rdquo; en vez de reportar verde.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1028</td><td><div class="test-name">con dos incidencias id&eacute;nticas, quitar una deja en pie exactamente la otra</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener">REBU-6151</a> &middot; caso <code>TC-PLA-1028</code> &middot; <em>E2E-INT-073</em></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; concepto <strong>&ldquo;Prestamo Cuscatl&aacute;n&rdquo; (id 37)</strong>, que aterriza en el grupo
+    <code>group_8</code>. Incidencias <code>81b7374b-f09c-48dc-94e6-d74468482e25</code> (A) y
+    <code>f0933ad3-4fbf-4aa3-ab8c-a138296393f4</code> (B), $40 c/u; l&iacute;neas <code>payrollConceptId</code>
+    <strong>50303</strong> y <strong>50304</strong>.</td></tr>
+<tr><th>Regla evaluada</th><td>AC1 y AC2 &mdash; quitar una incidencia elimina <em>&uacute;nicamente</em> su l&iacute;nea, y la que sobrevive es <strong>la correcta</strong>. Las dos llevan el mismo concepto y el mismo monto para que un borrado por adivinanza no pueda desempatar.</td></tr>
+<tr><th>Resultado</th><td>antes <code>2 l&iacute;neas de $40</code> &rarr; despu&eacute;s <code>1</code>, con <code>incidentId f0933ad3&hellip;</code> &#9989; &mdash; sobrevivi&oacute; B, la correcta. <code>DELETE /payroll-entry/{id}/incidents</code> respondi&oacute; <strong>200</strong>, igual que en UAT.</td></tr>
+<tr><th>Nota de la corrida</th><td>&#128994; <strong>El v&iacute;nculo existe en producci&oacute;n:</strong> la guarda ley&oacute; 3 l&iacute;neas, 2 con <code>incidentId</code>, y las dos coincidieron con las incidencias del spec.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1029</td><td><div class="test-name">quitar una ausencia de la planilla recalcula los d&iacute;as trabajados</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener">REBU-6151</a> &middot; caso <code>TC-PLA-1029</code> &middot; <em>E2E-REG-072</em></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; colaborador <strong>Daniela Caldera</strong> &middot; planilla <strong>760</strong> &middot;
+    ausencia <code>00b14ef8-c711-4f69-9c86-fe5188ee86d3</code>, 3 d&iacute;as (2026-09-07 &rarr; 09-09).</td></tr>
+<tr><th>Regla evaluada</th><td>Protege el fix de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-4033" target="_blank" rel="noopener">REBU-4033</a>: el borrado de incidencias de una corrida es una sola ruta compartida entre Concepto y Ausencia, y del lado ausencias el da&ntilde;o cambia los <strong>d&iacute;as trabajados</strong>.</td></tr>
+<tr><th>Resultado</th><td>incidencias asociadas <code>1 &rarr; 0</code> &middot; d&iacute;as pagados <strong>15</strong> (quincena completa) &middot; salario del per&iacute;odo <strong>$500.00</strong> &#9989;.</td></tr>
+<tr><th>Nota de la corrida</th><td>&#128312; <strong>El tipo de ausencia se resolvi&oacute; distinto que en UAT.</strong> En co.21 <em>&ldquo;Falta injustificada&rdquo;</em> (id 5) <strong>s&iacute; existe</strong> &mdash; es en UAT co.2 donde desapareci&oacute; y el id 5 responde 404. El caso resuelve el tipo por su capacidad (<code>deductsWorkedDays</code> + <code>Active</code>), no por id, y por eso funcion&oacute; en los dos tenants sin tocar el spec.<br><br>&#9888;&#65039; El teardown de la <strong>corrida</strong> respondi&oacute; <strong>403</strong>: una planilla finalizada no se puede borrar en producci&oacute;n (en UAT daba 204).</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6081" target="_blank" onclick="event.stopPropagation()">REBU-6081</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6152" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en REBU-6152">REBU-6152</a>
+      <span class="hu-title">El cierre del per&iacute;odo, ejecutado sobre el tenant real</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">1 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">Este caso <strong>cierra un per&iacute;odo de verdad</strong> en co.21: cuatro <code>changeStep</code> que
+  dejan una planilla finalizada en el tenant. Se corri&oacute; con esa consecuencia aceptada de antemano,
+  porque el AC7 s&oacute;lo se puede evaluar despu&eacute;s del cierre y no hay forma de simularlo.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1030</td><td><div class="test-name">al cerrar, la que sigui&oacute; en proceso pasa a Procesada y la devuelta a Pendiente no</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6152" target="_blank" rel="noopener">REBU-6152</a> &middot; caso <code>TC-PLA-1030</code> &middot; <em>E2E-INT-076</em></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; colaborador <strong>Manuela Delapaz</strong> &middot; planilla <strong>759</strong> &middot;
+    incidencias <code>ec07c28a-3969-4c37-8fd2-650172501009</code> (X) y
+    <code>b2f87766-99d5-4dab-9b72-1bbd90e8a8fd</code> (Y), $40 c/u del concepto <em>Prestamo Cuscatl&aacute;n</em>.</td></tr>
+<tr><th>Regla evaluada</th><td>AC7 &mdash; al cerrar, s&oacute;lo cambian de estado las incidencias que <strong>siguen en proceso</strong>. Las devueltas a Pendiente no se marcan Procesadas, que es lo que evita registrar como pagado algo que nunca se pag&oacute;.</td></tr>
+<tr><th>Resultado</th><td>X <code>InProcess &rarr; Processed</code> &middot; Y <code>InProcess &rarr; Pending &rarr; Pending</code> &#9989;. Los cuatro <code>changeStep</code> respondieron 204.</td></tr>
+<tr><th>Nota de la corrida</th><td>&#9888;&#65039; <strong>Residuo permanente:</strong> la planilla <strong>759</strong> queda <em>finalizada</em> en co.21. El teardown de la corrida dio <strong>403</strong> &mdash; una planilla cerrada no se elimina.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6082" target="_blank" onclick="event.stopPropagation()">REBU-6082</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en REBU-6153">REBU-6153</a>
+      <span class="hu-title">La carga masiva contra el cat&aacute;logo real de producci&oacute;n</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">6 / 6 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">Los seis casos de carga masiva sobre co.21. Lo que cambia respecto de UAT no es el or&aacute;culo sino
+  el <strong>cat&aacute;logo</strong>: ni <em>&ldquo;Descuento Horas&rdquo;</em> ni <em>&ldquo;Permiso
+  Mundialista&rdquo;</em> existen en producci&oacute;n, as&iacute; que todo el bloque corri&oacute; con
+  <strong>&ldquo;Prestamo Cuscatl&aacute;n&rdquo;</strong>. Un censo de solo lectura previo lo detect&oacute;
+  <em>antes</em> de escribir nada &mdash; sin &eacute;l, los tres specs habr&iacute;an fallado en la
+  precondici&oacute;n y el rojo se habr&iacute;a le&iacute;do como defecto.</div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <tbody>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1031</td><td><div class="test-name">Reemplazar total: la l&iacute;nea de incidencia sobrevive y la fila del archivo se suma</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1031</code> &middot; <em>E2E-INT-075</em></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; planilla <strong>761</strong> &middot; concepto <strong>Prestamo Cuscatl&aacute;n (37)</strong>
+    &middot; <strong>A = Julio Due&ntilde;as</strong> (incidencia <code>c8a59d7a-6376-43d9-8086-3547f507c1bf</code>, $60)
+    &middot; <strong>B = Mar&iacute;a Cerv&aacute;ntez</strong> (eventual manual de $20).</td></tr>
+<tr><th>Regla evaluada</th><td>AC1, AC3, AC4 y AC5 en una corrida. El archivo trae una sola fila, del <strong>mismo</strong> colaborador y el <strong>mismo</strong> concepto que ya tiene por incidencia &mdash; es lo que hace medible el AC4.</td></tr>
+<tr><th>Resultado</th><td>A &rarr; <code>["$60 (incidencia)", "$10" (archivo)]</code> &middot; B &rarr; <code>0 l&iacute;neas</code> &middot; la incidencia sigue <code>En proceso</code> &#9989;.</td></tr>
+<tr><th>Nota de la corrida</th><td>La corrida <strong>761</strong> s&iacute; se pudo borrar (204); queda el cascar&oacute;n de la planilla <strong>709</strong> (403).</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1032</td><td><div class="test-name">Agregar: el c&iacute;clico queda intacto y se suma una l&iacute;nea eventual</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1032</code> &middot; <em>E2E-REG-070a</em></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; una planilla dedicada por modo; la &uacute;ltima de las tres fue la <strong>712</strong> (corrida <strong>764</strong>).</td></tr>
+<tr><th>Regla evaluada</th><td>AC2 &mdash; el filtro nuevo except&uacute;a las l&iacute;neas de incidencia con <strong>el mismo c&oacute;digo</strong> que except&uacute;a los c&iacute;clicos: o protege a los dos, o rompe uno.</td></tr>
+<tr><th>Resultado</th><td>Los tres modos en verde: <strong>5 passed</strong> (3 casos + 2 de setup) &#9989;.</td></tr>
+<tr><th>Nota de la corrida</th><td>&#128312; <strong>Ajuste necesario para correr en co.21:</strong> <code>sembrarCiclico</code> usaba el id fijo <code>20</code> (de co.2) mientras el manifiesto resuelve el concepto c&iacute;clico <strong>por nombre</strong> desde la plantilla real. En co.21 los descuentos van del <strong>29 al 42</strong>, as&iacute; que el c&iacute;clico se habr&iacute;a sembrado sobre un concepto distinto del que toca el archivo &mdash; midiendo dos cosas que no se cruzan. Ahora resuelve por nombre y el caso es portable entre tenants.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1033</td><td><div class="test-name">Reemplazar parcial: el c&iacute;clico no se modifica en monto</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1033</code> &middot; <em>E2E-REG-070b</em></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; planilla dedicada propia dentro de la misma corrida de tres.</td></tr>
+<tr><th>Regla evaluada</th><td>AC2 &middot; protege TC-PLA-570 &mdash; la fila del archivo no sobrescribe el c&iacute;clico: entra como l&iacute;nea aparte.</td></tr>
+<tr><th>Resultado</th><td>En verde dentro de las <strong>5 passed</strong> del bloque &#9989;.</td></tr>
+<tr><th>Nota de la corrida</th><td>&#9888;&#65039; Los identificadores por modo (planilla e ids de cada uno de los tres escenarios) <strong>no quedaron capturados</strong> en el log de esta corrida &mdash; s&oacute;lo el agregado y la &uacute;ltima planilla. Se deja dicho en vez de reconstruirlo.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1034</td><td><div class="test-name">Reemplazar total: el c&iacute;clico no se elimina</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1034</code> &middot; <em>E2E-REG-070c</em></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; el archivo no incluye al colaborador del c&iacute;clico, que es la condici&oacute;n donde un filtro mal escrito se lo llevar&iacute;a.</td></tr>
+<tr><th>Regla evaluada</th><td>AC2 &middot; protege TC-PLA-571 &mdash; como su colaborador no viene en el archivo, <strong>cualquier</strong> l&iacute;nea que le quede de ese concepto es el c&iacute;clico.</td></tr>
+<tr><th>Resultado</th><td>En verde dentro de las <strong>5 passed</strong> del bloque &#9989;.</td></tr>
+<tr><th>Nota de la corrida</th><td>El or&aacute;culo es la <strong>presencia</strong> de la l&iacute;nea, no su monto: un c&iacute;clico <code>Distributed</code> aterriza distribuido, no por su importe mensual.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1035</td><td><div class="test-name">Reemplazar total borra los eventuales manuales ausentes del archivo</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1035</code> &middot; <em>E2E-REG-071a</em></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; &uacute;ltima planilla de la corrida: <strong>714</strong> (corrida <strong>766</strong>).</td></tr>
+<tr><th>Regla evaluada</th><td>AC3 &mdash; el caso <strong>m&aacute;s exigente del filtro</strong>: la incidencia est&aacute; en el &uacute;nico colaborador que <em>s&iacute;</em> viene en el archivo, as&iacute; que hay que distinguir, dentro del mismo colaborador, la l&iacute;nea de incidencia de la manual.</td></tr>
+<tr><th>Resultado</th><td>Los dos modos en verde: <strong>4 passed</strong> (2 casos + 2 de setup) &#9989;.</td></tr>
+<tr><th>Nota de la corrida</th><td>&#9888;&#65039; Igual que en el bloque anterior, los identificadores por caso no quedaron en el log capturado.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1036</td><td><div class="test-name">Reemplazar parcial reemplaza s&oacute;lo con match exacto y respeta el resto</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1036</code> &middot; <em>E2E-REG-071b</em></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; misma corrida que el caso anterior.</td></tr>
+<tr><th>Regla evaluada</th><td>AC3 &middot; protege TC-PLA-564/565 &mdash; el parcial reemplaza s&oacute;lo con coincidencia exacta de identificaci&oacute;n + concepto; sin match, no modifica nada.</td></tr>
+<tr><th>Resultado</th><td>En verde dentro de las <strong>4 passed</strong> del bloque &#9989;.</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+    </tbody>
+  </table>
+</div>
+  </div></div>
+</div>
   </div></div>
 
   <div id="tab-manual" class="tab-panel"><div class="content">
@@ -467,7 +655,7 @@
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> &middot; Generado el 17 sep 2026 &middot; Rama <strong>test/6080-incidencias-conceptos-planilla</strong> &middot; Entorno <strong>UAT co.2</strong>
+  <strong>Rebu Automation Suite</strong> &middot; Generado el 17 sep 2026 &middot; Rama <strong>test/6080-incidencias-conceptos-planilla</strong> &middot; Entorno <strong>UAT co.2 + Producci&oacute;n co.21</strong>
 </footer>
 </div>
 
