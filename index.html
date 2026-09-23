@@ -1,4 +1,4 @@
-<title>Rebu &mdash; Reporte E2E &middot; Release v16.9.0</title>
+<title>Rebu &mdash; Reporte E2E &middot; Release v17.0.0</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="report.css">
@@ -18,13 +18,18 @@
   </div>
   <div class="sidebar-body">
     <div class="nav-group-label">Actual</div>
-    <a class="nav-item current" href="index.html" data-tip="v16.9.0">
+    <a class="nav-item current" href="index.html" data-tip="v17.0.0">
       <div class="nav-item-icon">&#128640;</div>
-      <div class="nav-item-body"><div class="nav-version">v16.9.0</div><div class="nav-date">17 sep 2026 &middot; UAT co.2</div></div>
+      <div class="nav-item-body"><div class="nav-version">v17.0.0</div><div class="nav-date">23 sep 2026 &middot; UAT co.2</div></div>
       <span class="nav-badge">LATEST</span>
     </a>
     <hr class="nav-divider">
     <div class="nav-group-label">Anteriores</div>
+    <a class="nav-item" href="releases/v16.9.0.html" data-tip="v16.9.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.9.0</div><div class="nav-date">17 sep 2026</div></div>
+      <span class="nav-minibadge">18 &#10003;</span>
+    </a>
     <a class="nav-item" href="releases/v16.8.0.html" data-tip="v16.8.0">
       <span class="nav-icon">&#128230;</span>
       <div class="nav-item-body"><div class="nav-version">v16.8.0</div><div class="nav-date">16 sep 2026</div></div>
@@ -91,483 +96,212 @@
 <button class="mobile-fab" onclick="openMobileSidebar()">&#128203;</button>
 
 <div class="main-wrapper" id="main-wrapper">
-<!-- RELEASE-START: v16.9.0 | 2026-09-17 | Pass: 18 | Fail: 0 | Skip: 0 | Branch: test/6080-incidencias-conceptos-planilla | Env: UAT co.2 (9) + Produccion co.21 (9) -->
+<!-- RELEASE-START: v17.0.0 | 2026-09-23 | Pass: 8 | Fail: 0 | Skip: 0 | Branch: test/6026-cargo-jefe-congelado | Env: UAT co.2 -->
 
-<header class="hero" id="release-v16-9-0">
+<header class="hero" id="release-v17-0-0">
   <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E</div>
-  <h1 class="hero-title">Release <span>v16.9.0</span></h1>
+  <h1 class="hero-title">Release <span>v17.0.0</span></h1>
   <div class="hero-meta">
-    <span>&#128197; <strong>17 sep 2026</strong></span>
+    <span>&#128197; <strong>23 sep 2026</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#127807; <strong>test/6080-incidencias-conceptos-planilla</strong></span>
+    <span>&#127807; <strong>test/6026-cargo-jefe-congelado</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#127760; <strong>UAT co.2 + Producci&oacute;n co.21</strong></span>
+    <span>&#127760; <strong>UAT co.2</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#128279; <strong>app-rebu-portal-03-uat.azurewebsites.net &middot; test.rebuhr.com</strong></span>
+    <span>&#128279; <strong>app-rebu-portal-03-uat.azurewebsites.net</strong></span>
   </div>
 </header>
 
 <div class="bandeja">
   <div class="cards">
-    <div class="card pass"><div class="card-value">18</div><div class="card-label">Pasaron <span style="font-size:10px;opacity:.75">(9 en UAT co.2 + 9 en producci&oacute;n co.21)</span></div></div>
+    <div class="card pass"><div class="card-value">8</div><div class="card-label">Pasaron <span style="font-size:10px;opacity:.75">(flujos E2E en UAT co.2)</span></div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">6 <span style="font-size:14px;opacity:.6">/ 17</span></div><div class="card-label">Flujos automatizados <span style="font-size:10px;opacity:.75">(9 casos &middot; 5 pendientes + 6 exploratorios)</span></div></div>
-    <div class="card time"><div class="card-value">~6 m</div><div class="card-label">Duraci&oacute;n</div></div>
+    <div class="card total"><div class="card-value">8 <span style="font-size:14px;opacity:.6">/ 9</span></div><div class="card-label">Flujos automatizados <span style="font-size:10px;opacity:.75">(el 9.&ordm;, REG-073, lo cubre la nocturna)</span></div></div>
+    <div class="card time"><div class="card-value">~6 m</div><div class="card-label">Duraci&oacute;n <span style="font-size:10px;opacity:.75">(corrida completa con evidencia)</span></div></div>
   </div>
 
   <div class="content" style="padding-top:4px">
     <div class="callout">
-      <strong>&Eacute;pica <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-3829" target="_blank" rel="noopener">REBU-3829</a> &mdash; Incidencias en Planilla.</strong>
-      El release introduce el v&iacute;nculo <code>PayrollConcept.IncidentId</code> entre una incidencia y la
-      l&iacute;nea de planilla que origina, y lo usa en tres lugares:
-      <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6080" target="_blank" rel="noopener">REBU-6080</a> (borrado selectivo),
-      <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6081" target="_blank" rel="noopener">REBU-6081</a> (bloqueo de edici&oacute;n y reversi&oacute;n a Pendiente) y
-      <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6082" target="_blank" rel="noopener">REBU-6082</a> (protecci&oacute;n en la carga masiva). Suma
-      <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6072" target="_blank" rel="noopener">REBU-6072</a> &mdash; consultar las incidencias de una planilla cerrada desde el
-      Historial. An&aacute;lisis de flujos en <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6149" target="_blank" rel="noopener">REBU-6149</a>; los casos por HU en
-      <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener">REBU-6151</a>, <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6152" target="_blank" rel="noopener">REBU-6152</a> y <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a>.
+      <strong>&Eacute;pica <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5737" target="_blank" rel="noopener">REBU-5737</a> &mdash; REPROCESO DE PLANILLAS COMPLETADAS.</strong>
+      19 HUs (5739&ndash;5760) que permiten reabrir una planilla cerrada como una <em>copia de trabajo</em>, corregirla y confirmarla sobre la original.
+      El an&aacute;lisis E2E est&aacute; en <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6170" target="_blank" rel="noopener">REBU-6170</a> y la automatizaci&oacute;n cuelga del Epic
+      <a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1084" target="_blank" rel="noopener">QAUTO-1084</a> (infra <a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1085" target="_blank" rel="noopener">QAUTO-1085</a>: <code>PayrollReprocessAPIService</code>, 11 rutas del BFF).
+      Este release cierra los <strong>8 flujos automatizables</strong>: cinco de integraci&oacute;n (provisiones, renta anual, incidencias, recorrido UI completo) y tres de regresi&oacute;n (c&iacute;clicos, cupo por tipo, Reporte Mensual).
+      El noveno, <code>E2E-REG-073</code> (<a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1091" target="_blank" rel="noopener">QAUTO-1091</a>), no tiene spec propio: Cubierto por la corrida nocturna (<code>nightly-planillas</code>: descuentos de ley, aportes patronales y provisiones). Sin spec propio, a decisión de QA.
       <br><br>
-      <strong>&#9888;&#65039; Este reporte cubre 6 de los 17 flujos del an&aacute;lisis</strong> (9 casos).
-      Los 6 exploratorios no se automatizan por definici&oacute;n. De los 5 restantes:
-      <strong>E2E-INT-074</strong> y <strong>E2E-REG-069</strong> dependen del <em>modal de conceptos</em> de
-      la planilla, que <strong>no parece estar desplegado en UAT</strong> &mdash; el bot&oacute;n de la fila abre
-      &ldquo;Tipo de Descuentos&rdquo;, un modal de <em>alta</em> que nunca lista las l&iacute;neas existentes, y
-      REBU-6081 figura en <em>Ready for Deployment</em>. <strong>E2E-INT-078</strong> necesita un Page Object
-      del Historial de Planillas, que no existe en la suite. <strong>E2E-REG-073</strong> (boleta y archivo
-      bancario) queda pendiente.
+      <strong>C&oacute;mo leer la evidencia.</strong> Los flujos de API muestran el <em>par request/response</em> real con el BE (un panel por paso, con el esperado como nota); el recorrido <code>E2E-INT-079</code> muestra capturas del producto (toggle, &#8942;, modal, badge, &iacute;cono, Auditor&iacute;a).
+      En todos, <strong>confirmar</strong> se verifica avanzando la copia hasta <code>CONFIRMATION</code> y comprobando que su <code>/steps</code> devuelve <strong>404</strong> &mdash; la lecci&oacute;n de REBU-6166.
       <br><br>
-      <strong>El backend de REBU-6080 S&Iacute; est&aacute; desplegado en UAT</strong>, confirmado por evidencia:
-      <code>incidentId</code> llega poblado en las l&iacute;neas. Importa decirlo porque el riesgo declarado por
-      el propio dev era el opuesto &mdash; <em>&ldquo;hasta que esos PR est&eacute;n desplegados,
-      <code>incidentId</code> llega siempre null y el portal se comporta exactamente igual que hoy&rdquo;</em>,
-      lo que har&iacute;a que un spec razonable <strong>pasara en verde sin probar nada</strong>. Por eso todos
-      los casos llaman a una guarda dura antes de asertar: si el v&iacute;nculo no existe, fallan con
-      &ldquo;ambiente no listo&rdquo; en vez de reportar verde.
-      <br><br>
-      <strong>&#127981; Los 6 flujos se corrieron tambi&eacute;n en producci&oacute;n co.21</strong> &mdash; us&aacute;
-      el switcher de abajo. Un <strong>censo de solo lectura</strong> previo detect&oacute; que ni
-      &ldquo;Descuento Horas&rdquo; ni &ldquo;Permiso Mundialista&rdquo; existen en ese tenant, as&iacute; que la
-      corrida us&oacute; <strong>&ldquo;Prestamo Cuscatl&aacute;n&rdquo; (37)</strong>; sin ese censo los specs
-      habr&iacute;an fallado en la precondici&oacute;n y el rojo se habr&iacute;a le&iacute;do como defecto.
-      <strong>El backend de REBU-6080 tambi&eacute;n est&aacute; desplegado en producci&oacute;n.</strong>
-      <br>
-      &#9888;&#65039; <strong>La corrida dej&oacute; datos reales en co.21</strong>, con esa consecuencia aceptada de
-      antemano: colaboradores, 6 planillas residuales &mdash; de las cuales <strong>759 y 760 quedan
-      finalizadas</strong> &mdash; e incidencias. En producci&oacute;n el teardown es m&aacute;s limitado que en UAT:
-      una planilla <em>finalizada</em> devuelve <strong>403</strong> tambi&eacute;n al borrar la corrida.
-      <br><br>
-      <strong>&#128308; Tres rojos de esta corrida NO eran defectos, y los tres se ve&iacute;an igual que uno.</strong>
-      Quedan documentados en el c&oacute;digo porque cualquiera vuelve a pisarlos:
-      <br>
-      &#9679; <strong>Un <code>process</code> con 204 no garantiza que las filas del <code>.xlsx</code> se
-      hayan aplicado.</strong> Si el concepto no es columna de descuento de la planilla, el importador
-      <strong>ignora las filas en silencio</strong> y <code>validate</code> responde <code>success=true</code> igual.
-      <br>
-      &#9679; <strong>El monto de un c&iacute;clico en la planilla no es su monto mensual</strong>: uno de $30
-      <code>Distributed</code> aterriza como <strong>$15</strong> en el per&iacute;odo.
-      <br>
-      &#9679; <strong>El <code>.xlsx</code> y la incidencia apuntaban a colaboradores distintos.</strong> El
-      archivo se arma con los colaboradores de la <em>plantilla descargada</em>, cuyo orden no coincide con el
-      del builder. Produjo un flaky que pas&oacute; dos veces y fall&oacute; tres.
-      <br><br>
-      <strong>Un defecto s&iacute; se report&oacute;:</strong> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6159" target="_blank" rel="noopener">REBU-6159</a> &mdash; las incidencias
-      enviadas a una planilla ya iniciada no se ven en el bot&oacute;n &ldquo;Incidencias&rdquo; de la corrida
-      hasta refrescar el navegador, lo que da la sensaci&oacute;n de que el env&iacute;o fall&oacute;. El backend
-      devuelve el dato al instante; es falta de invalidaci&oacute;n de query en el frontend.
+      <strong>Desv&iacute;os medidos respecto del an&aacute;lisis:</strong> las corridas <code>FinalPay</code> ya no existen (REBU-5791) &rarr; REG-074 liquida desvinculando y completando;
+      la provisi&oacute;n de aguinaldo sigue el art. 198 y no la tabla custom de la empresa; el estado <code>Paid</code>/<code>Deleted</code> no lo expone ninguna superficie &rarr; INT-078 lo prueba con la conducta;
+      con el toggle OFF desaparece tambi&eacute;n la pesta&ntilde;a Auditor&iacute;a (pregunta abierta a producto).
     </div>
   </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">18</span></button>
-    <button class="tab-btn" onclick="switchTab('manual', this)">&#128203; Manuales <span class="tab-count">0</span></button>
+    <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">8</span></button>
+    <button class="tab-btn" onclick="switchTab('manual', this)">&#128203; Manuales <span class="tab-count">1</span></button>
   </div>
   <hr class="tab-divider">
   <div id="tab-auto" class="tab-panel active"><div class="content">
-<div class="env-tab-group">
-  <div class="env-tab-nav">
-    <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">9 &#10003;</span></button>
-    <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">9 &#10003;</span></button>
-  </div>
-
-  <div id="env-uat" class="env-tab-panel active"><div class="content">
-
 
 <div class="hu-section">
   <div class="hu-header" onclick="headerClick(this)">
     <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6080" target="_blank" onclick="event.stopPropagation()">REBU-6080</a>
-      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en REBU-6151">REBU-6151</a>
-      <span class="hu-title">El v&iacute;nculo <code>PayrollConcept.IncidentId</code>: quitar una incidencia borra s&oacute;lo su l&iacute;nea</span>
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5737" target="_blank" onclick="event.stopPropagation()">REBU-5737</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1084" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Epic de automatizaci&oacute;n QAUTO-1084 (un ticket QAUTO por flujo)">QAUTO-1084</a>
+      <span class="hu-title">Reproceso de planillas completadas &mdash; flujos E2E de integraci&oacute;n y regresi&oacute;n</span>
     </div>
-    <div class="hu-header-right"><span class="hu-badge">2 / 2 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+    <div class="hu-header-right"><span class="hu-badge">8 / 8 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
   </div>
 <div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
   <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
-  <div style="font-size:11px;color:#204a6e;line-height:1.7">El problema que la HU cierra, con sus palabras: la l&iacute;nea creada desde una incidencia era
-  indistinguible de una capturada a mano, y <em>&ldquo;las operaciones que necesitan encontrarla la
-  adivinan, borrando l&iacute;neas que no correspond&iacute;an&rdquo;</em>. REBU-6080 agrega la columna
-  <code>IncidentId</code> para que el borrado deje de adivinar.
-  <br><br>
-  <strong>Las dos incidencias del caso llevan el mismo concepto Y el mismo monto, a prop&oacute;sito.</strong>
-  Un borrado por adivinanza resuelve por <em>colaborador + concepto + monto</em>; con montos distintos esa
-  heur&iacute;stica vieja acertar&iacute;a igual y el caso pasar&iacute;a en verde contra el bug que viene a cerrar.
-  Con dos l&iacute;neas id&eacute;nticas de $40 no tiene forma de elegir: o borra las dos, o borra la equivocada.
-  <br><br>
-  El segundo caso es <strong>regresi&oacute;n</strong>: el borrado de incidencias de una corrida es <strong>una sola
-  ruta compartida</strong> con las de tipo Ausencia, y ah&iacute; el da&ntilde;o es peor &mdash; no cambia un descuento,
-  cambia los <strong>d&iacute;as trabajados</strong>.</div>
-</div>
-  <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-    <tbody>
-
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1028</td><td><div class="test-name">con dos incidencias id&eacute;nticas, quitar una deja en pie exactamente la otra</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener">REBU-6151</a> &middot; caso <code>TC-PLA-1028</code> &middot; <em>E2E-INT-073</em></td></tr>
-<tr><th>Precondiciones</th><td>Planilla quincenal regular en UAT co.2 con un colaborador de salario $1,000. Dos incidencias de concepto del <strong>mismo</strong> descuento y el <strong>mismo</strong> monto ($40 c/u), ambas enviadas a planilla.</td></tr>
-<tr><th>Regla evaluada</th><td><strong>AC1 y AC2.</strong> Al quitar una incidencia de la planilla se elimina <em>&uacute;nicamente</em> la l&iacute;nea vinculada a esa incidencia; ning&uacute;n otro ingreso o descuento del colaborador en ese per&iacute;odo se ve afectado. El or&aacute;culo no es &ldquo;queda una l&iacute;nea&rdquo; sino &ldquo;queda <em>la correcta</em>&rdquo;.</td></tr>
-<tr><th>Setup</th><td>1. <code>createPayrollScenario</code> arma colaborador y planilla. 2. Dos <code>POST /incidences/0/concepts</code> con el mismo <code>obligationConceptId</code> y <code>conceptValue: 40</code>. 3. Guarda dura: las dos deben figurar <strong>Pendientes en Preregistradas</strong> antes de enviarlas &mdash; sin eso, un 2xx sobre incidencias que nunca llegaron a la bandeja dejar&iacute;a el caso verde. 4. <code>sendToPayroll([A, B])</code>. 5. Un solo <code>changeStep</code> para abrir la ventana de lectura.</td></tr>
-<tr><th>Resultado esperado</th><td>Antes: 2 l&iacute;neas de $40 en el grupo <code>group_10</code>, cada una con su <code>incidentId</code>. Tras quitar A: <strong>exactamente 1</strong>, y su <code>incidentId</code> debe ser el de <strong>B</strong>.</td></tr>
-<tr><th>Resultado obtenido</th><td>antes <code>$40 &middot; 6f08dcfa&hellip;</code> (A) y <code>$40 &middot; 1f9c5035&hellip;</code> (B) &rarr; despu&eacute;s <code>$40 &middot; 1f9c5035&hellip;</code> &#9989;. Sobrevivi&oacute; la correcta, y ninguna otra l&iacute;nea del colaborador cambi&oacute;.</td></tr>
-<tr><th>Nota de automatizaci&oacute;n</th><td>El caso estuvo bloqueado hasta capturar de la UI el mecanismo real. <strong>No es <code>DELETE /incidences/{id}</code></strong>: eso responde <strong>400</strong> sobre una incidencia ya enviada y s&oacute;lo borra las Pendientes. Es el bot&oacute;n &ldquo;Eliminar registros&rdquo; de <code>/dashboard/payroll/run/{entryId}/incidents</code> &rarr; <code>DELETE /payroll-entry/{entryId}/incidents</code> con <code>{ incidentIds: [&hellip;] }</code>.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1029</td><td><div class="test-name">quitar una ausencia de la planilla recalcula los d&iacute;as trabajados</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener">REBU-6151</a> &middot; caso <code>TC-PLA-1029</code> &middot; <em>E2E-REG-072</em></td></tr>
-<tr><th>Precondiciones</th><td>Planilla quincenal (base fija, 15 d&iacute;as de pago) con un colaborador de $1,000 y una ausencia de <strong>3 d&iacute;as</strong> dentro del per&iacute;odo, enviada a planilla.</td></tr>
-<tr><th>Regla evaluada</th><td>Protege el fix de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-4033" target="_blank" rel="noopener">REBU-4033</a> &mdash; <em>&ldquo;los d&iacute;as trabajados no se recalculan al quitar una incidencia de ausencia&rdquo;</em>. REBU-6080 declara su alcance sobre las incidencias de <strong>Concepto</strong>, pero el borrado usa <strong>la misma ruta</strong> que las de Ausencia. Si el filtro nuevo se escribe de m&aacute;s o de menos, el camino de ausencias queda expuesto.</td></tr>
-<tr><th>Setup</th><td>1. Resolver el tipo de ausencia <strong>por su capacidad</strong>, no por id: <code>deductsWorkedDays === true</code> y <code>status === 'Active'</code>. 2. Crear la ausencia y enviarla. 3. Verificar por <code>GET /payroll-entry/{id}/incidents</code> que qued&oacute; asociada. 4. Quitarla. 5. <strong>Reci&eacute;n ah&iacute;</strong> finalizar la planilla (4 <code>changeStep</code>).</td></tr>
-<tr><th>Resultado esperado</th><td>Incidencias asociadas a la corrida: 1 &rarr; 0. D&iacute;as pagados <strong>15</strong> (quincena completa) y salario del per&iacute;odo <strong>$500.00</strong>.</td></tr>
-<tr><th>Resultado obtenido</th><td>asociadas <code>1 &rarr; 0</code> &middot; d&iacute;as pagados <code>15</code> &middot; salario per&iacute;odo <code>$500.00</code> &#9989;.</td></tr>
-<tr><th>Nota de automatizaci&oacute;n</th><td>El caso <strong>no puede leer &ldquo;antes y despu&eacute;s&rdquo; en la misma planilla</strong>: <code>daysWorked</code> s&oacute;lo existe con la planilla finalizada (REBU-5140 / QAUTO-638) y, una vez finalizada, ya no se puede quitar la incidencia. Por eso el &ldquo;antes&rdquo; se prueba con el listado de incidencias de la corrida &mdash; sin esa guarda, un &ldquo;15 d&iacute;as&rdquo; final podr&iacute;a significar <em>&ldquo;la ausencia nunca lleg&oacute;&rdquo;</em> en vez de <em>&ldquo;se recalcul&oacute; bien&rdquo;</em>.<br><br>&#128308; <strong>Hallazgo colateral:</strong> <code>ABSENCE_TYPE_FALTA_INJUSTIFICADA = 5</code> responde <strong>404</strong> en UAT co.2. El cat&aacute;logo de la empresa hoy s&oacute;lo trae <em>Incapacidad</em> (2, descuenta d&iacute;as) y <em>Vacaci&oacute;n</em> (1, no descuenta). Hay <strong>10 archivos del repo</strong> con esos ids hardcodeados, incluida la carpeta <code>tests/Payroll-Ausencias/</code>: pendiente de verificar.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
-    <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6081" target="_blank" onclick="event.stopPropagation()">REBU-6081</a>
-      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6152" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en REBU-6152">REBU-6152</a>
-      <span class="hu-title">El cierre del per&iacute;odo no marca Procesadas las incidencias devueltas a Pendiente</span>
-    </div>
-    <div class="hu-header-right"><span class="hu-badge">1 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">
+    Que un reproceso <strong>no rompe las costuras</strong> con los m&oacute;dulos aguas abajo: provisiones (INT-076), Datos Fiscales del A&ntilde;o (INT-075), incidencias y c&iacute;clicos (INT-077, INT-078, REG-075),
+    el cupo &ldquo;una abierta por tipo&rdquo; frente a liquidaciones y extraordinarias (REG-074), el Reporte Mensual (REG-076) y las superficies de UI que cuentan la historia (INT-079: toggle, &#8942;, modal, badge, &iacute;cono, Auditor&iacute;a, boleta).
+    Cada flujo arma su propia planilla en UAT co.2 por API, la cierra, reprocesa y verifica <strong>antes, durante y despu&eacute;s</strong> de la ventana.
   </div>
-<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
-  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
-  <div style="font-size:11px;color:#204a6e;line-height:1.7">El &ldquo;para&rdquo; de la HU es textual: <em>&ldquo;poder corregirla y reenviarla, en lugar de que quede
-  registrada como pagada sin haberse pagado&rdquo;</em>. Si el cierre barriera con <strong>todas</strong> las
-  incidencias del per&iacute;odo &mdash;incluidas las que salieron de la planilla&mdash;, una incidencia que nunca
-  se pag&oacute; quedar&iacute;a marcada Procesada, desaparecer&iacute;a de la bandeja de pendientes y nadie la
-  volver&iacute;a a mirar.
-  <br><br>
-  <strong>Las dos incidencias nacen id&eacute;nticas y s&oacute;lo se diferencian en su historia:</strong> a una se
-  la saca de la corrida antes de cerrar. Si el cierre resolviera &ldquo;por per&iacute;odo&rdquo; en vez de
-  &ldquo;por estado&rdquo;, las dos terminar&iacute;an igual &mdash; y el caso lo detecta.</div>
 </div>
   <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
+    <thead><tr><th>ID</th><th>Flujo E2E</th><th>Status</th></tr></thead>
     <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-INT-077</td><td><div class="test-name">Cancelar un reproceso que tocó concepto, cuota cíclica e incidencia restaura las tres anclas</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@ausencias</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1088" target="_blank" rel="noopener">QAUTO-1088</a> &middot; flujo <code>E2E-INT-077</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5745" target="_blank" rel="noopener">REBU-5745</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5748" target="_blank" rel="noopener">REBU-5748</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5754" target="_blank" rel="noopener">REBU-5754</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5755" target="_blank" rel="noopener">REBU-5755</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5759" target="_blank" rel="noopener">REBU-5759</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5760" target="_blank" rel="noopener">REBU-5760</a></td></tr>
+<tr><th>Precondiciones</th><td>planilla cerrada con un colaborador que tenga (a) un cíclico <strong>distribuido</strong> con la cuota del período en <code>Applied</code>, (b) una incidencia ya procesada en esa planilla, y (c) espacio para agregar un concepto eventual.</td></tr>
+<tr><th>Setup</th><td>1. <code>cyclic-distribution-scenario.ts</code> para crear el cíclico distribuido de 3 cuotas de $50 y consumir la cuota 1 en la planilla del período. 2. <code>IncidenceAPIService</code> para crear una incidencia de ausencia y enviarla a esa planilla; cerrarla con <code>changeStep</code> hasta Completada. 3. Guardar como línea base: <code>GET /people-cyclics/{id}/history</code> (cuota 1 <code>Applied</code> con su <code>appliedDate</code> y acumulado), el estado y los días de la incidencia, y el bruto del colaborador.</td></tr>
+<tr><th>Pasos</th><td>1. Admin RRHH inicia el reproceso de la planilla para ese colaborador &rarr; Esperado: la cuota cíclica pasa a <code>Pending</code> conservando su número, y la incidencia vuelve a "En Proceso" con los mismos días. 2. Admin RRHH agrega un concepto de ingreso <strong>eventual</strong> de $100 dentro de la copia &rarr; Esperado: el bruto de la copia sube $100 respecto de la original. 3. Admin RRHH reasigna la planilla destino de una segunda incidencia pendiente hacia la copia &rarr; Esperado: <code>DestinationPayrollId</code> queda seteado y la pestaña Pendientes muestra la corrida en reproceso como destino. 4. Admin RRHH recalcula la copia &rarr; Esperado: el recálculo toma el concepto eventual y no pierde el ancla cíclica. 5. Admin RRHH cancela el reproceso y confirma en el modal &rarr; Esperado: la copia desaparece de Correr Planillas y la original vuelve a Completada sin badge. 6. Admin RRHH verifica las tres anclas &rarr; Esperado: la cuota cíclica volvió a <code>Applied</code> <strong>con el mismo número, <code>appliedDate</code> y acumulado que la línea base</strong>; la incidencia recuperó su estado y sus días; <code>DestinationPayrollId</code> volvió a <code>NULL</code>; el concepto eventual de $100 <strong>no existe</strong> en la original y su bruto es el de la línea base.</td></tr>
+<tr><th>Resultado esperado</th><td>cancelar es reversible de verdad: ninguna de las tres anclas (cíclico, incidencia, destino) queda en un estado intermedio, y la original es bit a bit la de antes.</td></tr>
+<tr><th>Resultado obtenido</th><td>Con la copia abierta la cuota cíclica dejó de contar y la incidencia procesada volvió a &ldquo;En Proceso&rdquo;; se agregó un eventual de $100, se reasignó la incidencia pendiente a la copia y se recalculó. Al cancelar, la copia devolvió <strong>404</strong> y las tres anclas volvieron <strong>idénticas</strong> a la base: cuota <code>Applied</code> con el mismo acumulado, incidencia Procesada con su fila exacta, pendiente de vuelta al flujo regular; la original sin el eventual y sin badge; auditoría con el evento de cancelación (type 3). &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Cancelar un reproceso que tocó concepto, cuota cíclica e incidencia restaura las tres anclas y la original queda idéntica a la base</div><img src="assets/v17.0.0/uat/E2E-INT-077/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
 
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1030</td><td><div class="test-name">al cerrar, la que sigui&oacute; en proceso pasa a Procesada y la devuelta a Pendiente no</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-075</td><td><div class="test-name">Los tres cambios de cíclicos no alteran el cobro de un cíclico activo en planilla</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6152" target="_blank" rel="noopener">REBU-6152</a> &middot; caso <code>TC-PLA-1030</code> &middot; <em>E2E-INT-076</em></td></tr>
-<tr><th>Precondiciones</th><td>Planilla quincenal regular con dos incidencias de concepto <strong>id&eacute;nticas</strong> (mismo concepto, $40 c/u), ambas enviadas a planilla.</td></tr>
-<tr><th>Regla evaluada</th><td><strong>AC7</strong> &mdash; <em>&ldquo;al cerrar el per&iacute;odo, las incidencias que quedaron en Pendiente no se marcan como Procesadas; s&oacute;lo cambian de estado las que siguen en proceso&rdquo;</em>. De paso mide el <strong>AC4</strong>: quitar una incidencia de la corrida la devuelve a Pendiente.</td></tr>
-<tr><th>Setup</th><td>1. Crear X e Y, enviarlas y verificar que quedan <code>InProcess</code>. 2. Sacar <strong>s&oacute;lo Y</strong> de la corrida. 3. Cerrar con 4 <code>changeStep</code> (Remu &rarr; Desc &rarr; Aportes &rarr; Revisi&oacute;n &rarr; Confirmaci&oacute;n); el 5&ordm; dar&iacute;a 403 por planilla ya finalizada.</td></tr>
-<tr><th>Resultado esperado</th><td>X (sigui&oacute; en proceso) &rarr; <code>Processed</code>. Y (sacada de la corrida) &rarr; <code>Pending</code>, y disponible en Preregistradas para un per&iacute;odo siguiente.</td></tr>
-<tr><th>Resultado obtenido</th><td>X <code>InProcess &rarr; Processed</code> &middot; Y <code>InProcess &rarr; Pending &rarr; Pending</code> &#9989;. Los 4 <code>changeStep</code> respondieron 204.</td></tr>
-<tr><th>Nota de automatizaci&oacute;n</th><td>El caso <strong>no lee las l&iacute;neas</strong> del detalle a prop&oacute;sito: avanzar el wizard destruye la ventana de lectura del eventual (REBU-4884). Ac&aacute; el or&aacute;culo son los <strong>estados</strong>, no los montos &mdash; los montos los cubre <code>TC-PLA-1028</code>.</td></tr>
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1093" target="_blank" rel="noopener">QAUTO-1093</a> &middot; flujo <code>E2E-REG-075</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5756" target="_blank" rel="noopener">REBU-5756</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5757" target="_blank" rel="noopener">REBU-5757</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5758" target="_blank" rel="noopener">REBU-5758</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5759" target="_blank" rel="noopener">REBU-5759</a></td></tr>
+<tr><th>Precondiciones</th><td>colaborador con un descuento cíclico activo de 3 cuotas y un ingreso cíclico activo; una planilla del período sin iniciar.</td></tr>
+<tr><th>Setup</th><td>1. <code>cyclic-distribution-scenario.ts</code> para el descuento cíclico de 3 cuotas de $50. 2. <code>PayrollAPIService.createPeopleCyclic()</code> (:583) con <code>resolveCyclicIncomeConceptId()</code> (:809) para el ingreso cíclico.</td></tr>
+<tr><th>Pasos</th><td>1. Admin RRHH crea un segundo descuento cíclico para el mismo colaborador <strong>con el mismo número de referencia</strong> que el primero &rarr; Esperado: se permite (la validación de referencia única ya no existe) y quedan dos cíclicos activos con la misma referencia. 2. Admin RRHH corre la planilla del período y la cierra &rarr; Esperado: los dos descuentos aparecen como <strong>líneas independientes</strong>, no fusionados, y el neto del colaborador descuenta <strong>ambos</strong>. 3. Admin RRHH inactiva uno de los dos cíclicos y corre la planilla del período siguiente &rarr; Esperado: solo el cíclico activo se cobra; el inactivo <strong>no se toma en cuenta</strong>. 4. Admin RRHH reactiva el cíclico inactivo y corre el período siguiente &rarr; Esperado: vuelve a cobrarse, con su numeración de cuota continuando donde quedó. 5. Admin RRHH lleva un cíclico a su cuota final y cierra esa planilla &rarr; Esperado: el concepto pasa a <strong>Finalizado automáticamente</strong>, sin acción del usuario, y su menú ⋮ no ofrece ninguna acción.</td></tr>
+<tr><th>Resultado esperado</th><td>el rename de etiquetas, la quita de la validación de referencia y el Finalizado derivado son cambios de superficie: el dinero cobrado por un cíclico activo es el mismo que antes del release.</td></tr>
+<tr><th>Resultado obtenido</th><td>Q1: A ($25) y B ($20) con la <strong>misma referencia</strong> cobran como líneas independientes, C ($15) y el ingreso D ($15) también; neto = bruto &minus; deducciones. Inactivar B &rarr; la API devuelve <code>Paused</code>; Q2: B no cobra, C cobra su segunda mitad y pasa a <code>Finalized</code> automáticamente; un Finalizado rebota el cambio de estado (400). Activar B &rarr; Q3: B vuelve a cobrar y su numeración <strong>continúa</strong> (1A &rarr; 1B); C ya no aparece. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Referencia repetida (5758), Inactivar/Activar (5757) y Finalizado automático (5756) no alteran el cobro del cíclico activo en tres quincenas cerradas</div><img src="assets/v17.0.0/uat/E2E-REG-075/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
 </table></td></tr>
-    </tbody>
-  </table>
-</div>
 
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
-    <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6082" target="_blank" onclick="event.stopPropagation()">REBU-6082</a>
-      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en REBU-6153">REBU-6153</a>
-      <span class="hu-title">La carga masiva respeta las l&iacute;neas de incidencia y sigue reemplazando lo manual</span>
-    </div>
-    <div class="hu-header-right"><span class="hu-badge">6 / 6 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
-  </div>
-<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
-  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
-  <div style="font-size:11px;color:#204a6e;line-height:1.7">Lo dice el dev en el PR: <em>&ldquo;hasta ahora una carga masiva pod&iacute;a borrar la l&iacute;nea de una
-  incidencia y dejarla viva, para marcarse Procesada al cerrar el per&iacute;odo sin haberse pagado&rdquo;</em>.
-  El reemplazo total borraba <strong>todos</strong> los eventuales del per&iacute;odo, sin distinguir los que
-  ven&iacute;an de una incidencia ya aprobada.
-  <br><br>
-  Los seis casos atacan el filtro nuevo <strong>por los dos lados</strong>. Escrito <em>de menos</em>, el
-  reemplazo se lleva lo que deb&iacute;a proteger (incidencias y c&iacute;clicos). Escrito <em>de m&aacute;s</em>,
-  <strong>el reemplazo deja de reemplazar</strong>: el usuario carga un archivo para corregir montos, recibe
-  204, y los montos viejos siguen ah&iacute;. Nadie se entera hasta la corrida siguiente.
-  <br><br>
-  <strong>Todos corren con una l&iacute;nea de incidencia presente en la misma planilla</strong> &mdash; la
-  condici&oacute;n que ninguno de los <code>TC-PLA-561&hellip;575</code> de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-4884" target="_blank" rel="noopener">REBU-4884</a> tiene, y
-  que es justo la que activa el filtro nuevo. Aquellos adem&aacute;s est&aacute;n en <em>Fase 2</em> porque dependen
-  de la lectura fr&aacute;gil del Paso 2 por UI; ac&aacute; se verifica por API.</div>
-</div>
-  <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-INT-076</td><td><div class="test-name">Cambiar la fecha de ingreso en un reproceso re-provisiona aguinaldo y vacaciones de la planilla confirmada</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@provisiones</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1087" target="_blank" rel="noopener">QAUTO-1087</a> &middot; flujo <code>E2E-INT-076</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5747" target="_blank" rel="noopener">REBU-5747</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5749" target="_blank" rel="noopener">REBU-5749</a></td></tr>
+<tr><th>Precondiciones</th><td>colaborador con fecha de ingreso que lo deje <strong>cerca de un borde de tramo de antigüedad</strong> (los tramos del art. 198 son 15 días en [1,3), 19 en [3,10), 21 en [10,∞)); planilla mensual cerrada que ya provisionó aguinaldo y vacaciones con la antigüedad vieja.</td></tr>
+<tr><th>Setup</th><td>1. Crear el colaborador con fecha de ingreso tal que su antigüedad al período de la planilla sea <strong>2 años y 11 meses</strong> (tramo de 15 días). 2. Correr y cerrar la planilla del período con <code>payroll-scenario.ts</code> + <code>changeStep</code>. 3. Leer y guardar la provisión de aguinaldo y de vacaciones de esa planilla como línea base, con los lectores de <code>tests/Payroll-Provisiones/</code>.</td></tr>
+<tr><th>Pasos</th><td>1. Admin RRHH registra la provisión de aguinaldo y vacaciones de la planilla cerrada &rarr; Esperado: la provisión corresponde al tramo de <strong>15 días</strong> de aguinaldo. 2. Admin RRHH inicia el reproceso de esa planilla para el colaborador &rarr; Esperado: la copia clona los montos del cierre, <strong>incluida la provisión vieja</strong>. 3. Admin RRHH corrige la fecha de ingreso del colaborador para que su antigüedad al período pase a <strong>3 años y 1 mes</strong> &rarr; Esperado: la ficha del colaborador refleja la nueva fecha. 4. Admin RRHH recalcula la copia &rarr; Esperado: la provisión de aguinaldo de la copia pasa al tramo de <strong>19 días</strong>, y la de vacaciones se recalcula con la nueva antigüedad. 5. Admin RRHH avanza la copia por todos los pasos hasta <code>CONFIRMATION</code> &rarr; Esperado: la copia se destruye y la planilla original queda con la provisión del tramo nuevo. 6. Admin RRHH consulta la planilla en el Historial &rarr; Esperado: la provisión persistida es la del tramo de 19 días, no la de 15.</td></tr>
+<tr><th>Resultado esperado</th><td>una corrección de fecha de ingreso hecha dentro de un reproceso se propaga a las provisiones de la planilla confirmada, con el tramo de antigüedad correcto.</td></tr>
+<tr><th>Resultado obtenido</th><td>Original cerrada con 2 años 10 meses de antigüedad: aguinaldo <strong>$25.00</strong> (15 días). Dentro del reproceso se corrigió la fecha de ingreso a 3 años 2 meses; la copia recalculada provisionó <strong>$31.67</strong> (19 días, art. 198) sin cambiar el bruto; al confirmar (copia &rarr; 404) la original persiste $31.67 y la fecha corregida. Hallazgo de paso: la provisión sigue el art. 198 (15/19/21), no la tabla custom de <code>xmas-bonus-config</code>. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Corregir la fecha de ingreso dentro del reproceso re-provisiona el aguinaldo (15 → 19 días, $25.00 → $31.67) y la original lo persiste al confirmar</div><img src="assets/v17.0.0/uat/E2E-INT-076/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
 
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1031</td><td><div class="test-name">Reemplazar total: la l&iacute;nea de incidencia sobrevive y la fila del archivo se suma</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-INT-075</td><td><div class="test-name">Reprocesar una planilla de junio no duplica el acumulado anual ni el recálculo semestral de renta</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@datos-fiscales</span><span class="tag tag-val">@regulatory</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1031</code> &middot; <em>E2E-INT-075</em></td></tr>
-<tr><th>Precondiciones</th><td>Planilla dedicada de 3 colaboradores (<code>carga-masiva-scenario</code>). <strong>A</strong> con una incidencia de &ldquo;Descuento Horas&rdquo; por $60 enviada a planilla; <strong>B</strong> con un eventual manual de $20 sembrado por carga. Archivo <code>.xlsx</code> de <strong>una sola fila</strong>: A / mismo concepto / $10.</td></tr>
-<tr><th>Regla evaluada</th><td><strong>AC1, AC3, AC4 y AC5 en una sola corrida.</strong> Que el concepto del archivo sea <em>el mismo</em> que el de la incidencia es lo que le da valor: si fuera otro, las dos l&iacute;neas convivir&iacute;an por ser distintas y el AC4 no se probar&iacute;a.</td></tr>
-<tr><th>Setup</th><td>1. Generar las fixtures con <code>scripts/generar-fixtures-6082.py</code> contra la plantilla <strong>real</strong> de la corrida. 2. Sembrar el manual de B con <em>Agregar</em>. 3. Aplicar <em>Reemplazar total</em> (<code>uploadMode=3</code>). Todas las cargas en el Paso 1, sin <code>changeStep</code> entre ellas.</td></tr>
-<tr><th>Resultado esperado</th><td>A con <strong>dos</strong> l&iacute;neas: $60 (con <code>incidentId</code>) y $10 (sin &eacute;l). B sin l&iacute;neas de ese concepto. La incidencia sigue <code>InProcess</code>.</td></tr>
-<tr><th>Resultado obtenido</th><td>A &rarr; <code>["$60 (incidencia)", "$10"]</code> &middot; B &rarr; <code>0 l&iacute;neas</code> &middot; incidencia En proceso &#9989;.</td></tr>
-<tr><th>Nota de automatizaci&oacute;n</th><td>El AC3 (&ldquo;B en 0 l&iacute;neas&rdquo;) <strong>s&oacute;lo se eval&uacute;a si la fila del archivo aterriz&oacute;</strong>. Si no, el caso reporta <em>RESULTADO NO CONCLUYENTE</em> en vez de verde: un &ldquo;0 l&iacute;neas&rdquo; cuando la siembra nunca existi&oacute; no prueba nada.</td></tr>
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1086" target="_blank" rel="noopener">QAUTO-1086</a> &middot; flujo <code>E2E-INT-075</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5747" target="_blank" rel="noopener">REBU-5747</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5749" target="_blank" rel="noopener">REBU-5749</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5929" target="_blank" rel="noopener">REBU-5929</a></td></tr>
+<tr><th>Precondiciones</th><td>empresa con toggle de reprocesos ON; colaborador con salario que dispare ISR; planillas del año cerradas hasta junio inclusive; la planilla de junio con <code>HasTaxRecalculation</code> activo (ajuste semestral de renta).</td></tr>
+<tr><th>Setup</th><td>1. <code>PATCH</code> del toggle de reprocesos a <code>true</code> para la empresa de prueba. 2. <code>recalculo-renta-scenario.ts</code> para armar el colaborador y las planillas del año hasta junio, cerradas con <code>changeStep</code> hasta Completada. 3. Leer el acumulado anual de referencia con <code>AnnualFiscalDataAPIService</code> y guardarlo como línea base (ISR del año, acumulado del colaborador).</td></tr>
+<tr><th>Pasos</th><td>1. Admin RRHH consulta el acumulado anual del colaborador antes de reprocesar &rarr; Esperado: el acumulado anual y el ISR del año quedan registrados como línea base. 2. Admin RRHH inicia el reproceso de la planilla de junio seleccionando solo a ese colaborador, con motivo válido &rarr; Esperado: se crea la copia en <code>InReprocessing</code> y la original conserva sus montos del cierre. 3. Admin RRHH recalcula la copia &rarr; Esperado: el ISR de la copia <strong>iguala</strong> el de la original (no hay cambio de insumos), lo que prueba que la agregación del año excluyó la planilla par por id y no la contó dos veces. 4. Admin RRHH avanza la copia por <strong>todos</strong> los pasos hasta <code>CONFIRMATION</code> &rarr; Esperado: la copia se fusiona y <code>GET</code> de su id devuelve 404. 5. Admin RRHH vuelve a consultar el acumulado anual &rarr; Esperado: el acumulado anual es <strong>idéntico a la línea base del paso 1</strong>, no el doble.</td></tr>
+<tr><th>Resultado esperado</th><td>reprocesar y confirmar una planilla con recálculo semestral de renta deja el acumulado anual del colaborador exactamente igual que antes, cuando no se cambió ningún insumo. Cualquier diferencia es doble conteo.</td></tr>
+<tr><th>Resultado obtenido</th><td>12 quincenas de enero a junio cerradas; el Q2 de junio trae <code>hasTaxRecalculation: true</code>. ISR de junio <strong>$67.326</strong>; acumulado anual <strong>$7,611</strong> gravable en 12 filas. La copia recalculada sin cambiar insumos dio el <strong>mismo ISR</strong> y, en el paso 4, todos los montos idénticos; tras confirmar (404) la fila de la original y el drill-down anual (totales + 12 filas) son idénticos a la línea base: la planilla de junio cuenta una sola vez. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Reprocesar y confirmar la planilla de junio (hasTaxRecalculation) sin cambiar insumos deja el ISR ($67.326) y el acumulado anual ($7611 gravable, 12 quincenas) idénticos a la línea base</div><img src="assets/v17.0.0/uat/E2E-INT-075/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
 </table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1032</td><td><div class="test-name">Agregar: el c&iacute;clico queda intacto y se suma una l&iacute;nea eventual</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-074</td><td><div class="test-name">Un reproceso abierto no bloquea la liquidación ni la planilla extraordinaria</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@liquidaciones</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1032</code> &middot; <em>E2E-REG-070a</em></td></tr>
-<tr><th>Precondiciones</th><td>A con un descuento <strong>c&iacute;clico</strong> (<code>monthlyAmount 30</code>, <code>Distributed</code>); B con una incidencia de $60. Archivo con una fila de $12 para A del mismo concepto c&iacute;clico.</td></tr>
-<tr><th>Regla evaluada</th><td><strong>AC2</strong> &mdash; el reemplazo no toca los c&iacute;clicos. REBU-6082 reescribe el filtro para exceptuar las l&iacute;neas de incidencia, y <strong>ese es el mismo c&oacute;digo que except&uacute;a los c&iacute;clicos</strong>: protegerlos a los dos, o romper uno.</td></tr>
-<tr><th>Setup</th><td><code>createPeopleCyclic</code> sobre A, incidencia sobre B, y <code>ciclico-agregar-a12.xlsx</code> en modo <em>Agregar</em>.</td></tr>
-<tr><th>Resultado esperado</th><td>A con el c&iacute;clico <strong>m&aacute;s</strong> la l&iacute;nea eventual del archivo (&ge; 2 l&iacute;neas). La incidencia de B intacta.</td></tr>
-<tr><th>Resultado obtenido</th><td>A &rarr; <code>$12 (archivo) + $15 (c&iacute;clico)</code> &middot; B &rarr; <code>$60</code> con su <code>incidentId</code> &#9989;.</td></tr>
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1092" target="_blank" rel="noopener">QAUTO-1092</a> &middot; flujo <code>E2E-REG-074</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5740" target="_blank" rel="noopener">REBU-5740</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a></td></tr>
+<tr><th>Precondiciones</th><td>planilla mensual regular cerrada y reprocesable; un colaborador distinto con desvinculación lista para liquidar.</td></tr>
+<tr><th>Setup</th><td>1. Cerrar la planilla mensual regular con <code>payroll-scenario.ts</code> + <code>changeStep</code>. 2. Preparar la desvinculación del segundo colaborador con <code>liquidacion-scenario.ts</code>.</td></tr>
+<tr><th>Pasos</th><td>1. Admin RRHH inicia el reproceso de la planilla mensual regular &rarr; Esperado: la copia queda <code>InReprocessing</code> y ocupa el cupo del tipo regular. 2. Admin RRHH intenta iniciar otra planilla <strong>regular</strong> &rarr; Esperado: no inicia, con el toast de conflicto (comportamiento nuevo, esperado). 3. Admin RRHH crea y corre una planilla de <strong>liquidación (FinalPay)</strong> para el colaborador desvinculado &rarr; Esperado: <strong>se crea y avanza normalmente</strong> — <code>FinalPay</code> está exenta del cupo por tipo. 4. Admin RRHH crea y corre una planilla <strong>extraordinaria</strong> &rarr; Esperado: se crea y avanza normalmente, sin bloqueo por el reproceso abierto. 5. Admin RRHH cancela el reproceso &rarr; Esperado: el cupo del tipo regular se libera y la planilla regular vuelve a ser iniciable.</td></tr>
+<tr><th>Resultado esperado</th><td>el cupo "una abierta por tipo" aísla por tipo de verdad: un reproceso de la planilla regular no congela la operación de liquidaciones ni de extraordinarias.</td></tr>
+<tr><th>Resultado obtenido</th><td>Con la copia abierta, iniciar otro período de la <strong>misma</strong> planilla rebotó <strong>400 <code>PayrollEntry.PayrollTypeAlreadyOpen</code></strong> con el texto del AC8; <code>blockingOpenEntry</code> marcó el otro período (<code>isSameEntry: false</code>) y la propia (<code>true</code>). Se desvinculó y completó la desvinculación de otro colaborador, y se creó y finalizó una extraordinaria con el colaborador en reproceso, sin bloqueo. Cancelar liberó el cupo: <code>blockingOpenEntry: null</code> y el período que rebotaba abrió. <em>Nota:</em> las corridas <code>FinalPay</code> ya no existen (REBU-5791) — liquidar es desvincular + completar. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Con la copia abierta el cupo rebota otro período de la MISMA planilla (400), pero liquidar a otro colaborador y correr una extraordinaria funcionan; cancelar libera el cupo</div><img src="assets/v17.0.0/uat/E2E-REG-074/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
 </table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1033</td><td><div class="test-name">Reemplazar parcial: el c&iacute;clico no se modifica en monto</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-076</td><td><div class="test-name">El Reporte Mensual no duplica ni pierde la planilla durante la ventana de reproceso</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1033</code> &middot; <em>E2E-REG-070b</em></td></tr>
-<tr><th>Precondiciones</th><td>Misma siembra, archivo con $99 para A del concepto c&iacute;clico.</td></tr>
-<tr><th>Regla evaluada</th><td><strong>AC2 + TC-PLA-570.</strong> La fila del archivo <strong>no sobrescribe</strong> el c&iacute;clico: entra como l&iacute;nea aparte.</td></tr>
-<tr><th>Setup</th><td><code>ciclico-parcial-a99.xlsx</code> en modo <em>Reemplazar parcial</em> (<code>uploadMode=2</code>).</td></tr>
-<tr><th>Resultado esperado</th><td>A con <strong>al menos 2</strong> l&iacute;neas &mdash; el c&iacute;clico distribuido y el eventual de $99 &mdash; y no una sola de $99.</td></tr>
-<tr><th>Resultado obtenido</th><td>A &rarr; <code>$99 (archivo) + $15 (c&iacute;clico)</code> &#9989;. El c&iacute;clico no se sobrescribi&oacute;.</td></tr>
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1094" target="_blank" rel="noopener">QAUTO-1094</a> &middot; flujo <code>E2E-REG-076</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5749" target="_blank" rel="noopener">REBU-5749</a></td></tr>
+<tr><th>Precondiciones</th><td>una única planilla mensual cerrada en el período; Reporte Mensual del período generable.</td></tr>
+<tr><th>Setup</th><td></td></tr>
+<tr><th>Pasos</th><td>1. Contabilidad genera el Reporte Mensual del período antes del reproceso &rarr; Esperado: totales de línea base, una fila por colaborador. 2. Admin RRHH inicia el reproceso de la planilla &rarr; Esperado: existen simultáneamente la original Completada y la copia <code>InReprocessing</code>. 3. Contabilidad genera el Reporte Mensual <strong>durante</strong> la ventana &rarr; Esperado: los totales son <strong>idénticos a la línea base</strong> — la copia no se agrega (no está cerrada) y la original no se pierde. 4. Admin RRHH confirma el reproceso con un cambio de monto &rarr; Esperado: la copia se fusiona y desaparece. 5. Contabilidad genera el Reporte Mensual después de confirmar &rarr; Esperado: los totales reflejan el monto corregido, con <strong>una sola</strong> fila por colaborador.</td></tr>
+<tr><th>Resultado esperado</th><td>el Reporte Mensual ve exactamente una planilla por período en los tres momentos, con los montos vigentes en cada uno.</td></tr>
+<tr><th>Resultado obtenido</th><td>Reporte Mensual de octubre (Empleados) generado y leído por API en los tres momentos. Línea base: el colaborador aparece una vez en &ldquo;Resumen&rdquo; y una en &ldquo;Pago a Colaboradores&rdquo; (neto $418.52). Con la copia abierta el reporte fue <strong>idéntico</strong> en todas las hojas salvo &ldquo;Inicio&rdquo;. Tras confirmar con una comisión de $50: sigue <strong>una</strong> fila por hoja, neto <strong>$455.62</strong> (el viejo ya no aparece) y la comisión suma una fila legítima en &ldquo;Detalle de Ingresos Adicional&rdquo;. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; El Reporte Mensual (10/2026, Empleados) ve una sola planilla por período en los tres momentos: idéntico con la copia abierta; tras confirmar, una fila por hoja con el neto corregido ($418.52 → $455.62)</div><img src="assets/v17.0.0/uat/E2E-REG-076/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
 </table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1034</td><td><div class="test-name">Reemplazar total: el c&iacute;clico no se elimina</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-INT-078</td><td><div class="test-name">Una planilla Paid o Deleted no debe contar como activa al rutear una incidencia</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@ausencias</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1034</code> &middot; <em>E2E-REG-070c</em></td></tr>
-<tr><th>Precondiciones</th><td>Misma siembra. El archivo trae <strong>s&oacute;lo a B</strong> con otro concepto: A no aparece.</td></tr>
-<tr><th>Regla evaluada</th><td><strong>AC2 + TC-PLA-571.</strong> Es la condici&oacute;n en la que un reemplazo total mal filtrado se llevar&iacute;a el c&iacute;clico: su colaborador no viene en el archivo. Como A no aparece, <strong>cualquier</strong> l&iacute;nea que le quede de ese concepto es el c&iacute;clico.</td></tr>
-<tr><th>Setup</th><td><code>total-b25.xlsx</code> en modo <em>Reemplazar total</em> (<code>uploadMode=3</code>).</td></tr>
-<tr><th>Resultado esperado</th><td>El c&iacute;clico de A sigue presente; la incidencia de B tambi&eacute;n.</td></tr>
-<tr><th>Resultado obtenido</th><td>A &rarr; <code>$15 (c&iacute;clico)</code>, sobrevivi&oacute; &middot; B &rarr; <code>$60</code> con <code>incidentId</code> &#9989;.</td></tr>
-<tr><th>Nota de automatizaci&oacute;n</th><td>&#128308; <strong>El or&aacute;culo es la presencia de la l&iacute;nea, no su monto.</strong> El c&iacute;clico se siembra con <code>monthlyAmount 30</code> y <code>Distributed</code>, as&iacute; que en la planilla aterriza <strong>distribuido: $15</strong>. Assertear <code>=== $30</code> produjo tres rojos que no eran defectos. Es exactamente por esto que el spec de REBU-4884 verifica cantidad de l&iacute;neas.</td></tr>
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1089" target="_blank" rel="noopener">QAUTO-1089</a> &middot; flujo <code>E2E-INT-078</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5754" target="_blank" rel="noopener">REBU-5754</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5755" target="_blank" rel="noopener">REBU-5755</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6075" target="_blank" rel="noopener">REBU-6075</a></td></tr>
+<tr><th>Precondiciones</th><td>colaborador con una incidencia pendiente; una planilla del mismo tipo en estado <code>Paid</code> y otra en <code>Deleted</code>; ninguna corrida <code>InProgress</code> abierta.</td></tr>
+<tr><th>Setup</th><td>1. Crear y cerrar una planilla con <code>payroll-scenario.ts</code>, llevarla a <code>Paid</code>. 2. Crear una segunda planilla y borrarla con <code>deletePayroll()</code> (:951) para dejarla en <code>Deleted</code>. 3. Crear la incidencia con <code>IncidenceAPIService</code> sin enviarla a planilla.</td></tr>
+<tr><th>Pasos</th><td>1. Admin RRHH consulta el destino previsto de la incidencia en la pestaña Pendientes &rarr; Esperado: <strong>el destino no es la planilla <code>Paid</code> ni la <code>Deleted</code></strong>; debe ser la próxima corrida regular o quedar sin corrida disponible. 2. Admin RRHH envía la incidencia a planilla &rarr; Esperado: la incidencia queda <strong>On-Hold</strong>, no asociada a una planilla pagada ni borrada. 3. Admin RRHH verifica el vínculo de la incidencia &rarr; Esperado: no existe <code>IncidentPayrollEntry</code> apuntando a la planilla <code>Paid</code> ni a la <code>Deleted</code>.</td></tr>
+<tr><th>Resultado esperado</th><td>el set de planillas activas que decide el ruteo contiene solo corridas realmente abiertas; una pagada o borrada nunca recibe una incidencia.</td></tr>
+<tr><th>Resultado obtenido</th><td>Q1 cerrada y <strong>pagada</strong> (archivo bancario Davivienda generado), Q2 abierta y <strong>borrada</strong>, ninguna corrida InProgress. La ausencia enviada quedó <strong>On-Hold</strong>: &ldquo;En proceso&rdquo; con <code>daysApplied: 0</code> y sin período en <code>activePayrollName</code>. La siguiente corrida regular del Q2 <strong>sí la cobró</strong> (bruto $450 &rarr; $420, <code>daysApplied: 1</code>); la pagada conservó sus montos. Ninguna de las dos trampas recibió la incidencia. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Una corrida pagada y una borrada no cuentan como activas: la incidencia enviada queda On-Hold y la cobra la siguiente corrida regular, no la pagada ni la borrada</div><img src="assets/v17.0.0/uat/E2E-INT-078/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
 </table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1035</td><td><div class="test-name">Reemplazar total borra los eventuales manuales ausentes del archivo</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-INT-079</td><td><div class="test-name">Recorrido completo: corregir una planilla cerrada de punta a punta (UI + API)</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@smoke</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
 <tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1035</code> &middot; <em>E2E-REG-071a</em></td></tr>
-<tr><th>Precondiciones</th><td>Eventuales manuales sembrados en A ($50) y B ($40). La incidencia va en <strong>C</strong>, el &uacute;nico colaborador que <strong>s&iacute;</strong> viene en el archivo del reemplazo total.</td></tr>
-<tr><th>Regla evaluada</th><td><strong>AC3</strong> &mdash; el reemplazo sigue operando con normalidad sobre lo capturado a mano. Es el caso <strong>m&aacute;s exigente del filtro</strong>: obliga a distinguir, <em>dentro del mismo colaborador</em>, la l&iacute;nea de incidencia de la manual.</td></tr>
-<tr><th>Setup</th><td>1. <code>seed-a50-b40.xlsx</code> en <em>Agregar</em>. 2. <code>total-c10.xlsx</code> en <em>Reemplazar total</em>.</td></tr>
-<tr><th>Resultado esperado</th><td>A y B pierden sus manuales. C conserva su l&iacute;nea de incidencia <strong>y</strong> recibe la fila del archivo ($10).</td></tr>
-<tr><th>Resultado obtenido</th><td>A y B &rarr; s&oacute;lo <code>Salario Periodo</code> &middot; C &rarr; <code>$60 (incidencia) + $10 (archivo)</code> &#9989;.</td></tr>
-<tr><th>Nota de automatizaci&oacute;n</th><td>La fila de C se verifica <strong>primero y con assert duro</strong>: si el archivo no aterriz&oacute;, los &ldquo;0 l&iacute;neas&rdquo; de A y B no prueban el AC3 &mdash; probar&iacute;an que la siembra nunca existi&oacute;.</td></tr>
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1090" target="_blank" rel="noopener">QAUTO-1090</a> &middot; flujo <code>E2E-INT-079</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5739" target="_blank" rel="noopener">REBU-5739</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5744" target="_blank" rel="noopener">REBU-5744</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5747" target="_blank" rel="noopener">REBU-5747</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5749" target="_blank" rel="noopener">REBU-5749</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5750" target="_blank" rel="noopener">REBU-5750</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5752" target="_blank" rel="noopener">REBU-5752</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5753" target="_blank" rel="noopener">REBU-5753</a></td></tr>
+<tr><th>Precondiciones</th><td>empresa con el toggle <strong>OFF</strong>; planilla mensual cerrada con 3 colaboradores (Ana, Beto, Carla) y montos conocidos; boleta de Ana ya generada antes del reproceso.</td></tr>
+<tr><th>Setup</th><td>1. Dejar el toggle de reprocesos en OFF (estado por defecto). 2. <code>payroll-multiple-collaborators.ts</code> para la planilla de los 3, cerrada con <code>changeStep</code>. 3. Generar y guardar la boleta de Ana con los montos del cierre.</td></tr>
+<tr><th>Pasos</th><td>1. Admin RRHH abre el menú ⋮ de la planilla en el Historial con el toggle OFF &rarr; Esperado: la opción "Reprocesar planilla" <strong>no existe</strong> en el menú. 2. Admin RRHH activa el toggle de reprocesos en la pestaña Planilla de la configuración y confirma el modal &rarr; Esperado: el toggle queda ON y persiste. 3. Admin RRHH vuelve al Historial y abre el menú ⋮ &rarr; Esperado: "Reprocesar planilla" aparece <strong>sin cerrar sesión</strong>. 4. Admin RRHH selecciona solo a Ana, abre el modal de advertencia y escribe el motivo "Salario de Ana mal cargado en el cierre" &rarr; Esperado: la tabla financiera muestra solo a Ana con los montos del cierre. 5. Admin RRHH continúa &rarr; Esperado: se crea la copia "En Reproceso" en Correr Planillas con los datos del cierre precargados, y la fila del Historial muestra el badge "En Reproceso" sin cambiar el resto de sus columnas. 6. Admin RRHH genera la boleta de Ana <strong>durante</strong> la ventana &rarr; Esperado: la boleta trae los montos de la <strong>original</strong>, no los de la copia. 7. Admin RRHH corrige el salario de Ana y recalcula la copia &rarr; Esperado: el bruto y el neto de Ana cambian en la copia; los de Beto y Carla no aparecen en el wizard de la copia. 8. Admin RRHH avanza la copia por <strong>todos</strong> los pasos hasta <code>CONFIRMATION</code> &rarr; Esperado: la copia se fusiona y desaparece de Correr Planillas (<code>GET</code> de su id &rarr; 404). 9. Admin RRHH consulta el Historial &rarr; Esperado: la planilla vuelve a Completada, <strong>sin</strong> badge, y los montos de Ana son los corregidos mientras Beto y Carla conservan los suyos. 10. Admin RRHH abre el detalle finalizado &rarr; Esperado: Ana tiene el ícono de reprocesado con su tooltip; Beto y Carla no. 11. Admin RRHH abre la pestaña Auditoría &rarr; Esperado: la timeline muestra el cierre original y el reproceso confirmado con <strong>el motivo del paso 4</strong>, su actor y su fecha, del más reciente al más antiguo. 12. Admin RRHH regenera la boleta de Ana &rarr; Esperado: ahora trae los montos corregidos, sin marca de "actualizado".</td></tr>
+<tr><th>Resultado esperado</th><td>un administrador puede corregir un error de una planilla cerrada de punta a punta, y al terminar el sistema cuenta la historia completa: montos corregidos solo para quien se seleccionó, señales visuales coherentes, motivo auditado y artefactos regenerados con el dato nuevo.</td></tr>
+<tr><th>Resultado obtenido</th><td>Toggle OFF &rarr; el detalle no ofrece el &#8942; ni la pestaña Auditoría. Toggle ON desde Configuración (modal &ldquo;Confirmar cambio&rdquo; con el texto del AC4; cancelar no aplica) &rarr; sin cerrar sesión aparece &ldquo;Reprocesar planilla&rdquo; (deshabilitado sin selección). Seleccionando solo a Ana: modal con su fila y montos del cierre, motivo obligatorio. Continuar &rarr; copia &ldquo;En Reproceso&rdquo; con solo Ana, badge en el Historial con columnas intactas; boleta con el neto original ($418.52). Comisión de $50 y recálculo &rarr; confirmar (404). Historial sin badge y costo actualizado; Ana con montos corregidos, Beto y Carla iguales; ícono solo en Ana; Auditoría con el motivo, actor y fecha; boleta regenerada con <strong>$455.62</strong>. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Paso 1 — toggle OFF: el detalle finalizado no ofrece el ⋮ "Opciones de la planilla" ni la pestaña Auditoría (AC6 de 5739)</div><img src="assets/v17.0.0/uat/E2E-INT-079/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; Paso 2 — Configuración › Pagos y Declaraciones › Planilla: al tocar el toggle se abre "Confirmar cambio" con el texto del AC4 (se cancela: no aplica)</div><img src="assets/v17.0.0/uat/E2E-INT-079/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">03 &mdash; Paso 2 — el toggle "¿Se permite reprocesar planillas?" queda Activo tras confirmar; la API devuelve allowPayrollReprocessing: true</div><img src="assets/v17.0.0/uat/E2E-INT-079/03.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">04 &mdash; Paso 3 — sin cerrar sesión, el ⋮ ya ofrece "Reprocesar planilla"; sin colaboradores seleccionados va deshabilitado</div><img src="assets/v17.0.0/uat/E2E-INT-079/04.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">05 &mdash; Paso 4 — modal "¿Deseas reprocesar esta planilla?": la tabla financiera trae solo a Ana con sus montos del cierre, "Se reprocesarán 1 de 3", motivo "Salario de Ana mal cargado en el cierre" y Continuar habilitado</div><img src="assets/v17.0.0/uat/E2E-INT-079/05.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">06 &mdash; Paso 5 — Historial de Planillas: la fila muestra el badge "En Reproceso" junto al nombre y conserva fecha, tipo, frecuencia y monto</div><img src="assets/v17.0.0/uat/E2E-INT-079/06.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">07 &mdash; Paso 9 — tras confirmar, la fila del Historial vuelve a Completada sin badge y con el costo actualizado</div><img src="assets/v17.0.0/uat/E2E-INT-079/07.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">08 &mdash; Paso 10 — detalle finalizado: solo Ana (Alejandra Ferrer) tiene el ícono "Este colaborador sufrió un reproceso en esta planilla."; Beto y Carla no; los montos de Ana son los corregidos</div><img src="assets/v17.0.0/uat/E2E-INT-079/08.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">09 &mdash; Paso 11 — pestaña Auditoría: "Planilla reprocesada" con actor, fecha y el motivo "Salario de Ana mal cargado en el cierre", encima de "Planilla finalizada"</div><img src="assets/v17.0.0/uat/E2E-INT-079/09.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
 </table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1036</td><td><div class="test-name">Reemplazar parcial reemplaza s&oacute;lo con match exacto y respeta el resto</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1036</code> &middot; <em>E2E-REG-071b</em></td></tr>
-<tr><th>Precondiciones</th><td>Misma siembra (A $50, B $40) y la incidencia en C. Archivo con $80 para A.</td></tr>
-<tr><th>Regla evaluada</th><td><strong>AC3 &middot; protege TC-PLA-564/565.</strong> El parcial reemplaza <em>s&oacute;lo</em> con coincidencia exacta de identificaci&oacute;n + nombre de concepto; sin match, no modifica nada.</td></tr>
-<tr><th>Setup</th><td><code>seed-a50-b40.xlsx</code> en <em>Agregar</em>, luego <code>parcial-a80.xlsx</code> en <em>Reemplazar parcial</em>.</td></tr>
-<tr><th>Resultado esperado</th><td>A pasa de $50 a $80 y <strong>ya no conserva</strong> el monto viejo. B, sin match, conserva $40. La incidencia de C sobrevive.</td></tr>
-<tr><th>Resultado obtenido</th><td>A &rarr; <code>$80</code> &middot; B &rarr; <code>$40</code> intacto &#9989;.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
+
     </tbody>
   </table>
 </div>
 
   </div></div>
-
-  <div id="env-prod" class="env-tab-panel"><div class="content">
-
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
-    <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6080" target="_blank" onclick="event.stopPropagation()">REBU-6080</a>
-      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en REBU-6151">REBU-6151</a>
-      <span class="hu-title">El v&iacute;nculo <code>IncidentId</code> en el tenant real</span>
-    </div>
-    <div class="hu-header-right"><span class="hu-badge">2 / 2 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
-  </div>
-<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
-  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
-  <div style="font-size:11px;color:#204a6e;line-height:1.7">Los mismos dos casos de UAT, sobre <strong>datos reales de co.21</strong>. El valor de correrlos
-  ac&aacute; no es repetir el or&aacute;culo sino confirmar que <strong>el backend de REBU-6080 tambi&eacute;n
-  est&aacute; desplegado en producci&oacute;n</strong>: la guarda dura exige que <code>incidentId</code> llegue
-  poblado y coincida con las incidencias que el propio spec acaba de enviar. Si el deploy no hubiera
-  llegado a co.21, estos casos fallar&iacute;an con &ldquo;ambiente no listo&rdquo; en vez de reportar verde.</div>
-</div>
-  <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-    <tbody>
-
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1028</td><td><div class="test-name">con dos incidencias id&eacute;nticas, quitar una deja en pie exactamente la otra</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener">REBU-6151</a> &middot; caso <code>TC-PLA-1028</code> &middot; <em>E2E-INT-073</em></td></tr>
-<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; concepto <strong>&ldquo;Prestamo Cuscatl&aacute;n&rdquo; (id 37)</strong>, que aterriza en el grupo
-    <code>group_8</code>. Incidencias <code>81b7374b-f09c-48dc-94e6-d74468482e25</code> (A) y
-    <code>f0933ad3-4fbf-4aa3-ab8c-a138296393f4</code> (B), $40 c/u; l&iacute;neas <code>payrollConceptId</code>
-    <strong>50303</strong> y <strong>50304</strong>.</td></tr>
-<tr><th>Regla evaluada</th><td>AC1 y AC2 &mdash; quitar una incidencia elimina <em>&uacute;nicamente</em> su l&iacute;nea, y la que sobrevive es <strong>la correcta</strong>. Las dos llevan el mismo concepto y el mismo monto para que un borrado por adivinanza no pueda desempatar.</td></tr>
-<tr><th>Resultado</th><td>antes <code>2 l&iacute;neas de $40</code> &rarr; despu&eacute;s <code>1</code>, con <code>incidentId f0933ad3&hellip;</code> &#9989; &mdash; sobrevivi&oacute; B, la correcta. <code>DELETE /payroll-entry/{id}/incidents</code> respondi&oacute; <strong>200</strong>, igual que en UAT.</td></tr>
-<tr><th>Nota de la corrida</th><td>&#128994; <strong>El v&iacute;nculo existe en producci&oacute;n:</strong> la guarda ley&oacute; 3 l&iacute;neas, 2 con <code>incidentId</code>, y las dos coincidieron con las incidencias del spec.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1029</td><td><div class="test-name">quitar una ausencia de la planilla recalcula los d&iacute;as trabajados</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6151" target="_blank" rel="noopener">REBU-6151</a> &middot; caso <code>TC-PLA-1029</code> &middot; <em>E2E-REG-072</em></td></tr>
-<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; colaborador <strong>Daniela Caldera</strong> &middot; planilla <strong>760</strong> &middot;
-    ausencia <code>00b14ef8-c711-4f69-9c86-fe5188ee86d3</code>, 3 d&iacute;as (2026-09-07 &rarr; 09-09).</td></tr>
-<tr><th>Regla evaluada</th><td>Protege el fix de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-4033" target="_blank" rel="noopener">REBU-4033</a>: el borrado de incidencias de una corrida es una sola ruta compartida entre Concepto y Ausencia, y del lado ausencias el da&ntilde;o cambia los <strong>d&iacute;as trabajados</strong>.</td></tr>
-<tr><th>Resultado</th><td>incidencias asociadas <code>1 &rarr; 0</code> &middot; d&iacute;as pagados <strong>15</strong> (quincena completa) &middot; salario del per&iacute;odo <strong>$500.00</strong> &#9989;.</td></tr>
-<tr><th>Nota de la corrida</th><td>&#128312; <strong>El tipo de ausencia se resolvi&oacute; distinto que en UAT.</strong> En co.21 <em>&ldquo;Falta injustificada&rdquo;</em> (id 5) <strong>s&iacute; existe</strong> &mdash; es en UAT co.2 donde desapareci&oacute; y el id 5 responde 404. El caso resuelve el tipo por su capacidad (<code>deductsWorkedDays</code> + <code>Active</code>), no por id, y por eso funcion&oacute; en los dos tenants sin tocar el spec.<br><br>&#9888;&#65039; El teardown de la <strong>corrida</strong> respondi&oacute; <strong>403</strong>: una planilla finalizada no se puede borrar en producci&oacute;n (en UAT daba 204).</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
-    <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6081" target="_blank" onclick="event.stopPropagation()">REBU-6081</a>
-      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6152" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en REBU-6152">REBU-6152</a>
-      <span class="hu-title">El cierre del per&iacute;odo, ejecutado sobre el tenant real</span>
-    </div>
-    <div class="hu-header-right"><span class="hu-badge">1 / 1 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
-  </div>
-<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
-  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
-  <div style="font-size:11px;color:#204a6e;line-height:1.7">Este caso <strong>cierra un per&iacute;odo de verdad</strong> en co.21: cuatro <code>changeStep</code> que
-  dejan una planilla finalizada en el tenant. Se corri&oacute; con esa consecuencia aceptada de antemano,
-  porque el AC7 s&oacute;lo se puede evaluar despu&eacute;s del cierre y no hay forma de simularlo.</div>
-</div>
-  <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-    <tbody>
-
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1030</td><td><div class="test-name">al cerrar, la que sigui&oacute; en proceso pasa a Procesada y la devuelta a Pendiente no</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6152" target="_blank" rel="noopener">REBU-6152</a> &middot; caso <code>TC-PLA-1030</code> &middot; <em>E2E-INT-076</em></td></tr>
-<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; colaborador <strong>Manuela Delapaz</strong> &middot; planilla <strong>759</strong> &middot;
-    incidencias <code>ec07c28a-3969-4c37-8fd2-650172501009</code> (X) y
-    <code>b2f87766-99d5-4dab-9b72-1bbd90e8a8fd</code> (Y), $40 c/u del concepto <em>Prestamo Cuscatl&aacute;n</em>.</td></tr>
-<tr><th>Regla evaluada</th><td>AC7 &mdash; al cerrar, s&oacute;lo cambian de estado las incidencias que <strong>siguen en proceso</strong>. Las devueltas a Pendiente no se marcan Procesadas, que es lo que evita registrar como pagado algo que nunca se pag&oacute;.</td></tr>
-<tr><th>Resultado</th><td>X <code>InProcess &rarr; Processed</code> &middot; Y <code>InProcess &rarr; Pending &rarr; Pending</code> &#9989;. Los cuatro <code>changeStep</code> respondieron 204.</td></tr>
-<tr><th>Nota de la corrida</th><td>&#9888;&#65039; <strong>Residuo permanente:</strong> la planilla <strong>759</strong> queda <em>finalizada</em> en co.21. El teardown de la corrida dio <strong>403</strong> &mdash; una planilla cerrada no se elimina.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="hu-section">
-  <div class="hu-header" onclick="headerClick(this)">
-    <div class="hu-header-left">
-      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6082" target="_blank" onclick="event.stopPropagation()">REBU-6082</a>
-      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Casos documentados en REBU-6153">REBU-6153</a>
-      <span class="hu-title">La carga masiva contra el cat&aacute;logo real de producci&oacute;n</span>
-    </div>
-    <div class="hu-header-right"><span class="hu-badge">6 / 6 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
-  </div>
-<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
-  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
-  <div style="font-size:11px;color:#204a6e;line-height:1.7">Los seis casos de carga masiva sobre co.21. Lo que cambia respecto de UAT no es el or&aacute;culo sino
-  el <strong>cat&aacute;logo</strong>: ni <em>&ldquo;Descuento Horas&rdquo;</em> ni <em>&ldquo;Permiso
-  Mundialista&rdquo;</em> existen en producci&oacute;n, as&iacute; que todo el bloque corri&oacute; con
-  <strong>&ldquo;Prestamo Cuscatl&aacute;n&rdquo;</strong>. Un censo de solo lectura previo lo detect&oacute;
-  <em>antes</em> de escribir nada &mdash; sin &eacute;l, los tres specs habr&iacute;an fallado en la
-  precondici&oacute;n y el rojo se habr&iacute;a le&iacute;do como defecto.</div>
-</div>
-  <table class="test-table">
-    <thead><tr><th>ID</th><th>Caso de prueba</th><th>Status</th></tr></thead>
-    <tbody>
-
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1031</td><td><div class="test-name">Reemplazar total: la l&iacute;nea de incidencia sobrevive y la fila del archivo se suma</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1031</code> &middot; <em>E2E-INT-075</em></td></tr>
-<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; planilla <strong>761</strong> &middot; concepto <strong>Prestamo Cuscatl&aacute;n (37)</strong>
-    &middot; <strong>A = Julio Due&ntilde;as</strong> (incidencia <code>c8a59d7a-6376-43d9-8086-3547f507c1bf</code>, $60)
-    &middot; <strong>B = Mar&iacute;a Cerv&aacute;ntez</strong> (eventual manual de $20).</td></tr>
-<tr><th>Regla evaluada</th><td>AC1, AC3, AC4 y AC5 en una corrida. El archivo trae una sola fila, del <strong>mismo</strong> colaborador y el <strong>mismo</strong> concepto que ya tiene por incidencia &mdash; es lo que hace medible el AC4.</td></tr>
-<tr><th>Resultado</th><td>A &rarr; <code>["$60 (incidencia)", "$10" (archivo)]</code> &middot; B &rarr; <code>0 l&iacute;neas</code> &middot; la incidencia sigue <code>En proceso</code> &#9989;.</td></tr>
-<tr><th>Nota de la corrida</th><td>La corrida <strong>761</strong> s&iacute; se pudo borrar (204); queda el cascar&oacute;n de la planilla <strong>709</strong> (403).</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1032</td><td><div class="test-name">Agregar: el c&iacute;clico queda intacto y se suma una l&iacute;nea eventual</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1032</code> &middot; <em>E2E-REG-070a</em></td></tr>
-<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; una planilla dedicada por modo; la &uacute;ltima de las tres fue la <strong>712</strong> (corrida <strong>764</strong>).</td></tr>
-<tr><th>Regla evaluada</th><td>AC2 &mdash; el filtro nuevo except&uacute;a las l&iacute;neas de incidencia con <strong>el mismo c&oacute;digo</strong> que except&uacute;a los c&iacute;clicos: o protege a los dos, o rompe uno.</td></tr>
-<tr><th>Resultado</th><td>Los tres modos en verde: <strong>5 passed</strong> (3 casos + 2 de setup) &#9989;.</td></tr>
-<tr><th>Nota de la corrida</th><td>&#128312; <strong>Ajuste necesario para correr en co.21:</strong> <code>sembrarCiclico</code> usaba el id fijo <code>20</code> (de co.2) mientras el manifiesto resuelve el concepto c&iacute;clico <strong>por nombre</strong> desde la plantilla real. En co.21 los descuentos van del <strong>29 al 42</strong>, as&iacute; que el c&iacute;clico se habr&iacute;a sembrado sobre un concepto distinto del que toca el archivo &mdash; midiendo dos cosas que no se cruzan. Ahora resuelve por nombre y el caso es portable entre tenants.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1033</td><td><div class="test-name">Reemplazar parcial: el c&iacute;clico no se modifica en monto</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1033</code> &middot; <em>E2E-REG-070b</em></td></tr>
-<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; planilla dedicada propia dentro de la misma corrida de tres.</td></tr>
-<tr><th>Regla evaluada</th><td>AC2 &middot; protege TC-PLA-570 &mdash; la fila del archivo no sobrescribe el c&iacute;clico: entra como l&iacute;nea aparte.</td></tr>
-<tr><th>Resultado</th><td>En verde dentro de las <strong>5 passed</strong> del bloque &#9989;.</td></tr>
-<tr><th>Nota de la corrida</th><td>&#9888;&#65039; Los identificadores por modo (planilla e ids de cada uno de los tres escenarios) <strong>no quedaron capturados</strong> en el log de esta corrida &mdash; s&oacute;lo el agregado y la &uacute;ltima planilla. Se deja dicho en vez de reconstruirlo.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1034</td><td><div class="test-name">Reemplazar total: el c&iacute;clico no se elimina</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1034</code> &middot; <em>E2E-REG-070c</em></td></tr>
-<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; el archivo no incluye al colaborador del c&iacute;clico, que es la condici&oacute;n donde un filtro mal escrito se lo llevar&iacute;a.</td></tr>
-<tr><th>Regla evaluada</th><td>AC2 &middot; protege TC-PLA-571 &mdash; como su colaborador no viene en el archivo, <strong>cualquier</strong> l&iacute;nea que le quede de ese concepto es el c&iacute;clico.</td></tr>
-<tr><th>Resultado</th><td>En verde dentro de las <strong>5 passed</strong> del bloque &#9989;.</td></tr>
-<tr><th>Nota de la corrida</th><td>El or&aacute;culo es la <strong>presencia</strong> de la l&iacute;nea, no su monto: un c&iacute;clico <code>Distributed</code> aterriza distribuido, no por su importe mensual.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1035</td><td><div class="test-name">Reemplazar total borra los eventuales manuales ausentes del archivo</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1035</code> &middot; <em>E2E-REG-071a</em></td></tr>
-<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; &uacute;ltima planilla de la corrida: <strong>714</strong> (corrida <strong>766</strong>).</td></tr>
-<tr><th>Regla evaluada</th><td>AC3 &mdash; el caso <strong>m&aacute;s exigente del filtro</strong>: la incidencia est&aacute; en el &uacute;nico colaborador que <em>s&iacute;</em> viene en el archivo, as&iacute; que hay que distinguir, dentro del mismo colaborador, la l&iacute;nea de incidencia de la manual.</td></tr>
-<tr><th>Resultado</th><td>Los dos modos en verde: <strong>4 passed</strong> (2 casos + 2 de setup) &#9989;.</td></tr>
-<tr><th>Nota de la corrida</th><td>&#9888;&#65039; Igual que en el bloque anterior, los identificadores por caso no quedaron en el log capturado.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1036</td><td><div class="test-name">Reemplazar parcial reemplaza s&oacute;lo con match exacto y respeta el resto</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
-<tr class="detail-row"><td colspan="3"><table class="case-steps">
-<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6153" target="_blank" rel="noopener">REBU-6153</a> &middot; caso <code>TC-PLA-1036</code> &middot; <em>E2E-REG-071b</em></td></tr>
-<tr><th>Ambiente</th><td>Producci&oacute;n <strong>co.21</strong> &middot; <code>test.rebuhr.com</code> &middot; misma corrida que el caso anterior.</td></tr>
-<tr><th>Regla evaluada</th><td>AC3 &middot; protege TC-PLA-564/565 &mdash; el parcial reemplaza s&oacute;lo con coincidencia exacta de identificaci&oacute;n + concepto; sin match, no modifica nada.</td></tr>
-<tr><th>Resultado</th><td>En verde dentro de las <strong>4 passed</strong> del bloque &#9989;.</td></tr>
-<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
-</table></td></tr>
-    </tbody>
-  </table>
-</div>
-  </div></div>
-</div>
-  </div></div>
-
   <div id="tab-manual" class="tab-panel"><div class="content">
-    <div class="callout" style="margin-top:18px">
-      Este release no tiene casos manuales en el reporte. Los <strong>6 exploratorios</strong> del
-      an&aacute;lisis (<a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6149" target="_blank" rel="noopener">REBU-6149</a>) no se automatizan por definici&oacute;n y se ejecutan con
-      <em>charter</em> y <em>timebox</em>, no con pasos: la ventana sin backfill, la incidencia de origen
-      <code>Approved</code> devuelta a Pendiente, las dos compuertas del di&aacute;logo de horas, el Historial
-      como fuente de auditor&iacute;a, los bordes del reemplazo parcial, y la concurrencia con el
-      <code>ConceptEntry</code> hu&eacute;rfano.
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5747" target="_blank" onclick="event.stopPropagation()">REBU-5747</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/QAUTO-1091" target="_blank" rel="noopener" onclick="event.stopPropagation()">QAUTO-1091</a>
+      <span class="hu-title">La matriz de planilla mensual sigue dando los mismos resultados con la costura de reproceso desplegada</span>
     </div>
+    <div class="hu-header-right"><span class="hu-badge">nocturna</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Flujo E2E</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-073</td><td><div class="test-name">La matriz de planilla mensual sigue dando los mismos resultados con la costura de reproceso desplegada</div><div class="test-tags"><span class="tag tag-val">@regression</span><span class="tag tag-val">@nightly</span></div></td><td class="status-cell"><span class="badge-pending">NOCTURNA</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/QAUTO-1091" target="_blank" rel="noopener">QAUTO-1091</a> &middot; flujo <code>E2E-REG-073</code></td></tr>
+<tr><th>Por qu&eacute; no tiene spec</th><td>Cubierto por la corrida nocturna (<code>nightly-planillas</code>: descuentos de ley, aportes patronales y provisiones). Sin spec propio, a decisión de QA. Los 8 flujos automatizados adem&aacute;s cierran planillas regulares por API en cada corrida y asertan sus montos antes de tocar el reproceso.</td></tr>
+<tr><th>Status</th><td><span class="badge-pending">Cubierto por la nocturna</span></td></tr>
+</table></td></tr>
+    </tbody>
+  </table>
+</div>
   </div></div>
 </div>
 
-<!-- RELEASE-END: v16.9.0 -->
+<!-- RELEASE-END: v17.0.0 -->
 
 <section class="release-links">
+  <a class="release-link" href="releases/v16.9.0.html">
+    <span class="release-link-version">v16.9.0</span>
+    <span class="release-link-date">17 sep 2026</span>
+    <span class="stat-pill pass">18 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+
   <a class="release-link" href="releases/v16.8.0.html">
     <span class="release-link-version">v16.8.0</span>
     <span class="release-link-date">16 sep 2026</span>
@@ -655,7 +389,7 @@
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> &middot; Generado el 17 sep 2026 &middot; Rama <strong>test/6080-incidencias-conceptos-planilla</strong> &middot; Entorno <strong>UAT co.2 + Producci&oacute;n co.21</strong>
+  <strong>Rebu Automation Suite</strong> &middot; Generado el 23 sep 2026 &middot; Rama <strong>test/6026-cargo-jefe-congelado</strong> &middot; Entorno <strong>UAT co.2</strong>
 </footer>
 </div>
 
