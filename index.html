@@ -20,7 +20,7 @@
     <div class="nav-group-label">Actual</div>
     <a class="nav-item current" href="index.html" data-tip="v17.1.0">
       <div class="nav-item-icon">&#128640;</div>
-      <div class="nav-item-body"><div class="nav-version">v17.1.0</div><div class="nav-date">26 sep 2026 &middot; UAT</div></div>
+      <div class="nav-item-body"><div class="nav-version">v17.1.0</div><div class="nav-date">26 sep 2026 &middot; UAT + Prod</div></div>
     </a>
     <hr class="nav-divider">
     <div class="nav-group-label">Anteriores</div>
@@ -109,23 +109,23 @@
     <span class="sep">&middot;</span>
     <span>&#127807; <strong>test/5892-puestos-y-cargos</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#127760; <strong>UAT co.2</strong></span>
+    <span>&#127760; <strong>UAT co.2</strong> + <strong>Prod co.21</strong></span>
     <span class="sep">&middot;</span>
-    <span>&#128279; <strong>app-rebu-portal-03-uat.azurewebsites.net</strong></span>
+    <span>&#128279; <strong>app-rebu-portal-03-uat.azurewebsites.net</strong> &middot; <strong>test.rebuhr.com</strong></span>
   </div>
 </header>
 
 <div class="bandeja">
   <div class="summary">
-    <div class="card pass"><div class="card-value">10</div><div class="card-label">Pasaron</div></div>
+    <div class="card pass"><div class="card-value">20</div><div class="card-label">Pasaron <span style="font-size:10px;opacity:.75">(10 en UAT + 10 en Prod)</span></div></div>
     <div class="card fail"><div class="card-value">0</div><div class="card-label">Fallaron</div></div>
-    <div class="card total"><div class="card-value">10</div><div class="card-label">Casos <span style="font-size:10px;opacity:.75">(flujos E2E de integraci&oacute;n y regresi&oacute;n)</span></div></div>
-    <div class="card time"><div class="card-value">~1 m</div><div class="card-label">Duraci&oacute;n <span style="font-size:10px;opacity:.75">(con evidencia)</span></div></div>
+    <div class="card total"><div class="card-value">20</div><div class="card-label">Casos <span style="font-size:10px;opacity:.75">(10 flujos E2E corridos en los dos ambientes)</span></div></div>
+    <div class="card time"><div class="card-value">~2 m</div><div class="card-label">Duraci&oacute;n <span style="font-size:10px;opacity:.75">(UAT ~1 m + Prod ~1 m, con evidencia)</span></div></div>
   </div>
 
   <div class="content" style="padding-top:4px">
     <div class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">10</span></button>
+      <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">20</span></button>
     </div>
     <hr class="tab-divider">
   </div>
@@ -133,6 +133,12 @@
   <div id="tab-auto" class="tab-panel active">
     <div class="content">
 
+      <div class="env-tab-group">
+        <div class="env-tab-nav">
+          <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT <span class="env-tab-count">10 &#10003;</span></button>
+          <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n <span class="env-tab-count">10 &#10003;</span></button>
+        </div>
+        <div id="env-uat" class="env-tab-panel active"><div class="content">
       <div class="hu-section">
         <div class="hu-header" onclick="headerClick(this)">
           <div class="hu-header-left">
@@ -256,7 +262,7 @@
 <tr><th>Pasos</th><td>1. Leer los grupos del desplegable &rarr; Esperado: existen <strong>PUESTO</strong> y <strong>COLABORADOR</strong>.<br>2. Leer el contenido del grupo Puesto &rarr; Esperado: exactamente <code>Puesto</code>, <code>Descripci&oacute;n del puesto</code>, <code>Cargo</code>, <code>Jefe directo</code>, en ese orden.<br>3. Leer el grupo Colaborador &rarr; Esperado: <strong>no</strong> contiene <code>Cargo</code>.<br>4. Verificar que el grupo Colaborador se pobl&oacute; con los campos de REBU-5908 &rarr; Esperado: m&aacute;s de 10 campos.<br>5. Escribir &ldquo;puesto&rdquo; en el buscador del desplegable &rarr; Esperado: encuentra <code>Descripci&oacute;n del puesto</code>.</td></tr>
 <tr><th>Resultado esperado</th><td>el cat&aacute;logo de campos expone el grupo Puesto completo y el campo Cargo vive en un solo lugar.</td></tr>
 <tr><th>Resultado obtenido</th><td>El desplegable expuso nueve grupos: <code>COLABORADOR</code>, <code>PUESTO</code>, <code>REMUNERACIONES</code>, <code>DEDUCCIONES MENSUAL</code>, <code>DEDUCCIONES VARIABLE</code>, <code>ACUMULADOS DEL A&Ntilde;O</code>, <code>EMPRESA</code>, <code>GENERAL</code> y <code>DESCUENTOS C&Iacute;CLICOS</code>. El grupo PUESTO trajo <strong>exactamente</strong> los cuatro campos del AC2 en orden, y COLABORADOR &mdash;con 21 campos&mdash; <strong>ya no ofrece</strong> <code>Cargo</code>: se movi&oacute; sin duplicarse. El buscador filtr&oacute; correctamente. &#9989;</td></tr>
-<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; grupo PUESTO con sus 4 campos y COLABORADOR sin Cargo</div><img src="assets/v17.1.0/E2E-INT-086a/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; el buscador del desplegable filtra por "puesto"</div><img src="assets/v17.1.0/E2E-INT-086a/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; grupo PUESTO con sus 4 campos y COLABORADOR sin Cargo</div><img src="assets/v17.1.0/uat/E2E-INT-086a/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; el buscador del desplegable filtra por "puesto"</div><img src="assets/v17.1.0/uat/E2E-INT-086a/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
 </table></td></tr>
 
@@ -270,7 +276,7 @@
 <tr><th>Pasos</th><td>1. Insertar los cuatro campos del grupo Puesto, uno tras otro &rarr; Esperado: cada uno se agrega al final del contenido.<br>2. Leer el texto del cuerpo &rarr; Esperado: contiene los cuatro tokens.</td></tr>
 <tr><th>Resultado esperado</th><td>los cuatro campos quedan en la hoja como tokens independientes y bien formados.</td></tr>
 <tr><th>Resultado obtenido</th><td>El cuerpo qued&oacute; con <code>{{Puesto}} {{Descripci&oacute;n del puesto}} {{Cargo}} {{Jefe directo}}</code>, los cuatro completos y sin solaparse entre s&iacute;. &#9989;</td></tr>
-<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; los 4 campos insertados en la hoja</div><img src="assets/v17.1.0/E2E-INT-086b/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; los 4 campos insertados en la hoja</div><img src="assets/v17.1.0/uat/E2E-INT-086b/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
 </table></td></tr>
 
@@ -284,13 +290,175 @@
 <tr><th>Pasos</th><td>1. Verificar el cuerpo antes de guardar &rarr; Esperado: contiene <code>{{Cargo}}</code>.<br>2. Guardar la plantilla &rarr; Esperado: guarda sin error.<br>3. Volver al listado y reabrirla &rarr; Esperado: aparece y abre.<br>4. Leer el cuerpo &rarr; Esperado: el token y el texto que lo acompa&ntilde;a siguen intactos.<br>5. Inspeccionar el token &rarr; Esperado: es un <strong>nodo propio</strong> del editor, no texto literal.</td></tr>
 <tr><th>Resultado esperado</th><td>mover el campo de grupo no rompe las plantillas que ya lo usaban.</td></tr>
 <tr><th>Resultado obtenido</th><td>La plantilla guard&oacute; y reabri&oacute; con <code>Por medio de la presente se hace constar el cargo de: {{Cargo}}</code> intacto. El token se reabri&oacute; como <code>&lt;span data-lexical-text="true"&gt;</code> con su estilo de campo &mdash; nodo propio del editor, no texto disuelto. El identificador interno sobrevivi&oacute; al cambio de grupo. &#9989;</td></tr>
-<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; token Cargo insertado, antes de guardar</div><img src="assets/v17.1.0/E2E-REG-089/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; plantilla reabierta con el token intacto</div><img src="assets/v17.1.0/E2E-REG-089/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; token Cargo insertado, antes de guardar</div><img src="assets/v17.1.0/uat/E2E-REG-089/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; plantilla reabierta con el token intacto</div><img src="assets/v17.1.0/uat/E2E-REG-089/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
 <tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
 </table></td></tr>
             </tbody>
           </table>
         </div>
 
+        </div></div>
+        <div id="env-prod" class="env-tab-panel"><div class="content">
+      <div class="hu-section">
+        <div class="hu-header" onclick="headerClick(this)">
+          <div class="hu-header-left">
+            <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-5892" target="_blank" onclick="event.stopPropagation()">REBU-5892</a>
+            <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="An&aacute;lisis de flujos E2E de la &eacute;pica">REBU-6227</a>
+            <span class="hu-title">Puestos y Cargos &mdash; el cargo deriva su nombre del puesto &middot; Producci&oacute;n co.21</span>
+          </div>
+          <div class="hu-header-right"><span class="hu-badge">10 / 10 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+        </div>
+
+        <div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+          <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+          <div style="font-size:11px;color:#204a6e;line-height:1.7">
+            La &eacute;pica introduce el <strong>Puesto</strong> como entidad padre del <strong>Cargo</strong>, y el cargo deja de tener nombre propio: lo deriva de su puesto.
+            Eso convierte a REBU-5892 en un cambio <strong>transversal</strong>, no en una feature de cat&aacute;logo. Estos flujos verifican que el nombre derivado llega correcto
+            a cada consumidor aguas abajo &mdash; el listado de Cargos (INT-081), el <strong>organigrama</strong> y sus plazas vacantes (REG-088), la <strong>b&uacute;squeda</strong> tras
+            pasar de columna propia a join (REG-090) y el <strong>cat&aacute;logo de campos de las plantillas</strong> (INT-086, REG-089) &mdash; y que las reglas de integridad del
+            cat&aacute;logo se sostienen: un puesto con cargos no se borra, y dos nombres que solo difieren en may&uacute;sculas o tildes son el mismo puesto.
+          </div>
+        </div>
+
+        <table class="test-table">
+          <thead><tr><th>ID</th><th>Flujo E2E</th><th>Status</th></tr></thead>
+          <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-INT-081</td><td><div class="test-name">Renombrar un puesto cambia el nombre de sus 2 cargos sin tocarlos</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@colaboradores</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-INT-081</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5895" target="_blank" rel="noopener">REBU-5895</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5899" target="_blank" rel="noopener">REBU-5899</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5903" target="_blank" rel="noopener">REBU-5903</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5904" target="_blank" rel="noopener">REBU-5904</a></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code></td></tr>
+<tr><th>Precondiciones</th><td>un puesto reci&eacute;n creado con descripci&oacute;n, y <strong>dos cargos</strong> dentro de &eacute;l. Ning&uacute;n id quemado: el puesto se resuelve por nombre.</td></tr>
+<tr><th>Regla evaluada</th><td>El cargo <strong>no tiene nombre propio</strong>: lo deriva de su puesto v&iacute;a <code>PositionNameHelper</code> (REBU-6112). Renombrar el puesto debe cambiar el nombre visible de <strong>todos</strong> sus cargos sin tocar ninguno, y sin alterar sus c&oacute;digos. Importa porque el fallback legacy a <code>Position.Name</code> sigue vivo: un consumidor que a&uacute;n lo lea mostrar&iacute;a el nombre viejo sin romperse, y este caso es el que lo delata desde afuera.</td></tr>
+<tr><th>Setup</th><td>1. <code>POST /api/dashboard/2/job-titles</code> con nombre &uacute;nico y descripci&oacute;n &rarr; devuelve <code>{ id, code }</code>.<br>2. <code>POST /api/dashboard/2/job-positions</code> &times;2 con <code>jobTitleId</code> &rarr; dos cargos dentro del puesto.<br>3. Guardar como l&iacute;nea base el c&oacute;digo del puesto y el c&oacute;digo de cada cargo.</td></tr>
+<tr><th>Pasos</th><td>1. Leer el listado de Puestos &rarr; Esperado: el puesto figura con <strong>N.&ordm; de cargos = 2</strong>.<br>2. <code>PUT /job-titles/{id}</code> con el nombre nuevo &rarr; Esperado: <strong>204</strong>.<br>3. Leer el listado de Cargos por el nombre nuevo &rarr; Esperado: los <strong>dos</strong> cargos aparecen con <code>cargo</code> y <code>jobTitleName</code> actualizados y su <code>jobTitleId</code> intacto.<br>4. Verificar los c&oacute;digos &rarr; Esperado: el c&oacute;digo de cada cargo y el del puesto <strong>no cambian</strong>.<br>5. Buscar por el nombre anterior &rarr; Esperado: <strong>ning&uacute;n</strong> cargo lo resuelve todav&iacute;a.<br>6. Leer el detalle del puesto &rarr; Esperado: nombre nuevo, c&oacute;digo y descripci&oacute;n intactos, contador en 2.</td></tr>
+<tr><th>Resultado esperado</th><td>el nombre del puesto es la &uacute;nica fuente del nombre del cargo, y el renombre se refleja en cat&aacute;logo y detalle <strong>sin tocar ning&uacute;n cargo</strong>.</td></tr>
+<tr><th>Resultado obtenido</th><td>El puesto se cre&oacute; con c&oacute;digo autoasignado y qued&oacute; con <code>positionsCount: 2</code>. El <code>PUT</code> respondi&oacute; <strong>204</strong> y los dos cargos pasaron a mostrar el nombre nuevo en <code>cargo</code> y <code>jobTitleName</code>, conservando <code>jobTitleId</code>, su c&oacute;digo de cargo y el c&oacute;digo de puesto. La b&uacute;squeda por el nombre anterior devolvi&oacute; <strong>cero</strong> cargos &mdash; no qued&oacute; rastro del fallback legacy. El detalle del puesto conserv&oacute; descripci&oacute;n y contador. &#9989;</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-INT-081b</td><td><div class="test-name">Un puesto con cargos asociados no se puede borrar, y sin ellos s&iacute;</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@validacion</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-INT-081b</code> &middot; HU <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5900" target="_blank" rel="noopener">REBU-5900</a></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code></td></tr>
+<tr><th>Precondiciones</th><td>un puesto con <strong>un</strong> cargo dentro.</td></tr>
+<tr><th>Regla evaluada</th><td>Un puesto solo se elimina si <strong>no tiene cargos</strong>. La guarda debe funcionar en los dos sentidos &mdash; rechazar mientras haya cargos y permitir cuando ya no los haya &mdash; y el rechazo debe explicar el motivo, no ser un 409 gen&eacute;rico que obligue a adivinar.</td></tr>
+<tr><th>Setup</th><td>1. Crear el puesto por API.<br>2. Crear un cargo dentro de &eacute;l con <code>jobTitleId</code>.</td></tr>
+<tr><th>Pasos</th><td>1. <code>DELETE /job-titles/{id}</code> con el cargo vivo &rarr; Esperado: <strong>409</strong> y el mensaje menciona que tiene cargos asociados.<br>2. <code>DELETE /job-positions/{id}</code> para borrar el cargo &rarr; Esperado: OK.<br>3. <code>DELETE /job-titles/{id}</code> otra vez &rarr; Esperado: <strong>204</strong>.</td></tr>
+<tr><th>Resultado esperado</th><td>la integridad referencial del cat&aacute;logo se sostiene, y el error es legible para quien lo recibe.</td></tr>
+<tr><th>Resultado obtenido</th><td>Con el cargo vivo el borrado devolvi&oacute; <strong>409</strong> con <em>&ldquo;No se puede eliminar el puesto porque tiene cargos asociados.&rdquo;</em> &mdash; motivo expl&iacute;cito, no un c&oacute;digo pelado. Tras borrar el cargo, el mismo <code>DELETE</code> respondi&oacute; <strong>204</strong>. &#9989;</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-088</td><td><div class="test-name">El organigrama muestra el nombre derivado del puesto y lo actualiza al renombrarlo</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@colaboradores</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-REG-088</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5899" target="_blank" rel="noopener">REBU-5899</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5904" target="_blank" rel="noopener">REBU-5904</a></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code></td></tr>
+<tr><th>Precondiciones</th><td>dos puestos y una jerarqu&iacute;a de dos niveles con <strong>plazas vacantes</strong>: un cargo padre y un cargo hijo que cuelga de &eacute;l.</td></tr>
+<tr><th>Regla evaluada</th><td>REBU-6112 migr&oacute; tres queries del organigrama a <code>PositionNameHelper</code>: la jerarqu&iacute;a, el detalle de nodo y las plazas vacantes. El propio dev marc&oacute; como riesgo (hallazgo G1) que a alguno le faltara el <code>Include(JobTitle)</code>, en cuyo caso el nodo saldr&iacute;a con <strong>nombre vac&iacute;o</strong> en vez de romperse. Se usan plazas vacantes a prop&oacute;sito: ejercita la derivaci&oacute;n y la jerarqu&iacute;a sin depender del ocupante, y de paso cubre el tercer query.</td></tr>
+<tr><th>Setup</th><td>1. Crear dos puestos por API (&ldquo;Jefatura&rdquo; y &ldquo;Operativo&rdquo;).<br>2. Crear el cargo padre en el primero, sin jefe.<br>3. Crear el cargo hijo en el segundo, con <code>parentPositionId</code> apuntando al padre.</td></tr>
+<tr><th>Pasos</th><td>1. <code>GET /api/dashboard/2/org-chart</code> y buscar ambos nodos en el &aacute;rbol &rarr; Esperado: cada uno muestra el nombre de <strong>su</strong> puesto, y el nombre <strong>no viene vac&iacute;o</strong>.<br>2. Verificar la jerarqu&iacute;a &rarr; Esperado: el hijo est&aacute; entre los <code>children</code> del padre y el padre reporta al menos 1 subordinado directo.<br>3. Verificar las plazas &rarr; Esperado: ambas figuran <code>isVacant: true</code> y sin ocupante residual.<br>4. Renombrar el puesto padre y releer el organigrama &rarr; Esperado: el nodo refleja el nombre nuevo, su c&oacute;digo no cambia, el hijo conserva el suyo y la jerarqu&iacute;a sobrevive.</td></tr>
+<tr><th>Resultado esperado</th><td>ning&uacute;n nodo del organigrama muestra el nombre viejo ni un valor nulo tras el refactor.</td></tr>
+<tr><th>Resultado obtenido</th><td>Los dos nodos aparecieron en el &aacute;rbol con el nombre de su puesto y <strong>sin campos vac&iacute;os</strong>. El hijo colgaba del padre y el padre report&oacute; su subordinado directo. Ambas plazas se marcaron vacantes con <code>occupantName: null</code>. Tras el renombre, el nodo padre mostr&oacute; el nombre nuevo conservando su c&oacute;digo, el hijo mantuvo el propio &mdash; no hered&oacute; el del padre &mdash; y la relaci&oacute;n padre-hijo se mantuvo. &#9989;</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-088b</td><td><div class="test-name">Mover un cargo de puesto cambia su nodo del organigrama y conserva su c&oacute;digo</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-REG-088b</code> &middot; HU <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5904" target="_blank" rel="noopener">REBU-5904</a></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code></td></tr>
+<tr><th>Precondiciones</th><td>dos puestos (origen y destino) y un cargo dentro del de origen.</td></tr>
+<tr><th>Regla evaluada</th><td>AC10 de REBU-5904: despu&eacute;s de cambiar un cargo de puesto, debe mostrarse con el nombre del puesto nuevo <strong>en todos los listados y en el organigrama</strong>. Y AC12: el cargo <strong>conserva su c&oacute;digo</strong>. Es el cruce entre el cat&aacute;logo y el organigrama, que ninguna HU verifica junta.</td></tr>
+<tr><th>Setup</th><td>1. Crear los dos puestos por API.<br>2. Crear el cargo en el puesto de origen.<br>3. Leer su nodo en el organigrama y guardar el c&oacute;digo como l&iacute;nea base.</td></tr>
+<tr><th>Pasos</th><td>1. Verificar el nodo &rarr; Esperado: muestra el nombre del puesto de <strong>origen</strong>.<br>2. <code>PUT /job-positions/{id}</code> con el <code>jobTitleId</code> del destino &rarr; Esperado: se aplica.<br>3. Releer el organigrama &rarr; Esperado: el nodo muestra el nombre del puesto <strong>destino</strong> y su c&oacute;digo es el mismo de la l&iacute;nea base.</td></tr>
+<tr><th>Resultado esperado</th><td>el cambio de puesto viaja hasta el organigrama sin alterar la identidad del cargo.</td></tr>
+<tr><th>Resultado obtenido</th><td>El nodo arranc&oacute; con el nombre del puesto de origen. Tras el <code>PUT</code>, el organigrama lo mostr&oacute; con el nombre del destino y <strong>el mismo c&oacute;digo</strong> que antes del movimiento. &#9989;</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-090</td><td><div class="test-name">La b&uacute;squeda de cargos ignora may&uacute;sculas y tildes despu&eacute;s del join</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@validacion</span><span class="tag tag-val">@regression</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-REG-090</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5897" target="_blank" rel="noopener">REBU-5897</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5903" target="_blank" rel="noopener">REBU-5903</a></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code></td></tr>
+<tr><th>Precondiciones</th><td>un puesto cuyo nombre lleva <strong>tilde y may&uacute;scula</strong> (&ldquo;T&eacute;cnico El&eacute;ctrico&rdquo;) y un cargo dentro de &eacute;l.</td></tr>
+<tr><th>Regla evaluada</th><td>El buscador filtraba con <code>Like</code> sobre <code>Position.Name</code> &mdash; una columna propia con collation CI_AI, insensible a may&uacute;sculas y acentos. REBU-6112 lo movi&oacute; a un <strong>join</strong> contra <code>JobTitle.Name</code>. Un join que no preserve la collation vuelve la b&uacute;squeda sensible a tildes y el usuario deja de encontrar sus cargos &mdash; <strong>sin ning&uacute;n error</strong>: solo resultados vac&iacute;os, que es la peor forma de fallar.</td></tr>
+<tr><th>Setup</th><td>1. Crear el puesto con tildes por API.<br>2. Crear un cargo dentro de &eacute;l.</td></tr>
+<tr><th>Pasos</th><td>1. Buscar el t&eacute;rmino <strong>sin tildes y en min&uacute;sculas</strong> &rarr; Esperado: encuentra el cargo.<br>2. Buscar el mismo t&eacute;rmino <strong>en may&uacute;sculas</strong> &rarr; Esperado: lo encuentra.<br>3. Buscar un <strong>fragmento parcial</strong> &rarr; Esperado: devuelve coincidencias.<br>4. Repetir la b&uacute;squeda sin tildes en el listado de <strong>Puestos</strong> &rarr; Esperado: mismo comportamiento.<br>5. Buscar un t&eacute;rmino inexistente &rarr; Esperado: listado vac&iacute;o, sin error.</td></tr>
+<tr><th>Resultado esperado</th><td>la b&uacute;squeda conserva su sem&aacute;ntica insensible a acentos y may&uacute;sculas tras pasar de columna propia a join.</td></tr>
+<tr><th>Resultado obtenido</th><td>Las cuatro variantes &mdash;sin tildes, en min&uacute;sculas, en may&uacute;sculas y fragmento parcial&mdash; encontraron el cargo, y el listado de Puestos se comport&oacute; igual. El t&eacute;rmino inexistente devolvi&oacute; lista vac&iacute;a sin error. La collation CI_AI sobrevivi&oacute; al join. &#9989;</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-090b</td><td><div class="test-name">La unicidad del nombre de puesto ignora may&uacute;sculas y tildes</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@validacion</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-REG-090b</code> &middot; HU <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5895" target="_blank" rel="noopener">REBU-5895</a> (AC7, AC8)</td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code></td></tr>
+<tr><th>Precondiciones</th><td>un puesto ya creado con tildes en el nombre.</td></tr>
+<tr><th>Regla evaluada</th><td>AC8 de REBU-5895: la comparaci&oacute;n de nombres ignora may&uacute;sculas, tildes y espacios de m&aacute;s. Lo que este caso cruza es que <strong>la unicidad y la b&uacute;squeda usen la MISMA normalizaci&oacute;n</strong>: si una ignora tildes y la otra no, el cat&aacute;logo se llena de duplicados que el buscador presenta como si fueran el mismo puesto, y nadie entiende por qu&eacute; hay dos.</td></tr>
+<tr><th>Setup</th><td>1. Crear el puesto con el nombre can&oacute;nico (con tildes).</td></tr>
+<tr><th>Pasos</th><td>1. Intentar crear otro puesto con el <strong>mismo nombre sin tildes y en may&uacute;sculas</strong> &rarr; Esperado: el BE lo rechaza.</td></tr>
+<tr><th>Resultado esperado</th><td>unicidad y b&uacute;squeda comparten normalizaci&oacute;n: no se puede crear un puesto que solo difiera en may&uacute;sculas o acentos.</td></tr>
+<tr><th>Resultado obtenido</th><td>El intento devolvi&oacute; <strong>409</strong> con <em>&ldquo;Ya existe un puesto con ese nombre&rdquo;</em>, que es el AC7 literal. La normalizaci&oacute;n de la unicidad coincide con la de la b&uacute;squeda del caso anterior. &#9989;</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-090c</td><td><div class="test-name">Los dos listados respetan el tope de paginaci&oacute;n con un error legible</div><div class="test-tags"><span class="tag tag-val">@api</span><span class="tag tag-val">@validacion</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-REG-090c</code> &middot; HU <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5897" target="_blank" rel="noopener">REBU-5897</a></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code></td></tr>
+<tr><th>Precondiciones</th><td>ninguna &mdash; se ejercita el contrato del endpoint directamente.</td></tr>
+<tr><th>Regla evaluada</th><td>REBU-6120 introdujo <strong>paginaci&oacute;n server-side real</strong> en el listado de cargos. El tope debe aplicarse de forma coherente en los dos listados y rechazar lo que lo exceda con un mensaje que diga <strong>cu&aacute;l es el rango</strong> &mdash; no un 400 pelado, ni un 500, ni una p&aacute;gina truncada en silencio, que es lo que dejar&iacute;a al consumidor creyendo que recibi&oacute; todo.</td></tr>
+<tr><th>Setup</th><td>Ninguno.</td></tr>
+<tr><th>Pasos</th><td>1. <code>GET /job-positions?pageSize=200</code> &rarr; Esperado: <strong>200</strong>.<br>2. <code>GET /job-positions?pageSize=201</code> &rarr; Esperado: <strong>400</strong> y el mensaje indica el rango permitido.<br>3. <code>GET /job-titles?pageSize=201</code> &rarr; Esperado: el mismo tope.</td></tr>
+<tr><th>Resultado esperado</th><td>el tope de paginaci&oacute;n es coherente entre ambos listados y su error es accionable.</td></tr>
+<tr><th>Resultado obtenido</th><td><code>pageSize=200</code> respondi&oacute; <strong>200</strong>; <code>201</code> devolvi&oacute; <strong>400</strong> con <em>&ldquo;El tama&ntilde;o de p&aacute;gina debe estar entre 1 y 200.&rdquo;</em> &mdash; el rango expl&iacute;cito en el mensaje. El listado de Puestos aplic&oacute; el mismo tope. &#9989;</td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-INT-086a</td><td><div class="test-name">El grupo Puesto trae sus 4 campos y Cargo sali&oacute; del grupo Colaborador</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-INT-086a</code> &middot; HUs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5907" target="_blank" rel="noopener">REBU-5907</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5908" target="_blank" rel="noopener">REBU-5908</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5924" target="_blank" rel="noopener">REBU-5924</a> <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5939" target="_blank" rel="noopener">REBU-5939</a></td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code> &middot; viewport 1440&times;900</td></tr>
+<tr><th>Precondiciones</th><td>acceso a Documentos &rsaquo; Plantillas con permiso de creaci&oacute;n.</td></tr>
+<tr><th>Regla evaluada</th><td>Lo que produce el cat&aacute;logo de Puestos tiene que aparecer como insumo consumible en el m&oacute;dulo de <strong>Documentos</strong>, que es otro m&oacute;dulo y otra HU. AC1 y AC2 de REBU-5907 exigen un grupo <strong>Puesto</strong> con cuatro campos; el AC6 exige que <code>Cargo</code> <strong>se haya movido, no duplicado</strong> &mdash; si quedara en los dos grupos, el usuario tendr&iacute;a dos campos con el mismo nombre y distinto origen. El AC9 pide que el buscador del desplegable los encuentre.</td></tr>
+<tr><th>Setup</th><td>1. Documentos &rsaquo; Plantillas &rsaquo; <strong>Nueva Plantilla</strong>.<br>2. Abrir el desplegable <strong>Insertar Campo</strong> y leer sus grupos en orden del DOM.</td></tr>
+<tr><th>Pasos</th><td>1. Leer los grupos del desplegable &rarr; Esperado: existen <strong>PUESTO</strong> y <strong>COLABORADOR</strong>.<br>2. Leer el contenido del grupo Puesto &rarr; Esperado: exactamente <code>Puesto</code>, <code>Descripci&oacute;n del puesto</code>, <code>Cargo</code>, <code>Jefe directo</code>, en ese orden.<br>3. Leer el grupo Colaborador &rarr; Esperado: <strong>no</strong> contiene <code>Cargo</code>.<br>4. Verificar que el grupo Colaborador se pobl&oacute; con los campos de REBU-5908 &rarr; Esperado: m&aacute;s de 10 campos.<br>5. Escribir &ldquo;puesto&rdquo; en el buscador del desplegable &rarr; Esperado: encuentra <code>Descripci&oacute;n del puesto</code>.</td></tr>
+<tr><th>Resultado esperado</th><td>el cat&aacute;logo de campos expone el grupo Puesto completo y el campo Cargo vive en un solo lugar.</td></tr>
+<tr><th>Resultado obtenido</th><td>El desplegable expuso nueve grupos: <code>COLABORADOR</code>, <code>PUESTO</code>, <code>REMUNERACIONES</code>, <code>DEDUCCIONES MENSUAL</code>, <code>DEDUCCIONES VARIABLE</code>, <code>ACUMULADOS DEL A&Ntilde;O</code>, <code>EMPRESA</code>, <code>GENERAL</code> y <code>DESCUENTOS C&Iacute;CLICOS</code>. El grupo PUESTO trajo <strong>exactamente</strong> los cuatro campos del AC2 en orden, y COLABORADOR &mdash;con 21 campos&mdash; <strong>ya no ofrece</strong> <code>Cargo</code>: se movi&oacute; sin duplicarse. El buscador filtr&oacute; correctamente. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; grupo PUESTO con sus 4 campos y COLABORADOR sin Cargo</div><img src="assets/v17.1.0/prod/E2E-INT-086a/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; el buscador del desplegable filtra por "puesto"</div><img src="assets/v17.1.0/prod/E2E-INT-086a/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-INT-086b</td><td><div class="test-name">Los 4 campos del grupo Puesto se insertan en la hoja de la plantilla</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-INT-086b</code> &middot; HU <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5907" target="_blank" rel="noopener">REBU-5907</a> (AC8)</td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code> &middot; viewport 1440&times;900</td></tr>
+<tr><th>Precondiciones</th><td>una plantilla nueva con nombre y con texto en el cuerpo &mdash; sin texto el guardado se rechaza con &ldquo;Contenido requerido&rdquo;, que es una regla deliberada del producto.</td></tr>
+<tr><th>Regla evaluada</th><td>AC8 de REBU-5907: los cuatro campos se insertan con el formato de doble llave. No alcanza con que el desplegable los liste &mdash; tienen que <strong>aterrizar en la hoja</strong> como tokens bien formados, porque eso es lo que despu&eacute;s se reemplaza al generar el documento.</td></tr>
+<tr><th>Setup</th><td>1. Nueva Plantilla, ponerle nombre.<br>2. Escribir un texto de arranque en el cuerpo.</td></tr>
+<tr><th>Pasos</th><td>1. Insertar los cuatro campos del grupo Puesto, uno tras otro &rarr; Esperado: cada uno se agrega al final del contenido.<br>2. Leer el texto del cuerpo &rarr; Esperado: contiene los cuatro tokens.</td></tr>
+<tr><th>Resultado esperado</th><td>los cuatro campos quedan en la hoja como tokens independientes y bien formados.</td></tr>
+<tr><th>Resultado obtenido</th><td>El cuerpo qued&oacute; con <code>{{Puesto}} {{Descripci&oacute;n del puesto}} {{Cargo}} {{Jefe directo}}</code>, los cuatro completos y sin solaparse entre s&iacute;. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; los 4 campos insertados en la hoja</div><img src="assets/v17.1.0/prod/E2E-INT-086b/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">E2E-REG-089</td><td><div class="test-name">Una plantilla con {{Cargo}} se guarda, se reabre y conserva el campo</div><div class="test-tags"><span class="tag tag-val">@ui</span><span class="tag tag-val">@documentos</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@critical</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6227" target="_blank" rel="noopener">REBU-6227</a> &middot; flujo <code>E2E-REG-089</code> &middot; HU <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5907" target="_blank" rel="noopener">REBU-5907</a> (AC7)</td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 &middot; <code>test.rebuhr.com</code> &middot; viewport 1440&times;900</td></tr>
+<tr><th>Precondiciones</th><td>una plantilla nueva con el campo <code>Cargo</code> insertado y texto que lo acompa&ntilde;e.</td></tr>
+<tr><th>Regla evaluada</th><td>El campo <code>Cargo</code> viv&iacute;a en el grupo <strong>Colaborador</strong> y REBU-5907 lo movi&oacute; al grupo <strong>Puesto</strong>. El AC7 promete que las plantillas que ya lo ten&iacute;an insertado <em>&ldquo;siguen funcionando sin ning&uacute;n cambio&rdquo;</em>. Si el identificador interno del token hubiera cambiado al moverlo de grupo, todas las plantillas de contrato productivas quedar&iacute;an con un placeholder literal &mdash; y eso <strong>solo se ve al generar</strong>, nunca al guardar. De ah&iacute; que el caso verifique que el token se reabre como <strong>nodo propio del editor</strong> y no disuelto en el texto.</td></tr>
+<tr><th>Setup</th><td>1. Nueva Plantilla con nombre.<br>2. Escribir el texto de la constancia.<br>3. Insertar el campo <code>Cargo</code> desde el grupo Puesto.</td></tr>
+<tr><th>Pasos</th><td>1. Verificar el cuerpo antes de guardar &rarr; Esperado: contiene <code>{{Cargo}}</code>.<br>2. Guardar la plantilla &rarr; Esperado: guarda sin error.<br>3. Volver al listado y reabrirla &rarr; Esperado: aparece y abre.<br>4. Leer el cuerpo &rarr; Esperado: el token y el texto que lo acompa&ntilde;a siguen intactos.<br>5. Inspeccionar el token &rarr; Esperado: es un <strong>nodo propio</strong> del editor, no texto literal.</td></tr>
+<tr><th>Resultado esperado</th><td>mover el campo de grupo no rompe las plantillas que ya lo usaban.</td></tr>
+<tr><th>Resultado obtenido</th><td>La plantilla guard&oacute; y reabri&oacute; con <code>Por medio de la presente se hace constar el cargo de: {{Cargo}}</code> intacto. El token se reabri&oacute; como <code>&lt;span data-lexical-text="true"&gt;</code> con su estilo de campo &mdash; nodo propio del editor, no texto disuelto. El identificador interno sobrevivi&oacute; al cambio de grupo. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; token Cargo insertado, antes de guardar</div><img src="assets/v17.1.0/prod/E2E-REG-089/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; plantilla reabierta con el token intacto</div><img src="assets/v17.1.0/prod/E2E-REG-089/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        </div></div>
+      </div>
       </div>
     </div>
   </div>
@@ -401,7 +569,7 @@
 </section>
 
 <footer>
-  <strong>Rebu Automation Suite</strong> &middot; Generado el 26 sep 2026 &middot; Rama <strong>test/5892-puestos-y-cargos</strong> &middot; Entorno <strong>UAT</strong>
+  <strong>Rebu Automation Suite</strong> &middot; Generado el 26 sep 2026 &middot; Rama <strong>test/5892-puestos-y-cargos</strong> &middot; Entorno <strong>UAT + Producci&oacute;n</strong>
 </footer>
 </div>
 
