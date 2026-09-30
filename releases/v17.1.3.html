@@ -1,0 +1,491 @@
+<title>Rebu &mdash; Reporte E2E &middot; Release v17.1.3</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../report.css">
+
+<!--
+  NOTA PARA CLAUDE (u otro agente) QUE EDITE ESTE REPORTE:
+  Fuente de verdad: skill /generate-report (.claude/commands/generate-report.md).
+  index.html = SOLO el release actual (hero + bandeja). Releases anteriores viven
+  en releases/vX.Y.Z.html. Capturas como archivos .jpg bajo assets/, nunca base64.
+-->
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo" onclick="toggleSidebar()" title="Expandir / colapsar">R</div>
+    <span class="sidebar-title">Releases</span>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">&#9664;</button>
+  </div>
+  <div class="sidebar-body">
+    <div class="nav-group-label">Actual</div>
+    <a class="nav-item" href="../index.html" data-tip="v14.1.0">
+      <span class="nav-icon">&#128640;</span>
+      <div class="nav-item-body"><div class="nav-version">v14.1.0</div><div class="nav-date">30 sep 2026 &middot; UAT + Prod</div></div>
+    </a>
+    <hr class="nav-divider">
+    <div class="nav-group-label">Anteriores</div>
+    <a class="nav-item current" href="../releases/v17.1.3.html" data-tip="v17.1.3">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v17.1.3</div><div class="nav-date">30 sep 2026</div></div>
+      <span class="nav-minibadge">9 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v17.1.0.html" data-tip="v17.1.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v17.1.0</div><div class="nav-date">26 sep 2026</div></div>
+      <span class="nav-minibadge">20 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v17.0.0.html" data-tip="v17.0.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v17.0.0</div><div class="nav-date">25 sep 2026</div></div>
+      <span class="nav-minibadge">188 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.9.0.html" data-tip="v16.9.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.9.0</div><div class="nav-date">17 sep 2026</div></div>
+      <span class="nav-minibadge">18 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.8.0.html" data-tip="v16.8.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.8.0</div><div class="nav-date">16 sep 2026</div></div>
+      <span class="nav-minibadge">10 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.7.0.html" data-tip="v16.7.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.7.0</div><div class="nav-date">14 sep 2026</div></div>
+      <span class="nav-minibadge">113 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.6.0.html" data-tip="v16.6.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.6.0</div><div class="nav-date">09 sep 2026</div></div>
+      <span class="nav-minibadge">99 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.5.0.html" data-tip="v16.5.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.5.0</div><div class="nav-date">05 sep 2026</div></div>
+      <span class="nav-minibadge">99 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.4.0.html" data-tip="v16.4.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.4.0</div><div class="nav-date">02 sep 2026</div></div>
+      <span class="nav-minibadge">31 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.3.0.html" data-tip="v16.3.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.3.0</div><div class="nav-date">01 sep 2026</div></div>
+      <span class="nav-minibadge">59 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.2.0.html" data-tip="v16.2.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.2.0</div><div class="nav-date">21 ago 2026</div></div>
+      <span class="nav-minibadge">100 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.1.0.html" data-tip="v16.1.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.1.0</div><div class="nav-date">19 ago 2026</div></div>
+      <span class="nav-minibadge">25 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v16.0.0.html" data-tip="v16.0.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v16.0.0</div><div class="nav-date">16 ago 2026</div></div>
+      <span class="nav-minibadge">112 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v15.5.0.html" data-tip="v15.5.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v15.5.0</div><div class="nav-date">04 ago 2026</div></div>
+      <span class="nav-minibadge">137 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v15.0.0.html" data-tip="v15.0.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v15.0.0</div><div class="nav-date">02 jul 2026</div></div>
+      <span class="nav-minibadge">144 &#10003;</span>
+    </a>
+    <a class="nav-item" href="../releases/v14.6.0.html" data-tip="v14.6.0">
+      <span class="nav-icon">&#128230;</span>
+      <div class="nav-item-body"><div class="nav-version">v14.6.0</div><div class="nav-date">23 jun 2026</div></div>
+      <span class="nav-minibadge">46 &#10003;</span>
+    </a>
+  </div>
+</nav>
+<div class="overlay" id="overlay" onclick="closeMobileSidebar()"></div>
+<button class="mobile-fab" onclick="openMobileSidebar()">&#128203;</button>
+
+<div class="main-wrapper" id="main-wrapper">
+<!-- RELEASE-START: v17.1.3 | 2026-09-30 | Pass: 9 | Fail: 3 | Skip: 0 | Branch: test/4420-motor-recalculo-renta | Env: UAT co.2 + Prod co.21 -->
+
+<header class="hero" id="release-v17-1-3">
+  <div class="hero-eyebrow">Reporte de Automatizaci&oacute;n E2E &middot; hotfix</div>
+  <h1 class="hero-title">Release <span>v17.1.3</span></h1>
+  <div class="hero-meta">
+    <span>&#128197; <strong>30 sep 2026</strong></span>
+    <span class="sep">&middot;</span>
+    <span>&#127807; <strong>test/4420-motor-recalculo-renta</strong></span>
+    <span class="sep">&middot;</span>
+    <span>&#127760; <strong>UAT co.2</strong> + <strong>Prod co.21</strong></span>
+    <span class="sep">&middot;</span>
+    <span>&#128279; <strong>app-rebu-portal-03-uat.azurewebsites.net</strong> &middot; <strong>test.rebuhr.com</strong></span>
+  </div>
+</header>
+
+<div class="bandeja">
+  <div class="summary">
+    <div class="card pass"><div class="card-value">9</div><div class="card-label">Pasaron <span style="font-size:10px;opacity:.75">(6 en UAT + 3 en Prod)</span></div></div>
+    <div class="card fail"><div class="card-value">3</div><div class="card-label">Fallaron <span style="font-size:10px;opacity:.75">(los 3 de Prod = el bug, a&uacute;n sin el hotfix)</span></div></div>
+    <div class="card total"><div class="card-value">12</div><div class="card-label">Casos <span style="font-size:10px;opacity:.75">(6 casos TC-PLA-1113..1118 corridos en los dos ambientes)</span></div></div>
+    <div class="card time"><div class="card-value">~3 m</div><div class="card-label">Duraci&oacute;n <span style="font-size:10px;opacity:.75">(UAT 54 s + Prod 1.3 m de test; ~3.4 m por corrida con el login)</span></div></div>
+  </div>
+
+  <div class="content" style="padding-top:4px">
+    <div style="margin:0 0 14px;padding:14px 18px;background:#f4f8ee;border:1px solid #c3df4d;border-radius:12px;font-size:12px;line-height:1.7;color:#284b44">
+      <strong>Hotfix <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> &mdash; La copia en reproceso de una planilla EXTRAORDINARIA no aparece en Correr Planillas</strong> (&eacute;pica <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5737" target="_blank" rel="noopener">REBU-5737</a>, incumple AC8 de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a> y AC1 de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5744" target="_blank" rel="noopener">REBU-5744</a>).
+      Al reprocesar una extraordinaria finalizada la copia se creaba y era funcional por URL directa, pero <strong>no se listaba en Correr Planillas</strong>: el usuario no ten&iacute;a c&oacute;mo continuar, recalcular, cancelar ni confirmar el reproceso.
+      Causa (fix BE en <code>PR #3491</code>, rama <code>fix/REBU-6324-extraordinary-reprocess-copy-pending-tray</code>): <code>PendingPayrollQueryHandler</code> resuelve las extraordinarias en una rama que retorna antes del switch por subtipo, y el fix de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6171" target="_blank" rel="noopener">REBU-6171</a> solo se hab&iacute;a agregado al <code>case Regular</code>. FE sin cambios.
+      <br><br>
+      <strong>Qu&eacute; se automatiz&oacute;.</strong> Un spec con seis casos (<code>TC-PLA-1113..1118</code>) y asserts blandos: el control de que la copia se crea (1113), el AC8 por API (1114) y por UI (1115), el AC1 de 5744 &mdash; &ldquo;Continuar Reproceso&rdquo; abre el wizard de la <em>copia</em> &mdash; (1116), el control con una planilla <strong>regular</strong> que discrimina &ldquo;se rompi&oacute; el listado&rdquo; de &ldquo;solo las extraordinarias&rdquo; (1117) y la limpieza con veredicto (1118). Infra nueva: <code>PayrollReprocessAPIService.buscarCopiaPorEntry</code> y el tag <code>@release-v17.1.3</code>.
+      El spec no tiene todav&iacute;a ticket propio en QAUTO; la matriz de casos y la evidencia est&aacute;n en el comentario de QA de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a>.
+      <br><br>
+      <strong>Resultado.</strong> <strong>UAT co.2: 6 / 6 &#10003;</strong> a las 12:18, con el ticket ya en STAGING (12:02): la copia se lista con frecuencia <em>Extraordinaria</em> y el bot&oacute;n abre <code>/dashboard/payroll/run/{copyId}</code>.
+      <strong>Producci&oacute;n co.21: 3 / 6</strong> &mdash; el mismo spec <strong>reproduce el bug</strong> (1114, 1115 y 1116 en rojo; la copia de la regular s&iacute; se lista). Coincide con los ids del reporte original (<code>run/952</code> en <code>test.rebuhr.com</code>): el defecto sigue en prod hasta que se despliegue v17.1.3. La pesta&ntilde;a Producci&oacute;n queda como l&iacute;nea base para la re-corrida post-deploy.
+      <br><br>
+      <strong>Observaciones para producto.</strong> El wizard de la copia <strong>no muestra el banner amarillo</strong> &ldquo;Planilla extraordinaria en reproceso&rdquo; que describe el ticket, ni en UAT ni en prod (solo el &#9432; junto al t&iacute;tulo); ning&uacute;n AC lo exige, as&iacute; que el spec asserta el bot&oacute;n &ldquo;Remover de reproceso&rdquo; y el colaborador precargado. Correr Planillas muestra el nombre de la <em>plantilla</em>; el Historial le agrega &ldquo; | per&iacute;odo&rdquo; y el buscador con ese nombre largo devuelve &ldquo;No hay resultados&rdquo;.
+    </div>
+  </div>
+
+  <div class="content" style="padding-top:4px">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('auto', this)">&#129302; Automatizados <span class="tab-count">12</span></button>
+    </div>
+    <hr class="tab-divider">
+  </div>
+
+  <div id="tab-auto" class="tab-panel active">
+    <div class="content">
+      <div class="env-tab-group">
+        <div class="env-tab-nav">
+          <button class="env-tab-btn active" onclick="switchEnvTab('uat', this)">&#129514; UAT co.2 <span class="env-tab-count">6 &#10003;</span></button>
+          <button class="env-tab-btn" onclick="switchEnvTab('prod', this)">&#127981; Producci&oacute;n co.21 <span class="env-tab-count">3 &#10003; &middot; 3 &#10007;</span></button>
+        </div>
+        <div id="env-uat" class="env-tab-panel active"><div class="content">
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" onclick="event.stopPropagation()">REBU-6324</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-5737" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="&Eacute;pica REBU-5737 &mdash; Reproceso de Planillas Completadas">REBU-5737</a>
+      <span class="hu-title">La copia en reproceso de una planilla EXTRAORDINARIA aparece en Correr Planillas &middot; UAT co.2</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">6 / 6 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">
+    Que la copia en reproceso de una <strong>planilla extraordinaria</strong> se lista en Correr Planillas con badge &ldquo;En Reproceso&rdquo; y bot&oacute;n &ldquo;Continuar Reproceso&rdquo; (AC8 de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a>),
+    que ese bot&oacute;n abre el wizard de la <strong>copia</strong> con los datos precargados (AC1 de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5744" target="_blank" rel="noopener">REBU-5744</a>), y &mdash; como controles &mdash; que la copia se crea y marca a la original (AC7),
+    que la copia de una <strong>regular</strong> sigue list&aacute;ndose (<a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6171" target="_blank" rel="noopener">REBU-6171</a>) y que cancelar no deja copias hu&eacute;rfanas (<a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5748" target="_blank" rel="noopener">REBU-5748</a>). Corrida del 30-09-2026 a las 12:18 en <strong>UAT co.2</strong>, minutos despu&eacute;s de que el ticket pasara a <strong>STAGING</strong> (12:02). El escenario se arma por API (builder de REBU-4739) y las verificaciones de Correr Planillas y del wizard se hacen <strong>en el producto</strong>. Los <strong>6 casos en verde</strong> certifican el fix: la copia de la extraordinaria se lista y &ldquo;Continuar Reproceso&rdquo; abre su wizard.
+  </div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1113</td><td><div class="test-name">Control: reprocesar una extraordinaria finalizada crea la copia y la original queda con el badge “En Reproceso”</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1113</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a> (AC7)</td></tr>
+<tr><th>Ambiente</th><td>UAT co.2 (Automation Project) &middot; <code>app-rebu-portal-03-uat.azurewebsites.net</code> &middot; corrida 12:18 del 30-09-2026 con <code>ENV_FILE=.env.bak.uat</code> &middot; colaborador Agust&iacute;n Zayas &middot; planilla 7058 &middot; regular 7564 &middot; extraordinaria 7565 &middot; copias 7566 (sesi&oacute;n 68) y 7567 (sesi&oacute;n 69)</td></tr>
+<tr><th>Precondiciones</th><td>colaborador nuevo (ingreso 10-01-2024, salario $900) asociado a una planilla quincenal propia; toggle <em>¿Se permite reprocesar planillas?</em> encendido en la empresa; una regular (1–15 ago 2026) y una <strong>extraordinaria</strong> (20–25 ago 2026, bruto manual $150, ISSS quincenal) ya finalizadas y en el Historial.</td></tr>
+<tr><th>Regla evaluada</th><td>Una planilla extraordinaria finalizada es reprocesable como cualquier regular (AC7 de REBU-5742): al iniciar, el BE crea una copia <code>InReprocessing</code> y marca la original con <code>isInReprocess</code>. Es el <strong>control</strong> del bloque: si esto fallara, los casos siguientes no medirían el listado sino la creación de la copia.</td></tr>
+<tr><th>Setup</th><td>1. Builder de REBU-4739 (<code>createExtraordinariaScenario</code>): planilla quincenal + colaborador.<br>2. <code>finalizeRegularPayrollPeriod</code>: regular 1–15 ago 2026 cerrada (4 <code>change-step</code>).<br>3. <code>finalizeExtraordinariaPayroll</code>: extraordinaria 20–25 ago 2026 con bruto manual $150 (<code>period-salary</code> por <code>payrollDetailId</code>), cerrada.<br>4. Precondición medida: ambas en el Historial, la extraordinaria con <code>isInReprocess: false</code> y sin fila en <code>payroll/pending</code>.</td></tr>
+<tr><th>Pasos</th><td>1. <code>POST /payroll-entry/{extraId}/reprocess { peopleIds, reason }</code> &rarr; Esperado: 200 con <code>{ copyPayrollEntryId, sessionId }</code>.<br>2. <code>GET /payroll-entry/{copyId}/steps</code> &rarr; Esperado: <code>isReprocessCopy: true</code>.<br>3. <code>GET /payroll/entry/complete</code> &rarr; Esperado: la extraordinaria con <code>isInReprocess: true</code>.<br>4. Historial de Planillas (UI), buscar la extraordinaria &rarr; Esperado: badge <strong>“En Reproceso”</strong> junto al nombre.</td></tr>
+<tr><th>Resultado esperado</th><td>la copia existe, se reconoce como copia de reproceso y la original luce el badge en el Historial.</td></tr>
+<tr><th>Resultado obtenido</th><td>Extraordinaria <strong>7565</strong> “REBU-6324 extraordinaria 1790792283623” (frecuencia Extraordinaria) &rarr; copia <strong>7566</strong>, sesión 68. <code>/steps</code> de la copia con <code>isReprocessCopy: true</code>; el Historial devuelve <code>isInReprocess: true</code> y la fila muestra el badge. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Historial de Planillas: la extraordinaria "REBU-6324 extraordinaria 1790792283623" (7565) muestra el badge "En Reproceso" tras iniciar el reproceso — copia 7566, sesión 68</div><img src="../assets/v17.1.3/uat/TC-PLA-1113/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1114</td><td><div class="test-name">AC8 (API): GET /payroll/pending lista la copia de la extraordinaria como “En Reproceso” con su payrollEntryId</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1114</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a> (AC8)</td></tr>
+<tr><th>Ambiente</th><td>UAT co.2 (Automation Project) &middot; <code>app-rebu-portal-03-uat.azurewebsites.net</code> &middot; corrida 12:18 del 30-09-2026 con <code>ENV_FILE=.env.bak.uat</code> &middot; colaborador Agust&iacute;n Zayas &middot; planilla 7058 &middot; regular 7564 &middot; extraordinaria 7565 &middot; copias 7566 (sesi&oacute;n 68) y 7567 (sesi&oacute;n 69)</td></tr>
+<tr><th>Precondiciones</th><td>las del caso anterior, con el reproceso de la extraordinaria recién iniciado (copia abierta).</td></tr>
+<tr><th>Regla evaluada</th><td>Correr Planillas se alimenta de <code>GET /payroll/pending</code>. REBU-6171 hizo que <code>PendingPayrollQueryHandler</code> emita la copia <code>InReprocessing</code> como fila “En Reproceso”, pero <strong>solo en el <code>case Regular</code></strong>: las extraordinarias (período EXTRA) salen por una rama que retorna antes del switch y su copia nunca se emitía. El fix de REBU-6324 (PR #3491) emite la copia también ahí, con su <code>PayrollEntryId</code>. Este caso mira la API directamente, sin el ruido del FE.</td></tr>
+<tr><th>Setup</th><td>1. Iniciar el reproceso de la extraordinaria (paso 1 del caso anterior).</td></tr>
+<tr><th>Pasos</th><td>1. <code>expect.poll</code> hasta 30 s sobre <code>GET /payroll/pending?companyId</code> &rarr; Esperado: una fila con <code>payrollEntryId</code> = copia y <code>status: “En Reproceso”</code>.<br>2. Esperado: <code>name</code> = nombre de la extraordinaria y <code>paymentPeriod: “Extraordinaria”</code>.</td></tr>
+<tr><th>Resultado esperado</th><td>la copia de la extraordinaria aparece en el listado de Correr Planillas con estado “En Reproceso” (AC8 de REBU-5742).</td></tr>
+<tr><th>Resultado obtenido</th><td>Fila <code>{ id: 7059, name: “REBU-6324 extraordinaria 1790792283623”, payrollEntryId: 7566, 2026-08-20 &rarr; 2026-08-25, paymentPeriod: “Extraordinaria”, status: “En Reproceso” }</code>. <em>Detalle de la suite:</em> el <code>id</code> de la fila (7059) <strong>no</strong> es la plantilla del colaborador (7058), por eso el helper nuevo <code>buscarCopiaPorEntry</code> busca por el entry de la copia y no por PayrollId. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Con el reproceso de la extraordinaria 7565 abierto (copia 7566), GET /payroll/pending SÍ lista la copia como "En Reproceso"</div><img src="../assets/v17.1.3/uat/TC-PLA-1114/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1115</td><td><div class="test-name">AC8 (UI): Correr Planillas muestra la fila de la extraordinaria con badge “En Reproceso” y botón “Continuar Reproceso”</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1115</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a> (AC8)</td></tr>
+<tr><th>Ambiente</th><td>UAT co.2 (Automation Project) &middot; <code>app-rebu-portal-03-uat.azurewebsites.net</code> &middot; corrida 12:18 del 30-09-2026 con <code>ENV_FILE=.env.bak.uat</code> &middot; colaborador Agust&iacute;n Zayas &middot; planilla 7058 &middot; regular 7564 &middot; extraordinaria 7565 &middot; copias 7566 (sesi&oacute;n 68) y 7567 (sesi&oacute;n 69)</td></tr>
+<tr><th>Precondiciones</th><td>copia de la extraordinaria abierta; sesión del portal del usuario máster.</td></tr>
+<tr><th>Regla evaluada</th><td>El FE (<code>payroll-run-columns</code>) pinta badge y botón según el <code>status</code> de la fila sin distinguir tipo de planilla: si la API emite la fila, la UI debe mostrarla. Correr Planillas es el <strong>único camino de navegación</strong> a la copia: sin la fila el usuario no puede continuar, recalcular, cancelar ni confirmar el reproceso.</td></tr>
+<tr><th>Setup</th><td>1. Abrir <code>/dashboard/payroll/run</code> con la sesión de <code>playwright/.auth/user.json</code>.</td></tr>
+<tr><th>Pasos</th><td>1. Filtrar por el nombre de la extraordinaria (el buscador tiene <em>debounce</em>) &rarr; Esperado: una fila con el nombre, tipo Empleado &middot; Extraordinaria y el período.<br>2. Esperado: badge <strong>“En Reproceso”</strong>.<br>3. Esperado: botón <strong>“Continuar Reproceso”</strong> en la fila.</td></tr>
+<tr><th>Resultado esperado</th><td>la fila de la copia es visible con badge y botón, igual que la de una planilla regular.</td></tr>
+<tr><th>Resultado obtenido</th><td>Fila <em>REBU-6324 extraordinaria 1790792283623 &middot; Empleado &middot; Extraordinaria &middot; Aug 20 &ndash; Aug 25, 2026 &middot; <strong>En Reproceso</strong> &middot; <strong>Continuar Reproceso</strong></em> visible tras filtrar. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Correr Planillas filtrado por "REBU-6324 extraordinaria 1790792283623": esperado una fila "En Reproceso" con el botón "Continuar Reproceso" (copia 7566)</div><img src="../assets/v17.1.3/uat/TC-PLA-1115/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1116</td><td><div class="test-name">AC1 de 5744: “Continuar Reproceso” abre el wizard de la COPIA (no el de la original) con el colaborador precargado</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1116</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5744" target="_blank" rel="noopener">REBU-5744</a> (AC1) <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5744" target="_blank" rel="noopener">REBU-5744</a> (AC4)</td></tr>
+<tr><th>Ambiente</th><td>UAT co.2 (Automation Project) &middot; <code>app-rebu-portal-03-uat.azurewebsites.net</code> &middot; corrida 12:18 del 30-09-2026 con <code>ENV_FILE=.env.bak.uat</code> &middot; colaborador Agust&iacute;n Zayas &middot; planilla 7058 &middot; regular 7564 &middot; extraordinaria 7565 &middot; copias 7566 (sesi&oacute;n 68) y 7567 (sesi&oacute;n 69)</td></tr>
+<tr><th>Precondiciones</th><td>fila de la copia visible en Correr Planillas (caso anterior).</td></tr>
+<tr><th>Regla evaluada</th><td>El botón debe llevar al wizard de la <strong>copia</strong> (<code>/run/{copyId}</code>) y no al de la original finalizada. El wizard de un reproceso se reconoce por el botón <strong>“Remover de reproceso”</strong> (AC4 de REBU-5744) y trae a los colaboradores seleccionados con sus montos del cierre. El banner amarillo “Planilla extraordinaria en reproceso” que describe el ticket <strong>no lo exige ningún AC</strong>: se registra en el log, no se asserta.</td></tr>
+<tr><th>Setup</th><td>1. Caso TC-PLA-1115 con la fila visible.</td></tr>
+<tr><th>Pasos</th><td>1. Clic en “Continuar Reproceso” &rarr; Esperado: URL <code>/dashboard/payroll/run/{copyId}</code> (la copia, no la original).<br>2. Esperado: botón <strong>“Remover de reproceso”</strong> visible.<br>3. Esperado: fila del colaborador en la tabla de Remuneraciones.<br>4. Registrar si aparece el banner de extraordinaria.</td></tr>
+<tr><th>Resultado esperado</th><td>el wizard que abre es el de la copia, con la firma de reproceso y los datos de la original precargados.</td></tr>
+<tr><th>Resultado obtenido</th><td>Abrió <code>/dashboard/payroll/run/7566</code> (la copia; la original es 7565), paso 1 Remuneraciones, botón “Remover de reproceso” y Agustín Zayas con Salario Período <strong>$150.00</strong>. Banner “Planilla extraordinaria en reproceso”: <strong>ausente</strong> (solo el &#9432; junto al título). &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; "Continuar Reproceso" abrió https://app-rebu-portal-03-uat.azurewebsites.net/dashboard/payroll/run/7566: wizard de la copia 7566 (no de la original 7565) con "Remover de reproceso" y Agustín Zayas precargado — banner de extraordinaria ausente</div><img src="../assets/v17.1.3/uat/TC-PLA-1116/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1117</td><td><div class="test-name">Control: la copia de una planilla REGULAR sí se lista con la misma sesión (REBU-6171 vigente)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1117</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6171" target="_blank" rel="noopener">REBU-6171</a> (fix)</td></tr>
+<tr><th>Ambiente</th><td>UAT co.2 (Automation Project) &middot; <code>app-rebu-portal-03-uat.azurewebsites.net</code> &middot; corrida 12:18 del 30-09-2026 con <code>ENV_FILE=.env.bak.uat</code> &middot; colaborador Agust&iacute;n Zayas &middot; planilla 7058 &middot; regular 7564 &middot; extraordinaria 7565 &middot; copias 7566 (sesi&oacute;n 68) y 7567 (sesi&oacute;n 69)</td></tr>
+<tr><th>Precondiciones</th><td>reproceso de la extraordinaria ya cancelado (para no chocar con el cupo por tipo de REBU-5740); la regular 1–15 ago del mismo colaborador finalizada.</td></tr>
+<tr><th>Regla evaluada</th><td>Discrimina <em>“se rompió el listado de copias”</em> de <em>“solo las extraordinarias”</em>: con el mismo usuario y la misma sesión, la copia de la regular debe aparecer “En Reproceso” en API y UI. Si este control fallara junto con TC-PLA-1114, el problema no sería REBU-6324.</td></tr>
+<tr><th>Setup</th><td>1. <code>POST /payroll-entry/reprocess/{sessionId}/cancel</code> de la extraordinaria.<br>2. <code>POST /payroll-entry/{regularId}/reprocess</code> &rarr; copia de la regular.</td></tr>
+<tr><th>Pasos</th><td>1. <code>expect.poll</code> sobre <code>GET /payroll/pending</code> &rarr; Esperado: fila con <code>payrollEntryId</code> = copia y “En Reproceso”.<br>2. Correr Planillas filtrado por el <strong>nombre de la plantilla</strong> (no el nombre largo del Historial, que agrega “ | período”) &rarr; Esperado: fila “En Reproceso” visible.</td></tr>
+<tr><th>Resultado esperado</th><td>la copia de la regular se lista en API y UI (comportamiento ya corregido por REBU-6171).</td></tr>
+<tr><th>Resultado obtenido</th><td>Regular <strong>7564</strong> &rarr; copia <strong>7567</strong> (sesión 69). Fila <code>{ id: 7058, name: “REBU-6324 1790792277795”, payrollEntryId: 7567, Quincenal, “En Reproceso” }</code> y fila visible en Correr Planillas. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Control: Correr Planillas filtrado por la planilla REGULAR "REBU-6324 1790792277795" — la copia 7567 sí aparece "En Reproceso" con "Continuar Reproceso"</div><img src="../assets/v17.1.3/uat/TC-PLA-1117/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; Control con la misma sesión: la copia 7567 de la planilla REGULAR 7564 SÍ se lista en GET /payroll/pending</div><img src="../assets/v17.1.3/uat/TC-PLA-1117/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1118</td><td><div class="test-name">Cancelar retira la copia (steps &rarr; 404), el badge del Historial y la fila de Correr Planillas</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1118</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5748" target="_blank" rel="noopener">REBU-5748</a> (cancelar)</td></tr>
+<tr><th>Ambiente</th><td>UAT co.2 (Automation Project) &middot; <code>app-rebu-portal-03-uat.azurewebsites.net</code> &middot; corrida 12:18 del 30-09-2026 con <code>ENV_FILE=.env.bak.uat</code> &middot; colaborador Agust&iacute;n Zayas &middot; planilla 7058 &middot; regular 7564 &middot; extraordinaria 7565 &middot; copias 7566 (sesi&oacute;n 68) y 7567 (sesi&oacute;n 69)</td></tr>
+<tr><th>Precondiciones</th><td>copias de la extraordinaria y de la regular abiertas en su momento.</td></tr>
+<tr><th>Regla evaluada</th><td>El único end-state fiable de cancelar es que la copia devuelva <strong>404</strong> (lección de REBU-6166); además la original vuelve a Completada sin badge y la fila “En Reproceso” desaparece. Es la limpieza del escenario, pero con veredicto: una copia huérfana ocupa el cupo de la planilla (REBU-5740).</td></tr>
+<tr><th>Setup</th><td>1. Reprocesos abiertos por los casos anteriores.</td></tr>
+<tr><th>Pasos</th><td>1. <code>POST /payroll-entry/reprocess/{sessionId}/cancel</code> (extraordinaria y luego regular) &rarr; Esperado: 200.<br>2. <code>GET /payroll-entry/{copyId}/steps</code> de cada copia &rarr; Esperado: <strong>404</strong>.<br>3. Historial &rarr; Esperado: <code>isInReprocess: false</code>.<br>4. <code>GET /payroll/pending</code> sin la copia; Correr Planillas filtrado sin fila “En Reproceso”.</td></tr>
+<tr><th>Resultado esperado</th><td>ninguna copia huérfana: las originales quedan Completadas sin badge y Correr Planillas vuelve a su estado previo.</td></tr>
+<tr><th>Resultado obtenido</th><td>Sesiones 68 y 69 canceladas; copias 7566 y 7567 &rarr; <strong>404</strong>; originales 7565/7564 sin badge; Correr Planillas sin filas “En Reproceso” para las dos planillas. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Correr Planillas tras cancelar el reproceso de "REBU-6324 extraordinaria 1790792283623": ninguna fila "En Reproceso" (la copia 7566 devuelve 404)</div><img src="../assets/v17.1.3/uat/TC-PLA-1118/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+    </tbody>
+  </table>
+</div>
+
+        </div></div>
+        <div id="env-prod" class="env-tab-panel"><div class="content">
+<div class="hu-section">
+  <div class="hu-header" onclick="headerClick(this)">
+    <div class="hu-header-left">
+      <a class="hu-id" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" onclick="event.stopPropagation()">REBU-6324</a>
+      <a class="hu-src" href="https://rebu.atlassian.net/browse/REBU-5737" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="&Eacute;pica REBU-5737 &mdash; Reproceso de Planillas Completadas">REBU-5737</a>
+      <span class="hu-title">La copia en reproceso de una planilla EXTRAORDINARIA aparece en Correr Planillas &middot; Prod co.21</span>
+    </div>
+    <div class="hu-header-right"><span class="hu-badge">3 / 6 &#10003;</span><span class="hu-toggle">&#9660;</span></div>
+  </div>
+<div style="margin:0 18px 14px;padding:12px 16px;background:#eef4fb;border:1px solid #b8cfe8;border-radius:10px">
+  <div style="font-size:11px;font-weight:700;color:#1d4f7c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Qu&eacute; certifica este bloque</div>
+  <div style="font-size:11px;color:#204a6e;line-height:1.7">
+    Que la copia en reproceso de una <strong>planilla extraordinaria</strong> se lista en Correr Planillas con badge &ldquo;En Reproceso&rdquo; y bot&oacute;n &ldquo;Continuar Reproceso&rdquo; (AC8 de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a>),
+    que ese bot&oacute;n abre el wizard de la <strong>copia</strong> con los datos precargados (AC1 de <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5744" target="_blank" rel="noopener">REBU-5744</a>), y &mdash; como controles &mdash; que la copia se crea y marca a la original (AC7),
+    que la copia de una <strong>regular</strong> sigue list&aacute;ndose (<a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6171" target="_blank" rel="noopener">REBU-6171</a>) y que cancelar no deja copias hu&eacute;rfanas (<a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5748" target="_blank" rel="noopener">REBU-5748</a>). Misma suite contra <strong>producci&oacute;n (empresa Test, co.21)</strong> el 30-09-2026 a las 12:11, donde v17.1.3 <strong>todav&iacute;a no est&aacute; desplegada</strong>. Los tres rojos (TC-PLA-1114, 1115, 1116) <strong>son el defecto reportado</strong>, no una regresi&oacute;n: la copia existe (1113), la de una regular s&iacute; se lista (1117) y cancelar limpia todo (1118). Sirve de l&iacute;nea base para volver a correr el spec cuando el hotfix llegue a prod.
+  </div>
+</div>
+  <table class="test-table">
+    <thead><tr><th>ID</th><th>Caso</th><th>Status</th></tr></thead>
+    <tbody>
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1113</td><td><div class="test-name">Control: reprocesar una extraordinaria finalizada crea la copia y la original queda con el badge “En Reproceso”</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1113</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a> (AC7)</td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 (empresa Test) &middot; <code>test.rebuhr.com</code> &middot; corrida 12:11 del 30-09-2026 &middot; colaborador Jaime Valent&iacute;n &middot; planilla 895 &middot; regular 1820 &middot; extraordinaria 1821 &middot; copias 1822 (sesi&oacute;n 24) y 1823 (sesi&oacute;n 25)</td></tr>
+<tr><th>Regla evaluada</th><td>Una planilla extraordinaria finalizada es reprocesable como cualquier regular (AC7 de REBU-5742): al iniciar, el BE crea una copia <code>InReprocessing</code> y marca la original con <code>isInReprocess</code>. Es el <strong>control</strong> del bloque: si esto fallara, los casos siguientes no medirían el listado sino la creación de la copia.</td></tr>
+<tr><th>Resultado esperado</th><td>la copia existe, se reconoce como copia de reproceso y la original luce el badge en el Historial.</td></tr>
+<tr><th>Resultado</th><td>Extraordinaria <strong>1821</strong> “REBU-6324 extraordinaria 1790791909855” &rarr; copia <strong>1822</strong>, sesión 24; <code>isReprocessCopy: true</code>; badge visible en el Historial de co.21. La creación de la copia nunca fue el problema. &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Historial de Planillas: la extraordinaria "REBU-6324 extraordinaria 1790791909855" (1821) muestra el badge "En Reproceso" tras iniciar el reproceso — copia 1822, sesión 24</div><img src="../assets/v17.1.3/prod/TC-PLA-1113/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1114</td><td><div class="test-name">AC8 (API): GET /payroll/pending lista la copia de la extraordinaria como “En Reproceso” con su payrollEntryId</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-fail">FAIL</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1114</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a> (AC8)</td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 (empresa Test) &middot; <code>test.rebuhr.com</code> &middot; corrida 12:11 del 30-09-2026 &middot; colaborador Jaime Valent&iacute;n &middot; planilla 895 &middot; regular 1820 &middot; extraordinaria 1821 &middot; copias 1822 (sesi&oacute;n 24) y 1823 (sesi&oacute;n 25)</td></tr>
+<tr><th>Regla evaluada</th><td>Correr Planillas se alimenta de <code>GET /payroll/pending</code>. REBU-6171 hizo que <code>PendingPayrollQueryHandler</code> emita la copia <code>InReprocessing</code> como fila “En Reproceso”, pero <strong>solo en el <code>case Regular</code></strong>: las extraordinarias (período EXTRA) salen por una rama que retorna antes del switch y su copia nunca se emitía. El fix de REBU-6324 (PR #3491) emite la copia también ahí, con su <code>PayrollEntryId</code>. Este caso mira la API directamente, sin el ruido del FE.</td></tr>
+<tr><th>Resultado esperado</th><td>la copia de la extraordinaria aparece en el listado de Correr Planillas con estado “En Reproceso” (AC8 de REBU-5742).</td></tr>
+<tr><th>Resultado</th><td>Con la copia <strong>1822</strong> abierta, <code>payroll/pending</code> solo listó “En Reproceso” a la copia 953 de “Test complemento” (la regular del reporte original de Jessica): <strong>la copia de la extraordinaria no aparece</strong>. Es exactamente el defecto de REBU-6324; se resolverá al desplegar v17.1.3 en producción. &#10060;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Con el reproceso de la extraordinaria 1821 abierto (copia 1822), GET /payroll/pending NO lista la copia como "En Reproceso"</div><img src="../assets/v17.1.3/prod/TC-PLA-1114/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-fail">FAIL</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1115</td><td><div class="test-name">AC8 (UI): Correr Planillas muestra la fila de la extraordinaria con badge “En Reproceso” y botón “Continuar Reproceso”</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-fail">FAIL</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1115</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5742" target="_blank" rel="noopener">REBU-5742</a> (AC8)</td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 (empresa Test) &middot; <code>test.rebuhr.com</code> &middot; corrida 12:11 del 30-09-2026 &middot; colaborador Jaime Valent&iacute;n &middot; planilla 895 &middot; regular 1820 &middot; extraordinaria 1821 &middot; copias 1822 (sesi&oacute;n 24) y 1823 (sesi&oacute;n 25)</td></tr>
+<tr><th>Regla evaluada</th><td>El FE (<code>payroll-run-columns</code>) pinta badge y botón según el <code>status</code> de la fila sin distinguir tipo de planilla: si la API emite la fila, la UI debe mostrarla. Correr Planillas es el <strong>único camino de navegación</strong> a la copia: sin la fila el usuario no puede continuar, recalcular, cancelar ni confirmar el reproceso.</td></tr>
+<tr><th>Resultado esperado</th><td>la fila de la copia es visible con badge y botón, igual que la de una planilla regular.</td></tr>
+<tr><th>Resultado</th><td>Correr Planillas filtrado por la extraordinaria 1821: <strong>“No hay resultados”</strong>. La copia 1822 existe y es funcional por URL directa (<code>/dashboard/payroll/run/1822</code>), pero no hay cómo llegar a ella desde la navegación. &#10060;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Correr Planillas filtrado por "REBU-6324 extraordinaria 1790791909855": esperado una fila "En Reproceso" con el botón "Continuar Reproceso" (copia 1822)</div><img src="../assets/v17.1.3/prod/TC-PLA-1115/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-fail">FAIL</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1116</td><td><div class="test-name">AC1 de 5744: “Continuar Reproceso” abre el wizard de la COPIA (no el de la original) con el colaborador precargado</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-fail">FAIL</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1116</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5744" target="_blank" rel="noopener">REBU-5744</a> (AC1) <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5744" target="_blank" rel="noopener">REBU-5744</a> (AC4)</td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 (empresa Test) &middot; <code>test.rebuhr.com</code> &middot; corrida 12:11 del 30-09-2026 &middot; colaborador Jaime Valent&iacute;n &middot; planilla 895 &middot; regular 1820 &middot; extraordinaria 1821 &middot; copias 1822 (sesi&oacute;n 24) y 1823 (sesi&oacute;n 25)</td></tr>
+<tr><th>Regla evaluada</th><td>El botón debe llevar al wizard de la <strong>copia</strong> (<code>/run/{copyId}</code>) y no al de la original finalizada. El wizard de un reproceso se reconoce por el botón <strong>“Remover de reproceso”</strong> (AC4 de REBU-5744) y trae a los colaboradores seleccionados con sus montos del cierre. El banner amarillo “Planilla extraordinaria en reproceso” que describe el ticket <strong>no lo exige ningún AC</strong>: se registra en el log, no se asserta.</td></tr>
+<tr><th>Resultado esperado</th><td>el wizard que abre es el de la copia, con la firma de reproceso y los datos de la original precargados.</td></tr>
+<tr><th>Resultado</th><td>Sin fila en Correr Planillas no hay punto de entrada al wizard (bloqueado por el bug). Control por URL directa <code>/dashboard/payroll/run/1822</code>: el wizard de la copia carga; el banner amarillo tampoco aparece en prod. &#10060;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Control por URL directa /dashboard/payroll/run/1822: la copia existe y el wizard carga (banner "Planilla extraordinaria en reproceso") aunque Correr Planillas no la liste</div><img src="../assets/v17.1.3/prod/TC-PLA-1116/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-fail">FAIL</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1117</td><td><div class="test-name">Control: la copia de una planilla REGULAR sí se lista con la misma sesión (REBU-6171 vigente)</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1117</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6171" target="_blank" rel="noopener">REBU-6171</a> (fix)</td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 (empresa Test) &middot; <code>test.rebuhr.com</code> &middot; corrida 12:11 del 30-09-2026 &middot; colaborador Jaime Valent&iacute;n &middot; planilla 895 &middot; regular 1820 &middot; extraordinaria 1821 &middot; copias 1822 (sesi&oacute;n 24) y 1823 (sesi&oacute;n 25)</td></tr>
+<tr><th>Regla evaluada</th><td>Discrimina <em>“se rompió el listado de copias”</em> de <em>“solo las extraordinarias”</em>: con el mismo usuario y la misma sesión, la copia de la regular debe aparecer “En Reproceso” en API y UI. Si este control fallara junto con TC-PLA-1114, el problema no sería REBU-6324.</td></tr>
+<tr><th>Resultado esperado</th><td>la copia de la regular se lista en API y UI (comportamiento ya corregido por REBU-6171).</td></tr>
+<tr><th>Resultado</th><td>Regular <strong>1820</strong> &rarr; copia <strong>1823</strong> (sesión 25): listada en <code>payroll/pending</code> junto con la copia 953 de “Test complemento” y visible en Correr Planillas. <strong>Confirma que en producción el defecto es exclusivo de las extraordinarias.</strong> &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Control: Correr Planillas filtrado por la planilla REGULAR "REBU-6324 1790791904457" — la copia 1823 sí aparece "En Reproceso" con "Continuar Reproceso"</div><img src="../assets/v17.1.3/prod/TC-PLA-1117/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">02 &mdash; Control con la misma sesión: la copia 1823 de la planilla REGULAR 1820 SÍ se lista en GET /payroll/pending</div><img src="../assets/v17.1.3/prod/TC-PLA-1117/02.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+<tr class="test-row" onclick="toggleDetail(this)"><td class="test-id">TC-PLA-1118</td><td><div class="test-name">Cancelar retira la copia (steps &rarr; 404), el badge del Historial y la fila de Correr Planillas</div><div class="test-tags"><span class="tag tag-val">@api-ui</span><span class="tag tag-val">@planilla</span><span class="tag tag-val">@reproceso</span><span class="tag tag-val">@regression</span><span class="tag tag-val">@release-v17.1.3</span></div></td><td class="status-cell"><span class="badge-pass">PASS</span></td></tr>
+<tr class="detail-row"><td colspan="3"><table class="case-steps">
+<tr><th>Documentado en</th><td><a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-6324" target="_blank" rel="noopener">REBU-6324</a> (comentario de QA con la matriz de casos y la evidencia) &middot; caso <code>TC-PLA-1118</code> &middot; spec <code>rebu-6324-copia-extraordinaria-en-correr-planillas.spec.ts</code> &middot; ACs <a class="jira-link" href="https://rebu.atlassian.net/browse/REBU-5748" target="_blank" rel="noopener">REBU-5748</a> (cancelar)</td></tr>
+<tr><th>Ambiente</th><td>Producci&oacute;n co.21 (empresa Test) &middot; <code>test.rebuhr.com</code> &middot; corrida 12:11 del 30-09-2026 &middot; colaborador Jaime Valent&iacute;n &middot; planilla 895 &middot; regular 1820 &middot; extraordinaria 1821 &middot; copias 1822 (sesi&oacute;n 24) y 1823 (sesi&oacute;n 25)</td></tr>
+<tr><th>Regla evaluada</th><td>El único end-state fiable de cancelar es que la copia devuelva <strong>404</strong> (lección de REBU-6166); además la original vuelve a Completada sin badge y la fila “En Reproceso” desaparece. Es la limpieza del escenario, pero con veredicto: una copia huérfana ocupa el cupo de la planilla (REBU-5740).</td></tr>
+<tr><th>Resultado esperado</th><td>ninguna copia huérfana: las originales quedan Completadas sin badge y Correr Planillas vuelve a su estado previo.</td></tr>
+<tr><th>Resultado</th><td>Sesiones 24 y 25 canceladas; copias 1822 y 1823 &rarr; <strong>404</strong>; originales 1821/1820 sin badge. Ninguna copia huérfana quedó en co.21 (la 953 de “Test complemento” es el fixture del reporte original y no se tocó). &#9989;</td></tr>
+<tr><th>Evidencia</th><td><div style="display:flex;gap:12px;flex-wrap:wrap;padding:4px 0"><div style="flex:1;min-width:220px"><div style="font-size:10px;font-weight:700;color:#284b44;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">01 &mdash; Correr Planillas tras cancelar el reproceso de "REBU-6324 extraordinaria 1790791909855": ninguna fila "En Reproceso" (la copia 1822 devuelve 404)</div><img src="../assets/v17.1.3/prod/TC-PLA-1118/01.jpg" style="max-width:100%;border-radius:6px;border:1px solid #d4e8d0;box-shadow:0 1px 4px rgba(0,0,0,.08)" loading="lazy" /></div></div></td></tr>
+<tr><th>Status</th><td><span class="badge-pass">PASS</span></td></tr>
+</table></td></tr>
+
+    </tbody>
+  </table>
+</div>
+
+        </div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RELEASE-END: v17.1.3 -->
+
+<section class="release-links">
+  <a class="release-link" href="v17.1.0.html">
+    <span class="release-link-version">v17.1.0</span>
+    <span class="release-link-date">26 sep 2026</span>
+    <span class="stat-pill pass">20 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+
+    <a class="release-link" href="v17.0.0.html">
+    <span class="release-link-version">v17.0.0</span>
+    <span class="release-link-date">25 sep 2026</span>
+    <span class="stat-pill pass">188 &#10003;</span>
+    <span class="stat-pill fail">12 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+<a class="release-link" href="v16.9.0.html">
+    <span class="release-link-version">v16.9.0</span>
+    <span class="release-link-date">17 sep 2026</span>
+    <span class="stat-pill pass">18 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+
+  <a class="release-link" href="v16.8.0.html">
+    <span class="release-link-version">v16.8.0</span>
+    <span class="release-link-date">16 sep 2026</span>
+    <span class="stat-pill pass">10 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v16.7.0.html">
+    <span class="release-link-version">v16.7.0</span>
+    <span class="release-link-date">14 sep 2026</span>
+    <span class="stat-pill pass">113 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v16.6.0.html">
+    <span class="release-link-version">v16.6.0</span>
+    <span class="release-link-date">09 sep 2026</span>
+    <span class="stat-pill pass">99 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v16.5.0.html">
+    <span class="release-link-version">v16.5.0</span>
+    <span class="release-link-date">05 sep 2026</span>
+    <span class="stat-pill pass">99 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v16.4.0.html">
+    <span class="release-link-version">v16.4.0</span>
+    <span class="release-link-date">02 sep 2026</span>
+    <span class="stat-pill pass">31 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v16.3.0.html">
+    <span class="release-link-version">v16.3.0</span>
+    <span class="release-link-date">01 sep 2026</span>
+    <span class="stat-pill pass">59 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v16.2.0.html">
+    <span class="release-link-version">v16.2.0</span>
+    <span class="release-link-date">21 ago 2026</span>
+    <span class="stat-pill pass">100 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v16.1.0.html">
+    <span class="release-link-version">v16.1.0</span>
+    <span class="release-link-date">19 ago 2026</span>
+    <span class="stat-pill pass">25 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v16.0.0.html">
+    <span class="release-link-version">v16.0.0</span>
+    <span class="release-link-date">16 ago 2026</span>
+    <span class="stat-pill pass">112 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v15.5.0.html">
+    <span class="release-link-version">v15.5.0</span>
+    <span class="release-link-date">04 ago 2026</span>
+    <span class="stat-pill pass">137 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v15.0.0.html">
+    <span class="release-link-version">v15.0.0</span>
+    <span class="release-link-date">02 jul 2026</span>
+    <span class="stat-pill pass">144 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+  <a class="release-link" href="v14.6.0.html">
+    <span class="release-link-version">v14.6.0</span>
+    <span class="release-link-date">23 jun 2026</span>
+    <span class="stat-pill pass">46 &#10003;</span>
+    <span class="stat-pill fail">0 &#10007;</span>
+    <span class="release-link-arrow">&rarr;</span>
+  </a>
+</section>
+
+<footer>
+  <strong>Rebu Automation Suite</strong> &middot; Generado el 30 sep 2026 &middot; Rama <strong>test/4420-motor-recalculo-renta</strong> &middot; Entorno <strong>UAT co.2 + Prod co.21</strong>
+</footer>
+</div>
+
+<script src="../report.js"></script>
